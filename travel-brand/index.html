@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -522,109 +522,262 @@
             color: var(--text-dim);
         }
 
-        /* ===== VIP ===== */
+        /* ===== VIP Loyalty Widget ===== */
         .vip {
-            background: var(--black);
-            border-top: 1px solid var(--border);
+            background: #0a0a0a;
+            border-top: 1px solid #1e1c18;
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow: hidden;
         }
 
         .vip-intro {
             text-align: center;
             max-width: 520px;
-            margin: 0 auto 72px;
+            margin: 0 auto 48px;
+        }
+
+        .vip-intro .tag { color: rgba(240,236,228,0.5); }
+
+        .vip-intro h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 300;
+            color: #f0ece4;
+            font-size: clamp(36px, 5vw, 56px);
         }
 
         .vip-intro p {
-            color: var(--text-dim);
+            color: rgba(240,236,228,0.4);
             font-size: 14px;
             font-weight: 300;
             line-height: 1.8;
             margin-top: 16px;
         }
 
-        .tiers {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
+        /* Progress box */
+        .vip-progress-box {
+            max-width: 480px;
+            margin: 0 auto 40px;
+            text-align: center;
         }
 
-        .tier {
-            background: var(--blue-deep);
-            padding: 56px 36px;
-            display: flex;
-            flex-direction: column;
-            transition: background 0.4s;
-        }
-
-        .tier:hover { background: var(--blue-dark); }
-
-        .tier.highlight {
-            background: var(--blue-dark);
-            border-top: 2px solid var(--white-pure);
-        }
-
-        .tier.highlight:hover { background: var(--blue-mid); }
-
-        .tier-level {
-            font-size: 9px;
-            font-weight: 600;
+        .vip-active-level {
+            font-size: 11px;
+            font-weight: 500;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 20px;
+            color: #c9a96e;
+            margin-bottom: 4px;
         }
 
-        .tier.highlight .tier-level { color: var(--white-pure); }
-
-        .tier-name {
+        .vip-active-pts {
             font-size: 32px;
+            font-weight: 200;
+            color: #f0ece4;
+            margin-bottom: 16px;
+        }
+
+        .vip-active-pts span {
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(240,236,228,0.4);
+        }
+
+        .vip-bar-wrap {
+            width: 100%;
+            height: 2px;
+            background: rgba(240,236,228,0.06);
+            border-radius: 1px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .vip-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #8a7040, #c9a96e);
+            border-radius: 1px;
+            transition: width 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+
+        .vip-next-text {
+            font-size: 12px;
+            color: rgba(240,236,228,0.4);
+            font-weight: 300;
+        }
+
+        .vip-next-text em {
+            font-style: normal;
+            color: #c9a96e;
+        }
+
+        /* Carousel */
+        .vip-carousel-wrap {
+            position: relative;
+            margin-bottom: 36px;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+
+        .vip-carousel {
+            display: flex;
+            gap: 12px;
+            transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+            will-change: transform;
+            padding: 20px 0;
+        }
+
+        .vip-card {
+            flex: 0 0 160px;
+            width: 160px;
+            padding: 20px 16px;
+            border: 0.5px solid #1e1c18;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+            transform: scale(0.93);
+            opacity: 0.35;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .vip-card.adjacent {
+            transform: scale(0.96);
+            opacity: 0.6;
+        }
+
+        .vip-card.active {
+            border-color: #c9a96e;
+            background: rgba(201,169,110,0.06);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .vip-card.grounding {
+            border-style: dashed;
+        }
+
+        .vip-card-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid #1e1c18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: rgba(240,236,228,0.3);
+            font-weight: 400;
+            margin: 0 auto 10px;
+        }
+
+        .vip-card.active .vip-card-badge {
+            background: #c9a96e;
+            border-color: #c9a96e;
+            color: #0a0a0a;
+            font-weight: 600;
+        }
+
+        .vip-card-name {
+            font-size: 13px;
+            font-weight: 400;
+            color: #f0ece4;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+
+        .vip-card-discount {
+            font-size: 11px;
+            color: rgba(240,236,228,0.3);
+            font-weight: 300;
             margin-bottom: 8px;
         }
 
-        .tier-discount {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--white-pure);
-            letter-spacing: 1px;
-            margin-bottom: 28px;
+        .vip-card.active .vip-card-discount {
+            color: #c9a96e;
         }
 
-        .tier-perks {
-            list-style: none;
-            margin-bottom: 32px;
-            flex-grow: 1;
-        }
-
-        .tier-perks li {
-            font-size: 13px;
-            color: var(--text-dim);
+        .vip-card-perk {
+            font-size: 10px;
+            color: rgba(240,236,228,0.25);
             font-weight: 300;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
         }
 
-        .tier-perks li:last-child { border-bottom: none; }
-
-        .tier-perks li::before {
-            content: '\2014\00a0\00a0';
-            opacity: 0.3;
+        .vip-card.active .vip-card-perk {
+            color: rgba(240,236,228,0.5);
         }
 
-        .tier-req {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            opacity: 0.5;
-            margin-top: auto;
+        .vip-card-pts {
+            font-size: 10px;
+            color: rgba(240,236,228,0.2);
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        .vip-card.active .vip-card-pts {
+            color: rgba(201,169,110,0.6);
+        }
+
+        .vip-card-hint {
+            font-size: 9px;
+            color: rgba(240,236,228,0.25);
+            font-weight: 300;
+            margin-top: 6px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Slider */
+        .vip-slider-wrap {
+            max-width: 480px;
+            margin: 0 auto 12px;
+            text-align: center;
+        }
+
+        .vip-slider-label {
+            font-size: 12px;
+            color: rgba(240,236,228,0.4);
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .vip-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #8a7040, #c9a96e);
+            border-radius: 1px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .vip-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #c9a96e;
+            cursor: pointer;
+            border: none;
+        }
+
+        .vip-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #c9a96e;
+            cursor: pointer;
+            border: none;
         }
 
         .vip-note {
             text-align: center;
-            margin-top: 48px;
-            font-size: 12px;
-            color: var(--text-dim);
+            margin-top: 40px;
+            font-size: 11px;
+            color: rgba(240,236,228,0.25);
             font-weight: 300;
+            line-height: 1.8;
         }
 
         /* ===== Newsletter ===== */
@@ -756,7 +909,7 @@
 
         /* ===== Responsive ===== */
         @media (max-width: 900px) {
-            .product-grid, .tiers { grid-template-columns: repeat(2, 1fr); }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
             .review-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
             .about-grid { grid-template-columns: 1fr; gap: 56px; }
             .stats { max-width: 420px; }
@@ -779,7 +932,7 @@
                 border-bottom: 1px solid var(--border);
             }
             .nav-toggle { display: block; }
-            .product-grid, .tiers { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .product-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .hero h1 { font-size: 40px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .nl-form { flex-direction: column; }
@@ -835,7 +988,7 @@
                     <div class="card-body">
                         <h3>Travel Wallpaper Pack</h3>
                         <p class="desc">50+ handpicked 4K wallpapers</p>
-                        <span class="price">ab 9,99 &euro;</span>
+                        <span class="price">from &euro;9.99</span>
                     </div>
                     <span class="badge">Bestseller</span>
                 </div>
@@ -844,7 +997,7 @@
                     <div class="card-body">
                         <h3>Cinematic LUT Pack</h3>
                         <p class="desc">20 film-inspired color grades</p>
-                        <span class="price">ab 14,99 &euro;</span>
+                        <span class="price">from &euro;14.99</span>
                     </div>
                 </div>
                 <div class="product-card reveal">
@@ -852,34 +1005,34 @@
                     <div class="card-body">
                         <h3>Lightroom Presets</h3>
                         <p class="desc">30 mobile & desktop presets</p>
-                        <span class="price">ab 12,99 &euro;</span>
+                        <span class="price">from &euro;12.99</span>
                     </div>
                 </div>
                 <div class="product-card reveal">
                     <div class="card-img c4"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg></div>
                     <div class="card-body">
                         <h3>Travel Hacks Guide</h3>
-                        <p class="desc">100+ Tipps & Tricks als eBook</p>
-                        <span class="price">ab 7,99 &euro;</span>
+                        <p class="desc">100+ tips & tricks as eBook</p>
+                        <span class="price">from &euro;7.99</span>
                     </div>
-                    <span class="badge">Neu</span>
+                    <span class="badge">New</span>
                 </div>
                 <div class="product-card reveal">
                     <div class="card-img c5"><svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg></div>
                     <div class="card-body">
                         <h3>City Map Posters</h3>
-                        <p class="desc">Minimale Stadtposter als Print-PDF</p>
-                        <span class="price">ab 4,99 &euro;</span>
+                        <p class="desc">Minimal city posters as print PDF</p>
+                        <span class="price">from &euro;4.99</span>
                     </div>
                 </div>
                 <div class="product-card reveal">
                     <div class="card-img c6"><svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/></svg></div>
                     <div class="card-body">
                         <h3>The Complete Bundle</h3>
-                        <p class="desc">Alles in einem Paket &mdash; spare 40%</p>
-                        <span class="price">ab 34,99 &euro;</span>
+                        <p class="desc">Everything in one bundle &mdash; save 40%</p>
+                        <span class="price">from &euro;34.99</span>
                     </div>
-                    <span class="badge">Spare 40%</span>
+                    <span class="badge">Save 40%</span>
                 </div>
             </div>
         </div>
@@ -892,12 +1045,12 @@
                     <p class="tag">The Vision</p>
                     <div class="line-left"></div>
                     <h2>Made by travelers,<br>for travelers.</h2>
-                    <p>Jedes Produkt entsteht auf Reisen. Echte Orte, echte Farben, echte Erlebnisse &mdash; digital aufbereitet f&uuml;r deinen kreativen Workflow.</p>
+                    <p>Every product is born on the road. Real places, real colors, real experiences &mdash; digitally crafted for your creative workflow.</p>
                 </div>
                 <div class="stats reveal">
-                    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">L&auml;nder</div></div>
+                    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Countries</div></div>
                     <div class="stat"><div class="stat-num">10k+</div><div class="stat-label">Downloads</div></div>
-                    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Produkte</div></div>
+                    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Products</div></div>
                     <div class="stat"><div class="stat-num">4.9</div><div class="stat-label">Rating</div></div>
                 </div>
             </div>
@@ -914,17 +1067,17 @@
             <div class="review-grid">
                 <div class="review reveal">
                     <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-                    <p>Die LUTs sind unglaublich. Meine Videos sehen jetzt aus wie aus einem Reise-Dokumentarfilm.</p>
+                    <p>The LUTs are incredible. My videos now look like they're straight out of a travel documentary.</p>
                     <div class="author">Lisa M. &mdash; Creator</div>
                 </div>
                 <div class="review reveal">
                     <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-                    <p>Endlich Wallpapers die nicht aussehen wie Stock-Fotos. Jedes Bild erz&auml;hlt eine Geschichte.</p>
+                    <p>Finally wallpapers that don't look like stock photos. Every image tells a story.</p>
                     <div class="author">Tom K. &mdash; Designer</div>
                 </div>
                 <div class="review reveal">
                     <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-                    <p>Der Travel Hacks Guide hat mir auf meiner S&uuml;dostasien-Reise locker 500&euro; gespart.</p>
+                    <p>The Travel Hacks Guide easily saved me &euro;500 on my Southeast Asia trip.</p>
                     <div class="author">Sarah W. &mdash; Nomad</div>
                 </div>
             </div>
@@ -936,48 +1089,27 @@
             <div class="vip-intro reveal">
                 <p class="tag">Loyalty Program</p>
                 <div class="line"></div>
-                <h2>Rewards for loyalty</h2>
-                <p>Je mehr du kaufst, desto exklusiver wird dein Zugang. Drei Level, steigende Vorteile &mdash; automatisch freigeschaltet.</p>
+                <h2>Rewards for loyalty.</h2>
+                <p>Earn points with every purchase and unlock exclusive perks &mdash; 10 tiers, updated automatically.</p>
             </div>
-            <div class="tiers">
-                <div class="tier reveal">
-                    <div class="tier-level">Level I</div>
-                    <h3 class="tier-name">Explorer</h3>
-                    <div class="tier-discount">5% auf alles</div>
-                    <ul class="tier-perks">
-                        <li>Pers&ouml;nlicher Rabattcode</li>
-                        <li>Fr&uuml;her Zugang zu neuen Drops</li>
-                        <li>Exklusive Newsletter-Inhalte</li>
-                    </ul>
-                    <div class="tier-req">Ab dem 1. Kauf</div>
-                </div>
-                <div class="tier highlight reveal">
-                    <div class="tier-level">Level II</div>
-                    <h3 class="tier-name">Voyager</h3>
-                    <div class="tier-discount">15% auf alles</div>
-                    <ul class="tier-perks">
-                        <li>Alles aus Explorer</li>
-                        <li>Kostenlose Bonus-Produkte</li>
-                        <li>Priority Support</li>
-                        <li>Zugang zur Community</li>
-                    </ul>
-                    <div class="tier-req">Ab 3 K&auml;ufen oder 50&euro;</div>
-                </div>
-                <div class="tier reveal">
-                    <div class="tier-level">Level III</div>
-                    <h3 class="tier-name">First Class</h3>
-                    <div class="tier-discount">25% auf alles</div>
-                    <ul class="tier-perks">
-                        <li>Alles aus Voyager</li>
-                        <li>Unreleased Content vorab</li>
-                        <li>Custom Presets auf Anfrage</li>
-                        <li>Lifetime Rabattcode</li>
-                        <li>1:1 Kreativ-Session</li>
-                    </ul>
-                    <div class="tier-req">Ab 8 K&auml;ufen oder 150&euro;</div>
-                </div>
+
+            <div class="vip-progress-box reveal">
+                <div class="vip-active-level" id="vipActiveLevel">Grounding</div>
+                <div class="vip-active-pts"><span id="vipPtsDisplay">0</span> <span>Pts</span></div>
+                <div class="vip-bar-wrap"><div class="vip-bar" id="vipBar" style="width:0%"></div></div>
+                <div class="vip-next-text" id="vipNextText"></div>
             </div>
-            <p class="vip-note reveal">Dein Level wird automatisch nach jedem Kauf aktualisiert. Rabattcodes per E-Mail.</p>
+
+            <div class="vip-carousel-wrap reveal">
+                <div class="vip-carousel" id="vipCarousel"></div>
+            </div>
+
+            <div class="vip-slider-wrap reveal">
+                <div class="vip-slider-label">Simulate your points</div>
+                <input type="range" class="vip-slider" id="vipSlider" min="0" max="5200" value="0" step="10">
+            </div>
+
+            <p class="vip-note reveal">5 points per &euro;1 &middot; Level updates automatically &middot; Notified by email</p>
         </div>
     </section>
 
@@ -987,7 +1119,7 @@
                 <p class="tag">Inner Circle</p>
                 <div class="line"></div>
                 <h2>Stay informed</h2>
-                <p>Neue Drops, exklusive Inhalte & fr&uuml;her Zugang &mdash; nur f&uuml;r Mitglieder.</p>
+                <p>New drops, exclusive content & early access &mdash; members only.</p>
                 <form class="nl-form" onsubmit="event.preventDefault(); this.querySelector('input').value='Welcome.'; this.querySelector('button').style.display='none';">
                     <input type="email" placeholder="your@email.com" required>
                     <button type="submit" class="btn btn-primary">Join</button>
@@ -1004,8 +1136,8 @@
                     <li><a href="#shop">Collection</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Impressum</a></li>
-                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">Imprint</a></li>
+                    <li><a href="#">Privacy</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">&copy; 2026 UncleMarv. All rights reserved.</div>
@@ -1030,6 +1162,107 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // VIP Loyalty Carousel
+        (function() {
+            const levels = [
+                { min: 0, badge: '\u25CB', name: 'Grounding', discount: null, perk: 'No purchase yet \u2014 become a member', hint: 'Buy 3 products + 40 bonus points \u2192 straight to Explorer I', grounding: true },
+                { min: 100, badge: 'I', name: 'Explorer I', discount: 5, perk: 'Personal discount code' },
+                { min: 200, badge: 'II', name: 'Explorer II', discount: 7.5, perk: 'Early access newsletter' },
+                { min: 400, badge: 'III', name: 'Adventurer I', discount: 10, perk: 'Early access to new drops' },
+                { min: 700, badge: 'IV', name: 'Adventurer II', discount: 12.5, perk: 'Exclusive bonus downloads' },
+                { min: 1100, badge: 'V', name: 'Voyager I', discount: 15, perk: 'Priority support \u00b7 Community access' },
+                { min: 1600, badge: 'VI', name: 'Voyager II', discount: 17.5, perk: 'Unreleased content first' },
+                { min: 2300, badge: 'VII', name: 'First Class I', discount: 20, perk: 'Custom presets on request' },
+                { min: 3200, badge: 'VIII', name: 'First Class II', discount: 22.5, perk: '1:1 creative session' },
+                { min: 5000, badge: 'IX', name: 'First Class \u2726', discount: 25, perk: 'Lifetime status \u00b7 Name in community' }
+            ];
+
+            const carousel = document.getElementById('vipCarousel');
+            const slider = document.getElementById('vipSlider');
+            const activeLevelEl = document.getElementById('vipActiveLevel');
+            const ptsDisplay = document.getElementById('vipPtsDisplay');
+            const bar = document.getElementById('vipBar');
+            const nextText = document.getElementById('vipNextText');
+
+            // Build cards
+            levels.forEach((lvl, i) => {
+                const card = document.createElement('div');
+                card.className = 'vip-card' + (lvl.grounding ? ' grounding' : '');
+                card.dataset.index = i;
+                let html = '<div class="vip-card-badge">' + lvl.badge + '</div>';
+                html += '<div class="vip-card-name">' + lvl.name + '</div>';
+                html += '<div class="vip-card-discount">' + (lvl.discount ? lvl.discount + '% off' : 'No discount') + '</div>';
+                html += '<div class="vip-card-perk">' + lvl.perk + '</div>';
+                html += '<div class="vip-card-pts">' + lvl.min.toLocaleString('en') + ' Pts</div>';
+                if (lvl.hint) html += '<div class="vip-card-hint">' + lvl.hint + '</div>';
+                card.innerHTML = html;
+                carousel.appendChild(card);
+            });
+
+            const cards = carousel.querySelectorAll('.vip-card');
+
+            function getLevel(pts) {
+                for (let i = levels.length - 1; i >= 0; i--) {
+                    if (pts >= levels[i].min) return i;
+                }
+                return 0;
+            }
+
+            function centerCard(idx) {
+                const card = cards[idx];
+                const wrapW = carousel.parentElement.offsetWidth;
+                const cardLeft = card.offsetLeft;
+                const cardW = card.offsetWidth;
+                const offset = -(cardLeft - (wrapW / 2) + (cardW / 2));
+                carousel.style.transform = 'translateX(' + offset + 'px)';
+            }
+
+            function update() {
+                const pts = parseInt(slider.value);
+                const current = getLevel(pts);
+                const lvl = levels[current];
+
+                ptsDisplay.textContent = pts.toLocaleString('en');
+                activeLevelEl.textContent = lvl.name;
+
+                // Progress bar
+                if (current === levels.length - 1) {
+                    bar.style.width = '100%';
+                    nextText.innerHTML = '<em>\u2726 Highest level reached \u2014 welcome aboard.</em>';
+                } else {
+                    const next = levels[current + 1];
+                    const segStart = lvl.min;
+                    const segEnd = next.min;
+                    const pct = Math.min(((pts - segStart) / (segEnd - segStart)) * 100, 100);
+                    bar.style.width = pct + '%';
+                    const diff = next.min - pts;
+                    nextText.innerHTML = '<em>' + diff.toLocaleString('en') + ' points</em> to ' + next.name + ' \u00b7 ' + next.discount + '% discount';
+                }
+
+                // Card states
+                cards.forEach((card, i) => {
+                    card.classList.remove('active', 'adjacent');
+                    if (i === current) card.classList.add('active');
+                    else if (Math.abs(i - current) === 1) card.classList.add('adjacent');
+                });
+
+                centerCard(current);
+            }
+
+            slider.addEventListener('input', update);
+            window.addEventListener('resize', () => { const pts = parseInt(slider.value); centerCard(getLevel(pts)); });
+
+            // Allow clicking cards to jump slider
+            cards.forEach((card, i) => {
+                card.addEventListener('click', () => {
+                    slider.value = levels[i].min;
+                    update();
+                });
+            });
+
+            update();
+        })();
     </script>
 
 </body>
