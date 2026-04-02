@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.lyond.de)",
+      "Bash(curl -s -L -o /tmp/lyond.html -w \"%{http_code}\" \"https://www.lyond.de\")",
+      "Read(//private/tmp/**)"
+    ]
+  }
+}

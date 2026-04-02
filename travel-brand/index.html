@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNCLEMARV — Digital Travel Goods</title>
+    <meta name="description" content="Curated digital products for travelers. Wallpapers, LUTs, presets, guides & more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-deep: #0a1628;
+            --blue-dark: #0f1d35;
+            --blue-mid: #142744;
+            --blue-surface: #182e50;
+            --black: #050a12;
+            --white: #f0eeeb;
+            --white-pure: #ffffff;
+            --text: var(--white);
+            --text-dim: rgba(240, 238, 235, 0.3);
+            --text-mid: rgba(240, 238, 235, 0.5);
+            --border: rgba(255,255,255,0.06);
+            --max-width: 1200px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--blue-deep);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--white-pure);
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .line {
+            width: 48px;
+            height: 1px;
+            background: var(--white);
+            opacity: 0.2;
+            margin: 0 auto 24px;
+        }
+
+        .line-left {
+            width: 48px;
+            height: 1px;
+            background: var(--white);
+            opacity: 0.2;
+            margin: 0 0 24px;
+        }
+
+        /* ===== Nav ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 0;
+            transition: all 0.5s;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--white-pure);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            padding: 8px 16px;
+            transition: all 0.35s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white-pure);
+            font-size: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .nav-links .nav-cta a {
+            color: var(--blue-deep);
+            background: var(--white-pure);
+            padding: 8px 20px;
+            font-weight: 600;
+        }
+
+        .nav-links .nav-cta a:hover {
+            background: var(--white);
+            font-size: 12px;
+            border: 1px solid var(--white-pure);
+            color: var(--blue-deep);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--white);
+            margin: 6px 0;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 50% 0%, var(--blue-dark) 0%, var(--blue-deep) 60%, var(--black) 100%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+        }
+
+        .hero-tag {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--text-mid);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            margin-bottom: 28px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--text-dim);
+            max-width: 440px;
+            margin: 0 auto 48px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 48px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .btn-primary {
+            background: var(--white-pure);
+            color: var(--blue-deep);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(255,255,255,0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scroll-line {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== Sections ===== */
+        .section { padding: 140px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--text-mid);
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(36px, 5vw, 56px);
+        }
+
+        /* ===== Products ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .product-card {
+            background: var(--blue-dark);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            z-index: 2;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .card-img {
+            aspect-ratio: 4/5;
+            position: relative;
+            overflow: hidden;
+            background: var(--blue-dark);
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .watermark {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .watermark::before {
+            content: 'UNCLEMARV';
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 8px;
+            color: rgba(255,255,255,0.25);
+            transform: rotate(-30deg);
+            white-space: nowrap;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .watermark::after {
+            content: 'PREVIEW';
+            position: absolute;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.2);
+            bottom: 16px;
+            right: 16px;
+        }
+
+        .card-body {
+            padding: 24px 28px 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-body h3 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .card-body .desc {
+            font-size: 12px;
+            color: var(--text-dim);
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .card-body .price {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white-pure);
+            letter-spacing: 1px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--white-pure);
+            color: var(--blue-deep);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            z-index: 2;
+        }
+
+        /* ===== About ===== */
+        .about {
+            background: var(--black);
+            padding: 140px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-text .tag { margin-bottom: 24px; }
+
+        .about h2 {
+            font-size: clamp(36px, 4.5vw, 56px);
+            max-width: 500px;
+        }
+
+        .about-text p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-top: 28px;
+            line-height: 1.9;
+            font-weight: 300;
+            max-width: 420px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 48px 32px;
+            background: var(--blue-deep);
+            position: relative;
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 1px;
+            background: var(--white);
+            opacity: 0.1;
+        }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            font-weight: 300;
+            color: var(--white-pure);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        /* ===== Reviews ===== */
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .review {
+            background: var(--blue-dark);
+            padding: 48px 36px;
+            position: relative;
+        }
+
+        .review::before {
+            content: '\201E';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            color: var(--white);
+            opacity: 0.06;
+            position: absolute;
+            top: 20px;
+            left: 32px;
+            line-height: 1;
+        }
+
+        .review .stars {
+            color: var(--white);
+            font-size: 12px;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            opacity: 0.25;
+        }
+
+        .review p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-mid);
+            font-style: italic;
+            margin-bottom: 28px;
+        }
+
+        .review .author {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        /* ===== VIP ===== */
+        .vip {
+            background: var(--black);
+            border-top: 1px solid var(--border);
+        }
+
+        .vip-intro {
+            text-align: center;
+            max-width: 520px;
+            margin: 0 auto 72px;
+        }
+
+        .vip-intro p {
+            color: var(--text-dim);
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-top: 16px;
+        }
+
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .tier {
+            background: var(--blue-deep);
+            padding: 56px 36px;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.4s;
+        }
+
+        .tier:hover { background: var(--blue-dark); }
+
+        .tier.highlight {
+            background: var(--blue-dark);
+            border-top: 2px solid var(--white-pure);
+        }
+
+        .tier.highlight:hover { background: var(--blue-mid); }
+
+        .tier-level {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .tier.highlight .tier-level { color: var(--white-pure); }
+
+        .tier-name {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .tier-discount {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white-pure);
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+        }
+
+        .tier-perks {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .tier-perks li {
+            font-size: 13px;
+            color: var(--text-dim);
+            font-weight: 300;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tier-perks li:last-child { border-bottom: none; }
+
+        .tier-perks li::before {
+            content: '\2014\00a0\00a0';
+            opacity: 0.3;
+        }
+
+        .tier-req {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            opacity: 0.5;
+            margin-top: auto;
+        }
+
+        .vip-note {
+            text-align: center;
+            margin-top: 48px;
+            font-size: 12px;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        /* ===== Newsletter ===== */
+        .newsletter { text-align: center; }
+
+        .nl-box {
+            background: var(--blue-dark);
+            border: 1px solid var(--border);
+            padding: 96px 48px;
+            max-width: 680px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .nl-box::before,
+        .nl-box::after {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+        }
+
+        .nl-box::before {
+            top: -1px; left: -1px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            border-left: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .nl-box::after {
+            bottom: -1px; right: -1px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            border-right: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .nl-box h2 {
+            font-size: clamp(28px, 3.5vw, 44px);
+            margin-bottom: 12px;
+        }
+
+        .nl-box p {
+            color: var(--text-dim);
+            font-weight: 300;
+            font-size: 14px;
+            margin-bottom: 36px;
+        }
+
+        .nl-form {
+            display: flex;
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        .nl-form input {
+            flex: 1;
+            padding: 18px 24px;
+            border: 1px solid var(--border);
+            border-right: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            outline: none;
+            background: var(--blue-deep);
+            color: var(--text);
+            letter-spacing: 0.5px;
+            transition: border-color 0.4s;
+        }
+
+        .nl-form input:focus { border-color: rgba(255,255,255,0.2); }
+        .nl-form input::placeholder { color: var(--text-dim); }
+        .nl-form .btn { border: 1px solid var(--white); }
+
+        /* ===== Footer ===== */
+        footer {
+            padding: 72px 0 48px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            transition: color 0.4s;
+        }
+
+        .footer-links a:hover { color: var(--white); }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+
+        /* ===== Animations ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 900px) {
+            .product-grid, .tiers { grid-template-columns: repeat(2, 1fr); }
+            .review-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; gap: 56px; }
+            .stats { max-width: 420px; }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10,22,40,0.98);
+                backdrop-filter: blur(30px);
+                padding: 32px 24px;
+                gap: 24px;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-toggle { display: block; }
+            .product-grid, .tiers { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .hero h1 { font-size: 40px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .nl-form { flex-direction: column; }
+            .nl-form input { border-right: 1px solid var(--border); }
+            .footer-top { flex-direction: column; gap: 28px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+            .section { padding: 100px 0; }
+            .about { padding: 100px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">UncleMarv</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#shop">Collection</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Voices</a></li>
+                <li><a href="#vip">VIP</a></li>
+                <li class="nav-cta"><a href="#newsletter">Join</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tag">Digital Travel Goods</p>
+            <h1>The world,<br><em>refined.</em></h1>
+            <p>Wallpapers, color grades, presets & guides &mdash; curated for those who travel with intention.</p>
+            <div class="hero-buttons">
+                <a href="#shop" class="btn btn-primary">Enter the Collection</a>
+                <a href="#about" class="btn btn-outline">The Vision</a>
+            </div>
+        </div>
+        <div class="scroll-line"></div>
+    </section>
+
+    <section class="section" id="shop">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="tag">The Collection</p>
+                <div class="line"></div>
+                <h2>Digital Goods</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-card reveal">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=750&fit=crop&q=80" alt="Travel Wallpaper"><div class="watermark"></div></div>
+                    <div class="card-body">
+                        <h3>Travel Wallpaper Pack</h3>
+                        <p class="desc">50+ handpicked 4K wallpapers</p>
+                        <span class="price">ab 9,99 &euro;</span>
+                    </div>
+                    <span class="badge">Bestseller</span>
+                </div>
+                <div class="product-card reveal">
+                    <div class="card-img c2"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg></div>
+                    <div class="card-body">
+                        <h3>Cinematic LUT Pack</h3>
+                        <p class="desc">20 film-inspired color grades</p>
+                        <span class="price">ab 14,99 &euro;</span>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <div class="card-img c3"><svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></div>
+                    <div class="card-body">
+                        <h3>Lightroom Presets</h3>
+                        <p class="desc">30 mobile & desktop presets</p>
+                        <span class="price">ab 12,99 &euro;</span>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <div class="card-img c4"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg></div>
+                    <div class="card-body">
+                        <h3>Travel Hacks Guide</h3>
+                        <p class="desc">100+ Tipps & Tricks als eBook</p>
+                        <span class="price">ab 7,99 &euro;</span>
+                    </div>
+                    <span class="badge">Neu</span>
+                </div>
+                <div class="product-card reveal">
+                    <div class="card-img c5"><svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg></div>
+                    <div class="card-body">
+                        <h3>City Map Posters</h3>
+                        <p class="desc">Minimale Stadtposter als Print-PDF</p>
+                        <span class="price">ab 4,99 &euro;</span>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <div class="card-img c6"><svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/></svg></div>
+                    <div class="card-body">
+                        <h3>The Complete Bundle</h3>
+                        <p class="desc">Alles in einem Paket &mdash; spare 40%</p>
+                        <span class="price">ab 34,99 &euro;</span>
+                    </div>
+                    <span class="badge">Spare 40%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p class="tag">The Vision</p>
+                    <div class="line-left"></div>
+                    <h2>Made by travelers,<br>for travelers.</h2>
+                    <p>Jedes Produkt entsteht auf Reisen. Echte Orte, echte Farben, echte Erlebnisse &mdash; digital aufbereitet f&uuml;r deinen kreativen Workflow.</p>
+                </div>
+                <div class="stats reveal">
+                    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">L&auml;nder</div></div>
+                    <div class="stat"><div class="stat-num">10k+</div><div class="stat-label">Downloads</div></div>
+                    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Produkte</div></div>
+                    <div class="stat"><div class="stat-num">4.9</div><div class="stat-label">Rating</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="reviews">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="tag">Voices</p>
+                <div class="line"></div>
+                <h2>What they say</h2>
+            </div>
+            <div class="review-grid">
+                <div class="review reveal">
+                    <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
+                    <p>Die LUTs sind unglaublich. Meine Videos sehen jetzt aus wie aus einem Reise-Dokumentarfilm.</p>
+                    <div class="author">Lisa M. &mdash; Creator</div>
+                </div>
+                <div class="review reveal">
+                    <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
+                    <p>Endlich Wallpapers die nicht aussehen wie Stock-Fotos. Jedes Bild erz&auml;hlt eine Geschichte.</p>
+                    <div class="author">Tom K. &mdash; Designer</div>
+                </div>
+                <div class="review reveal">
+                    <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
+                    <p>Der Travel Hacks Guide hat mir auf meiner S&uuml;dostasien-Reise locker 500&euro; gespart.</p>
+                    <div class="author">Sarah W. &mdash; Nomad</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vip section" id="vip">
+        <div class="container">
+            <div class="vip-intro reveal">
+                <p class="tag">Loyalty Program</p>
+                <div class="line"></div>
+                <h2>Rewards for loyalty</h2>
+                <p>Je mehr du kaufst, desto exklusiver wird dein Zugang. Drei Level, steigende Vorteile &mdash; automatisch freigeschaltet.</p>
+            </div>
+            <div class="tiers">
+                <div class="tier reveal">
+                    <div class="tier-level">Level I</div>
+                    <h3 class="tier-name">Explorer</h3>
+                    <div class="tier-discount">5% auf alles</div>
+                    <ul class="tier-perks">
+                        <li>Pers&ouml;nlicher Rabattcode</li>
+                        <li>Fr&uuml;her Zugang zu neuen Drops</li>
+                        <li>Exklusive Newsletter-Inhalte</li>
+                    </ul>
+                    <div class="tier-req">Ab dem 1. Kauf</div>
+                </div>
+                <div class="tier highlight reveal">
+                    <div class="tier-level">Level II</div>
+                    <h3 class="tier-name">Voyager</h3>
+                    <div class="tier-discount">15% auf alles</div>
+                    <ul class="tier-perks">
+                        <li>Alles aus Explorer</li>
+                        <li>Kostenlose Bonus-Produkte</li>
+                        <li>Priority Support</li>
+                        <li>Zugang zur Community</li>
+                    </ul>
+                    <div class="tier-req">Ab 3 K&auml;ufen oder 50&euro;</div>
+                </div>
+                <div class="tier reveal">
+                    <div class="tier-level">Level III</div>
+                    <h3 class="tier-name">First Class</h3>
+                    <div class="tier-discount">25% auf alles</div>
+                    <ul class="tier-perks">
+                        <li>Alles aus Voyager</li>
+                        <li>Unreleased Content vorab</li>
+                        <li>Custom Presets auf Anfrage</li>
+                        <li>Lifetime Rabattcode</li>
+                        <li>1:1 Kreativ-Session</li>
+                    </ul>
+                    <div class="tier-req">Ab 8 K&auml;ufen oder 150&euro;</div>
+                </div>
+            </div>
+            <p class="vip-note reveal">Dein Level wird automatisch nach jedem Kauf aktualisiert. Rabattcodes per E-Mail.</p>
+        </div>
+    </section>
+
+    <section class="newsletter section" id="newsletter">
+        <div class="container">
+            <div class="nl-box reveal">
+                <p class="tag">Inner Circle</p>
+                <div class="line"></div>
+                <h2>Stay informed</h2>
+                <p>Neue Drops, exklusive Inhalte & fr&uuml;her Zugang &mdash; nur f&uuml;r Mitglieder.</p>
+                <form class="nl-form" onsubmit="event.preventDefault(); this.querySelector('input').value='Welcome.'; this.querySelector('button').style.display='none';">
+                    <input type="email" placeholder="your@email.com" required>
+                    <button type="submit" class="btn btn-primary">Join</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">UncleMarv</div>
+                <ul class="footer-links">
+                    <li><a href="#shop">Collection</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">&copy; 2026 UncleMarv. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 100);
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
