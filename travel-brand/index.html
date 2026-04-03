@@ -39,7 +39,7 @@
 
         h1, h2, h3 {
             font-family: 'Inter', sans-serif;
-            font-weight: 300;
+            font-weight: 500;
             line-height: 1.1;
             color: var(--white-pure);
         }
@@ -160,7 +160,34 @@
             padding: 120px 24px 80px;
             position: relative;
             overflow: hidden;
-            background: radial-gradient(ellipse at 50% 0%, #1a1a1a 0%, var(--bg) 60%, var(--black) 100%);
+            background: #0a0a0a;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            will-change: transform;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,10,0.35) 0%,
+                rgba(10,10,10,0.55) 50%,
+                rgba(10,10,10,0.92) 100%
+            );
         }
 
         .hero::after {
@@ -171,13 +198,25 @@
             transform: translateX(-50%);
             width: 1px;
             height: 120px;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent);
+            z-index: 2;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             max-width: 860px;
+        }
+
+        .hero-mission {
+            font-size: 13px;
+            color: rgba(240,236,228,0.55);
+            max-width: 520px;
+            margin: -12px auto 48px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            line-height: 1.85;
+            text-transform: none;
         }
 
         .hero-tag {
@@ -191,6 +230,7 @@
 
         .hero h1 {
             font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
             margin-bottom: 28px;
         }
 
@@ -449,10 +489,10 @@
         }
 
         .card-footer .price {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 500;
             color: #f0ece4;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
         }
 
         .card-footer .btn-view {
@@ -1097,6 +1137,107 @@
             transform: translateY(0);
         }
 
+        /* ===== Roadmap ===== */
+        .roadmap { background: var(--bg); }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 680px;
+            margin: 0 auto;
+            padding-left: 32px;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, #2a2820 10%, #2a2820 90%, transparent);
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding: 0 0 48px 32px;
+        }
+
+        .roadmap-item:last-child { padding-bottom: 0; }
+
+        .roadmap-dot {
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 1.5px solid #2a2820;
+            background: var(--bg);
+            transition: all 0.3s;
+        }
+
+        .roadmap-item.active .roadmap-dot {
+            border-color: var(--accent);
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(201,169,110,0.4);
+        }
+
+        .roadmap-item.active .roadmap-label {
+            color: var(--accent);
+        }
+
+        .roadmap-label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+
+        .roadmap-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+            text-transform: none;
+        }
+
+        .roadmap-desc {
+            font-size: 12px;
+            color: var(--text-mid);
+            font-weight: 300;
+            line-height: 1.7;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            max-width: 460px;
+        }
+
+        .btn-roadmap {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 56px;
+            padding: 14px 36px;
+            background: transparent;
+            border: 0.5px solid rgba(240,236,228,0.2);
+            color: rgba(240,236,228,0.5);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.35s;
+            text-decoration: none;
+        }
+
+        .btn-roadmap:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
         /* ===== Cart ===== */
         .cart-icon-btn {
             background: none; border: none; cursor: pointer; padding: 8px 10px;
@@ -1293,12 +1434,16 @@
     </nav>
 
     <section class="hero">
+        <div class="hero-bg" id="heroBg">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=85" alt="Mountain Golden Hour">
+        </div>
         <div class="hero-content">
             <p class="hero-tag">Digital Travel Goods</p>
             <h1>The world,<br><em>refined.</em></h1>
-            <p>Wallpapers, color grades, presets & guides &mdash; curated for those who travel with intention.</p>
+            <p>Wallpapers, color grades, presets &amp; guides &mdash; curated for those who travel with intention.</p>
+            <p class="hero-mission">Ich teile mein Reisewissen &mdash; einfach, ehrlich, umsetzbar. Deine K&auml;ufe finanzieren neue Reisen, Content und Spenden. 10% jeder Einnahme gehen an lokale Projekte.</p>
             <div class="hero-buttons">
-                <a href="#shop" class="btn btn-primary">Enter the Collection</a>
+                <a href="#newsletter" class="btn btn-primary">Join VIP Program</a>
                 <a href="#about" class="btn btn-outline">My Vision</a>
             </div>
         </div>
@@ -1344,7 +1489,7 @@
                         <p class="desc">20 film-inspired color grades for video.</p>
                     </div>
                     <div class="card-footer">
-                        <span class="price">&euro;14.99</span>
+                        <span class="price">&euro;19.99</span>
                         <button class="btn-add-cart" data-product="luts" onclick="addToCart('luts')">Add to Cart</button>
                     </div>
                 </div>
@@ -1363,7 +1508,7 @@
                         <p class="desc">30 presets for mobile & desktop.</p>
                     </div>
                     <div class="card-footer">
-                        <span class="price">&euro;12.99</span>
+                        <span class="price">&euro;19.99</span>
                         <button class="btn-add-cart" data-product="presets" onclick="addToCart('presets')">Add to Cart</button>
                     </div>
                 </div>
@@ -1394,7 +1539,7 @@
                 </div>
                 <div class="bundle-right">
                     <span class="bundle-price">&euro;34.99</span>
-                    <span class="bundle-pill">Save 40%</span>
+                    <span class="bundle-pill">Save 40% &mdash; vs &euro;57.96</span>
                     <button class="bundle-add-btn" data-product="bundle" onclick="addToCart('bundle')">Add to Cart</button>
                 </div>
             </div>
@@ -1424,6 +1569,60 @@
                 <div class="v-stat"><div class="v-stat-num">10k+</div><div class="v-stat-label">Downloads</div></div>
                 <div class="v-stat"><div class="v-stat-num">200+</div><div class="v-stat-label">Products</div></div>
                 <div class="v-stat"><div class="v-stat-num">4.9</div><div class="v-stat-label">Rating</div></div>
+            </div>
+            <div style="text-align:center; margin-top:48px;" class="reveal">
+                <a href="#roadmap" class="btn-roadmap">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    See the Roadmap
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="tag">Coming Next</p>
+                <div class="line"></div>
+                <h2>What&rsquo;s next</h2>
+            </div>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item active reveal">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-label">In Progress</div>
+                    <div class="roadmap-title">Community Chat</div>
+                    <p class="roadmap-desc">Reisende teilen Spots, Tipps und Produkt-Reviews &mdash; ein Ort wo echte Erfahrungen z&auml;hlen, keine Hochglanz-Werbung.</p>
+                </div>
+                <div class="roadmap-item active reveal">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-label">In Progress</div>
+                    <div class="roadmap-title">Interaktive Maps</div>
+                    <p class="roadmap-desc">Hidden Gems markieren, kuratierte Routen entdecken &mdash; kein touristischer Mainstream, nur echte Orte von echten Reisenden.</p>
+                </div>
+                <div class="roadmap-item reveal">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-label">Planned</div>
+                    <div class="roadmap-title">Gear Vault</div>
+                    <p class="roadmap-desc">Meine pers&ouml;nlichen Equipment-Empfehlungen plus eine ehrliche No-Go Liste &mdash; was wirklich funktioniert, was nicht.</p>
+                </div>
+                <div class="roadmap-item reveal">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-label">Planned</div>
+                    <div class="roadmap-title">Live Q&amp;A Sessions</div>
+                    <p class="roadmap-desc">Monatliche Live-Sessions direkt mit mir &mdash; Fragen stellen, Feedback geben, Routen planen. Members only.</p>
+                </div>
+                <div class="roadmap-item reveal">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-label">Planned</div>
+                    <div class="roadmap-title">Member-Only Content</div>
+                    <p class="roadmap-desc">Behind-the-Scenes, Raw Travel Footage, ungeschnittene Einblicke in Reisen die noch kein &ouml;ffentliches Video haben.</p>
+                </div>
+                <div class="roadmap-item reveal">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-label">Planned</div>
+                    <div class="roadmap-title">Local Partner Discounts</div>
+                    <p class="roadmap-desc">Exklusive Deals mit Hostels, lokalen Tour-Anbietern und Gear-Shops &mdash; kuratiert, kein Affiliate-Spam.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1497,8 +1696,8 @@
             <div class="nl-box reveal">
                 <p class="tag">Inner Circle</p>
                 <div class="line"></div>
-                <h2>Stay informed</h2>
-                <p>New drops, exclusive content & early access &mdash; members only.</p>
+                <h2>Join the inner circle</h2>
+                <p>Exklusiver Zugang zu Drops, Geheim-Spots und Travel Hacks bevor sie live gehen. Level up, unlock Rewards, und werde Teil einer Community die das Reisen neu definiert. Bist du bereit?</p>
                 <form class="nl-form" onsubmit="event.preventDefault(); this.querySelector('input').value='Welcome.'; this.querySelector('button').style.display='none';">
                     <input type="email" placeholder="your@email.com" required>
                     <button type="submit" class="btn btn-primary">Join</button>
@@ -1561,8 +1760,8 @@
         // Format: https://YOUR-STORE.lemonsqueezy.com/buy/VARIANT-ID
         const PRODUCTS = {
             wallpaper: { name: 'Wallpaper Pack',      price: 9.99,  img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/WALLPAPER_VARIANT_ID' },
-            luts:      { name: 'Cinematic LUTs',      price: 14.99, img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
-            presets:   { name: 'Lightroom Presets',   price: 12.99, img: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
+            luts:      { name: 'Cinematic LUTs',      price: 19.99, img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
+            presets:   { name: 'Lightroom Presets',   price: 19.99, img: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
             guide:     { name: 'Travel Hacks Guide',  price: 7.99,  img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/1484774' },
             bundle:    { name: 'The Complete Bundle', price: 34.99, img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUNDLE_VARIANT_ID' }
         };
@@ -1804,6 +2003,24 @@
 
             update();
         })();
+
+        // ===== HERO PARALLAX =====
+        (function() {
+            const bg = document.getElementById('heroBg');
+            if (!bg) return;
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        const scrollY = window.scrollY;
+                        bg.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+        // ===== END HERO PARALLAX =====
     </script>
 
 </body>
