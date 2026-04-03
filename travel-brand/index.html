@@ -295,27 +295,31 @@
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
+            gap: 10px;
         }
 
         .product-card {
-            background: var(--bg-alt);
+            background: #141414;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 0.5px solid #1e1c18;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            z-index: 2;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            border-color: #c9a96e;
+            transform: translateY(-2px);
         }
 
         .card-img {
-            aspect-ratio: 4/5;
+            height: 160px;
             position: relative;
             overflow: hidden;
-            background: var(--bg-alt);
+            background: #141414;
         }
 
         .card-img img {
@@ -329,78 +333,265 @@
             transform: scale(1.05);
         }
 
-        .watermark {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 2;
+        /* Before/After split */
+        .card-img-split {
+            height: 160px;
+            position: relative;
             overflow: hidden;
         }
 
-        .watermark::before {
-            content: 'UNCLEMARV';
-            font-family: 'Inter', sans-serif;
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: 8px;
-            color: rgba(255,255,255,0.25);
-            transform: rotate(-30deg);
-            white-space: nowrap;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        .card-img-split img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        .watermark::after {
-            content: 'PREVIEW';
+        .card-img-split .before-img {
+            clip-path: inset(0 50% 0 0);
+            filter: saturate(0.2) brightness(0.75);
+        }
+
+        .card-img-split .after-img {
+            clip-path: inset(0 0 0 50%);
+        }
+
+        .split-divider {
             position: absolute;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: rgba(255,255,255,0.6);
+            z-index: 3;
+        }
+
+        .split-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.4);
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .split-icon::before,
+        .split-icon::after {
+            content: '';
+            width: 5px;
+            height: 1px;
+            background: #fff;
+            position: absolute;
+        }
+        .split-icon::before { left: 4px; }
+        .split-icon::after { right: 4px; }
+
+        .split-label {
+            position: absolute;
+            bottom: 8px;
+            font-size: 8px;
             font-weight: 500;
-            letter-spacing: 4px;
-            color: rgba(255,255,255,0.2);
-            bottom: 16px;
-            right: 16px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            z-index: 4;
+        }
+
+        .split-label-before {
+            left: 8px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .split-label-after {
+            right: 8px;
+            background: #c9a96e;
+            color: #0a0a0a;
         }
 
         .card-body {
-            padding: 24px 28px 28px;
-            border-top: 0.5px solid var(--border);
+            padding: 16px 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-body h3 {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            letter-spacing: 0.08em;
         }
 
         .card-body .desc {
-            font-size: 12px;
-            color: var(--text-dim);
+            font-size: 11px;
+            color: #5a5448;
             font-weight: 300;
-            margin-bottom: 16px;
+            margin-bottom: auto;
+            line-height: 1.5;
         }
 
-        .card-body .price {
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            border-top: 0.5px solid #1e1c18;
+        }
+
+        .card-footer .price {
             font-size: 13px;
             font-weight: 500;
-            color: var(--white-pure);
-            letter-spacing: 1px;
+            color: #f0ece4;
+            letter-spacing: 0.08em;
+        }
+
+        .card-footer .btn-view {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border: 0.5px solid #f0ece4;
+            color: #f0ece4;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card-footer .btn-view:hover {
+            background: #f0ece4;
+            color: #0a0a0a;
         }
 
         .badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: var(--black);
-            font-size: 9px;
+            top: 12px;
+            right: 12px;
+            background: #c9a96e;
+            color: #0a0a0a;
+            font-size: 8px;
             font-weight: 600;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 6px 14px;
-            z-index: 2;
+            padding: 4px 10px;
+            border-radius: 2px;
+            z-index: 5;
+        }
+
+        .badge-outline {
+            background: transparent;
+            border: 0.5px solid #c9a96e;
+            color: #c9a96e;
+        }
+
+        /* Bundle row */
+        .bundle-row {
+            margin-top: 10px;
+            background: #0d0d0d;
+            border: 0.5px solid #2a2418;
+            border-radius: 10px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .bundle-row:hover {
+            border-color: #c9a96e;
+        }
+
+        .bundle-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(201,169,110,0.12);
+            border: 0.5px solid #c9a96e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .bundle-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #c9a96e;
+        }
+
+        .bundle-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .bundle-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: #c9a96e;
+            letter-spacing: 0.15em;
+            margin-bottom: 2px;
+        }
+
+        .bundle-desc {
+            font-size: 11px;
+            color: #5a5448;
+            font-weight: 300;
+        }
+
+        .bundle-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .bundle-price {
+            font-size: 15px;
+            font-weight: 500;
+            color: #f0ece4;
+            letter-spacing: 0.05em;
+        }
+
+        .bundle-pill {
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: rgba(201,169,110,0.15);
+            color: #c9a96e;
+            border: 0.5px solid rgba(201,169,110,0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .shop-footer-link {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .shop-footer-link a {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #5a5448;
+            transition: color 0.3s;
+        }
+
+        .shop-footer-link a:hover {
+            color: #c9a96e;
         }
 
         /* ===== About ===== */
@@ -913,6 +1104,7 @@
         /* ===== Responsive ===== */
         @media (max-width: 900px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .bundle-row { flex-wrap: wrap; }
             .review-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
             .about-grid { grid-template-columns: 1fr; gap: 56px; }
             .stats { max-width: 420px; }
@@ -936,6 +1128,7 @@
             }
             .nav-toggle { display: block; }
             .product-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .bundle-right { flex-direction: column; align-items: flex-end; gap: 6px; }
             .hero h1 { font-size: 40px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .nl-form { flex-direction: column; }
@@ -986,57 +1179,77 @@
                 <h2>Digital Goods</h2>
             </div>
             <div class="product-grid">
+                <!-- Card 1: Wallpaper Pack -->
                 <div class="product-card reveal">
-                    <div class="card-img"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=750&fit=crop&q=80" alt="Travel Wallpaper"><div class="watermark"></div></div>
-                    <div class="card-body">
-                        <h3>Travel Wallpaper Pack</h3>
-                        <p class="desc">50+ handpicked 4K wallpapers</p>
-                        <span class="price">from &euro;9.99</span>
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=400&fit=crop" alt="Travel Wallpaper Pack">
                     </div>
                     <span class="badge">Bestseller</span>
-                </div>
-                <div class="product-card reveal">
-                    <div class="card-img c2"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg></div>
                     <div class="card-body">
-                        <h3>Cinematic LUT Pack</h3>
-                        <p class="desc">20 film-inspired color grades</p>
-                        <span class="price">from &euro;14.99</span>
+                        <h3>Wallpaper Pack</h3>
+                        <p class="desc">50+ handpicked 4K shots from 23 countries.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price">&euro;9.99</span>
+                        <button class="btn-view">View</button>
                     </div>
                 </div>
+                <!-- Card 2: Cinematic LUTs -->
                 <div class="product-card reveal">
-                    <div class="card-img c3"><svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></div>
+                    <div class="card-img-split">
+                        <img class="before-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="LUT Before">
+                        <img class="after-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="LUT After">
+                        <div class="split-divider"></div>
+                        <div class="split-icon"></div>
+                        <span class="split-label split-label-before">Before</span>
+                        <span class="split-label split-label-after">After</span>
+                    </div>
+                    <span class="badge badge-outline">New</span>
+                    <div class="card-body">
+                        <h3>Cinematic LUTs</h3>
+                        <p class="desc">20 film-inspired color grades for video.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price">&euro;14.99</span>
+                        <button class="btn-view">View</button>
+                    </div>
+                </div>
+                <!-- Card 3: Lightroom Presets -->
+                <div class="product-card reveal">
+                    <div class="card-img-split">
+                        <img class="before-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Preset Before">
+                        <img class="after-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Preset After">
+                        <div class="split-divider"></div>
+                        <div class="split-icon"></div>
+                        <span class="split-label split-label-before">Before</span>
+                        <span class="split-label split-label-after">After</span>
+                    </div>
                     <div class="card-body">
                         <h3>Lightroom Presets</h3>
-                        <p class="desc">30 mobile & desktop presets</p>
-                        <span class="price">from &euro;12.99</span>
+                        <p class="desc">30 presets for mobile & desktop.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price">&euro;12.99</span>
+                        <button class="btn-view">View</button>
                     </div>
                 </div>
-                <div class="product-card reveal">
-                    <div class="card-img c4"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg></div>
-                    <div class="card-body">
-                        <h3>Travel Hacks Guide</h3>
-                        <p class="desc">100+ tips & tricks as eBook</p>
-                        <span class="price">from &euro;7.99</span>
-                    </div>
-                    <span class="badge">New</span>
+            </div>
+            <!-- Bundle Row -->
+            <div class="bundle-row reveal">
+                <div class="bundle-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/></svg>
                 </div>
-                <div class="product-card reveal">
-                    <div class="card-img c5"><svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg></div>
-                    <div class="card-body">
-                        <h3>City Map Posters</h3>
-                        <p class="desc">Minimal city posters as print PDF</p>
-                        <span class="price">from &euro;4.99</span>
-                    </div>
+                <div class="bundle-info">
+                    <div class="bundle-name">The Complete Bundle</div>
+                    <div class="bundle-desc">Everything in one &mdash; wallpapers, LUTs, presets, guide & maps.</div>
                 </div>
-                <div class="product-card reveal">
-                    <div class="card-img c6"><svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/></svg></div>
-                    <div class="card-body">
-                        <h3>The Complete Bundle</h3>
-                        <p class="desc">Everything in one bundle &mdash; save 40%</p>
-                        <span class="price">from &euro;34.99</span>
-                    </div>
-                    <span class="badge">Save 40%</span>
+                <div class="bundle-right">
+                    <span class="bundle-price">&euro;34.99</span>
+                    <span class="bundle-pill">Save 40%</span>
                 </div>
+            </div>
+            <div class="shop-footer-link reveal">
+                <a href="#">View all products</a>
             </div>
         </div>
     </section>
