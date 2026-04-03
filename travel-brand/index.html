@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNCLEMARV — Digital Travel Goods</title>
-    <meta name="description" content="Curated digital products for travelers. Wallpapers, LUTs, presets, guides & more.">
+    <title>UncleMarv — Digital Travel Goods | Presets, LUTs, Wallpapers & Guides</title>
+    <meta name="description" content="Digitale Reiseprodukte von UncleMarv — kuratierte 4K Wallpapers, Cinematic LUTs, Lightroom Presets und Travel Hacks für Reisende mit Stil. 10% jeder Einnahme geht an lokale Projekte.">
+    <meta name="keywords" content="travel presets, lightroom reisepresets, cinematic luts, reise wallpapers, travel hacks guide, digitale reiseprodukte, unclemarv">
+    <meta name="author" content="Marvin Kuppens">
+    <link rel="canonical" href="https://marvinkuppensbusiness-ai.github.io/claude-demo/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marvinkuppensbusiness-ai.github.io/claude-demo/">
+    <meta property="og:title" content="UncleMarv — Digital Travel Goods">
+    <meta property="og:description" content="Kuratierte Wallpapers, LUTs, Presets & Travel Guides für Reisende mit Stil. 10% jeder Einnahme geht an lokale Projekte in den bereisten Ländern.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop&q=85">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="UncleMarv">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UncleMarv — Digital Travel Goods">
+    <meta name="twitter:description" content="Kuratierte Wallpapers, LUTs, Presets & Travel Guides für Reisende mit Stil.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop&q=85">
+
+    <!-- JSON-LD Product Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "UncleMarv",
+          "url": "https://marvinkuppensbusiness-ai.github.io/claude-demo/",
+          "description": "Digitale Reiseprodukte — Presets, LUTs, Wallpapers & Travel Guides"
+        },
+        {
+          "@type": "Person",
+          "name": "Marvin Kuppens",
+          "url": "https://marvinkuppensbusiness-ai.github.io/claude-demo/",
+          "jobTitle": "Travel Content Creator"
+        },
+        {
+          "@type": "Product",
+          "name": "Wallpaper Pack",
+          "description": "50+ handpicked 4K shots from 23 countries — curated travel wallpapers.",
+          "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Product",
+          "name": "Cinematic LUTs",
+          "description": "20 film-inspired color grades for video. Compatible with DaVinci Resolve, Premiere Pro, Final Cut Pro.",
+          "offers": { "@type": "Offer", "price": "19.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Product",
+          "name": "Lightroom Presets",
+          "description": "30 travel-inspired presets for Lightroom Classic and Lightroom Mobile.",
+          "offers": { "@type": "Offer", "price": "19.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Product",
+          "name": "Travel Hacks Guide",
+          "description": "50+ insider tips: cheap flights, hidden deals and smarter travel on any budget. PDF download.",
+          "offers": { "@type": "Offer", "price": "7.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Plausible Analytics — TODO: Account morgen aktivieren, data-domain anpassen -->
+    <script defer data-domain="PLACEHOLDER_YOUR_DOMAIN" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+    <!-- Hero Image Preload -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=85" fetchpriority="high">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1137,6 +1209,54 @@
             transform: translateY(0);
         }
 
+        /* ===== FAQ ===== */
+        .faq-list { max-width: 720px; margin: 0 auto; }
+
+        .faq-item {
+            border-bottom: 0.5px solid var(--border);
+            overflow: hidden;
+        }
+
+        .faq-item:first-child { border-top: 0.5px solid var(--border); }
+
+        .faq-q {
+            width: 100%; background: none; border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 24px 0; gap: 24px; text-align: left;
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400;
+            letter-spacing: 0.06em; color: var(--white); transition: color 0.3s;
+            text-transform: none;
+        }
+
+        .faq-q:hover { color: var(--accent); }
+
+        .faq-icon {
+            flex-shrink: 0; width: 20px; height: 20px;
+            border: 0.5px solid #2a2820; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.35s; color: var(--text-dim);
+            font-size: 14px; line-height: 1;
+        }
+
+        .faq-item.open .faq-icon {
+            border-color: var(--accent); color: var(--accent);
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-a-inner {
+            padding: 0 0 24px;
+            font-size: 13px; color: var(--text-mid); font-weight: 300;
+            line-height: 1.8; letter-spacing: 0.04em; text-transform: none;
+        }
+
+        .faq-a-inner a { color: var(--accent); }
+        .faq-a-inner a:hover { text-decoration: underline; }
+
         /* ===== Roadmap ===== */
         .roadmap { background: var(--bg); }
 
@@ -1368,6 +1488,19 @@
         }
         .bundle-add-btn:hover { background: var(--accent); color: var(--black); }
 
+        /* ===== Global mobile fixes ===== */
+        html, body { overflow-x: hidden; max-width: 100vw; }
+
+        /* Minimum touch target 44px (WCAG 2.5.5) */
+        button, a, .btn, .btn-add-cart, .bundle-add-btn, .btn-myrank,
+        .cart-icon-btn, .cart-close, .qty-btn, .nav-toggle, .faq-q {
+            min-height: 44px;
+        }
+        .qty-btn { min-height: 32px; min-width: 32px; } /* qty can be smaller */
+
+        /* iOS smooth scroll */
+        * { -webkit-overflow-scrolling: touch; }
+
         /* ===== Responsive ===== */
         @media (max-width: 900px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1417,6 +1550,7 @@
                 <li><a href="#shop">Collection</a></li>
                 <li><a href="#about">My Vision</a></li>
                 <li><a href="#reviews">Voices</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#vip">VIP</a></li>
                 <li class="nav-cta"><a href="#newsletter">Join</a></li>
                 <li>
@@ -1427,7 +1561,7 @@
                     </button>
                 </li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -1435,7 +1569,7 @@
 
     <section class="hero">
         <div class="hero-bg" id="heroBg">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=85" alt="Mountain Golden Hour">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=85" alt="Berglandschaft bei Golden Hour — UncleMarv Hero" fetchpriority="high" decoding="async">
         </div>
         <div class="hero-content">
             <p class="hero-tag">Digital Travel Goods</p>
@@ -1461,7 +1595,7 @@
                 <!-- Card 1: Wallpaper Pack -->
                 <div class="product-card reveal">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=400&fit=crop" alt="Travel Wallpaper Pack">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=400&fit=crop" alt="4K Travel Wallpaper Pack — Berglandschaft aus 23 Ländern" loading="lazy" decoding="async" width="600" height="400">
                     </div>
                     <span class="badge">Bestseller</span>
                     <div class="card-body">
@@ -1476,8 +1610,8 @@
                 <!-- Card 2: Cinematic LUTs -->
                 <div class="product-card reveal">
                     <div class="card-img-split">
-                        <img class="before-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="LUT Before">
-                        <img class="after-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="LUT After">
+                        <img class="before-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT Before — unbearbeitetes Reisevideo" loading="lazy" decoding="async" width="600" height="400">
+                        <img class="after-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT After — filmischer Farbton" loading="lazy" decoding="async" width="600" height="400">
                         <div class="split-divider"></div>
                         <div class="split-icon"></div>
                         <span class="split-label split-label-before">Before</span>
@@ -1496,8 +1630,8 @@
                 <!-- Card 3: Lightroom Presets -->
                 <div class="product-card reveal">
                     <div class="card-img-split">
-                        <img class="before-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Preset Before">
-                        <img class="after-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Preset After">
+                        <img class="before-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset Before — Reisefoto unbearbeitet" loading="lazy" decoding="async" width="600" height="400">
+                        <img class="after-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset After — goldener Travel-Look" loading="lazy" decoding="async" width="600" height="400">
                         <div class="split-divider"></div>
                         <div class="split-icon"></div>
                         <span class="split-label split-label-before">Before</span>
@@ -1515,7 +1649,7 @@
                 <!-- Card 4: Travel Hacks Guide -->
                 <div class="product-card reveal">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="Travel Hacks Guide">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="Travel Hacks Guide PDF — Günstige Flüge und Reise-Insider-Tipps" loading="lazy" decoding="async" width="600" height="400">
                     </div>
                     <span class="badge badge-outline">PDF</span>
                     <div class="card-body">
@@ -1654,6 +1788,130 @@
         </div>
     </section>
 
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="tag">FAQ</p>
+                <div class="line"></div>
+                <h2>Frequently Asked</h2>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Welche Dateiformate sind in den Produkten enthalten?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            <strong style="color:var(--white);font-weight:500;">Wallpaper Pack:</strong> JPEG & PNG, 4K bis 8K Auflösung.<br>
+                            <strong style="color:var(--white);font-weight:500;">Cinematic LUTs:</strong> .cube-Dateien, kompatibel mit DaVinci Resolve, Premiere Pro, Final Cut Pro und weiteren.<br>
+                            <strong style="color:var(--white);font-weight:500;">Lightroom Presets:</strong> .xmp-Dateien für Lightroom Classic & Lightroom Mobile (via DNG-Import).<br>
+                            <strong style="color:var(--white);font-weight:500;">Travel Hacks Guide:</strong> PDF, optimiert für Mobil und Desktop.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Funktionieren die LUTs in DaVinci Resolve, Premiere Pro und Final Cut?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Ja — alle LUTs liegen im universellen <strong style="color:var(--white);font-weight:400;">.cube-Format</strong> vor und sind kompatibel mit DaVinci Resolve (ab Version 16), Adobe Premiere Pro, Final Cut Pro X, After Effects und Capcut. Eine Installationsanleitung für jede App ist im ZIP-Archiv enthalten.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Wie installiere ich die Lightroom Presets auf dem Handy?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Für Lightroom Mobile importierst du die mitgelieferten <strong style="color:var(--white);font-weight:400;">DNG-Dateien</strong> in deine Galerie, öffnest sie in der App, drückst auf die drei Punkte → "Einstellungen kopieren" — und wendest sie auf beliebige Fotos an. Funktioniert mit der kostenlosen Version von Lightroom Mobile.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Für welche Kameras und Handys sind die Presets geeignet?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Die Presets funktionieren mit <strong style="color:var(--white);font-weight:400;">allen Kameras und Smartphones</strong> — DSLR, Mirrorless (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone und Android. Für beste Ergebnisse empfehle ich RAW-Aufnahmen. JPEG funktioniert auch, aber RAW gibt dir mehr Spielraum.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Kann ich eine Rückerstattung bekommen?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Da es sich um digitale Produkte handelt, gilt grundsätzlich kein Rückgaberecht nach dem Download. Wenn eine Datei jedoch <strong style="color:var(--white);font-weight:400;">defekt oder nicht wie beschrieben</strong> ist, schreib innerhalb von 14 Tagen an <a href="mailto:marvinkuppens.business@gmail.com">marvinkuppens.business@gmail.com</a> — ich löse das unbürokratisch. Vollständige Details findest du in den <a href="agb.html">AGB</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Wie erhalte ich meine Dateien nach dem Kauf?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Sofort nach dem Kauf erhältst du eine <strong style="color:var(--white);font-weight:400;">E-Mail von LemonSqueezy</strong> mit einem persönlichen Download-Link. Der Link ist 24 Stunden gültig und kann 5-mal genutzt werden. Kein Account nötig, kein Warten.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Darf ich die Produkte kommerziell nutzen?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Ja — alle Produkte dürfen für <strong style="color:var(--white);font-weight:400;">persönliche und kommerzielle Projekte</strong> genutzt werden (Social Media, Kundenprojekte, YouTube etc.). Nicht erlaubt ist der Weiterverkauf der Originaldateien als eigenständiges Produkt. Details in den <a href="agb.html">AGB §6</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Welche Zahlungsmethoden werden akzeptiert?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Alle gängigen Methoden über LemonSqueezy: <strong style="color:var(--white);font-weight:400;">Kreditkarte (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay und Klarna</strong>. Die Zahlung ist verschlüsselt und sicher. LemonSqueezy übernimmt als Merchant of Record auch die korrekte Umsatzsteuer für dein Land.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-q" onclick="toggleFaq(this)">
+                        Wie finde ich wirklich günstige Flüge — kurze Version?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <div class="faq-a-inner">
+                            Drei Dinge die sofort helfen: <strong style="color:var(--white);font-weight:400;">1)</strong> Immer im Inkognito-Fenster suchen (Preise steigen bei wiederholten Suchen). <strong style="color:var(--white);font-weight:400;">2)</strong> Dienstag/Mittwoch sind die günstigsten Buchungstage. <strong style="color:var(--white);font-weight:400;">3)</strong> Google Flights "Preiskalender" zeigt dir das günstigste Datum im Monat auf einen Blick. Den kompletten Guide mit 50+ Tricks gibts im <strong style="color:var(--white);font-weight:400;">Travel Hacks Guide (€7.99)</strong>.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="vip section" id="vip">
         <div class="container">
             <div class="vip-intro reveal">
@@ -1714,8 +1972,9 @@
                     <li><a href="#shop">Collection</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Imprint</a></li>
-                    <li><a href="#">Privacy</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="agb.html">AGB</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">&copy; 2026 UncleMarv. All rights reserved.</div>
@@ -1785,6 +2044,7 @@
             cart[id] = (cart[id] || 0) + 1;
             updateCartCount();
             openCart();
+            trackEvent('Add to Cart', { product: PRODUCTS[id] ? PRODUCTS[id].name : id });
             document.querySelectorAll('[data-product="' + id + '"]').forEach(btn => {
                 btn.textContent = 'Added ✓';
                 btn.classList.add('added');
@@ -1840,6 +2100,8 @@
         function checkout() {
             const items = Object.entries(cart).filter(([id]) => PRODUCTS[id]);
             if (!items.length) return;
+            const total = items.reduce((s, [id, qty]) => s + PRODUCTS[id].price * qty, 0);
+            trackEvent('Checkout', { items: items.map(([id]) => PRODUCTS[id].name).join(', '), value: total.toFixed(2) });
             // Single product: direct LemonSqueezy checkout link
             // Multiple products: go to your LemonSqueezy store overview
             if (items.length === 1) {
@@ -1890,8 +2152,25 @@
 
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        function closeNav() {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+        // Close nav on outside click (mobile)
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                closeNav();
+            }
+        });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((e, i) => {
@@ -2003,6 +2282,49 @@
 
             update();
         })();
+
+        // ===== ANALYTICS HELPERS =====
+        // Plausible custom event tracking — fires when Plausible is loaded
+        // Replace PLACEHOLDER_YOUR_DOMAIN in the <head> script tag with your actual domain
+        function trackEvent(name, props) {
+            if (typeof window.plausible === 'function') {
+                window.plausible(name, { props: props || {} });
+            }
+        }
+
+        // Track scroll depth milestones
+        (function() {
+            const milestones = [25, 50, 75, 100];
+            const fired = new Set();
+            window.addEventListener('scroll', function() {
+                const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                milestones.forEach(m => {
+                    if (pct >= m && !fired.has(m)) {
+                        fired.add(m);
+                        trackEvent('Scroll Depth', { milestone: m + '%' });
+                    }
+                });
+            }, { passive: true });
+        })();
+        // ===== END ANALYTICS =====
+
+        // ===== FAQ ACCORDION =====
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const answer = item.querySelector('.faq-a');
+            const isOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item.open').forEach(el => {
+                el.classList.remove('open');
+                el.querySelector('.faq-a').style.maxHeight = '0';
+            });
+            // Open clicked (if was closed)
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
+        // ===== END FAQ ACCORDION =====
 
         // ===== HERO PARALLAX =====
         (function() {

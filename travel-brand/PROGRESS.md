@@ -1,15 +1,18 @@
-# Website Redesign Progress
+# Night-Shift Progress
 
-## Status
-Last updated: 2026-04-03 — ALL DONE ✅
+## Status: COMPLETE ✅
 
 ## Tasks
-- [x] 1. TYPOGRAFIE — h1/h2/h3 font-weight 300→500, Hero h1→700
-- [x] 2. HERO-SECTION — Bergfoto, Parallax, neuer Text, Button→"Join VIP Program"
-- [x] 3. PREISE — font-weight 500, LUTs/Presets €19.99, Bundle neu (Save 40% vs €57.96)
-- [x] 4. NEWSLETTER — "Join the inner circle" + Gamification-Text
-- [x] 5. ROADMAP — neue Section nach #about, "See the Roadmap" Button, 6 Timeline Items
+- [x] 1. Legal Pages — impressum.html, datenschutz.html, agb.html (DSGVO-konform)
+- [x] 2. SEO & Meta Tags — OG, Twitter Cards, JSON-LD Product Schema, canonical
+- [x] 3. FAQ Section — 9 Fragen, Accordion, smooth expand, Nav-Link
+- [x] 4. Image Optimization — lazy loading, SEO alt-tags, fetchpriority hero
+- [x] 5. Performance — font-display swap, hero preload, overflow-x fix
+- [x] 6. Analytics — Plausible snippet (PLACEHOLDER_YOUR_DOMAIN), Add to Cart + Checkout + Scroll Depth tracking
+- [x] 7. Mobile Polish — touch targets 44px, outside-click nav close, aria-expanded, horizontal scroll fix
 
 ## Commits
-- 7e40c98 — feat: hero redesign — mountain bg, parallax, mission text, VIP CTA
-- [final] — feat: hero redesign, roadmap section, pricing update, VIP CTA
+- 13429a1 — feat: add impressum, datenschutz, agb
+- 7acbd0d — feat: SEO meta tags — OG, Twitter Cards, JSON-LD schema, hero preload
+- b76164d — feat: FAQ accordion section — 9 questions, smooth expand, nav link
+- [final] — feat: legal pages, SEO, FAQ, performance optimization
