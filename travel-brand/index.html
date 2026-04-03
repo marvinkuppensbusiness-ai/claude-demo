@@ -594,75 +594,24 @@
             color: #c9a96e;
         }
 
-        /* ===== About ===== */
+        /* ===== Vision ===== */
         .about {
-            background: var(--bg-alt);
+            background: #0d0d0b;
             padding: 120px 0;
             box-shadow: inset 0 1px 0 #1e1c18, 0 8px 32px rgba(0,0,0,0.6);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-        }
-
-        .about-text .tag { margin-bottom: 24px; }
-
-        .about h2 {
-            font-size: clamp(36px, 4.5vw, 56px);
-            max-width: 500px;
-        }
-
-        .about-text p {
-            color: var(--text-dim);
-            font-size: 14px;
-            margin-top: 28px;
-            line-height: 1.9;
-            font-weight: 300;
-            max-width: 420px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px;
-        }
-
-        .stat {
             text-align: center;
-            padding: 48px 32px;
-            background: var(--bg);
-            position: relative;
         }
-
-        .stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 1px;
-            background: var(--white);
-            opacity: 0.1;
-        }
-
-        .stat-num {
-            font-family: 'Inter', sans-serif;
-            font-size: 44px;
-            font-weight: 300;
-            color: var(--white-pure);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
+        .v-sub{font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#c9a84c;margin-bottom:16px;}
+        .v-line{width:40px;height:2px;background:#c9a84c;margin:0 auto 24px;}
+        .v-h1{font-size:clamp(32px,5vw,54px);font-weight:300;color:#f0ece4;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:32px;}
+        .v-p{max-width:620px;margin:0 auto;font-size:13px;line-height:1.9;font-weight:300;color:#8a8579;margin-top:18px;text-transform:uppercase;letter-spacing:0.06em;}
+        .v-p.lead{color:#b5b0a5;font-size:14px;}
+        .v-p.accent{color:#c9a84c;font-weight:500;}
+        .v-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a2820;border-radius:8px;overflow:hidden;margin-top:56px;max-width:700px;margin-left:auto;margin-right:auto;}
+        .v-stat{background:#151510;padding:36px 16px;text-align:center;}
+        .v-stat-num{font-size:clamp(28px,4vw,40px);font-weight:600;color:#c9a84c;margin-bottom:6px;}
+        .v-stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#7a7568;}
+        @media(max-width:480px){.v-grid{grid-template-columns:repeat(2,1fr);}}
 
         /* ===== Reviews ===== */
         .review-grid {
@@ -1106,8 +1055,7 @@
             .product-grid { grid-template-columns: repeat(2, 1fr); }
             .bundle-row { flex-wrap: wrap; }
             .review-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
-            .about-grid { grid-template-columns: 1fr; gap: 56px; }
-            .stats { max-width: 420px; }
+            .v-grid { max-width: 100%; }
         }
 
         @media (max-width: 640px) {
@@ -1256,26 +1204,24 @@
 
     <section class="about" id="about">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p class="tag">The Vision</p>
-                    <div class="line-left"></div>
-                    <h2>The Vision</h2>
-                    <p>This isn&rsquo;t just a shop. It&rsquo;s something I&rsquo;m building with a purpose.</p>
-                    <p>I&rsquo;ve been to 23 countries. I&rsquo;ve sat in airport terminals at 3am, missed flights, lost luggage, found hidden beaches that don&rsquo;t exist on any map. Every one of those moments taught me something &mdash; and most of that knowledge I had to figure out the hard way.</p>
-                    <p>That stops here.</p>
-                    <p>Everything I sell exists because I made it on the road. Real places, real light, real experiences &mdash; not stock photos, not filters applied in an office. Every purchase funds the next trip, the next drop, the next piece of free content.</p>
-                    <p>Because giving back isn&rsquo;t optional for me. A percentage of every sale goes directly to local projects in the countries I&rsquo;ve travelled through. No middleman. No corporate charity theatre.</p>
-                    <p>The tips, the tricks, the things nobody tells you &mdash; all coming. How to travel cheaper, smarter, slower. How to actually see a place instead of just visiting it.</p>
-                    <p>You&rsquo;re not buying a wallpaper. You&rsquo;re investing in a perspective.</p>
-                    <p>Welcome to UncleMarv.</p>
-                </div>
-                <div class="stats reveal">
-                    <div class="stat"><div class="stat-num">23+</div><div class="stat-label">Countries</div></div>
-                    <div class="stat"><div class="stat-num">10k+</div><div class="stat-label">Downloads</div></div>
-                    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Products</div></div>
-                    <div class="stat"><div class="stat-num">4.9</div><div class="stat-label">Rating</div></div>
-                </div>
+            <div class="reveal">
+                <p class="v-sub">The Vision</p>
+                <div class="v-line"></div>
+                <h2 class="v-h1">The Vision</h2>
+                <p class="v-p lead">This isn&rsquo;t just a shop. It&rsquo;s something I&rsquo;m building with a purpose.</p>
+                <p class="v-p">I&rsquo;ve been to 23 countries. I&rsquo;ve sat in airport terminals at 3am, missed flights, lost luggage, found hidden beaches that don&rsquo;t exist on any map. Every one of those moments taught me something &mdash; and most of that knowledge I had to figure out the hard way.</p>
+                <p class="v-p accent">That stops here.</p>
+                <p class="v-p">Everything I sell exists because I made it on the road. Real places, real light, real experiences &mdash; not stock photos, not filters applied in an office. Every purchase funds the next trip, the next drop, the next piece of free content.</p>
+                <p class="v-p">Because giving back isn&rsquo;t optional for me. A percentage of every sale goes directly to local projects in the countries I&rsquo;ve travelled through. No middleman. No corporate charity theatre.</p>
+                <p class="v-p">The tips, the tricks, the things nobody tells you &mdash; all coming. How to travel cheaper, smarter, slower. How to actually see a place instead of just visiting it.</p>
+                <p class="v-p">You&rsquo;re not buying a wallpaper. You&rsquo;re investing in a perspective.</p>
+                <p class="v-p lead">Welcome to UncleMarv.</p>
+            </div>
+            <div class="v-grid reveal">
+                <div class="v-stat"><div class="v-stat-num">23+</div><div class="v-stat-label">Countries</div></div>
+                <div class="v-stat"><div class="v-stat-num">10k+</div><div class="v-stat-label">Downloads</div></div>
+                <div class="v-stat"><div class="v-stat-num">200+</div><div class="v-stat-label">Products</div></div>
+                <div class="v-stat"><div class="v-stat-num">4.9</div><div class="v-stat-label">Rating</div></div>
             </div>
         </div>
     </section>
