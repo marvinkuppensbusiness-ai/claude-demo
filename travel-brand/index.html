@@ -1503,11 +1503,11 @@
         // TODO: Replace each lsUrl with your actual LemonSqueezy product checkout URLs
         // Format: https://YOUR-STORE.lemonsqueezy.com/buy/VARIANT-ID
         const PRODUCTS = {
-            wallpaper: { name: 'Wallpaper Pack',      price: 9.99,  img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://YOUR-STORE.lemonsqueezy.com/buy/WALLPAPER_VARIANT_ID' },
-            luts:      { name: 'Cinematic LUTs',      price: 14.99, img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=120&h=120&fit=crop', lsUrl: 'https://YOUR-STORE.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
-            presets:   { name: 'Lightroom Presets',   price: 12.99, img: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=120&h=120&fit=crop', lsUrl: 'https://YOUR-STORE.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
-            guide:     { name: 'Travel Hacks Guide',  price: 7.99,  img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=120&h=120&fit=crop', lsUrl: 'https://YOUR-STORE.lemonsqueezy.com/buy/GUIDE_VARIANT_ID' },
-            bundle:    { name: 'The Complete Bundle', price: 34.99, img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://YOUR-STORE.lemonsqueezy.com/buy/BUNDLE_VARIANT_ID' }
+            wallpaper: { name: 'Wallpaper Pack',      price: 9.99,  img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/WALLPAPER_VARIANT_ID' },
+            luts:      { name: 'Cinematic LUTs',      price: 14.99, img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
+            presets:   { name: 'Lightroom Presets',   price: 12.99, img: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
+            guide:     { name: 'Travel Hacks Guide',  price: 7.99,  img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/1484774' },
+            bundle:    { name: 'The Complete Bundle', price: 34.99, img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUNDLE_VARIANT_ID' }
         };
 
         let cart = {};
@@ -1586,13 +1586,11 @@
             if (!items.length) return;
             // Single product: direct LemonSqueezy checkout link
             // Multiple products: go to your LemonSqueezy store overview
-            // Replace URLs in the PRODUCTS object above after setting up your LS account
             if (items.length === 1) {
                 window.open(PRODUCTS[items[0][0]].lsUrl, '_blank');
             } else {
-                // For multi-item carts, redirect to your store page
-                // Replace with: https://YOUR-STORE.lemonsqueezy.com
-                window.open('https://YOUR-STORE.lemonsqueezy.com', '_blank');
+                // For multi-item carts, redirect to store page
+                window.open('https://unclemarv.lemonsqueezy.com', '_blank');
             }
         }
         // ===== END SHOP CART =====
