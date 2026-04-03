@@ -787,9 +787,10 @@
 
         .vip-card.active {
             border-color: #c9a96e;
-            background: rgba(201,169,110,0.06);
-            transform: scale(1);
+            background: rgba(201,169,110,0.07);
+            transform: scale(1.08);
             opacity: 1;
+            box-shadow: 0 0 20px rgba(201,169,110,0.22), 0 0 48px rgba(201,169,110,0.08);
         }
 
         .vip-card.grounding {
@@ -919,6 +920,52 @@
             color: rgba(240,236,228,0.25);
             font-weight: 300;
             line-height: 1.8;
+        }
+
+        .vip-myrank-wrap {
+            text-align: center;
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-myrank {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 32px;
+            background: transparent;
+            border: 0.5px solid rgba(201,169,110,0.5);
+            color: #c9a96e;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.35s;
+        }
+
+        .btn-myrank:hover:not(:disabled) {
+            background: rgba(201,169,110,0.1);
+            border-color: #c9a96e;
+            box-shadow: 0 0 16px rgba(201,169,110,0.15);
+        }
+
+        .btn-myrank:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .vip-myrank-hint {
+            font-size: 10px;
+            color: rgba(240,236,228,0.2);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 300;
         }
 
         /* ===== Newsletter ===== */
@@ -1206,6 +1253,8 @@
             }
             .nav-toggle { display: block; }
             .product-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .vip-card { flex: 0 0 140px; width: 140px; }
+            .btn-myrank { padding: 12px 24px; font-size: 10px; }
             .bundle-right { flex-direction: column; align-items: flex-end; gap: 6px; }
             .hero h1 { font-size: 40px; }
             .hero-buttons { flex-direction: column; align-items: center; }
@@ -1431,6 +1480,14 @@
                 <input type="range" class="vip-slider" id="vipSlider" min="0" max="5200" value="0" step="10">
             </div>
 
+            <div class="vip-myrank-wrap reveal">
+                <button class="btn-myrank" id="vipMyRankBtn" onclick="fetchMyRank()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                    My Rank
+                </button>
+                <p class="vip-myrank-hint">Connect your account to see your live points</p>
+            </div>
+
             <p class="vip-note reveal">5 points per &euro;1 &middot; Level updates automatically &middot; Notified by email</p>
         </div>
     </section>
@@ -1594,6 +1651,40 @@
             }
         }
         // ===== END SHOP CART =====
+
+        // ===== VIP MY RANK =====
+        function fetchMyRank() {
+            const btn = document.getElementById('vipMyRankBtn');
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Loading...';
+
+            // ── API PLACEHOLDER ──────────────────────────────────────────────
+            // Replace the setTimeout below with a real fetch once backend is live:
+            //
+            // fetch('/api/user/rank', { headers: { Authorization: 'Bearer ' + getUserToken() } })
+            //   .then(r => r.json())
+            //   .then(data => {
+            //       const slider = document.getElementById('vipSlider');
+            //       slider.value = data.points;
+            //       slider.dispatchEvent(new Event('input'));
+            //   })
+            //   .catch(() => showRankError())
+            //   .finally(() => resetBtn());
+            // ─────────────────────────────────────────────────────────────────
+
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+                // Demo toast
+                const hint = btn.nextElementSibling;
+                const prev = hint.textContent;
+                hint.style.color = 'rgba(201,169,110,0.7)';
+                hint.textContent = 'Feature coming soon — backend connection pending';
+                setTimeout(() => { hint.style.color = ''; hint.textContent = prev; }, 3000);
+            }, 1200);
+        }
+        // ===== END VIP MY RANK =====
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
