@@ -1347,48 +1347,49 @@
             max-width: 800px;
             margin: 0 auto 56px;
             overflow: visible;
+            border-radius: 16px;
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
         }
-        .roadmap-mountain-wrap svg { width: 100%; height: auto; display: block; }
+        .roadmap-mountain-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10,10,10,0.62);
+            border-radius: 16px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .roadmap-mountain-wrap svg { width: 100%; height: auto; display: block; position: relative; z-index: 1; }
         .rm-waypoint {
             cursor: pointer;
             transition: transform 0.2s;
         }
         .rm-waypoint:hover { transform: scale(1.3); transform-origin: center; }
         .rm-waypoint:hover .rm-marker { fill: #c9a96e; }
-        .rm-tooltip {
-            position: absolute;
-            background: rgba(14,14,14,0.97);
+        /* CSS-only tooltip — no JS, no flicker */
+        .rm-fo { pointer-events: none; overflow: visible; }
+        .rm-css-tip {
+            background: rgba(14,14,14,0.96);
             border: 0.5px solid #c9a96e;
-            border-radius: 8px;
-            padding: 10px 14px;
-            pointer-events: none;
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 10px;
+            font-weight: 500;
+            color: #c9a96e;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap;
             opacity: 0;
-            transition: opacity 0.2s;
-            z-index: 20;
-            min-width: 180px;
-            max-width: 240px;
-            transform: translateX(-50%);
+            pointer-events: none;
+            transition: none;
+            font-family: sans-serif;
+            display: inline-block;
+            box-sizing: border-box;
         }
-        .rm-tooltip.visible { opacity: 1; }
-        .rm-tooltip-title {
-            font-size: 11px; font-weight: 500; color: #c9a96e;
-            letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;
-        }
-        .rm-tooltip-desc {
-            font-size: 11px; color: rgba(240,236,228,0.65);
-            font-weight: 300; line-height: 1.6;
-        }
-        .rm-tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 50%;
-            transform: translateX(-50%);
-            width: 8px; height: 8px;
-            background: rgba(14,14,14,0.97);
-            border-right: 0.5px solid #c9a96e;
-            border-bottom: 0.5px solid #c9a96e;
-            transform: translateX(-50%) rotate(45deg);
-        }
+        .rm-waypoint:hover .rm-css-tip { opacity: 1; }
 
         .roadmap-timeline {
             position: relative;
@@ -1975,10 +1976,6 @@
             </div>
             <!-- 3D Mountain Route Illustration -->
             <div class="roadmap-mountain-wrap reveal" id="rmWrap">
-                <div class="rm-tooltip" id="rmTooltip">
-                    <div class="rm-tooltip-title" id="rmTipTitle"></div>
-                    <div class="rm-tooltip-desc" id="rmTipDesc"></div>
-                </div>
                 <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UncleMarv Roadmap — mountain route illustration">
                   <defs>
                     <radialGradient id="skyGrad" cx="50%" cy="0%" r="80%">
@@ -2094,6 +2091,10 @@
                     <!-- Tent icon -->
                     <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.8"/>
                     <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
+                    <!-- CSS-only tooltip -->
+                    <foreignObject class="rm-fo" x="-75" y="-82" width="150" height="28">
+                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Community Chat</div>
+                    </foreignObject>
                   </g>
 
                   <!-- WP2: Interactive Maps -->
@@ -2107,6 +2108,10 @@
                     <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">02</text>
                     <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
                     <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                    <!-- CSS-only tooltip -->
+                    <foreignObject class="rm-fo" x="-75" y="-82" width="150" height="28">
+                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Interactive Maps</div>
+                    </foreignObject>
                   </g>
 
                   <!-- WP3: Gear Vault -->
@@ -2120,6 +2125,10 @@
                     <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">03</text>
                     <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
                     <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                    <!-- CSS-only tooltip -->
+                    <foreignObject class="rm-fo" x="-55" y="-82" width="110" height="28">
+                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Gear Vault</div>
+                    </foreignObject>
                   </g>
 
                   <!-- WP4: Live Q&A -->
@@ -2133,6 +2142,10 @@
                     <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">04</text>
                     <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
                     <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                    <!-- CSS-only tooltip -->
+                    <foreignObject class="rm-fo" x="-80" y="-82" width="160" height="28">
+                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Live Q&amp;A Sessions</div>
+                    </foreignObject>
                   </g>
 
                   <!-- WP5: Member-Only Content -->
@@ -2146,6 +2159,10 @@
                     <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">05</text>
                     <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
                     <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                    <!-- CSS-only tooltip -->
+                    <foreignObject class="rm-fo" x="-75" y="-82" width="150" height="28">
+                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Member Content</div>
+                    </foreignObject>
                   </g>
 
                   <!-- WP6: Local Partner Discounts — summit -->
@@ -2162,6 +2179,10 @@
                     <!-- Flag pole -->
                     <line x1="0" y1="-10" x2="0" y2="-28" stroke="#c9a96e" stroke-width="1.2"/>
                     <polygon points="0,-28 10,-23 0,-18" fill="#c9a96e" opacity="0.9"/>
+                    <!-- CSS-only tooltip (shifted left to stay within view) -->
+                    <foreignObject class="rm-fo" x="-160" y="-82" width="160" height="28">
+                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Local Partner Deals</div>
+                    </foreignObject>
                   </g>
 
                   <!-- Legend -->
@@ -2784,42 +2805,7 @@
         })();
         // ===== END MULTI-LANGUAGE =====
 
-        // ===== ROADMAP WAYPOINT TOOLTIPS =====
-        (function() {
-            const wrap = document.getElementById('rmWrap');
-            const tooltip = document.getElementById('rmTooltip');
-            const tipTitle = document.getElementById('rmTipTitle');
-            const tipDesc = document.getElementById('rmTipDesc');
-            if (!wrap || !tooltip) return;
-
-            function getCurrentLang() {
-                try { return localStorage.getItem('unclemarv_lang') || 'en'; } catch(e) { return 'en'; }
-            }
-
-            document.querySelectorAll('.rm-waypoint').forEach(function(wp) {
-                wp.addEventListener('mouseenter', function(e) {
-                    const lang = getCurrentLang();
-                    tipTitle.textContent = wp.getAttribute('data-' + lang + '-title') || wp.getAttribute('data-en-title');
-                    tipDesc.textContent = wp.getAttribute('data-' + lang + '-desc') || wp.getAttribute('data-en-desc');
-                    // Position tooltip above waypoint
-                    const wrapRect = wrap.getBoundingClientRect();
-                    const wpRect = wp.getBoundingClientRect();
-                    const left = wpRect.left + wpRect.width / 2 - wrapRect.left;
-                    const top = wpRect.top - wrapRect.top - 12;
-                    tooltip.style.left = left + 'px';
-                    tooltip.style.top = (top - tooltip.offsetHeight || top - 80) + 'px';
-                    tooltip.classList.add('visible');
-                });
-                wp.addEventListener('mouseleave', function() {
-                    tooltip.classList.remove('visible');
-                });
-                // Touch support
-                wp.addEventListener('click', function(e) {
-                    tooltip.classList.toggle('visible');
-                });
-            });
-        })();
-        // ===== END ROADMAP TOOLTIPS =====
+        // Roadmap tooltips are CSS-only via .rm-waypoint:hover .rm-css-tip (no JS needed)
 
         // ===== ANALYTICS HELPERS =====
         // Plausible custom event tracking — fires when Plausible is loaded
