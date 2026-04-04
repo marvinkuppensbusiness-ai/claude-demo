@@ -922,38 +922,18 @@
             border-style: dashed;
         }
 
-        /* All card content above avatar image (z-index 0) */
-        .vip-card-badge, .vip-card-name, .vip-card-discount,
+        /* All card content above avatar image */
+        .vip-card-name, .vip-card-discount,
         .vip-card-perk, .vip-card-pts, .vip-card-hint {
             position: relative;
             z-index: 1;
-        }
-
-        .vip-card-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1.5px solid #1e1c18;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: rgba(240,236,228,0.3);
-            font-weight: 400;
-            margin: 0 auto 10px;
-        }
-
-        .vip-card.active .vip-card-badge {
-            background: #c9a96e;
-            border-color: #c9a96e;
-            color: #0a0a0a;
-            font-weight: 600;
         }
 
         .vip-card-name {
             font-size: 13px;
             font-weight: 400;
             color: #f0ece4;
+            margin-top: 44%;
             margin-bottom: 4px;
             white-space: nowrap;
         }
@@ -1413,38 +1393,38 @@
             transform: translateX(-50%) translateY(0);
         }
         .flag-content {
-            background: rgba(10,10,10,0.95);
-            border: 1px solid #c9a96e;
-            padding: 12px 16px;
+            background: rgba(201,169,110,0.95);
+            border: none;
+            padding: 11px 16px;
             border-radius: 8px;
-            min-width: 200px;
-            box-shadow: 0 8px 24px rgba(201,169,110,0.25);
+            min-width: 190px;
+            box-shadow: 0 6px 20px rgba(201,169,110,0.5), 0 2px 8px rgba(0,0,0,0.4);
             margin-bottom: 0;
         }
         .flag-content strong {
             display: block;
-            color: #c9a96e;
+            color: #0a0a0a;
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-family: 'Inter', sans-serif;
             white-space: nowrap;
         }
         .flag-content p {
-            color: rgba(240,236,228,0.75);
+            color: rgba(10,10,10,0.72);
             font-size: 11px;
             margin: 0;
-            line-height: 1.55;
-            font-weight: 300;
-            max-width: 200px;
+            line-height: 1.5;
+            font-weight: 400;
+            max-width: 190px;
             font-family: 'Inter', sans-serif;
         }
         .flag-pole {
             width: 2px;
             height: 20px;
-            background: #c9a96e;
+            background: rgba(201,169,110,0.9);
             flex-shrink: 0;
         }
         /* Right-edge waypoints: shift flag left */
@@ -2496,7 +2476,6 @@
                 card.dataset.index = i;
                 const avatarFile = avatarMap[lvl.min] || 'groundling.png';
                 let html = '<img src="assets/vip-avatars/' + avatarFile + '" class="vip-avatar-bg" alt="' + lvl.name + '" loading="lazy">';
-                html += '<div class="vip-card-badge">' + lvl.badge + '</div>';
                 html += '<div class="vip-card-name">' + lvl.name + '</div>';
                 html += '<div class="vip-card-discount">' + (lvl.discount ? lvl.discount + '% off' : 'No discount') + '</div>';
                 html += '<div class="vip-card-perk">' + lvl.perk + '</div>';
