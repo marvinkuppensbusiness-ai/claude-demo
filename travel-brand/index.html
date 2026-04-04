@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UncleMarv — Digital Travel Goods | Presets, LUTs, Wallpapers & Guides</title>
-    <meta name="description" content="Digitale Reiseprodukte von UncleMarv — kuratierte 4K Wallpapers, Cinematic LUTs, Lightroom Presets und Travel Hacks für Reisende mit Stil. 10% jeder Einnahme geht an lokale Projekte.">
-    <meta name="keywords" content="travel presets, lightroom reisepresets, cinematic luts, reise wallpapers, travel hacks guide, digitale reiseprodukte, unclemarv">
+    <title>UncleMarv — Travel Hacks, Cinematic LUTs &amp; Lightroom Presets for Digital Nomads</title>
+    <meta name="description" content="Premium travel hacks, cinematic LUTs, Lightroom presets &amp; guides for modern travelers. Budget travel tips, photography tools &amp; digital products. Join 10k+ travelers.">
+    <meta name="keywords" content="travel hacks, budget travel, lightroom presets, cinematic luts, travel photography, digital nomad, backpacking, cheap flights, travel guide, wanderlust, travel tips, solo travel, packing list, airport hacks, photo presets, color grading, travel content creator, filmmaking presets, unclemarv">
+    <meta name="author" content="Marvin Kuppens — UncleMarv">
     <meta name="author" content="Marvin Kuppens">
     <link rel="canonical" href="https://marvinkuppensbusiness-ai.github.io/claude-demo/">
 
@@ -35,13 +36,22 @@
           "@type": "WebSite",
           "name": "UncleMarv",
           "url": "https://marvinkuppensbusiness-ai.github.io/claude-demo/",
-          "description": "Digitale Reiseprodukte — Presets, LUTs, Wallpapers & Travel Guides"
+          "description": "Premium digital travel products — Travel Hacks, Cinematic LUTs, Lightroom Presets & Guides for modern travelers"
         },
         {
           "@type": "Person",
           "name": "Marvin Kuppens",
           "url": "https://marvinkuppensbusiness-ai.github.io/claude-demo/",
-          "jobTitle": "Travel Content Creator"
+          "jobTitle": "Travel Content Creator",
+          "sameAs": [
+            "https://www.instagram.com/ichheissemarrvin/",
+            "https://www.youtube.com/@Ichheissemarrvin"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "marvinkuppens.business@gmail.com",
+            "contactType": "Customer Service"
+          }
         },
         {
           "@type": "Product",
@@ -115,6 +125,7 @@
             line-height: 1.1;
             color: var(--white-pure);
         }
+        h1 { font-weight: 700; }
 
         a { text-decoration: none; color: inherit; }
 
@@ -281,8 +292,8 @@
         }
 
         .hero-mission {
-            font-size: 13px;
-            color: rgba(240,236,228,0.55);
+            font-size: 15px;
+            color: #f0ece4;
             max-width: 520px;
             margin: -12px auto 48px;
             font-weight: 300;
@@ -1316,6 +1327,56 @@
         /* ===== Roadmap ===== */
         .roadmap { background: var(--bg); }
 
+        /* Roadmap mountain illustration */
+        .roadmap-mountain-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 56px;
+            overflow: visible;
+        }
+        .roadmap-mountain-wrap svg { width: 100%; height: auto; display: block; }
+        .rm-waypoint {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .rm-waypoint:hover { transform: scale(1.3); transform-origin: center; }
+        .rm-waypoint:hover .rm-marker { fill: #c9a96e; }
+        .rm-tooltip {
+            position: absolute;
+            background: rgba(14,14,14,0.97);
+            border: 0.5px solid #c9a96e;
+            border-radius: 8px;
+            padding: 10px 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 20;
+            min-width: 180px;
+            max-width: 240px;
+            transform: translateX(-50%);
+        }
+        .rm-tooltip.visible { opacity: 1; }
+        .rm-tooltip-title {
+            font-size: 11px; font-weight: 500; color: #c9a96e;
+            letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;
+        }
+        .rm-tooltip-desc {
+            font-size: 11px; color: rgba(240,236,228,0.65);
+            font-weight: 300; line-height: 1.6;
+        }
+        .rm-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 50%;
+            transform: translateX(-50%);
+            width: 8px; height: 8px;
+            background: rgba(14,14,14,0.97);
+            border-right: 0.5px solid #c9a96e;
+            border-bottom: 0.5px solid #c9a96e;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
         .roadmap-timeline {
             position: relative;
             max-width: 680px;
@@ -1644,7 +1705,7 @@
             <p data-en="Wallpapers, color grades, presets &amp; guides — curated for those who travel with intention." data-de="Wallpapers, Farbgrades, Presets &amp; Guides — kuratiert für Menschen die mit Absicht reisen." data-es="Fondos, grades de color, presets &amp; guías — para quienes viajan con intención.">Wallpapers, color grades, presets &amp; guides &mdash; curated for those who travel with intention.</p>
             <p class="hero-mission" data-en="I share my travel knowledge — simple, honest, actionable. Your purchases fund new trips, content and donations. 10% of every sale goes to local projects." data-de="Ich teile mein Reisewissen — einfach, ehrlich, umsetzbar. Deine Käufe finanzieren neue Reisen, Content und Spenden. 10% jeder Einnahme gehen an lokale Projekte." data-es="Comparto mi conocimiento viajero — simple, honesto, accionable. Tus compras financian nuevos viajes, contenido y donaciones. El 10% de cada venta va a proyectos locales.">Ich teile mein Reisewissen &mdash; einfach, ehrlich, umsetzbar. Deine K&auml;ufe finanzieren neue Reisen, Content und Spenden. 10% jeder Einnahme gehen an lokale Projekte.</p>
             <div class="hero-buttons">
-                <a href="#newsletter" class="btn btn-primary" data-en="Join VIP Program" data-de="VIP Programm beitreten" data-es="Únete al programa VIP">Join VIP Program</a>
+                <a href="#vip" class="btn btn-primary" data-en="Join VIP Program" data-de="VIP Programm beitreten" data-es="Únete al programa VIP">Join VIP Program</a>
                 <a href="#about" class="btn btn-outline" data-en="My Vision" data-de="Meine Vision" data-es="Mi Visión">My Vision</a>
             </div>
         </div>
@@ -1899,6 +1960,205 @@
                 <div class="line"></div>
                 <h2>What&rsquo;s next</h2>
             </div>
+            <!-- 3D Mountain Route Illustration -->
+            <div class="roadmap-mountain-wrap reveal" id="rmWrap">
+                <div class="rm-tooltip" id="rmTooltip">
+                    <div class="rm-tooltip-title" id="rmTipTitle"></div>
+                    <div class="rm-tooltip-desc" id="rmTipDesc"></div>
+                </div>
+                <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UncleMarv Roadmap — mountain route illustration">
+                  <defs>
+                    <radialGradient id="skyGrad" cx="50%" cy="0%" r="80%">
+                      <stop offset="0%" stop-color="#1a1814"/>
+                      <stop offset="100%" stop-color="#0f0f0f"/>
+                    </radialGradient>
+                    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#c9a96e" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="#c9a96e" stop-opacity="0"/>
+                    </radialGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="2" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Sky background -->
+                  <rect width="800" height="420" fill="url(#skyGrad)"/>
+
+                  <!-- Stars -->
+                  <circle cx="80" cy="30" r="1" fill="#f0ece4" opacity="0.4"/>
+                  <circle cx="180" cy="18" r="1.2" fill="#f0ece4" opacity="0.5"/>
+                  <circle cx="320" cy="25" r="0.8" fill="#f0ece4" opacity="0.3"/>
+                  <circle cx="450" cy="12" r="1" fill="#f0ece4" opacity="0.5"/>
+                  <circle cx="600" cy="22" r="1.3" fill="#f0ece4" opacity="0.4"/>
+                  <circle cx="720" cy="35" r="0.9" fill="#f0ece4" opacity="0.3"/>
+                  <circle cx="140" cy="55" r="0.7" fill="#f0ece4" opacity="0.25"/>
+                  <circle cx="670" cy="48" r="0.8" fill="#f0ece4" opacity="0.3"/>
+                  <circle cx="530" cy="40" r="1.1" fill="#f0ece4" opacity="0.4"/>
+
+                  <!-- Far mountains (background, darkest) -->
+                  <polygon points="0,260 80,130 160,260" fill="#1e1c18"/>
+                  <polygon points="60,260 160,100 260,260" fill="#1a1814"/>
+                  <polygon points="150,260 270,85 390,260" fill="#222018"/>
+                  <polygon points="320,260 430,110 560,260" fill="#1e1c18"/>
+                  <polygon points="460,260 580,90 700,260" fill="#1a1814"/>
+                  <polygon points="600,260 720,120 800,260" fill="#1e1c18"/>
+                  <polygon points="700,260 800,100 800,260" fill="#222018"/>
+                  <!-- Snow caps far -->
+                  <polygon points="80,130 90,155 70,155" fill="#2a2820" opacity="0.7"/>
+                  <polygon points="160,100 173,130 147,130" fill="#2a2820" opacity="0.7"/>
+                  <polygon points="270,85 286,118 254,118" fill="#2a2820" opacity="0.7"/>
+                  <polygon points="430,110 448,142 412,142" fill="#2a2820" opacity="0.7"/>
+                  <polygon points="580,90 597,125 563,125" fill="#2a2820" opacity="0.7"/>
+                  <polygon points="720,120 736,152 704,152" fill="#2a2820" opacity="0.7"/>
+
+                  <!-- Mid mountains (mid-ground) -->
+                  <polygon points="0,320 120,180 240,320" fill="#252320"/>
+                  <polygon points="100,320 240,155 380,320" fill="#28261f"/>
+                  <polygon points="260,320 400,145 540,320" fill="#2a2820"/>
+                  <polygon points="420,320 560,165 700,320" fill="#28261f"/>
+                  <polygon points="580,320 700,185 800,320" fill="#252320"/>
+                  <polygon points="690,320 800,165 800,320" fill="#2a2820"/>
+                  <!-- Snow caps mid -->
+                  <polygon points="120,180 135,210 105,210" fill="#3a3830" opacity="0.8"/>
+                  <polygon points="240,155 258,192 222,192" fill="#3a3830" opacity="0.8"/>
+                  <polygon points="400,145 421,186 379,186" fill="#3a3830" opacity="0.9"/>
+                  <polygon points="560,165 578,202 542,202" fill="#3a3830" opacity="0.8"/>
+                  <polygon points="700,185 716,218 684,218" fill="#3a3830" opacity="0.8"/>
+
+                  <!-- Ground -->
+                  <polygon points="0,320 800,320 800,420 0,420" fill="#1c1a16"/>
+                  <!-- Ground texture lines -->
+                  <line x1="0" y1="350" x2="800" y2="350" stroke="#22201c" stroke-width="0.5"/>
+                  <line x1="0" y1="380" x2="800" y2="380" stroke="#22201c" stroke-width="0.5"/>
+
+                  <!-- Trees (simple triangles) -->
+                  <g fill="#1e1c18">
+                    <polygon points="30,320 38,295 46,320"/>
+                    <polygon points="50,320 59,298 68,320"/>
+                    <polygon points="120,320 128,300 136,320"/>
+                    <polygon points="200,320 209,297 218,320"/>
+                    <polygon points="290,320 298,302 306,320"/>
+                    <polygon points="380,320 389,298 398,320"/>
+                    <polygon points="480,320 489,300 498,320"/>
+                    <polygon points="570,320 579,296 588,320"/>
+                    <polygon points="660,320 669,299 678,320"/>
+                    <polygon points="745,320 754,296 763,320"/>
+                  </g>
+                  <!-- Trees with slight accent color (closer) -->
+                  <g fill="#242218">
+                    <polygon points="70,320 80,292 90,320"/>
+                    <polygon points="165,320 175,290 185,320"/>
+                    <polygon points="340,320 350,293 360,320"/>
+                    <polygon points="440,320 450,291 460,320"/>
+                    <polygon points="622,320 632,290 642,320"/>
+                    <polygon points="715,320 724,295 733,320"/>
+                  </g>
+
+                  <!-- Winding path / route (dashed gold line) -->
+                  <path d="M 60 370 Q 120 340 160 320 Q 200 300 230 280 Q 260 260 290 248 Q 330 234 360 230 Q 400 226 430 218 Q 470 208 510 200 Q 550 193 580 185 Q 620 175 660 168 Q 700 160 730 155 Q 760 150 780 145"
+                    fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-dasharray="6,5" opacity="0.7"/>
+
+                  <!-- River -->
+                  <path d="M 0 340 Q 80 332 140 338 Q 200 344 250 336 Q 300 328 340 334"
+                    fill="none" stroke="#2a4a6a" stroke-width="3" opacity="0.5"/>
+                  <path d="M 0 344 Q 80 336 140 342 Q 200 348 250 340 Q 300 332 340 338"
+                    fill="none" stroke="#1e3d5a" stroke-width="2" opacity="0.4"/>
+
+                  <!-- Golden glow at summit (top right — goal) -->
+                  <ellipse cx="760" cy="148" rx="40" ry="30" fill="url(#goldGlow)"/>
+
+                  <!-- WAYPOINTS (6 items) -->
+                  <!-- WP1: Community Chat — bottom left start -->
+                  <g class="rm-waypoint" data-index="0"
+                     data-en-title="Community Chat" data-de-title="Community Chat" data-es-title="Chat Comunitario"
+                     data-en-desc="Travelers share spots, tips and reviews — where real experiences count."
+                     data-de-desc="Reisende teilen Spots, Tipps und Reviews — echte Erfahrungen zählen."
+                     data-es-desc="Viajeros comparten spots, consejos y reseñas — donde cuentan las experiencias reales."
+                     transform="translate(160,320)">
+                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
+                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">01</text>
+                    <!-- Tent icon -->
+                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.8"/>
+                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
+                  </g>
+
+                  <!-- WP2: Interactive Maps -->
+                  <g class="rm-waypoint" data-index="1"
+                     data-en-title="Interactive Maps" data-de-title="Interaktive Maps" data-es-title="Mapas Interactivos"
+                     data-en-desc="Mark hidden gems, discover curated routes — no tourist mainstream."
+                     data-de-desc="Hidden Gems markieren, kuratierte Routen entdecken — kein Mainstream."
+                     data-es-desc="Marca joyas ocultas, descubre rutas curadas — sin turismo masivo."
+                     transform="translate(290,248)">
+                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
+                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">02</text>
+                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
+                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                  </g>
+
+                  <!-- WP3: Gear Vault -->
+                  <g class="rm-waypoint" data-index="2"
+                     data-en-title="Gear Vault" data-de-title="Gear Vault" data-es-title="Bóveda de Equipamiento"
+                     data-en-desc="Personal gear picks and an honest no-go list — what really works."
+                     data-de-desc="Persönliche Equipment-Empfehlungen und ehrliche No-Go Liste."
+                     data-es-desc="Equipamiento personal recomendado y lista honesta de lo que no funciona."
+                     transform="translate(430,218)">
+                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
+                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">03</text>
+                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
+                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                  </g>
+
+                  <!-- WP4: Live Q&A -->
+                  <g class="rm-waypoint" data-index="3"
+                     data-en-title="Live Q&amp;A Sessions" data-de-title="Live Q&amp;A Sessions" data-es-title="Sesiones en Vivo"
+                     data-en-desc="Monthly live sessions with Marvin — questions, feedback, route planning. Members only."
+                     data-de-desc="Monatliche Live-Sessions — Fragen, Feedback, Routen planen. Members only."
+                     data-es-desc="Sesiones en vivo mensuales — preguntas, feedback, planificación. Solo miembros."
+                     transform="translate(560,192)">
+                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
+                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">04</text>
+                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
+                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                  </g>
+
+                  <!-- WP5: Member-Only Content -->
+                  <g class="rm-waypoint" data-index="4"
+                     data-en-title="Member Content" data-de-title="Member Content" data-es-title="Contenido Exclusivo"
+                     data-en-desc="Behind-the-scenes, raw footage, uncut travel insights. Exclusive."
+                     data-de-desc="Behind-the-Scenes, Raw Footage, ungeschnittene Reise-Einblicke."
+                     data-es-desc="Detrás de cámaras, footage crudo, sin cortes. Exclusivo."
+                     transform="translate(670,168)">
+                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
+                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">05</text>
+                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
+                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
+                  </g>
+
+                  <!-- WP6: Local Partner Discounts — summit -->
+                  <g class="rm-waypoint" data-index="5"
+                     data-en-title="Local Partner Deals" data-de-title="Local Partner Deals" data-es-title="Ofertas de Socios Locales"
+                     data-en-desc="Exclusive deals with hostels, local tour providers &amp; gear shops. Curated, no spam."
+                     data-de-desc="Exklusive Deals mit Hostels, lokalen Tour-Anbietern und Gear-Shops."
+                     data-es-desc="Deals exclusivos con hostels, operadores locales y tiendas de equipo."
+                     transform="translate(760,148)">
+                    <!-- Summit glow -->
+                    <circle r="14" fill="#c9a96e" opacity="0.15"/>
+                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="2" class="rm-marker" filter="url(#glow)"/>
+                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif" font-weight="bold">✦</text>
+                    <!-- Flag pole -->
+                    <line x1="0" y1="-10" x2="0" y2="-28" stroke="#c9a96e" stroke-width="1.2"/>
+                    <polygon points="0,-28 10,-23 0,-18" fill="#c9a96e" opacity="0.9"/>
+                  </g>
+
+                  <!-- Legend -->
+                  <g transform="translate(20,390)">
+                    <line x1="0" y1="6" x2="24" y2="6" stroke="#c9a96e" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+                    <text x="30" y="10" font-size="8" fill="#5a5448" font-family="sans-serif">The UncleMarv Route</text>
+                  </g>
+                </svg>
+            </div>
+
             <div class="roadmap-timeline">
                 <div class="roadmap-item active reveal">
                     <div class="roadmap-dot"></div>
@@ -2113,7 +2373,8 @@
                 <ul class="footer-links">
                     <li><a href="#shop">Collection</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#">Instagram</a></li>
+                    <li><a href="https://www.instagram.com/ichheissemarrvin/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@Ichheissemarrvin" target="_blank" rel="noopener">YouTube</a></li>
                     <li><a href="impressum.html">Impressum</a></li>
                     <li><a href="datenschutz.html">Datenschutz</a></li>
                     <li><a href="agb.html">AGB</a></li>
@@ -2517,6 +2778,43 @@
             setLang(lang || detectBrowserLang());
         })();
         // ===== END MULTI-LANGUAGE =====
+
+        // ===== ROADMAP WAYPOINT TOOLTIPS =====
+        (function() {
+            const wrap = document.getElementById('rmWrap');
+            const tooltip = document.getElementById('rmTooltip');
+            const tipTitle = document.getElementById('rmTipTitle');
+            const tipDesc = document.getElementById('rmTipDesc');
+            if (!wrap || !tooltip) return;
+
+            function getCurrentLang() {
+                try { return localStorage.getItem('unclemarv_lang') || 'en'; } catch(e) { return 'en'; }
+            }
+
+            document.querySelectorAll('.rm-waypoint').forEach(function(wp) {
+                wp.addEventListener('mouseenter', function(e) {
+                    const lang = getCurrentLang();
+                    tipTitle.textContent = wp.getAttribute('data-' + lang + '-title') || wp.getAttribute('data-en-title');
+                    tipDesc.textContent = wp.getAttribute('data-' + lang + '-desc') || wp.getAttribute('data-en-desc');
+                    // Position tooltip above waypoint
+                    const wrapRect = wrap.getBoundingClientRect();
+                    const wpRect = wp.getBoundingClientRect();
+                    const left = wpRect.left + wpRect.width / 2 - wrapRect.left;
+                    const top = wpRect.top - wrapRect.top - 12;
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = (top - tooltip.offsetHeight || top - 80) + 'px';
+                    tooltip.classList.add('visible');
+                });
+                wp.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+                // Touch support
+                wp.addEventListener('click', function(e) {
+                    tooltip.classList.toggle('visible');
+                });
+            });
+        })();
+        // ===== END ROADMAP TOOLTIPS =====
 
         // ===== ANALYTICS HELPERS =====
         // Plausible custom event tracking — fires when Plausible is loaded
