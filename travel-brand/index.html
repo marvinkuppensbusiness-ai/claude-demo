@@ -196,13 +196,13 @@
             font-weight: 400;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--text-dim);
+            color: #f0ece4;
             padding: 8px 16px;
             transition: all 0.35s ease;
         }
 
         .nav-links a:hover {
-            color: var(--white);
+            color: #c9a96e;
         }
 
         .nav-links .nav-cta a {
@@ -1340,129 +1340,136 @@
         /* ===== Roadmap ===== */
         .roadmap { background: var(--bg); }
 
-        /* Roadmap mountain illustration */
-        .roadmap-mountain-wrap {
+        /* Roadmap illustration */
+        .roadmap-illustration {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto 56px;
-            overflow: visible;
+            min-height: 600px;
             border-radius: 16px;
-            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80');
+            overflow: visible;
+            background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80');
             background-size: cover;
             background-position: center;
         }
-        .roadmap-mountain-wrap::before {
+        .roadmap-illustration::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(10,10,10,0.62);
+            background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.6));
             border-radius: 16px;
             pointer-events: none;
             z-index: 0;
         }
-        .roadmap-mountain-wrap svg { width: 100%; height: auto; display: block; position: relative; z-index: 1; }
-        .rm-waypoint {
-            cursor: pointer;
-            transition: transform 0.2s;
+        .route-overlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
-        .rm-waypoint:hover { transform: scale(1.3); transform-origin: center; }
-        .rm-waypoint:hover .rm-marker { fill: #c9a96e; }
-        /* CSS-only tooltip — no JS, no flicker */
-        .rm-fo { pointer-events: none; overflow: visible; }
-        .rm-css-tip {
-            background: rgba(14,14,14,0.96);
-            border: 0.5px solid #c9a96e;
-            border-radius: 6px;
-            padding: 5px 10px;
-            font-size: 10px;
-            font-weight: 500;
-            color: #c9a96e;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            text-align: center;
-            white-space: nowrap;
+        /* Waypoints */
+        .waypoint {
+            position: absolute;
+            cursor: pointer;
+            z-index: 2;
+            transform: translate(-50%, -50%);
+        }
+        .waypoint-marker {
+            width: 32px;
+            height: 32px;
+            background: #c9a96e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0a;
+            font-weight: 700;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 12px rgba(201,169,110,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .waypoint:hover .waypoint-marker {
+            transform: scale(1.18);
+            box-shadow: 0 6px 20px rgba(201,169,110,0.6);
+        }
+        .waypoint-flag {
+            position: absolute;
+            bottom: calc(100% + 2px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
             opacity: 0;
             pointer-events: none;
-            transition: none;
-            font-family: sans-serif;
-            display: inline-block;
-            box-sizing: border-box;
+            transition: opacity 0.25s, transform 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .rm-waypoint:hover .rm-css-tip { opacity: 1; }
-
-        .roadmap-timeline {
-            position: relative;
-            max-width: 680px;
-            margin: 0 auto;
-            padding-left: 32px;
+        .waypoint:hover .waypoint-flag {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
-
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            bottom: 8px;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, #2a2820 10%, #2a2820 90%, transparent);
+        .flag-content {
+            background: rgba(10,10,10,0.95);
+            border: 1px solid #c9a96e;
+            padding: 12px 16px;
+            border-radius: 8px;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(201,169,110,0.25);
+            margin-bottom: 0;
         }
-
-        .roadmap-item {
-            position: relative;
-            padding: 0 0 48px 32px;
-        }
-
-        .roadmap-item:last-child { padding-bottom: 0; }
-
-        .roadmap-dot {
-            position: absolute;
-            left: -6px;
-            top: 6px;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            border: 1.5px solid #2a2820;
-            background: var(--bg);
-            transition: all 0.3s;
-        }
-
-        .roadmap-item.active .roadmap-dot {
-            border-color: var(--accent);
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(201,169,110,0.4);
-        }
-
-        .roadmap-item.active .roadmap-label {
-            color: var(--accent);
-        }
-
-        .roadmap-label {
-            font-size: 9px;
+        .flag-content strong {
+            display: block;
+            color: #c9a96e;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
         }
-
-        .roadmap-title {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--white);
-            margin-bottom: 6px;
-            letter-spacing: 0.04em;
-            text-transform: none;
-        }
-
-        .roadmap-desc {
-            font-size: 12px;
-            color: var(--text-mid);
+        .flag-content p {
+            color: rgba(240,236,228,0.75);
+            font-size: 11px;
+            margin: 0;
+            line-height: 1.55;
             font-weight: 300;
-            line-height: 1.7;
-            letter-spacing: 0.04em;
-            text-transform: none;
-            max-width: 460px;
+            max-width: 200px;
+            font-family: 'Inter', sans-serif;
+        }
+        .flag-pole {
+            width: 2px;
+            height: 20px;
+            background: #c9a96e;
+            flex-shrink: 0;
+        }
+        /* Right-edge waypoints: shift flag left */
+        .waypoint[data-id="5"] .waypoint-flag,
+        .waypoint[data-id="6"] .waypoint-flag {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%) translateY(8px);
+            align-items: flex-end;
+        }
+        .waypoint[data-id="5"]:hover .waypoint-flag,
+        .waypoint[data-id="6"]:hover .waypoint-flag {
+            transform: translateX(50%) translateY(0);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .roadmap-illustration { min-height: 420px; }
+            .waypoint-marker { width: 26px; height: 26px; font-size: 11px; }
+            .flag-content { min-width: 150px; padding: 9px 12px; }
+            .flag-content strong { font-size: 10px; }
+            .flag-content p { font-size: 10px; }
+        }
+        @media (max-width: 480px) {
+            .roadmap-illustration { min-height: 300px; }
+            .waypoint-marker { width: 22px; height: 22px; font-size: 10px; }
         }
 
         .btn-roadmap {
@@ -1974,261 +1981,82 @@
                 <div class="line"></div>
                 <h2>What&rsquo;s next</h2>
             </div>
-            <!-- 3D Mountain Route Illustration -->
-            <div class="roadmap-mountain-wrap reveal" id="rmWrap">
-                <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UncleMarv Roadmap — mountain route illustration">
-                  <defs>
-                    <radialGradient id="skyGrad" cx="50%" cy="0%" r="80%">
-                      <stop offset="0%" stop-color="#1a1814"/>
-                      <stop offset="100%" stop-color="#0f0f0f"/>
-                    </radialGradient>
-                    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stop-color="#c9a96e" stop-opacity="0.3"/>
-                      <stop offset="100%" stop-color="#c9a96e" stop-opacity="0"/>
-                    </radialGradient>
-                    <filter id="glow">
-                      <feGaussianBlur stdDeviation="2" result="blur"/>
-                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                  </defs>
-
-                  <!-- Sky background -->
-                  <rect width="800" height="420" fill="url(#skyGrad)"/>
-
-                  <!-- Stars -->
-                  <circle cx="80" cy="30" r="1" fill="#f0ece4" opacity="0.4"/>
-                  <circle cx="180" cy="18" r="1.2" fill="#f0ece4" opacity="0.5"/>
-                  <circle cx="320" cy="25" r="0.8" fill="#f0ece4" opacity="0.3"/>
-                  <circle cx="450" cy="12" r="1" fill="#f0ece4" opacity="0.5"/>
-                  <circle cx="600" cy="22" r="1.3" fill="#f0ece4" opacity="0.4"/>
-                  <circle cx="720" cy="35" r="0.9" fill="#f0ece4" opacity="0.3"/>
-                  <circle cx="140" cy="55" r="0.7" fill="#f0ece4" opacity="0.25"/>
-                  <circle cx="670" cy="48" r="0.8" fill="#f0ece4" opacity="0.3"/>
-                  <circle cx="530" cy="40" r="1.1" fill="#f0ece4" opacity="0.4"/>
-
-                  <!-- Far mountains (background, darkest) -->
-                  <polygon points="0,260 80,130 160,260" fill="#1e1c18"/>
-                  <polygon points="60,260 160,100 260,260" fill="#1a1814"/>
-                  <polygon points="150,260 270,85 390,260" fill="#222018"/>
-                  <polygon points="320,260 430,110 560,260" fill="#1e1c18"/>
-                  <polygon points="460,260 580,90 700,260" fill="#1a1814"/>
-                  <polygon points="600,260 720,120 800,260" fill="#1e1c18"/>
-                  <polygon points="700,260 800,100 800,260" fill="#222018"/>
-                  <!-- Snow caps far -->
-                  <polygon points="80,130 90,155 70,155" fill="#2a2820" opacity="0.7"/>
-                  <polygon points="160,100 173,130 147,130" fill="#2a2820" opacity="0.7"/>
-                  <polygon points="270,85 286,118 254,118" fill="#2a2820" opacity="0.7"/>
-                  <polygon points="430,110 448,142 412,142" fill="#2a2820" opacity="0.7"/>
-                  <polygon points="580,90 597,125 563,125" fill="#2a2820" opacity="0.7"/>
-                  <polygon points="720,120 736,152 704,152" fill="#2a2820" opacity="0.7"/>
-
-                  <!-- Mid mountains (mid-ground) -->
-                  <polygon points="0,320 120,180 240,320" fill="#252320"/>
-                  <polygon points="100,320 240,155 380,320" fill="#28261f"/>
-                  <polygon points="260,320 400,145 540,320" fill="#2a2820"/>
-                  <polygon points="420,320 560,165 700,320" fill="#28261f"/>
-                  <polygon points="580,320 700,185 800,320" fill="#252320"/>
-                  <polygon points="690,320 800,165 800,320" fill="#2a2820"/>
-                  <!-- Snow caps mid -->
-                  <polygon points="120,180 135,210 105,210" fill="#3a3830" opacity="0.8"/>
-                  <polygon points="240,155 258,192 222,192" fill="#3a3830" opacity="0.8"/>
-                  <polygon points="400,145 421,186 379,186" fill="#3a3830" opacity="0.9"/>
-                  <polygon points="560,165 578,202 542,202" fill="#3a3830" opacity="0.8"/>
-                  <polygon points="700,185 716,218 684,218" fill="#3a3830" opacity="0.8"/>
-
-                  <!-- Ground -->
-                  <polygon points="0,320 800,320 800,420 0,420" fill="#1c1a16"/>
-                  <!-- Ground texture lines -->
-                  <line x1="0" y1="350" x2="800" y2="350" stroke="#22201c" stroke-width="0.5"/>
-                  <line x1="0" y1="380" x2="800" y2="380" stroke="#22201c" stroke-width="0.5"/>
-
-                  <!-- Trees (simple triangles) -->
-                  <g fill="#1e1c18">
-                    <polygon points="30,320 38,295 46,320"/>
-                    <polygon points="50,320 59,298 68,320"/>
-                    <polygon points="120,320 128,300 136,320"/>
-                    <polygon points="200,320 209,297 218,320"/>
-                    <polygon points="290,320 298,302 306,320"/>
-                    <polygon points="380,320 389,298 398,320"/>
-                    <polygon points="480,320 489,300 498,320"/>
-                    <polygon points="570,320 579,296 588,320"/>
-                    <polygon points="660,320 669,299 678,320"/>
-                    <polygon points="745,320 754,296 763,320"/>
-                  </g>
-                  <!-- Trees with slight accent color (closer) -->
-                  <g fill="#242218">
-                    <polygon points="70,320 80,292 90,320"/>
-                    <polygon points="165,320 175,290 185,320"/>
-                    <polygon points="340,320 350,293 360,320"/>
-                    <polygon points="440,320 450,291 460,320"/>
-                    <polygon points="622,320 632,290 642,320"/>
-                    <polygon points="715,320 724,295 733,320"/>
-                  </g>
-
-                  <!-- Winding path / route (dashed gold line) -->
-                  <path d="M 60 370 Q 120 340 160 320 Q 200 300 230 280 Q 260 260 290 248 Q 330 234 360 230 Q 400 226 430 218 Q 470 208 510 200 Q 550 193 580 185 Q 620 175 660 168 Q 700 160 730 155 Q 760 150 780 145"
-                    fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-dasharray="6,5" opacity="0.7"/>
-
-                  <!-- River -->
-                  <path d="M 0 340 Q 80 332 140 338 Q 200 344 250 336 Q 300 328 340 334"
-                    fill="none" stroke="#2a4a6a" stroke-width="3" opacity="0.5"/>
-                  <path d="M 0 344 Q 80 336 140 342 Q 200 348 250 340 Q 300 332 340 338"
-                    fill="none" stroke="#1e3d5a" stroke-width="2" opacity="0.4"/>
-
-                  <!-- Golden glow at summit (top right — goal) -->
-                  <ellipse cx="760" cy="148" rx="40" ry="30" fill="url(#goldGlow)"/>
-
-                  <!-- WAYPOINTS (6 items) -->
-                  <!-- WP1: Community Chat — bottom left start -->
-                  <g class="rm-waypoint" data-index="0"
-                     data-en-title="Community Chat" data-de-title="Community Chat" data-es-title="Chat Comunitario"
-                     data-en-desc="Travelers share spots, tips and reviews — where real experiences count."
-                     data-de-desc="Reisende teilen Spots, Tipps und Reviews — echte Erfahrungen zählen."
-                     data-es-desc="Viajeros comparten spots, consejos y reseñas — donde cuentan las experiencias reales."
-                     transform="translate(160,320)">
-                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
-                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">01</text>
-                    <!-- Tent icon -->
-                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.8"/>
-                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
-                    <!-- CSS-only tooltip -->
-                    <foreignObject class="rm-fo" x="-75" y="-82" width="150" height="28">
-                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Community Chat</div>
-                    </foreignObject>
-                  </g>
-
-                  <!-- WP2: Interactive Maps -->
-                  <g class="rm-waypoint" data-index="1"
-                     data-en-title="Interactive Maps" data-de-title="Interaktive Maps" data-es-title="Mapas Interactivos"
-                     data-en-desc="Mark hidden gems, discover curated routes — no tourist mainstream."
-                     data-de-desc="Hidden Gems markieren, kuratierte Routen entdecken — kein Mainstream."
-                     data-es-desc="Marca joyas ocultas, descubre rutas curadas — sin turismo masivo."
-                     transform="translate(290,248)">
-                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
-                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">02</text>
-                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
-                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
-                    <!-- CSS-only tooltip -->
-                    <foreignObject class="rm-fo" x="-75" y="-82" width="150" height="28">
-                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Interactive Maps</div>
-                    </foreignObject>
-                  </g>
-
-                  <!-- WP3: Gear Vault -->
-                  <g class="rm-waypoint" data-index="2"
-                     data-en-title="Gear Vault" data-de-title="Gear Vault" data-es-title="Bóveda de Equipamiento"
-                     data-en-desc="Personal gear picks and an honest no-go list — what really works."
-                     data-de-desc="Persönliche Equipment-Empfehlungen und ehrliche No-Go Liste."
-                     data-es-desc="Equipamiento personal recomendado y lista honesta de lo que no funciona."
-                     transform="translate(430,218)">
-                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
-                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">03</text>
-                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
-                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
-                    <!-- CSS-only tooltip -->
-                    <foreignObject class="rm-fo" x="-55" y="-82" width="110" height="28">
-                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Gear Vault</div>
-                    </foreignObject>
-                  </g>
-
-                  <!-- WP4: Live Q&A -->
-                  <g class="rm-waypoint" data-index="3"
-                     data-en-title="Live Q&amp;A Sessions" data-de-title="Live Q&amp;A Sessions" data-es-title="Sesiones en Vivo"
-                     data-en-desc="Monthly live sessions with Marvin — questions, feedback, route planning. Members only."
-                     data-de-desc="Monatliche Live-Sessions — Fragen, Feedback, Routen planen. Members only."
-                     data-es-desc="Sesiones en vivo mensuales — preguntas, feedback, planificación. Solo miembros."
-                     transform="translate(560,192)">
-                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
-                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">04</text>
-                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
-                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
-                    <!-- CSS-only tooltip -->
-                    <foreignObject class="rm-fo" x="-80" y="-82" width="160" height="28">
-                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Live Q&amp;A Sessions</div>
-                    </foreignObject>
-                  </g>
-
-                  <!-- WP5: Member-Only Content -->
-                  <g class="rm-waypoint" data-index="4"
-                     data-en-title="Member Content" data-de-title="Member Content" data-es-title="Contenido Exclusivo"
-                     data-en-desc="Behind-the-scenes, raw footage, uncut travel insights. Exclusive."
-                     data-de-desc="Behind-the-Scenes, Raw Footage, ungeschnittene Reise-Einblicke."
-                     data-es-desc="Detrás de cámaras, footage crudo, sin cortes. Exclusivo."
-                     transform="translate(670,168)">
-                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="1.5" class="rm-marker"/>
-                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif">05</text>
-                    <polygon points="0,-18 -7,-8 7,-8" fill="#c9a96e" opacity="0.7"/>
-                    <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#c9a96e" stroke-width="0.8" opacity="0.5"/>
-                    <!-- CSS-only tooltip -->
-                    <foreignObject class="rm-fo" x="-75" y="-82" width="150" height="28">
-                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Member Content</div>
-                    </foreignObject>
-                  </g>
-
-                  <!-- WP6: Local Partner Discounts — summit -->
-                  <g class="rm-waypoint" data-index="5"
-                     data-en-title="Local Partner Deals" data-de-title="Local Partner Deals" data-es-title="Ofertas de Socios Locales"
-                     data-en-desc="Exclusive deals with hostels, local tour providers &amp; gear shops. Curated, no spam."
-                     data-de-desc="Exklusive Deals mit Hostels, lokalen Tour-Anbietern und Gear-Shops."
-                     data-es-desc="Deals exclusivos con hostels, operadores locales y tiendas de equipo."
-                     transform="translate(760,148)">
-                    <!-- Summit glow -->
-                    <circle r="14" fill="#c9a96e" opacity="0.15"/>
-                    <circle r="10" fill="#1c1a16" stroke="#c9a96e" stroke-width="2" class="rm-marker" filter="url(#glow)"/>
-                    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#c9a96e" font-family="sans-serif" font-weight="bold">✦</text>
-                    <!-- Flag pole -->
-                    <line x1="0" y1="-10" x2="0" y2="-28" stroke="#c9a96e" stroke-width="1.2"/>
-                    <polygon points="0,-28 10,-23 0,-18" fill="#c9a96e" opacity="0.9"/>
-                    <!-- CSS-only tooltip (shifted left to stay within view) -->
-                    <foreignObject class="rm-fo" x="-160" y="-82" width="160" height="28">
-                      <div xmlns="http://www.w3.org/1999/xhtml" class="rm-css-tip">Local Partner Deals</div>
-                    </foreignObject>
-                  </g>
-
-                  <!-- Legend -->
-                  <g transform="translate(20,390)">
-                    <line x1="0" y1="6" x2="24" y2="6" stroke="#c9a96e" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-                    <text x="30" y="10" font-size="8" fill="#5a5448" font-family="sans-serif">The UncleMarv Route</text>
-                  </g>
+            <!-- Roadmap: Unsplash bg + SVG route + interactive waypoints -->
+            <div class="roadmap-illustration reveal" id="rmWrap">
+                <!-- Route SVG path -->
+                <svg class="route-overlay" viewBox="0 0 1000 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M100,500 Q250,400 400,350 T700,250 L900,150"
+                          stroke="#c9a96e"
+                          stroke-width="4"
+                          stroke-dasharray="10,5"
+                          fill="none"
+                          opacity="0.8"/>
                 </svg>
-            </div>
-
-            <div class="roadmap-timeline">
-                <div class="roadmap-item active reveal">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-label">In Progress</div>
-                    <div class="roadmap-title">Community Chat</div>
-                    <p class="roadmap-desc">Reisende teilen Spots, Tipps und Produkt-Reviews &mdash; ein Ort wo echte Erfahrungen z&auml;hlen, keine Hochglanz-Werbung.</p>
+                <!-- Waypoint 1: Community Chat -->
+                <div class="waypoint" style="left:20%;top:80%;" data-id="1">
+                    <div class="waypoint-marker">1</div>
+                    <div class="waypoint-flag">
+                        <div class="flag-content">
+                            <strong>Community Chat</strong>
+                            <p>Reisende teilen Spots, Tipps &amp; Reviews</p>
+                        </div>
+                        <div class="flag-pole"></div>
+                    </div>
                 </div>
-                <div class="roadmap-item active reveal">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-label">In Progress</div>
-                    <div class="roadmap-title">Interaktive Maps</div>
-                    <p class="roadmap-desc">Hidden Gems markieren, kuratierte Routen entdecken &mdash; kein touristischer Mainstream, nur echte Orte von echten Reisenden.</p>
+                <!-- Waypoint 2: Interactive Maps -->
+                <div class="waypoint" style="left:35%;top:65%;" data-id="2">
+                    <div class="waypoint-marker">2</div>
+                    <div class="waypoint-flag">
+                        <div class="flag-content">
+                            <strong>Interactive Maps</strong>
+                            <p>Hidden Gems &amp; kuratierte Routen</p>
+                        </div>
+                        <div class="flag-pole"></div>
+                    </div>
                 </div>
-                <div class="roadmap-item reveal">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-label">Planned</div>
-                    <div class="roadmap-title">Gear Vault</div>
-                    <p class="roadmap-desc">Meine pers&ouml;nlichen Equipment-Empfehlungen plus eine ehrliche No-Go Liste &mdash; was wirklich funktioniert, was nicht.</p>
+                <!-- Waypoint 3: Gear Vault -->
+                <div class="waypoint" style="left:50%;top:55%;" data-id="3">
+                    <div class="waypoint-marker">3</div>
+                    <div class="waypoint-flag">
+                        <div class="flag-content">
+                            <strong>Gear Vault</strong>
+                            <p>Equipment-Empfehlungen &amp; No-Go Liste</p>
+                        </div>
+                        <div class="flag-pole"></div>
+                    </div>
                 </div>
-                <div class="roadmap-item reveal">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-label">Planned</div>
-                    <div class="roadmap-title">Live Q&amp;A Sessions</div>
-                    <p class="roadmap-desc">Monatliche Live-Sessions direkt mit mir &mdash; Fragen stellen, Feedback geben, Routen planen. Members only.</p>
+                <!-- Waypoint 4: Live Q&A Sessions -->
+                <div class="waypoint" style="left:65%;top:45%;" data-id="4">
+                    <div class="waypoint-marker">4</div>
+                    <div class="waypoint-flag">
+                        <div class="flag-content">
+                            <strong>Live Q&amp;A Sessions</strong>
+                            <p>Monatliche Sessions &mdash; Members only</p>
+                        </div>
+                        <div class="flag-pole"></div>
+                    </div>
                 </div>
-                <div class="roadmap-item reveal">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-label">Planned</div>
-                    <div class="roadmap-title">Member-Only Content</div>
-                    <p class="roadmap-desc">Behind-the-Scenes, Raw Travel Footage, ungeschnittene Einblicke in Reisen die noch kein &ouml;ffentliches Video haben.</p>
+                <!-- Waypoint 5: Member Content -->
+                <div class="waypoint" style="left:80%;top:35%;" data-id="5">
+                    <div class="waypoint-marker">5</div>
+                    <div class="waypoint-flag">
+                        <div class="flag-content">
+                            <strong>Member Content</strong>
+                            <p>Behind-the-Scenes &amp; Raw Footage</p>
+                        </div>
+                        <div class="flag-pole"></div>
+                    </div>
                 </div>
-                <div class="roadmap-item reveal">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-label">Planned</div>
-                    <div class="roadmap-title">Local Partner Discounts</div>
-                    <p class="roadmap-desc">Exklusive Deals mit Hostels, lokalen Tour-Anbietern und Gear-Shops &mdash; kuratiert, kein Affiliate-Spam.</p>
+                <!-- Waypoint 6: Local Discounts -->
+                <div class="waypoint" style="left:90%;top:25%;" data-id="6">
+                    <div class="waypoint-marker">6</div>
+                    <div class="waypoint-flag">
+                        <div class="flag-content">
+                            <strong>Local Discounts</strong>
+                            <p>Exklusive Deals mit lokalen Partnern</p>
+                        </div>
+                        <div class="flag-pole"></div>
+                    </div>
                 </div>
             </div>
         </div>
