@@ -414,94 +414,209 @@
             font-size: clamp(36px, 5vw, 56px);
         }
 
-        /* ===== Products ===== */
+        /* ===== Products — Apple Style ===== */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 16px;
         }
 
-        .product-card {
-            background: #141414;
+        /* Featured first card spans 2 cols */
+        .pc-card:first-child {
+            grid-column: span 2;
+        }
+        .pc-card:first-child .pc-img {
+            aspect-ratio: 16/7;
+        }
+
+        .pc-card {
+            background: #1c1c1e;
+            border-radius: 20px;
             overflow: hidden;
-            border: 0.5px solid #1e1c18;
-            border-radius: 10px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            position: relative;
             display: flex;
             flex-direction: column;
-        }
-
-        .product-card:hover {
-            border-color: #c9a96e;
-            transform: translateY(-2px);
-        }
-
-        .card-img {
-            height: 160px;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1),
+                        box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
             position: relative;
-            overflow: hidden;
-            background: #141414;
         }
 
-        .card-img img {
+        .pc-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 24px 56px rgba(0,0,0,0.55),
+                        0 4px 16px rgba(201,169,110,0.12);
+        }
+
+        /* Image area */
+        .pc-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+            flex-shrink: 0;
+        }
+
+        .pc-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
         }
 
-        .product-card:hover .card-img img {
-            transform: scale(1.05);
+        .pc-card:hover .pc-img img {
+            transform: scale(1.07);
         }
 
-        /* Before/After split */
-        .card-img-split {
-            height: 160px;
+        /* Before/After split inside pc-img */
+        .pc-split {
             position: relative;
-            overflow: hidden;
+            width: 100%;
+            height: 100%;
         }
 
-        .card-img-split img {
+        .pc-split img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
+            transition: none;
         }
 
-        .card-img-split .before-img {
+        .pc-split .before-img {
             clip-path: inset(0 50% 0 0);
             filter: saturate(0.2) brightness(0.75);
         }
 
-        .card-img-split .after-img {
+        .pc-split .after-img {
             clip-path: inset(0 0 0 50%);
         }
 
+        /* Frosted glass badge */
+        .pc-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(10,10,10,0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #c9a96e;
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 100px;
+            border: 0.5px solid rgba(201,169,110,0.3);
+            z-index: 5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pc-badge-gold {
+            background: #c9a96e;
+            color: #0a0a0a;
+            border-color: #c9a96e;
+        }
+
+        /* Card body */
+        .pc-body {
+            padding: 20px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .pc-type {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #c9a96e;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .pc-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #f5f5f7;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            margin-bottom: 7px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pc-desc {
+            font-size: 11.5px;
+            color: rgba(240,236,228,0.42);
+            font-weight: 300;
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        /* Card footer */
+        .pc-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 0.5px solid rgba(255,255,255,0.07);
+        }
+
+        .pc-price {
+            font-size: 19px;
+            font-weight: 500;
+            color: #f5f5f7;
+            letter-spacing: -0.03em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: #0a0a0a;
+            background: #c9a96e;
+            border: none;
+            border-radius: 100px;
+            padding: 9px 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background 0.25s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .pc-btn:hover {
+            background: #d9ba80;
+            transform: scale(1.05);
+        }
+
+        /* Split labels */
         .split-divider {
             position: absolute;
-            top: 0;
-            left: 50%;
+            top: 0; left: 50%;
             transform: translateX(-50%);
-            width: 1px;
-            height: 100%;
-            background: rgba(255,255,255,0.6);
+            width: 1px; height: 100%;
+            background: rgba(255,255,255,0.55);
             z-index: 3;
         }
 
         .split-icon {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 24px;
-            height: 24px;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 26px; height: 26px;
             border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.8);
-            background: rgba(0,0,0,0.4);
+            border: 1.5px solid rgba(255,255,255,0.75);
+            background: rgba(0,0,0,0.45);
             z-index: 4;
             display: flex;
             align-items: center;
@@ -511,112 +626,40 @@
         .split-icon::before,
         .split-icon::after {
             content: '';
-            width: 5px;
-            height: 1px;
+            width: 5px; height: 1px;
             background: #fff;
             position: absolute;
         }
         .split-icon::before { left: 4px; }
-        .split-icon::after { right: 4px; }
+        .split-icon::after  { right: 4px; }
 
         .split-label {
             position: absolute;
-            bottom: 8px;
+            bottom: 10px;
             font-size: 8px;
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            font-weight: 600;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            padding: 3px 8px;
+            padding: 3px 9px;
+            border-radius: 100px;
             z-index: 4;
-        }
-
-        .split-label-before {
-            left: 8px;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .split-label-after {
-            right: 8px;
-            background: #c9a96e;
-            color: #0a0a0a;
-        }
-
-        .card-body {
-            padding: 16px 18px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-body h3 {
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 4px;
-            letter-spacing: 0.08em;
-        }
-
-        .card-body .desc {
-            font-size: 11px;
-            color: #5a5448;
-            font-weight: 300;
-            margin-bottom: auto;
-            line-height: 1.5;
-        }
-
-        .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 18px;
-            border-top: 0.5px solid #1e1c18;
-        }
-
-        .card-footer .price {
-            font-size: 15px;
-            font-weight: 500;
-            color: #f0ece4;
-            letter-spacing: 0.05em;
-        }
-
-        .card-footer .btn-view {
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 6px 16px;
-            border: 0.5px solid #f0ece4;
-            color: #f0ece4;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s;
             font-family: 'Inter', sans-serif;
         }
 
-        .card-footer .btn-view:hover {
-            background: #f0ece4;
-            color: #0a0a0a;
+        .split-label-before {
+            left: 10px;
+            background: rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.55);
         }
 
-        .badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
+        .split-label-after {
+            right: 10px;
             background: #c9a96e;
             color: #0a0a0a;
-            font-size: 8px;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 2px;
-            z-index: 5;
         }
 
-        .badge-outline {
-            background: transparent;
-            border: 0.5px solid #c9a96e;
-            color: #c9a96e;
-        }
+        /* compat stubs — old classes no longer in HTML */
+        .badge, .badge-outline { display: none; }
 
         /* Bundle row */
         .bundle-row {
@@ -1358,8 +1401,8 @@
             transform: translate(-50%, -50%);
         }
         .waypoint-marker {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             background: #c9a96e;
             border-radius: 50%;
             display: flex;
@@ -1369,83 +1412,87 @@
             font-weight: 700;
             font-size: 13px;
             font-family: 'Inter', sans-serif;
-            box-shadow: 0 4px 12px rgba(201,169,110,0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 0 4px rgba(201,169,110,0.18), 0 4px 14px rgba(201,169,110,0.45);
+            transition: transform 0.25s, box-shadow 0.25s;
+            position: relative;
+            z-index: 2;
         }
-        .waypoint:hover .waypoint-marker {
-            transform: scale(1.18);
-            box-shadow: 0 6px 20px rgba(201,169,110,0.6);
-        }
-        .waypoint-flag {
+        /* Always-visible info panel below each marker */
+        .waypoint-info {
             position: absolute;
-            bottom: calc(100% + 2px);
+            top: calc(100% + 10px);
             left: 50%;
-            transform: translateX(-50%) translateY(8px);
-            opacity: 0;
+            transform: translateX(-50%);
+            background: rgba(10,10,10,0.68);
+            border: 1px solid rgba(201,169,110,0.28);
+            border-radius: 7px;
+            padding: 8px 13px;
+            min-width: 150px;
+            text-align: center;
             pointer-events: none;
-            transition: opacity 0.25s, transform 0.25s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            z-index: 1;
         }
-        .waypoint:hover .waypoint-flag {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        .flag-content {
-            background: rgba(201,169,110,0.95);
-            border: none;
-            padding: 11px 16px;
-            border-radius: 8px;
-            min-width: 190px;
-            box-shadow: 0 6px 20px rgba(201,169,110,0.5), 0 2px 8px rgba(0,0,0,0.4);
-            margin-bottom: 0;
-        }
-        .flag-content strong {
-            display: block;
-            color: #0a0a0a;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+        .waypoint-title {
+            font-size: 10px;
+            font-weight: 600;
+            color: #c9a96e;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             font-family: 'Inter', sans-serif;
             white-space: nowrap;
         }
-        .flag-content p {
-            color: rgba(10,10,10,0.72);
-            font-size: 11px;
+        .waypoint-desc {
+            font-size: 10px;
+            color: rgba(240,236,228,0.6);
+            font-weight: 300;
+            line-height: 1.45;
             margin: 0;
-            line-height: 1.5;
-            font-weight: 400;
-            max-width: 190px;
             font-family: 'Inter', sans-serif;
         }
-        .flag-pole {
-            width: 2px;
-            height: 20px;
-            background: rgba(201,169,110,0.9);
-            flex-shrink: 0;
-        }
-        /* Right-edge waypoints: shift flag left */
-        .waypoint[data-id="5"] .waypoint-flag,
-        .waypoint[data-id="6"] .waypoint-flag {
+        /* Right-edge info panels: shift left */
+        .waypoint[data-id="5"] .waypoint-info,
+        .waypoint[data-id="6"] .waypoint-info {
             left: auto;
             right: 50%;
-            transform: translateX(50%) translateY(8px);
-            align-items: flex-end;
+            transform: translateX(50%);
         }
-        .waypoint[data-id="5"]:hover .waypoint-flag,
-        .waypoint[data-id="6"]:hover .waypoint-flag {
-            transform: translateX(50%) translateY(0);
+        /* Hover: spotlight — darken the whole bg via :has() */
+        .roadmap-illustration::before {
+            transition: background 0.35s;
         }
+        .roadmap-illustration:has(.waypoint:hover)::before {
+            background: linear-gradient(rgba(10,10,10,0.72), rgba(10,10,10,0.90));
+        }
+        /* Hovered waypoint: glow + scale, info panel turns gold */
+        .waypoint:hover {
+            z-index: 10;
+        }
+        .waypoint:hover .waypoint-marker {
+            transform: scale(1.22);
+            box-shadow: 0 0 0 8px rgba(201,169,110,0.22), 0 6px 22px rgba(201,169,110,0.65);
+        }
+        .waypoint:hover .waypoint-info {
+            background: rgba(201,169,110,0.96);
+            border-color: #c9a96e;
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 8px 24px rgba(201,169,110,0.45);
+        }
+        .waypoint[data-id="5"]:hover .waypoint-info,
+        .waypoint[data-id="6"]:hover .waypoint-info {
+            transform: translateX(50%) translateY(-3px);
+        }
+        .waypoint:hover .waypoint-title { color: #0a0a0a; }
+        .waypoint:hover .waypoint-desc  { color: rgba(10,10,10,0.72); }
         /* Responsive */
         @media (max-width: 768px) {
             .roadmap-illustration { min-height: 420px; }
             .waypoint-marker { width: 26px; height: 26px; font-size: 11px; }
-            .flag-content { min-width: 150px; padding: 9px 12px; }
-            .flag-content strong { font-size: 10px; }
-            .flag-content p { font-size: 10px; }
+            .waypoint-info { padding: 6px 10px; min-width: 120px; }
+            .waypoint-title, .waypoint-desc { font-size: 9px; }
         }
         @media (max-width: 480px) {
             .roadmap-illustration { min-height: 300px; }
@@ -1622,6 +1669,7 @@
         /* ===== Responsive ===== */
         @media (max-width: 900px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .pc-card:first-child { grid-column: span 2; }
             .bundle-row { flex-wrap: wrap; }
             .review-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
             .v-grid { max-width: 100%; }
@@ -1644,7 +1692,9 @@
                 border-bottom: 0.5px solid #1e1c18;
             }
             .nav-toggle { display: block; }
-            .product-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .product-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+            .pc-card:first-child { grid-column: span 1; }
+            .pc-card:first-child .pc-img { aspect-ratio: 4/3; }
             .vip-card { flex: 0 0 140px; width: 140px; }
             .btn-myrank { padding: 12px 24px; font-size: 10px; }
             .bundle-right { flex-direction: column; align-items: flex-end; gap: 6px; }
@@ -1721,147 +1771,160 @@
                 <h2 data-en="Digital Goods" data-de="Digitale Produkte" data-es="Productos Digitales">Digital Goods</h2>
             </div>
             <div class="product-grid">
-                <!-- Card 1: Wallpaper Pack -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=400&fit=crop" alt="4K Travel Wallpaper Pack — Berglandschaft aus 23 Ländern" loading="lazy" decoding="async" width="600" height="400">
+                <!-- Card 1: Wallpaper Pack — FEATURED (spans 2 cols) -->
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&h=500&fit=crop" alt="4K Travel Wallpaper Pack" loading="lazy" decoding="async" width="900" height="500">
+                        <span class="pc-badge pc-badge-gold">Bestseller</span>
                     </div>
-                    <span class="badge">Bestseller</span>
-                    <div class="card-body">
-                        <h3 data-en="Wallpaper Pack" data-de="Wallpaper Pack" data-es="Pack de Fondos">Wallpaper Pack</h3>
-                        <p class="desc" data-en="50+ handpicked 4K shots from 23 countries." data-de="50+ handverlesene 4K-Aufnahmen aus 23 Ländern." data-es="Más de 50 fotos 4K de 23 países seleccionadas a mano.">50+ handpicked 4K shots from 23 countries.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;9.99</span>
-                        <button class="btn-add-cart" data-product="wallpaper" onclick="addToCart('wallpaper')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">Wallpaper Pack</span>
+                        <div class="pc-name" data-en="50 Countries in 4K" data-de="50 Länder in 4K" data-es="50 Países en 4K">50 Countries in 4K</div>
+                        <p class="pc-desc" data-en="50+ handpicked 4K shots from 23 countries. Instant download." data-de="50+ handverlesene 4K-Aufnahmen aus 23 Ländern. Sofortiger Download." data-es="Más de 50 fotos 4K de 23 países. Descarga instantánea.">50+ handpicked 4K shots from 23 countries. Instant download.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;9.99</span>
+                            <button class="pc-btn" data-product="wallpaper" onclick="addToCart('wallpaper')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 2: Cinematic LUTs -->
-                <div class="product-card reveal">
-                    <div class="card-img-split">
-                        <img class="before-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT Before — unbearbeitetes Reisevideo" loading="lazy" decoding="async" width="600" height="400">
-                        <img class="after-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT After — filmischer Farbton" loading="lazy" decoding="async" width="600" height="400">
-                        <div class="split-divider"></div>
-                        <div class="split-icon"></div>
-                        <span class="split-label split-label-before">Before</span>
-                        <span class="split-label split-label-after">After</span>
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <div class="pc-split">
+                            <img class="before-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT Before" loading="lazy" decoding="async" width="600" height="400">
+                            <img class="after-img"  src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT After" loading="lazy" decoding="async" width="600" height="400">
+                            <div class="split-divider"></div>
+                            <div class="split-icon"></div>
+                            <span class="split-label split-label-before">Before</span>
+                            <span class="split-label split-label-after">After</span>
+                        </div>
+                        <span class="pc-badge">New</span>
                     </div>
-                    <span class="badge badge-outline">New</span>
-                    <div class="card-body">
-                        <h3 data-en="Cinematic LUTs" data-de="Cinematic LUTs" data-es="LUTs Cinematográficos">Cinematic LUTs</h3>
-                        <p class="desc" data-en="20 film-inspired color grades for video." data-de="20 filminspirierte Farbgrades für Video." data-es="20 grades de color inspirados en el cine.">20 film-inspired color grades for video.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;19.99</span>
-                        <button class="btn-add-cart" data-product="luts" onclick="addToCart('luts')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">Video</span>
+                        <div class="pc-name" data-en="Cinematic LUTs" data-de="Cinematic LUTs" data-es="LUTs Cinematográficos">Cinematic LUTs</div>
+                        <p class="pc-desc" data-en="20 film-inspired color grades for video." data-de="20 filminspirierte Farbgrades für Video." data-es="20 grades de color inspirados en el cine.">20 film-inspired color grades for video.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;19.99</span>
+                            <button class="pc-btn" data-product="luts" onclick="addToCart('luts')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 3: Lightroom Presets -->
-                <div class="product-card reveal">
-                    <div class="card-img-split">
-                        <img class="before-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset Before — Reisefoto unbearbeitet" loading="lazy" decoding="async" width="600" height="400">
-                        <img class="after-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset After — goldener Travel-Look" loading="lazy" decoding="async" width="600" height="400">
-                        <div class="split-divider"></div>
-                        <div class="split-icon"></div>
-                        <span class="split-label split-label-before">Before</span>
-                        <span class="split-label split-label-after">After</span>
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <div class="pc-split">
+                            <img class="before-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset Before" loading="lazy" decoding="async" width="600" height="400">
+                            <img class="after-img"  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset After" loading="lazy" decoding="async" width="600" height="400">
+                            <div class="split-divider"></div>
+                            <div class="split-icon"></div>
+                            <span class="split-label split-label-before">Before</span>
+                            <span class="split-label split-label-after">After</span>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3 data-en="Lightroom Presets" data-de="Lightroom Presets" data-es="Presets de Lightroom">Lightroom Presets</h3>
-                        <p class="desc" data-en="30 presets for mobile &amp; desktop." data-de="30 Presets für Mobile &amp; Desktop." data-es="30 presets para móvil y escritorio.">30 presets for mobile &amp; desktop.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;19.99</span>
-                        <button class="btn-add-cart" data-product="presets" onclick="addToCart('presets')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">Photography</span>
+                        <div class="pc-name" data-en="Lightroom Presets" data-de="Lightroom Presets" data-es="Presets de Lightroom">Lightroom Presets</div>
+                        <p class="pc-desc" data-en="30 presets for mobile &amp; desktop." data-de="30 Presets für Mobile &amp; Desktop." data-es="30 presets para móvil y escritorio.">30 presets for mobile &amp; desktop.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;19.99</span>
+                            <button class="pc-btn" data-product="presets" onclick="addToCart('presets')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 4: Travel Hacks Guide -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="Travel Hacks Guide PDF — Günstige Flüge und Reise-Insider-Tipps" loading="lazy" decoding="async" width="600" height="400">
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="Travel Hacks Guide PDF" loading="lazy" decoding="async" width="600" height="400">
+                        <span class="pc-badge">PDF Guide</span>
                     </div>
-                    <span class="badge badge-outline">PDF</span>
-                    <div class="card-body">
-                        <h3 data-en="Travel Hacks Guide" data-de="Travel Hacks Guide" data-es="Guía de Trucos Viajeros">Travel Hacks Guide</h3>
-                        <p class="desc" data-en="50+ insider tips: cheap flights, hidden deals &amp; smarter travel on any budget." data-de="50+ Insider-Tipps: günstige Flüge, versteckte Deals &amp; smarter reisen mit jedem Budget." data-es="Más de 50 consejos insider: vuelos baratos, ofertas ocultas y viajes más inteligentes.">50+ insider tips: cheap flights, hidden deals &amp; smarter travel on any budget.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;7.99</span>
-                        <button class="btn-add-cart" data-product="guide" onclick="addToCart('guide')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">PDF</span>
+                        <div class="pc-name" data-en="Travel Hacks Guide" data-de="Travel Hacks Guide" data-es="Guía de Trucos Viajeros">Travel Hacks Guide</div>
+                        <p class="pc-desc" data-en="50+ insider tips: cheap flights, hidden deals &amp; smarter travel on any budget." data-de="50+ Insider-Tipps: günstige Flüge, versteckte Deals &amp; smarter reisen." data-es="Más de 50 consejos insider: vuelos baratos y viajes más inteligentes.">50+ insider tips: cheap flights, hidden deals &amp; smarter travel on any budget.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;7.99</span>
+                            <button class="pc-btn" data-product="guide" onclick="addToCart('guide')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 5: Packing List Templates -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1553531384-397c80973a0b?w=600&h=400&fit=crop" alt="Packing List Templates — smart reisen ohne zu vergessen" loading="lazy" decoding="async" width="600" height="400">
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1553531384-397c80973a0b?w=600&h=400&fit=crop" alt="Packing List Templates" loading="lazy" decoding="async" width="600" height="400">
+                        <span class="pc-badge">PDF</span>
                     </div>
-                    <span class="badge badge-outline">PDF</span>
-                    <div class="card-body">
-                        <h3 data-en="Packing List Templates" data-de="Packlisten-Vorlagen" data-es="Plantillas de Equipaje">Packing List Templates</h3>
-                        <p class="desc" data-en="10 trip-type packing lists — beach, city, backpacking & more. Never forget a thing." data-de="10 Packlisten für jeden Trip — Strand, City, Backpacking & mehr. Nie wieder etwas vergessen." data-es="10 listas de equipaje para cada viaje — playa, ciudad, mochila y más.">10 trip-type packing lists — beach, city, backpacking &amp; more. Never forget a thing.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;4.99</span>
-                        <button class="btn-add-cart" data-product="packing" onclick="addToCart('packing')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">PDF</span>
+                        <div class="pc-name" data-en="Packing List Templates" data-de="Packlisten-Vorlagen" data-es="Plantillas de Equipaje">Packing List Templates</div>
+                        <p class="pc-desc" data-en="10 trip-type packing lists — beach, city, backpacking &amp; more." data-de="10 Packlisten für jeden Trip — Strand, City, Backpacking &amp; mehr." data-es="10 listas de equipaje para cada viaje — playa, ciudad y mochila.">10 trip-type packing lists — beach, city, backpacking &amp; more.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;4.99</span>
+                            <button class="pc-btn" data-product="packing" onclick="addToCart('packing')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 6: Airport Hacks Cheat Sheet -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" alt="Airport Hacks Cheat Sheet — schneller durch den Flughafen" loading="lazy" decoding="async" width="600" height="400">
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" alt="Airport Hacks Cheat Sheet" loading="lazy" decoding="async" width="600" height="400">
+                        <span class="pc-badge">PDF</span>
                     </div>
-                    <span class="badge badge-outline">PDF</span>
-                    <div class="card-body">
-                        <h3 data-en="Airport Hacks Cheat Sheet" data-de="Airport-Hacks Spickzettel" data-es="Trucos de Aeropuerto">Airport Hacks Cheat Sheet</h3>
-                        <p class="desc" data-en="Skip the queues, find the best seats, eat cheap — one sheet, all airports." data-de="Warteschlangen überspringen, beste Plätze finden, günstig essen — ein Sheet, alle Flughäfen." data-es="Salta colas, encuentra los mejores asientos, come barato — una hoja, todos los aeropuertos.">Skip the queues, find the best seats, eat cheap — one sheet, all airports.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;2.99</span>
-                        <button class="btn-add-cart" data-product="airport" onclick="addToCart('airport')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">PDF</span>
+                        <div class="pc-name" data-en="Airport Hacks Cheat Sheet" data-de="Airport-Hacks Spickzettel" data-es="Trucos de Aeropuerto">Airport Hacks Cheat Sheet</div>
+                        <p class="pc-desc" data-en="Skip queues, find the best seats, eat cheap — one sheet, all airports." data-de="Warteschlangen überspringen, beste Plätze finden, günstig essen." data-es="Salta colas, encuentra los mejores asientos, come barato.">Skip queues, find the best seats, eat cheap — one sheet, all airports.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;2.99</span>
+                            <button class="pc-btn" data-product="airport" onclick="addToCart('airport')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 7: Budget Travel Calculator -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&h=400&fit=crop" alt="Budget Travel Calculator — Reisebudget planen leicht gemacht" loading="lazy" decoding="async" width="600" height="400">
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&h=400&fit=crop" alt="Budget Travel Calculator" loading="lazy" decoding="async" width="600" height="400">
+                        <span class="pc-badge">Spreadsheet</span>
                     </div>
-                    <span class="badge badge-outline">Spreadsheet</span>
-                    <div class="card-body">
-                        <h3 data-en="Budget Travel Calculator" data-de="Reisebudget-Rechner" data-es="Calculadora de Presupuesto">Budget Travel Calculator</h3>
-                        <p class="desc" data-en="Plan any trip budget in minutes — flights, hotels, food & activities. Works in Excel & Google Sheets." data-de="Jedes Reisebudget in Minuten planen — Flüge, Hotels, Essen & Aktivitäten. Für Excel & Google Sheets." data-es="Planifica cualquier presupuesto en minutos — vuelos, hoteles, comida y actividades.">Plan any trip budget in minutes — flights, hotels, food &amp; activities. Works in Excel &amp; Google Sheets.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;3.99</span>
-                        <button class="btn-add-cart" data-product="budget" onclick="addToCart('budget')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">Spreadsheet</span>
+                        <div class="pc-name" data-en="Budget Travel Calculator" data-de="Reisebudget-Rechner" data-es="Calculadora de Presupuesto">Budget Travel Calculator</div>
+                        <p class="pc-desc" data-en="Plan any trip in minutes — flights, hotels, food &amp; activities. Excel &amp; Google Sheets." data-de="Jeden Trip in Minuten planen — Flüge, Hotels, Essen &amp; Aktivitäten." data-es="Planifica cualquier presupuesto — vuelos, hoteles, comida y actividades.">Plan any trip in minutes — flights, hotels, food &amp; activities. Excel &amp; Google Sheets.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;3.99</span>
+                            <button class="pc-btn" data-product="budget" onclick="addToCart('budget')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 8: Visa Requirement Checker -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?w=600&h=400&fit=crop" alt="Visa Requirement Checker — Reisepass und Visum im Überblick" loading="lazy" decoding="async" width="600" height="400">
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?w=600&h=400&fit=crop" alt="Visa Requirement Checker" loading="lazy" decoding="async" width="600" height="400">
+                        <span class="pc-badge">PDF</span>
                     </div>
-                    <span class="badge badge-outline">PDF</span>
-                    <div class="card-body">
-                        <h3 data-en="Visa Requirement Checker" data-de="Visa-Anforderungs-Checker" data-es="Verificador de Visados">Visa Requirement Checker</h3>
-                        <p class="desc" data-en="60+ countries covered — entry rules, visa-on-arrival, e-visas & processing times at a glance." data-de="60+ Länder — Einreiseregeln, Visum bei Ankunft, E-Visa & Bearbeitungszeiten auf einen Blick." data-es="Más de 60 países — reglas de entrada, visados a la llegada y tiempos de tramitación.">60+ countries covered — entry rules, visa-on-arrival, e-visas &amp; processing times at a glance.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;5.99</span>
-                        <button class="btn-add-cart" data-product="visa" onclick="addToCart('visa')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">PDF</span>
+                        <div class="pc-name" data-en="Visa Requirement Checker" data-de="Visa-Anforderungs-Checker" data-es="Verificador de Visados">Visa Requirement Checker</div>
+                        <p class="pc-desc" data-en="60+ countries — entry rules, visa-on-arrival, e-visas &amp; processing times at a glance." data-de="60+ Länder — Einreiseregeln, Visum bei Ankunft &amp; E-Visa auf einen Blick." data-es="Más de 60 países — reglas de entrada y tiempos de tramitación.">60+ countries — entry rules, visa-on-arrival, e-visas &amp; processing times at a glance.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;5.99</span>
+                            <button class="pc-btn" data-product="visa" onclick="addToCart('visa')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 9: Travel Photography Poses Guide -->
-                <div class="product-card reveal">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=400&fit=crop" alt="Travel Photography Poses Guide — bessere Reisefotos einfach gemacht" loading="lazy" decoding="async" width="600" height="400">
+                <div class="pc-card reveal">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=400&fit=crop" alt="Travel Photography Poses Guide" loading="lazy" decoding="async" width="600" height="400">
                     </div>
-                    <div class="card-body">
-                        <h3 data-en="Travel Photography Poses Guide" data-de="Reisefoto-Posen-Guide" data-es="Guía de Poses de Viaje">Travel Photography Poses Guide</h3>
-                        <p class="desc" data-en="100+ pose ideas for solo travel photos — natural, cinematic, no cringe. Works for any location." data-de="100+ Posen-Ideen für Solo-Reisefotos — natürlich, filmisch, nicht peinlich. Für jeden Ort." data-es="Más de 100 ideas de poses para fotos de viaje en solitario — naturales y cinematográficas.">100+ pose ideas for solo travel photos — natural, cinematic, no cringe. Works for any location.</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">&euro;6.99</span>
-                        <button class="btn-add-cart" data-product="photoposes" onclick="addToCart('photoposes')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                    <div class="pc-body">
+                        <span class="pc-type">PDF Guide</span>
+                        <div class="pc-name" data-en="Photography Poses Guide" data-de="Foto-Posen-Guide" data-es="Guía de Poses de Viaje">Photography Poses Guide</div>
+                        <p class="pc-desc" data-en="100+ pose ideas for solo travel photos — natural, cinematic, no cringe." data-de="100+ Posen-Ideen für Solo-Reisefotos — natürlich, filmisch." data-es="Más de 100 ideas de poses para fotos de viaje en solitario.">100+ pose ideas for solo travel photos — natural, cinematic, no cringe.</p>
+                        <div class="pc-footer">
+                            <span class="pc-price">&euro;6.99</span>
+                            <button class="pc-btn" data-product="photoposes" onclick="addToCart('photoposes')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1973,69 +2036,51 @@
                           opacity="0.8"/>
                 </svg>
                 <!-- Waypoint 1: Community Chat -->
-                <div class="waypoint" style="left:20%;top:80%;" data-id="1">
+                <div class="waypoint" style="left:22%;top:78%;" data-id="1">
                     <div class="waypoint-marker">1</div>
-                    <div class="waypoint-flag">
-                        <div class="flag-content">
-                            <strong>Community Chat</strong>
-                            <p>Reisende teilen Spots, Tipps &amp; Reviews</p>
-                        </div>
-                        <div class="flag-pole"></div>
+                    <div class="waypoint-info">
+                        <div class="waypoint-title">Community Chat</div>
+                        <p class="waypoint-desc">Reisende teilen Spots, Tipps &amp; Reviews</p>
                     </div>
                 </div>
                 <!-- Waypoint 2: Interactive Maps -->
-                <div class="waypoint" style="left:35%;top:65%;" data-id="2">
+                <div class="waypoint" style="left:36%;top:62%;" data-id="2">
                     <div class="waypoint-marker">2</div>
-                    <div class="waypoint-flag">
-                        <div class="flag-content">
-                            <strong>Interactive Maps</strong>
-                            <p>Hidden Gems &amp; kuratierte Routen</p>
-                        </div>
-                        <div class="flag-pole"></div>
+                    <div class="waypoint-info">
+                        <div class="waypoint-title">Interactive Maps</div>
+                        <p class="waypoint-desc">Hidden Gems &amp; kuratierte Routen</p>
                     </div>
                 </div>
                 <!-- Waypoint 3: Gear Vault -->
-                <div class="waypoint" style="left:50%;top:55%;" data-id="3">
+                <div class="waypoint" style="left:49%;top:50%;" data-id="3">
                     <div class="waypoint-marker">3</div>
-                    <div class="waypoint-flag">
-                        <div class="flag-content">
-                            <strong>Gear Vault</strong>
-                            <p>Equipment-Empfehlungen &amp; No-Go Liste</p>
-                        </div>
-                        <div class="flag-pole"></div>
+                    <div class="waypoint-info">
+                        <div class="waypoint-title">Gear Vault</div>
+                        <p class="waypoint-desc">Equipment-Empfehlungen &amp; No-Go Liste</p>
                     </div>
                 </div>
                 <!-- Waypoint 4: Live Q&A Sessions -->
-                <div class="waypoint" style="left:65%;top:45%;" data-id="4">
+                <div class="waypoint" style="left:61%;top:41%;" data-id="4">
                     <div class="waypoint-marker">4</div>
-                    <div class="waypoint-flag">
-                        <div class="flag-content">
-                            <strong>Live Q&amp;A Sessions</strong>
-                            <p>Monatliche Sessions &mdash; Members only</p>
-                        </div>
-                        <div class="flag-pole"></div>
+                    <div class="waypoint-info">
+                        <div class="waypoint-title">Live Q&amp;A Sessions</div>
+                        <p class="waypoint-desc">Monatliche Sessions &mdash; Members only</p>
                     </div>
                 </div>
                 <!-- Waypoint 5: Member Content -->
-                <div class="waypoint" style="left:80%;top:35%;" data-id="5">
+                <div class="waypoint" style="left:74%;top:32%;" data-id="5">
                     <div class="waypoint-marker">5</div>
-                    <div class="waypoint-flag">
-                        <div class="flag-content">
-                            <strong>Member Content</strong>
-                            <p>Behind-the-Scenes &amp; Raw Footage</p>
-                        </div>
-                        <div class="flag-pole"></div>
+                    <div class="waypoint-info">
+                        <div class="waypoint-title">Member Content</div>
+                        <p class="waypoint-desc">Behind-the-Scenes &amp; Raw Footage</p>
                     </div>
                 </div>
                 <!-- Waypoint 6: Local Discounts -->
-                <div class="waypoint" style="left:90%;top:25%;" data-id="6">
+                <div class="waypoint" style="left:85%;top:24%;" data-id="6">
                     <div class="waypoint-marker">6</div>
-                    <div class="waypoint-flag">
-                        <div class="flag-content">
-                            <strong>Local Discounts</strong>
-                            <p>Exklusive Deals mit lokalen Partnern</p>
-                        </div>
-                        <div class="flag-pole"></div>
+                    <div class="waypoint-info">
+                        <div class="waypoint-title">Local Discounts</div>
+                        <p class="waypoint-desc">Exklusive Deals mit lokalen Partnern</p>
                     </div>
                 </div>
             </div>
