@@ -551,12 +551,31 @@
         }
 
         .pc-desc {
-            font-size: 11.5px;
-            color: rgba(240,236,228,0.42);
-            font-weight: 300;
-            line-height: 1.6;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
             flex: 1;
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .pc-desc li {
+            font-size: 11px;
+            color: rgba(240,236,228,0.52);
+            font-weight: 300;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .pc-desc li::before {
+            content: '—';
+            color: #c9a96e;
+            font-weight: 500;
+            flex-shrink: 0;
+            font-size: 11px;
         }
 
         /* Card footer */
@@ -1780,7 +1799,11 @@
                     <div class="pc-body">
                         <span class="pc-type">Wallpaper Pack</span>
                         <div class="pc-name" data-en="50 Countries in 4K" data-de="50 Länder in 4K" data-es="50 Países en 4K">50 Countries in 4K</div>
-                        <p class="pc-desc" data-en="50+ handpicked 4K shots from 23 countries. Instant download." data-de="50+ handverlesene 4K-Aufnahmen aus 23 Ländern. Sofortiger Download." data-es="Más de 50 fotos 4K de 23 países. Descarga instantánea.">50+ handpicked 4K shots from 23 countries. Instant download.</p>
+                        <ul class="pc-desc">
+                            <li>Save hours searching — 50+ shots, ready to use</li>
+                            <li>4K quality from 23 countries worldwide</li>
+                            <li>Instant download, all screen sizes included</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;9.99</span>
                             <button class="pc-btn" data-product="wallpaper" onclick="addToCart('wallpaper')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1803,7 +1826,11 @@
                     <div class="pc-body">
                         <span class="pc-type">Video</span>
                         <div class="pc-name" data-en="Cinematic LUTs" data-de="Cinematic LUTs" data-es="LUTs Cinematográficos">Cinematic LUTs</div>
-                        <p class="pc-desc" data-en="20 film-inspired color grades for video." data-de="20 filminspirierte Farbgrades für Video." data-es="20 grades de color inspirados en el cine.">20 film-inspired color grades for video.</p>
+                        <ul class="pc-desc">
+                            <li>One click — instant cinematic film look</li>
+                            <li>20 grades for Premiere, DaVinci &amp; FCPX</li>
+                            <li>Cut color grading time by 80%</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;19.99</span>
                             <button class="pc-btn" data-product="luts" onclick="addToCart('luts')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1825,7 +1852,11 @@
                     <div class="pc-body">
                         <span class="pc-type">Photography</span>
                         <div class="pc-name" data-en="Lightroom Presets" data-de="Lightroom Presets" data-es="Presets de Lightroom">Lightroom Presets</div>
-                        <p class="pc-desc" data-en="30 presets for mobile &amp; desktop." data-de="30 Presets für Mobile &amp; Desktop." data-es="30 presets para móvil y escritorio.">30 presets for mobile &amp; desktop.</p>
+                        <ul class="pc-desc">
+                            <li>Pro travel look in seconds</li>
+                            <li>30 presets — works on free Lightroom app</li>
+                            <li>Mobile &amp; desktop, batch apply</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;19.99</span>
                             <button class="pc-btn" data-product="presets" onclick="addToCart('presets')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1841,7 +1872,11 @@
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
                         <div class="pc-name" data-en="Travel Hacks Guide" data-de="Travel Hacks Guide" data-es="Guía de Trucos Viajeros">Travel Hacks Guide</div>
-                        <p class="pc-desc" data-en="50+ insider tips: cheap flights, hidden deals &amp; smarter travel on any budget." data-de="50+ Insider-Tipps: günstige Flüge, versteckte Deals &amp; smarter reisen." data-es="Más de 50 consejos insider: vuelos baratos y viajes más inteligentes.">50+ insider tips: cheap flights, hidden deals &amp; smarter travel on any budget.</p>
+                        <ul class="pc-desc">
+                            <li>Save up to €500 per trip</li>
+                            <li>50+ tips: cheap flights &amp; hidden deals</li>
+                            <li>Pays for itself on the first booking</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;7.99</span>
                             <button class="pc-btn" data-product="guide" onclick="addToCart('guide')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1857,7 +1892,11 @@
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
                         <div class="pc-name" data-en="Packing List Templates" data-de="Packlisten-Vorlagen" data-es="Plantillas de Equipaje">Packing List Templates</div>
-                        <p class="pc-desc" data-en="10 trip-type packing lists — beach, city, backpacking &amp; more." data-de="10 Packlisten für jeden Trip — Strand, City, Backpacking &amp; mehr." data-es="10 listas de equipaje para cada viaje — playa, ciudad y mochila.">10 trip-type packing lists — beach, city, backpacking &amp; more.</p>
+                        <ul class="pc-desc">
+                            <li>Never forget essentials again</li>
+                            <li>10 lists by trip type: beach, city, backpack</li>
+                            <li>Editable — print or use digitally</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;4.99</span>
                             <button class="pc-btn" data-product="packing" onclick="addToCart('packing')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1873,7 +1912,11 @@
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
                         <div class="pc-name" data-en="Airport Hacks Cheat Sheet" data-de="Airport-Hacks Spickzettel" data-es="Trucos de Aeropuerto">Airport Hacks Cheat Sheet</div>
-                        <p class="pc-desc" data-en="Skip queues, find the best seats, eat cheap — one sheet, all airports." data-de="Warteschlangen überspringen, beste Plätze finden, günstig essen." data-es="Salta colas, encuentra los mejores asientos, come barato.">Skip queues, find the best seats, eat cheap — one sheet, all airports.</p>
+                        <ul class="pc-desc">
+                            <li>Beat queues at any airport worldwide</li>
+                            <li>Find cheap food &amp; fast WiFi inside</li>
+                            <li>One page — always in your pocket</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;2.99</span>
                             <button class="pc-btn" data-product="airport" onclick="addToCart('airport')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1889,7 +1932,11 @@
                     <div class="pc-body">
                         <span class="pc-type">Spreadsheet</span>
                         <div class="pc-name" data-en="Budget Travel Calculator" data-de="Reisebudget-Rechner" data-es="Calculadora de Presupuesto">Budget Travel Calculator</div>
-                        <p class="pc-desc" data-en="Plan any trip in minutes — flights, hotels, food &amp; activities. Excel &amp; Google Sheets." data-de="Jeden Trip in Minuten planen — Flüge, Hotels, Essen &amp; Aktivitäten." data-es="Planifica cualquier presupuesto — vuelos, hoteles, comida y actividades.">Plan any trip in minutes — flights, hotels, food &amp; activities. Excel &amp; Google Sheets.</p>
+                        <ul class="pc-desc">
+                            <li>Plan any trip in under 5 minutes</li>
+                            <li>Flights, hotels, food &amp; activities tracked</li>
+                            <li>Excel &amp; Google Sheets — 20 destinations pre-loaded</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;3.99</span>
                             <button class="pc-btn" data-product="budget" onclick="addToCart('budget')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1905,7 +1952,11 @@
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
                         <div class="pc-name" data-en="Visa Requirement Checker" data-de="Visa-Anforderungs-Checker" data-es="Verificador de Visados">Visa Requirement Checker</div>
-                        <p class="pc-desc" data-en="60+ countries — entry rules, visa-on-arrival, e-visas &amp; processing times at a glance." data-de="60+ Länder — Einreiseregeln, Visum bei Ankunft &amp; E-Visa auf einen Blick." data-es="Más de 60 países — reglas de entrada y tiempos de tramitación.">60+ countries — entry rules, visa-on-arrival, e-visas &amp; processing times at a glance.</p>
+                        <ul class="pc-desc">
+                            <li>60+ countries at a single glance</li>
+                            <li>Avoid expensive visa surprises</li>
+                            <li>Entry rules, e-visa links &amp; processing times</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;5.99</span>
                             <button class="pc-btn" data-product="visa" onclick="addToCart('visa')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
@@ -1920,7 +1971,11 @@
                     <div class="pc-body">
                         <span class="pc-type">PDF Guide</span>
                         <div class="pc-name" data-en="Photography Poses Guide" data-de="Foto-Posen-Guide" data-es="Guía de Poses de Viaje">Photography Poses Guide</div>
-                        <p class="pc-desc" data-en="100+ pose ideas for solo travel photos — natural, cinematic, no cringe." data-de="100+ Posen-Ideen für Solo-Reisefotos — natürlich, filmisch." data-es="Más de 100 ideas de poses para fotos de viaje en solitario.">100+ pose ideas for solo travel photos — natural, cinematic, no cringe.</p>
+                        <ul class="pc-desc">
+                            <li>100+ natural poses for solo travelers</li>
+                            <li>Works at any location — no photographer needed</li>
+                            <li>Cinematic results, no cringe guaranteed</li>
+                        </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;6.99</span>
                             <button class="pc-btn" data-product="photoposes" onclick="addToCart('photoposes')" data-en="Add to Cart" data-de="In den Warenkorb" data-es="Añadir al carrito">Add to Cart</button>
