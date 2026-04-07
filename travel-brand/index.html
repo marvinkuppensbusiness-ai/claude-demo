@@ -1726,20 +1726,187 @@
             .section { padding: 80px 0; }
             .about { padding: 80px 0; }
         }
-    </style>
+            /* ── Product Icon Cards ──────────────────────────── */
+        .pc-icon-wrap {
+            width:100%; aspect-ratio:4/3; display:flex; align-items:center;
+            justify-content:center; background:linear-gradient(135deg,#161410 0%,#1e1c18 100%);
+            position:relative; overflow:hidden;
+        }
+        .pc-card:first-child .pc-icon-wrap { aspect-ratio:16/7; }
+        .pc-icon-wrap::after {
+            content:''; position:absolute; inset:0;
+            background:radial-gradient(circle at 50% 60%, rgba(201,169,110,0.07) 0%, transparent 70%);
+        }
+        .pc-icon-svg { width:72px; height:72px; opacity:0.92; position:relative; z-index:1; }
+        .pc-card:first-child .pc-icon-svg { width:90px; height:90px; }
+        .pc-card:hover .pc-icon-svg { transform:scale(1.06); transition:transform 0.5s ease; }
+
+        /* ── Roadmap 2.0 — Animated Timeline ─────────────── */
+        .roadmap-timeline {
+            position:relative; padding:0 0 20px; margin:0 auto; max-width:1000px;
+        }
+        .rm-track {
+            position:absolute; left:40px; top:0; bottom:0; width:2px;
+            background:linear-gradient(to bottom, transparent, #c9a96e 8%, #c9a96e 92%, transparent);
+        }
+        .rm-item {
+            display:flex; gap:28px; align-items:flex-start; padding:0 0 36px 0;
+            opacity:0; transform:translateX(-20px);
+            animation: rmSlideIn 0.6s ease forwards;
+        }
+        .rm-item:nth-child(1) { animation-delay: 0.1s; }
+        .rm-item:nth-child(2) { animation-delay: 0.25s; }
+        .rm-item:nth-child(3) { animation-delay: 0.4s; }
+        .rm-item:nth-child(4) { animation-delay: 0.55s; }
+        .rm-item:nth-child(5) { animation-delay: 0.7s; }
+        .rm-item:nth-child(6) { animation-delay: 0.85s; }
+        @keyframes rmSlideIn {
+            to { opacity:1; transform:translateX(0); }
+        }
+        .rm-node {
+            flex-shrink:0; width:40px; height:40px; border-radius:50%;
+            background:#1e1c18; border:2px solid #c9a96e; display:flex;
+            align-items:center; justify-content:center; margin-left:20px;
+            position:relative; z-index:2; transition:background 0.3s;
+        }
+        .rm-node svg { width:18px; height:18px; }
+        .rm-item:hover .rm-node { background:#c9a96e; }
+        .rm-item:hover .rm-node svg path, .rm-item:hover .rm-node svg circle,
+        .rm-item:hover .rm-node svg rect, .rm-item:hover .rm-node svg polygon { fill:#0f0f0f; }
+        .rm-body {
+            flex:1; background:#161410; border:1px solid #1e1c18; border-radius:10px;
+            padding:16px 20px; transition:border-color 0.3s, transform 0.3s;
+        }
+        .rm-item:hover .rm-body { border-color:rgba(201,169,110,0.4); transform:translateX(4px); }
+        .rm-label { font-size:8px; letter-spacing:0.18em; color:#c9a96e; font-weight:600;
+            text-transform:uppercase; margin-bottom:4px; }
+        .rm-title { font-size:13px; font-weight:600; color:#f0ece4; margin-bottom:4px; letter-spacing:0.04em; }
+        .rm-desc { font-size:10px; color:#7a7268; line-height:1.55; text-transform:none; letter-spacing:0.02em; }
+        .rm-pulse {
+            position:absolute; inset:-4px; border-radius:50%;
+            border:1px solid rgba(201,169,110,0.3);
+            animation:rmPulse 2.5s ease-in-out infinite;
+        }
+        .rm-item:nth-child(even) .rm-pulse { animation-delay:1.25s; }
+        @keyframes rmPulse {
+            0%,100% { transform:scale(1); opacity:0.6; }
+            50%      { transform:scale(1.35); opacity:0; }
+        }
+        .rm-status-done { background:rgba(201,169,110,0.15); border-color:rgba(201,169,110,0.5); }
+        .rm-status-done .rm-node { background:#c9a96e; }
+        .rm-status-done .rm-node svg path { fill:#0f0f0f; }
+        .rm-status-badge {
+            display:inline-block; font-size:7px; letter-spacing:0.12em; padding:2px 8px;
+            border-radius:100px; text-transform:uppercase; font-weight:600; margin-top:8px;
+        }
+        .badge-live { background:rgba(201,169,110,0.15); color:#c9a96e; border:1px solid rgba(201,169,110,0.3); }
+        .badge-soon { background:rgba(240,236,228,0.06); color:#7a7268; border:1px solid #1e1c18; }
+        .badge-wip  { background:rgba(90,84,72,0.2); color:#5a5448; border:1px solid #2a2820; }
+
+        /* ── Register Modal ──────────────────────────────── */
+        .reg-overlay {
+            position:fixed; inset:0; background:rgba(10,10,10,0.88); z-index:10000;
+            display:flex; align-items:center; justify-content:center; padding:20px;
+            opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+            backdrop-filter:blur(6px);
+        }
+        .reg-overlay.open { opacity:1; pointer-events:all; }
+        .reg-modal {
+            background:#141414; border:1px solid #1e1c18; border-radius:16px;
+            width:100%; max-width:480px; padding:36px 32px;
+            transform:translateY(20px); transition:transform 0.3s ease;
+            max-height:90vh; overflow-y:auto;
+        }
+        .reg-overlay.open .reg-modal { transform:translateY(0); }
+        .reg-modal-header { text-align:center; margin-bottom:28px; }
+        .reg-modal-logo { font-size:11px; letter-spacing:0.22em; color:#c9a96e; margin-bottom:8px; }
+        .reg-modal-title { font-size:20px; font-weight:600; color:#f0ece4; letter-spacing:-0.01em; }
+        .reg-modal-sub { font-size:10px; color:#7a7268; margin-top:4px; text-transform:none; letter-spacing:0.04em; }
+        .reg-close {
+            position:absolute; top:16px; right:16px; background:none; border:none;
+            color:#5a5448; font-size:20px; cursor:pointer; padding:4px 8px;
+            transition:color 0.2s;
+        }
+        .reg-close:hover { color:#f0ece4; }
+        .reg-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+        .reg-field { margin-bottom:12px; position:relative; }
+        .reg-label { font-size:8px; letter-spacing:0.18em; color:#7a7268; text-transform:uppercase;
+            font-weight:600; margin-bottom:6px; display:block; }
+        .reg-input {
+            width:100%; background:#1a1a1a; border:1px solid #2a2820; border-radius:8px;
+            padding:11px 14px; color:#f0ece4; font-size:12px; outline:none;
+            transition:border-color 0.2s; text-transform:none; letter-spacing:0.03em;
+            font-family:inherit;
+        }
+        .reg-input:focus { border-color:rgba(201,169,110,0.5); }
+        .reg-input.valid   { border-color:#4caf7d; padding-right:36px; }
+        .reg-input.invalid { border-color:#e05c5c; padding-right:36px; }
+        .reg-check-icon {
+            position:absolute; right:12px; bottom:11px; font-size:14px;
+            pointer-events:none; display:none;
+        }
+        .reg-field.valid   .reg-check-icon { display:block; color:#4caf7d; }
+        .reg-field.invalid .reg-check-icon { display:block; color:#e05c5c; }
+        .reg-suggestions {
+            margin-top:6px; display:none; gap:6px; flex-wrap:wrap;
+        }
+        .reg-field.invalid .reg-suggestions { display:flex; }
+        .reg-sug-chip {
+            font-size:8px; padding:3px 10px; background:#1e1c18; border:1px solid #2a2820;
+            border-radius:100px; color:#c9a96e; cursor:pointer; letter-spacing:0.08em;
+            transition:background 0.2s;
+        }
+        .reg-sug-chip:hover { background:rgba(201,169,110,0.12); }
+        .reg-gender { display:flex; gap:10px; }
+        .reg-gender-btn {
+            flex:1; padding:10px; border:1px solid #2a2820; border-radius:8px;
+            background:#1a1a1a; color:#7a7268; font-size:10px; letter-spacing:0.1em;
+            text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit;
+        }
+        .reg-gender-btn.active { border-color:#c9a96e; color:#c9a96e; background:rgba(201,169,110,0.08); }
+        .reg-divider { height:1px; background:#1e1c18; margin:20px 0; }
+        .reg-submit {
+            width:100%; padding:13px; background:#c9a96e; color:#0a0a0a; border:none;
+            border-radius:100px; font-size:11px; font-weight:600; letter-spacing:0.15em;
+            text-transform:uppercase; cursor:pointer; transition:opacity 0.2s; font-family:inherit;
+            margin-top:8px;
+        }
+        .reg-submit:hover { opacity:0.88; }
+        .reg-footer-text { text-align:center; font-size:9px; color:#5a5448; margin-top:12px;
+            text-transform:none; letter-spacing:0.03em; }
+        .reg-footer-text a { color:#c9a96e; }
+
+        /* ===== SPA Router ===== */
+        .nav-links a.nav-active { color: var(--accent) !important; font-weight: 600; }
+        .logo.nav-active { color: var(--accent) !important; }
+        .spa-section { transition: opacity 0.25s ease; }
+        @keyframes spaFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .spa-fadein { animation: spaFadeIn 0.3s ease forwards; }
+
+        /* Page-specific hero tweaks when standalone */
+        .page-hero-mini {
+            min-height: 220px !important;
+            padding: 120px 0 60px !important;
+        }
+        .page-hero-mini .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+
+</style>
 </head>
 <body>
 
     <nav id="navbar">
         <div class="container">
-            <a href="#" class="logo">UncleMarv</a>
+            <a href="#home" class="logo" data-page="home">UncleMarv</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#shop">Collection</a></li>
-                <li><a href="#vip">VIP</a></li>
-                <li><a href="#about">My Vision</a></li>
-                <li><a href="#reviews">Voices</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li class="nav-cta"><a href="#newsletter">Join</a></li>
+                <li><a href="#collection" data-page="collection">Collection</a></li>
+                <li><a href="#vip" data-page="vip">VIP</a></li>
+                <li><a href="#vision" data-page="vision">My Vision</a></li>
+                <li><a href="#voices" data-page="voices">Voices</a></li>
+                <li><a href="#faq" data-page="faq">FAQ</a></li>
+                <li class="nav-cta"><a href="#" onclick="openRegModal(event)">Join</a></li>
                 <li class="lang-switcher" id="langSwitcher">
                     <button class="lang-btn" id="langBtn" onclick="toggleLangDropdown()" aria-label="Language">
                         <span class="lang-flag" id="langFlag">🇬🇧</span>
@@ -1765,7 +1932,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="page-home">
         <div class="hero-bg" id="heroBg">
             <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=85" alt="Berglandschaft bei Golden Hour — UncleMarv Hero" fetchpriority="high" decoding="async">
         </div>
@@ -1790,19 +1957,28 @@
                 <h2 data-en="Digital Goods" data-de="Digitale Produkte" data-es="Productos Digitales">Digital Goods</h2>
             </div>
             <div class="product-grid">
-                <!-- Card 1: Wallpaper Pack — FEATURED (spans 2 cols) -->
+                <!-- Card 1: UncleMarv World 4K — FEATURED -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&h=500&fit=crop" alt="4K Travel Wallpaper Pack" loading="lazy" decoding="async" width="900" height="500">
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="26" stroke="#c9a96e" stroke-width="2"/>
+                                <ellipse cx="32" cy="32" rx="12" ry="26" stroke="#c9a96e" stroke-width="1.5"/>
+                                <line x1="6" y1="32" x2="58" y2="32" stroke="#c9a96e" stroke-width="1.5"/>
+                                <path d="M10 20 Q32 24 54 20" stroke="#c9a96e" stroke-width="1" fill="none"/>
+                                <path d="M10 44 Q32 40 54 44" stroke="#c9a96e" stroke-width="1" fill="none"/>
+                                <circle cx="32" cy="32" r="4" fill="#c9a96e"/>
+                            </svg>
+                        </div>
                         <span class="pc-badge pc-badge-gold">Bestseller</span>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">Wallpaper Pack</span>
-                        <div class="pc-name" data-en="50 Countries in 4K" data-de="50 Länder in 4K" data-es="50 Países en 4K">50 Countries in 4K</div>
+                        <div class="pc-name" data-en="UncleMarv World 4K" data-de="UncleMarv World 4K" data-es="UncleMarv World 4K" data-fr="UncleMarv World 4K" data-it="UncleMarv World 4K">UncleMarv World 4K</div>
                         <ul class="pc-desc">
-                            <li>Save hours searching — 50+ shots, ready to use</li>
-                            <li>4K quality from 23 countries worldwide</li>
-                            <li>Instant download, all screen sizes included</li>
+                            <li>50+ handpicked shots from 23 countries</li>
+                            <li>True 4K — every screen size covered</li>
+                            <li>Instant download, no subscription needed</li>
                         </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;9.99</span>
@@ -1810,24 +1986,30 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 2: Cinematic LUTs -->
+                <!-- Card 2: UncleMarv Film Grade -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <div class="pc-split">
-                            <img class="before-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT Before" loading="lazy" decoding="async" width="600" height="400">
-                            <img class="after-img"  src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=400&fit=crop" alt="Cinematic LUT After" loading="lazy" decoding="async" width="600" height="400">
-                            <div class="split-divider"></div>
-                            <div class="split-icon"></div>
-                            <span class="split-label split-label-before">Before</span>
-                            <span class="split-label split-label-after">After</span>
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="18" width="48" height="28" rx="3" stroke="#c9a96e" stroke-width="2"/>
+                                <rect x="8" y="18" width="10" height="28" fill="rgba(201,169,110,0.12)" stroke="#c9a96e" stroke-width="1"/>
+                                <rect x="46" y="18" width="10" height="28" fill="rgba(201,169,110,0.12)" stroke="#c9a96e" stroke-width="1"/>
+                                <rect x="12" y="12" width="4" height="6" rx="1" fill="#c9a96e"/>
+                                <rect x="20" y="12" width="4" height="6" rx="1" fill="rgba(201,169,110,0.4)"/>
+                                <rect x="28" y="12" width="4" height="6" rx="1" fill="#c9a96e"/>
+                                <rect x="36" y="12" width="4" height="6" rx="1" fill="rgba(201,169,110,0.4)"/>
+                                <rect x="44" y="12" width="4" height="6" rx="1" fill="#c9a96e"/>
+                                <circle cx="32" cy="32" r="7" stroke="#c9a96e" stroke-width="2"/>
+                                <circle cx="32" cy="32" r="3" fill="#c9a96e"/>
+                            </svg>
                         </div>
                         <span class="pc-badge">New</span>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">Video</span>
-                        <div class="pc-name" data-en="Cinematic LUTs" data-de="Cinematic LUTs" data-es="LUTs Cinematográficos">Cinematic LUTs</div>
+                        <div class="pc-name" data-en="UncleMarv Film Grade" data-de="UncleMarv Film Grade" data-es="UncleMarv Film Grade" data-fr="UncleMarv Film Grade" data-it="UncleMarv Film Grade">UncleMarv Film Grade</div>
                         <ul class="pc-desc">
-                            <li>One click — instant cinematic film look</li>
+                            <li>One click — instant cinematic look</li>
                             <li>20 grades for Premiere, DaVinci &amp; FCPX</li>
                             <li>Cut color grading time by 80%</li>
                         </ul>
@@ -1837,25 +2019,32 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 3: Lightroom Presets -->
+                <!-- Card 3: UncleMarv Filter Reset -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <div class="pc-split">
-                            <img class="before-img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset Before" loading="lazy" decoding="async" width="600" height="400">
-                            <img class="after-img"  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop" alt="Lightroom Preset After" loading="lazy" decoding="async" width="600" height="400">
-                            <div class="split-divider"></div>
-                            <div class="split-icon"></div>
-                            <span class="split-label split-label-before">Before</span>
-                            <span class="split-label split-label-after">After</span>
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="18" stroke="#c9a96e" stroke-width="2"/>
+                                <circle cx="32" cy="32" r="10" stroke="#c9a96e" stroke-width="1.5" stroke-dasharray="3,2"/>
+                                <circle cx="32" cy="32" r="4" fill="#c9a96e"/>
+                                <line x1="32" y1="8" x2="32" y2="14" stroke="#c9a96e" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="32" y1="50" x2="32" y2="56" stroke="#c9a96e" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="8" y1="32" x2="14" y2="32" stroke="#c9a96e" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="50" y1="32" x2="56" y2="32" stroke="#c9a96e" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="15" y1="15" x2="19" y2="19" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="45" y1="45" x2="49" y2="49" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="49" y1="15" x2="45" y2="19" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="19" y1="45" x2="15" y2="49" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
                         </div>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">Photography</span>
-                        <div class="pc-name" data-en="Lightroom Presets" data-de="Lightroom Presets" data-es="Presets de Lightroom">Lightroom Presets</div>
+                        <div class="pc-name" data-en="UncleMarv Filter Reset" data-de="UncleMarv Filter Reset" data-es="UncleMarv Filter Reset" data-fr="UncleMarv Filter Reset" data-it="UncleMarv Filter Reset">UncleMarv Filter Reset</div>
                         <ul class="pc-desc">
-                            <li>Pro travel look in seconds</li>
-                            <li>30 presets — works on free Lightroom app</li>
-                            <li>Mobile &amp; desktop, batch apply</li>
+                            <li>Pro travel look in seconds — free Lightroom app</li>
+                            <li>30 presets, mobile &amp; desktop, batch apply</li>
+                            <li>One reset — infinite looks</li>
                         </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;19.99</span>
@@ -1863,18 +2052,26 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 4: Travel Hacks Guide -->
+                <!-- Card 4: UncleMarv Hack Pack -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="Travel Hacks Guide PDF" loading="lazy" decoding="async" width="600" height="400">
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="36,8 22,34 30,34 28,56 42,30 34,30" fill="rgba(201,169,110,0.15)" stroke="#c9a96e" stroke-width="2" stroke-linejoin="round"/>
+                                <line x1="14" y1="20" x2="20" y2="20" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="44" y1="44" x2="50" y2="44" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="10" y1="32" x2="16" y2="32" stroke="rgba(201,169,110,0.4)" stroke-width="1" stroke-linecap="round"/>
+                                <line x1="48" y1="32" x2="54" y2="32" stroke="rgba(201,169,110,0.4)" stroke-width="1" stroke-linecap="round"/>
+                            </svg>
+                        </div>
                         <span class="pc-badge">PDF Guide</span>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
-                        <div class="pc-name" data-en="Travel Hacks Guide" data-de="Travel Hacks Guide" data-es="Guía de Trucos Viajeros">Travel Hacks Guide</div>
+                        <div class="pc-name" data-en="UncleMarv Hack Pack" data-de="UncleMarv Hack Pack" data-es="UncleMarv Hack Pack" data-fr="UncleMarv Hack Pack" data-it="UncleMarv Hack Pack">UncleMarv Hack Pack</div>
                         <ul class="pc-desc">
-                            <li>Save up to €500 per trip</li>
-                            <li>50+ tips: cheap flights &amp; hidden deals</li>
+                            <li>Save up to €500 per trip — guaranteed</li>
+                            <li>50+ tips on cheap flights &amp; hidden deals</li>
                             <li>Pays for itself on the first booking</li>
                         </ul>
                         <div class="pc-footer">
@@ -1883,19 +2080,30 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 5: Packing List Templates -->
+                <!-- Card 5: UncleMarv Pack List -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1553531384-397c80973a0b?w=600&h=400&fit=crop" alt="Packing List Templates" loading="lazy" decoding="async" width="600" height="400">
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="18" y="22" width="28" height="34" rx="3" stroke="#c9a96e" stroke-width="2"/>
+                                <path d="M24 22V18a8 8 0 0 1 16 0v4" stroke="#c9a96e" stroke-width="2"/>
+                                <line x1="25" y1="33" x2="39" y2="33" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="25" y1="39" x2="39" y2="39" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="25" y1="45" x2="34" y2="45" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="22" cy="33" r="2" fill="#c9a96e"/>
+                                <circle cx="22" cy="39" r="2" fill="#c9a96e"/>
+                                <circle cx="22" cy="45" r="2" fill="rgba(201,169,110,0.4)"/>
+                            </svg>
+                        </div>
                         <span class="pc-badge">PDF</span>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
-                        <div class="pc-name" data-en="Packing List Templates" data-de="Packlisten-Vorlagen" data-es="Plantillas de Equipaje">Packing List Templates</div>
+                        <div class="pc-name" data-en="UncleMarv Pack List" data-de="UncleMarv Pack List" data-es="UncleMarv Pack List" data-fr="UncleMarv Pack List" data-it="UncleMarv Pack List">UncleMarv Pack List</div>
                         <ul class="pc-desc">
-                            <li>Never forget essentials again</li>
-                            <li>10 lists by trip type: beach, city, backpack</li>
-                            <li>Editable — print or use digitally</li>
+                            <li>For Her &amp; For Him — never forget essentials</li>
+                            <li>Capsule wardrobe guide: 7 pieces, 14 looks</li>
+                            <li>5 languages included</li>
                         </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;4.99</span>
@@ -1903,19 +2111,30 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 6: Airport Hacks Cheat Sheet -->
+                <!-- Card 6: UncleMarv Gate Pass -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop" alt="Airport Hacks Cheat Sheet" loading="lazy" decoding="async" width="600" height="400">
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 44 L28 44 L40 20 L52 20" stroke="#c9a96e" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M28 44 L36 36 L52 36" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="52" cy="20" r="4" fill="#c9a96e"/>
+                                <circle cx="52" cy="36" r="3" fill="rgba(201,169,110,0.5)"/>
+                                <rect x="8" y="46" width="48" height="8" rx="2" stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.06)"/>
+                                <line x1="16" y1="48" x2="16" y2="52" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="20" y1="48" x2="20" y2="52" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="24" y1="48" x2="24" y2="52" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
+                            </svg>
+                        </div>
                         <span class="pc-badge">PDF</span>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
-                        <div class="pc-name" data-en="Airport Hacks Cheat Sheet" data-de="Airport-Hacks Spickzettel" data-es="Trucos de Aeropuerto">Airport Hacks Cheat Sheet</div>
+                        <div class="pc-name" data-en="UncleMarv Gate Pass" data-de="UncleMarv Gate Pass" data-es="UncleMarv Gate Pass" data-fr="UncleMarv Gate Pass" data-it="UncleMarv Gate Pass">UncleMarv Gate Pass</div>
                         <ul class="pc-desc">
-                            <li>Beat queues at any airport worldwide</li>
-                            <li>Find cheap food &amp; fast WiFi inside</li>
-                            <li>One page — always in your pocket</li>
+                            <li>Beat every queue at any airport</li>
+                            <li>Lounge access, EU261 rights &amp; upgrade secrets</li>
+                            <li>Pocket-sized — one page, always ready</li>
                         </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;2.99</span>
@@ -1923,19 +2142,29 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 7: Budget Travel Calculator -->
+                <!-- Card 7: UncleMarv Capsule Kit -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&h=400&fit=crop" alt="Budget Travel Calculator" loading="lazy" decoding="async" width="600" height="400">
-                        <span class="pc-badge">Spreadsheet</span>
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="24" width="44" height="32" rx="4" stroke="#c9a96e" stroke-width="2"/>
+                                <path d="M22 24V18a10 10 0 0 1 20 0v6" stroke="#c9a96e" stroke-width="2"/>
+                                <line x1="10" y1="36" x2="54" y2="36" stroke="#c9a96e" stroke-width="1.5"/>
+                                <rect x="27" y="31" width="10" height="10" rx="2" stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.12)"/>
+                                <line x1="30" y1="36" x2="34" y2="36" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <rect x="14" y="40" width="10" height="4" rx="1" fill="rgba(201,169,110,0.2)"/>
+                                <rect x="40" y="40" width="10" height="4" rx="1" fill="rgba(201,169,110,0.2)"/>
+                            </svg>
+                        </div>
+                        <span class="pc-badge">Essentials</span>
                     </div>
                     <div class="pc-body">
-                        <span class="pc-type">Spreadsheet</span>
-                        <div class="pc-name" data-en="Budget Travel Calculator" data-de="Reisebudget-Rechner" data-es="Calculadora de Presupuesto">Budget Travel Calculator</div>
+                        <span class="pc-type">PDF</span>
+                        <div class="pc-name" data-en="UncleMarv Capsule Kit" data-de="UncleMarv Capsule Kit" data-es="UncleMarv Capsule Kit" data-fr="UncleMarv Capsule Kit" data-it="UncleMarv Capsule Kit">UncleMarv Capsule Kit</div>
                         <ul class="pc-desc">
-                            <li>Plan any trip in under 5 minutes</li>
-                            <li>Flights, hotels, food &amp; activities tracked</li>
-                            <li>Excel &amp; Google Sheets — 20 destinations pre-loaded</li>
+                            <li>7 pieces, 14 looks — carry-on only</li>
+                            <li>Fabric guide + packing rules that work</li>
+                            <li>Her &amp; Him versions included</li>
                         </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;3.99</span>
@@ -1943,19 +2172,31 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 8: Visa Requirement Checker -->
+                <!-- Card 8: UncleMarv Visa Check -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?w=600&h=400&fit=crop" alt="Visa Requirement Checker" loading="lazy" decoding="async" width="600" height="400">
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="12" width="44" height="40" rx="4" stroke="#c9a96e" stroke-width="2"/>
+                                <rect x="16" y="18" width="14" height="18" rx="2" stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.08)"/>
+                                <circle cx="23" cy="24" r="4" stroke="#c9a96e" stroke-width="1"/>
+                                <path d="M17 34 Q23 30 29 34" stroke="#c9a96e" stroke-width="1" fill="none"/>
+                                <line x1="34" y1="20" x2="48" y2="20" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="34" y1="26" x2="48" y2="26" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-linecap="round"/>
+                                <line x1="16" y1="42" x2="48" y2="42" stroke="rgba(201,169,110,0.3)" stroke-width="1" stroke-linecap="round"/>
+                                <circle cx="44" cy="44" r="8" fill="#1e1c18" stroke="#c9a96e" stroke-width="1.5"/>
+                                <path d="M41 44 L43 46 L47 42" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <span class="pc-badge">PDF</span>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">PDF</span>
-                        <div class="pc-name" data-en="Visa Requirement Checker" data-de="Visa-Anforderungs-Checker" data-es="Verificador de Visados">Visa Requirement Checker</div>
+                        <div class="pc-name" data-en="UncleMarv Visa Check" data-de="UncleMarv Visa Check" data-es="UncleMarv Visa Check" data-fr="UncleMarv Visa Check" data-it="UncleMarv Visa Check">UncleMarv Visa Check</div>
                         <ul class="pc-desc">
-                            <li>60+ countries at a single glance</li>
-                            <li>Avoid expensive visa surprises</li>
-                            <li>Entry rules, e-visa links &amp; processing times</li>
+                            <li>60+ countries — entry rules at a glance</li>
+                            <li>e-Visa links, processing times &amp; costs</li>
+                            <li>Avoid expensive surprises at the border</li>
                         </ul>
                         <div class="pc-footer">
                             <span class="pc-price">&euro;5.99</span>
@@ -1963,17 +2204,27 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 9: Travel Photography Poses Guide -->
+                <!-- Card 9: UncleMarv Lens Guide -->
                 <div class="pc-card reveal">
                     <div class="pc-img">
-                        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=400&fit=crop" alt="Travel Photography Poses Guide" loading="lazy" decoding="async" width="600" height="400">
+                        <div class="pc-icon-wrap">
+                            <svg class="pc-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="6" y="20" width="52" height="36" rx="4" stroke="#c9a96e" stroke-width="2"/>
+                                <path d="M20 20 V14 H44 V20" stroke="#c9a96e" stroke-width="2"/>
+                                <circle cx="32" cy="38" r="12" stroke="#c9a96e" stroke-width="2"/>
+                                <circle cx="32" cy="38" r="6" stroke="#c9a96e" stroke-width="1.5" stroke-dasharray="2,2"/>
+                                <circle cx="32" cy="38" r="2.5" fill="#c9a96e"/>
+                                <rect x="44" y="24" width="8" height="5" rx="1" stroke="#c9a96e" stroke-width="1" fill="rgba(201,169,110,0.12)"/>
+                                <circle cx="12" cy="25" r="2" stroke="#c9a96e" stroke-width="1"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="pc-body">
                         <span class="pc-type">PDF Guide</span>
-                        <div class="pc-name" data-en="Photography Poses Guide" data-de="Foto-Posen-Guide" data-es="Guía de Poses de Viaje">Photography Poses Guide</div>
+                        <div class="pc-name" data-en="UncleMarv Lens Guide" data-de="UncleMarv Lens Guide" data-es="UncleMarv Lens Guide" data-fr="UncleMarv Lens Guide" data-it="UncleMarv Lens Guide">UncleMarv Lens Guide</div>
                         <ul class="pc-desc">
-                            <li>100+ natural poses for solo travelers</li>
-                            <li>Works at any location — no photographer needed</li>
+                            <li>100+ natural poses — solo, couple &amp; group</li>
+                            <li>Best locations &amp; lighting per scene type</li>
                             <li>Cinematic results, no cringe guaranteed</li>
                         </ul>
                         <div class="pc-footer">
@@ -2079,66 +2330,89 @@
                 <div class="line"></div>
                 <h2>What&rsquo;s next</h2>
             </div>
-            <!-- Roadmap: Unsplash bg + SVG route + interactive waypoints -->
-            <div class="roadmap-illustration reveal" id="rmWrap">
-                <!-- Route SVG path -->
-                <svg class="route-overlay" viewBox="0 0 1000 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M100,500 Q250,400 400,350 T700,250 L900,150"
-                          stroke="#c9a96e"
-                          stroke-width="4"
-                          stroke-dasharray="10,5"
-                          fill="none"
-                          opacity="0.8"/>
-                </svg>
-                <!-- Waypoint 1: Community Chat -->
-                <div class="waypoint" style="left:22%;top:78%;" data-id="1">
-                    <div class="waypoint-marker">1</div>
-                    <div class="waypoint-info">
-                        <div class="waypoint-title">Community Chat</div>
-                        <p class="waypoint-desc">Reisende teilen Spots, Tipps &amp; Reviews</p>
+            <!-- Roadmap 2.0: Animated timeline -->
+            <div class="roadmap-timeline reveal">
+                <div class="rm-track"></div>
+                <!-- 1 -->
+                <div class="rm-item rm-status-done">
+                    <div class="rm-node">
+                        <div class="rm-pulse"></div>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#c9a96e" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="#c9a96e" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#c9a96e" stroke-width="2"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#c9a96e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="rm-body">
+                        <div class="rm-label">Phase 1</div>
+                        <div class="rm-title">Community Chat</div>
+                        <div class="rm-desc">Reisende teilen Spots, Tipps &amp; Reviews. Finde deinen nächsten Hidden Gem durch echte Empfehlungen.</div>
+                        <span class="rm-status-badge badge-live">✦ Live</span>
                     </div>
                 </div>
-                <!-- Waypoint 2: Interactive Maps -->
-                <div class="waypoint" style="left:36%;top:62%;" data-id="2">
-                    <div class="waypoint-marker">2</div>
-                    <div class="waypoint-info">
-                        <div class="waypoint-title">Interactive Maps</div>
-                        <p class="waypoint-desc">Hidden Gems &amp; kuratierte Routen</p>
+                <!-- 2 -->
+                <div class="rm-item">
+                    <div class="rm-node">
+                        <div class="rm-pulse"></div>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" stroke="#c9a96e" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="#c9a96e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="rm-body">
+                        <div class="rm-label">Phase 2</div>
+                        <div class="rm-title">Interactive Maps</div>
+                        <div class="rm-desc">Kuratierte Routen &amp; Hidden Gems auf einer interaktiven Karte — filtert nach Stil, Budget &amp; Season.</div>
+                        <span class="rm-status-badge badge-soon">Coming Soon</span>
                     </div>
                 </div>
-                <!-- Waypoint 3: Gear Vault -->
-                <div class="waypoint" style="left:49%;top:50%;" data-id="3">
-                    <div class="waypoint-marker">3</div>
-                    <div class="waypoint-info">
-                        <div class="waypoint-title">Gear Vault</div>
-                        <p class="waypoint-desc">Equipment-Empfehlungen &amp; No-Go Liste</p>
+                <!-- 3 -->
+                <div class="rm-item">
+                    <div class="rm-node">
+                        <div class="rm-pulse"></div>
+                        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#c9a96e" stroke-width="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#c9a96e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="rm-body">
+                        <div class="rm-label">Phase 3</div>
+                        <div class="rm-title">Gear Vault</div>
+                        <div class="rm-desc">Ehrliche Gear-Reviews, Equipment-Empfehlungen &amp; die No-Go-Liste — von echten Reisenden getestet.</div>
+                        <span class="rm-status-badge badge-wip">In Progress</span>
                     </div>
                 </div>
-                <!-- Waypoint 4: Live Q&A Sessions -->
-                <div class="waypoint" style="left:61%;top:41%;" data-id="4">
-                    <div class="waypoint-marker">4</div>
-                    <div class="waypoint-info">
-                        <div class="waypoint-title">Live Q&amp;A Sessions</div>
-                        <p class="waypoint-desc">Monatliche Sessions &mdash; Members only</p>
+                <!-- 4 -->
+                <div class="rm-item">
+                    <div class="rm-node">
+                        <div class="rm-pulse"></div>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#c9a96e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="rm-body">
+                        <div class="rm-label">Phase 4</div>
+                        <div class="rm-title">Live Q&amp;A Sessions</div>
+                        <div class="rm-desc">Monatliche Live-Sessions — Members only. Stelle direkte Fragen, kriege echte Antworten.</div>
+                        <span class="rm-status-badge badge-soon">Q3 2025</span>
                     </div>
                 </div>
-                <!-- Waypoint 5: Member Content -->
-                <div class="waypoint" style="left:74%;top:32%;" data-id="5">
-                    <div class="waypoint-marker">5</div>
-                    <div class="waypoint-info">
-                        <div class="waypoint-title">Member Content</div>
-                        <p class="waypoint-desc">Behind-the-Scenes &amp; Raw Footage</p>
+                <!-- 5 -->
+                <div class="rm-item">
+                    <div class="rm-node">
+                        <div class="rm-pulse"></div>
+                        <svg viewBox="0 0 24 24" fill="none"><polygon points="23 7 16 12 23 17 23 7" stroke="#c9a96e" stroke-width="2"/><rect x="1" y="5" width="15" height="14" rx="2" stroke="#c9a96e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="rm-body">
+                        <div class="rm-label">Phase 5</div>
+                        <div class="rm-title">Member Content</div>
+                        <div class="rm-desc">Behind-the-Scenes, Raw Footage &amp; exklusive Content-Drops — nur für aktive Community-Members.</div>
+                        <span class="rm-status-badge badge-soon">Q4 2025</span>
                     </div>
                 </div>
-                <!-- Waypoint 6: Local Discounts -->
-                <div class="waypoint" style="left:85%;top:24%;" data-id="6">
-                    <div class="waypoint-marker">6</div>
-                    <div class="waypoint-info">
-                        <div class="waypoint-title">Local Discounts</div>
-                        <p class="waypoint-desc">Exklusive Deals mit lokalen Partnern</p>
+                <!-- 6 -->
+                <div class="rm-item">
+                    <div class="rm-node">
+                        <div class="rm-pulse"></div>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke="#c9a96e" stroke-width="2"/><line x1="7" y1="7" x2="7.01" y2="7" stroke="#c9a96e" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="rm-body">
+                        <div class="rm-label">Phase 6</div>
+                        <div class="rm-title">Local Discounts</div>
+                        <div class="rm-desc">Exklusive Deals mit lokalen Partnern weltweit — echte Rabatte an echten Orten, die du sowieso besuchst.</div>
+                        <span class="rm-status-badge badge-soon">2026</span>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -2363,16 +2637,16 @@
         // TODO: Replace each lsUrl with your actual LemonSqueezy product checkout URLs
         // Format: https://YOUR-STORE.lemonsqueezy.com/buy/VARIANT-ID
         const PRODUCTS = {
-            wallpaper: { name: 'Wallpaper Pack',      price: 9.99,  img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/WALLPAPER_VARIANT_ID' },
-            luts:      { name: 'Cinematic LUTs',      price: 19.99, img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
-            presets:   { name: 'Lightroom Presets',   price: 19.99, img: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
-            guide:     { name: 'Travel Hacks Guide',       price: 7.99,  img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/1484774' },
-            packing:   { name: 'Packing List Templates',   price: 4.99,  img: 'https://images.unsplash.com/photo-1553531384-397c80973a0b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PACKING_VARIANT_ID' },
-            airport:   { name: 'Airport Hacks Cheat Sheet',price: 2.99,  img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/AIRPORT_VARIANT_ID' },
-            budget:    { name: 'Budget Travel Calculator', price: 3.99,  img: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUDGET_VARIANT_ID' },
-            visa:      { name: 'Visa Requirement Checker', price: 5.99,  img: 'https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/VISA_VARIANT_ID' },
-            photoposes:{ name: 'Travel Photography Poses', price: 6.99,  img: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PHOTOPOSES_VARIANT_ID' },
-            bundle:    { name: 'The Complete Bundle',       price: 34.99, img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&h=120&fit=crop', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUNDLE_VARIANT_ID' }
+            wallpaper: { name: 'UncleMarv World 4K',    price: 9.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/WALLPAPER_VARIANT_ID' },
+            luts:      { name: 'UncleMarv Film Grade',  price: 19.99, img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
+            presets:   { name: 'UncleMarv Filter Reset',price: 19.99, img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
+            guide:     { name: 'UncleMarv Hack Pack',   price: 7.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/GUIDE_VARIANT_ID' },
+            packing:   { name: 'UncleMarv Pack List',   price: 4.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PACKING_VARIANT_ID' },
+            airport:   { name: 'UncleMarv Gate Pass',   price: 2.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/AIRPORT_VARIANT_ID' },
+            budget:    { name: 'UncleMarv Capsule Kit', price: 3.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUDGET_VARIANT_ID' },
+            visa:      { name: 'UncleMarv Visa Check',  price: 5.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/VISA_VARIANT_ID' },
+            photoposes:{ name: 'UncleMarv Lens Guide',  price: 6.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PHOTOPOSES_VARIANT_ID' },
+            bundle:    { name: 'UncleMarv Complete',    price: 34.99, img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUNDLE_VARIANT_ID' }
         };
 
         let cart = {};
@@ -2774,6 +3048,199 @@
             }, { passive: true });
         })();
         // ===== END HERO PARALLAX =====
+    </script>
+
+    <!-- ── Registration Modal ──────────────────────── -->
+    <div class="reg-overlay" id="regOverlay" onclick="closeRegOnBackdrop(event)">
+        <div class="reg-modal" id="regModal">
+            <button class="reg-close" onclick="closeRegModal()" aria-label="Close">&times;</button>
+            <div class="reg-modal-header">
+                <div class="reg-modal-logo">UNCLE MARV  ✦  TRAVEL BRAND</div>
+                <div class="reg-modal-title">Join the Community</div>
+                <div class="reg-modal-sub">Create your free account — no credit card required</div>
+            </div>
+            <div class="reg-row">
+                <div class="reg-field">
+                    <label class="reg-label">First Name</label>
+                    <input class="reg-input" id="regFirst" type="text" placeholder="Marvin" autocomplete="given-name">
+                </div>
+                <div class="reg-field">
+                    <label class="reg-label">Last Name</label>
+                    <input class="reg-input" id="regLast" type="text" placeholder="Kuppens" autocomplete="family-name">
+                </div>
+            </div>
+            <div class="reg-field" id="regUserField">
+                <label class="reg-label">Username</label>
+                <input class="reg-input" id="regUser" type="text" placeholder="@uncle.marv" autocomplete="username" oninput="checkUsername(this.value)">
+                <span class="reg-check-icon" id="regUserIcon">✓</span>
+                <div class="reg-suggestions" id="regSuggestions"></div>
+            </div>
+            <div class="reg-field">
+                <label class="reg-label">Email Address</label>
+                <input class="reg-input" id="regEmail" type="email" placeholder="marvin@example.com" autocomplete="email">
+            </div>
+            <div class="reg-field">
+                <label class="reg-label">I am</label>
+                <div class="reg-gender">
+                    <button type="button" class="reg-gender-btn" id="genderM" onclick="setGender('m')">♂ Male</button>
+                    <button type="button" class="reg-gender-btn" id="genderF" onclick="setGender('f')">♀ Female</button>
+                    <button type="button" class="reg-gender-btn" id="genderO" onclick="setGender('o')">◇ Other</button>
+                </div>
+            </div>
+            <div class="reg-divider"></div>
+            <button class="reg-submit" onclick="submitReg()">Create Account</button>
+            <div class="reg-footer-text">
+                By joining you agree to our <a href="agb.html">Terms</a> &amp; <a href="datenschutz.html">Privacy Policy</a>.
+            </div>
+        </div>
+    </div>
+
+    <script>
+    /* ── Registration Modal JS ─────────────────────── */
+    const TAKEN_NAMES = ['unclemarv','marvin','traveler','nomad','wanderer','explorer',
+        'backpacker','traveller','adventure','marv','marvink','travelmarv'];
+    let selectedGender = null;
+
+    function openRegModal(e) {
+        if (e) e.preventDefault();
+        document.getElementById('regOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => document.getElementById('regFirst').focus(), 300);
+    }
+    function closeRegModal() {
+        document.getElementById('regOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function closeRegOnBackdrop(e) {
+        if (e.target === document.getElementById('regOverlay')) closeRegModal();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeRegModal(); });
+
+    function setGender(g) {
+        selectedGender = g;
+        ['M','F','O'].forEach(x => document.getElementById('gender'+x).classList.remove('active'));
+        document.getElementById('gender'+g.toUpperCase()).classList.add('active');
+    }
+
+    let usernameTimer;
+    function checkUsername(val) {
+        clearTimeout(usernameTimer);
+        const field = document.getElementById('regUserField');
+        const icon  = document.getElementById('regUserIcon');
+        const sugs  = document.getElementById('regSuggestions');
+        field.classList.remove('valid','invalid');
+        icon.textContent = '⟳';
+        icon.style.display = 'block';
+        if (!val || val.length < 3) {
+            icon.style.display = 'none';
+            sugs.innerHTML = '';
+            return;
+        }
+        usernameTimer = setTimeout(() => {
+            const clean = val.toLowerCase().replace(/[^a-z0-9._]/g,'');
+            const taken = TAKEN_NAMES.includes(clean);
+            if (taken) {
+                field.classList.add('invalid');
+                icon.textContent = '✕';
+                const variants = [
+                    clean + '_travel',
+                    clean + Math.floor(Math.random()*90+10),
+                    'the_' + clean,
+                    clean + '_official'
+                ];
+                sugs.innerHTML = variants.map(v =>
+                    `<span class="reg-sug-chip" onclick="useSuggestion('${v}')">${v}</span>`
+                ).join('');
+            } else {
+                field.classList.add('valid');
+                icon.textContent = '✓';
+                sugs.innerHTML = '';
+            }
+        }, 600);
+    }
+    function useSuggestion(name) {
+        const input = document.getElementById('regUser');
+        input.value = name;
+        checkUsername(name);
+    }
+    function submitReg() {
+        const first = document.getElementById('regFirst').value.trim();
+        const last  = document.getElementById('regLast').value.trim();
+        const user  = document.getElementById('regUser').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        if (!first || !last || !user || !email) {
+            alert('Please fill in all fields.'); return;
+        }
+        if (document.getElementById('regUserField').classList.contains('invalid')) {
+            alert('That username is taken — please choose another.'); return;
+        }
+        if (!email.includes('@')) {
+            alert('Please enter a valid email address.'); return;
+        }
+        // TODO: Connect to backend / Supabase / Firebase
+        closeRegModal();
+        alert(`Welcome, ${first}! 🎉\n\nYour account @${user} has been created.\nCheck ${email} for your confirmation.`);
+    }
+    </script>
+
+    <!-- ===== SPA ROUTER ===== -->
+    <script>
+    (function() {
+        // Map hash → array of element selectors to SHOW (everything else is hidden)
+        const ROUTES = {
+            '':           ['#page-home', '#shop'],
+            'home':       ['#page-home', '#shop'],
+            'collection': ['#shop'],
+            'vip':        ['#vip'],
+            'vision':     ['#about', '#roadmap'],
+            'voices':     ['#reviews'],
+            'faq':        ['#faq', '#newsletter'],
+        };
+
+        // All top-level page sections managed by the router
+        const ALL_SECTIONS = ['#page-home', '#shop', '#vip', '#about', '#roadmap', '#reviews', '#faq', '#newsletter'];
+
+        function getPage() {
+            return (window.location.hash || '').replace('#', '').toLowerCase();
+        }
+
+        function router() {
+            const page = getPage();
+            const toShow = ROUTES[page] || ROUTES[''];
+
+            ALL_SECTIONS.forEach(sel => {
+                const el = document.querySelector(sel);
+                if (!el) return;
+                const show = toShow.includes(sel);
+                el.style.display = show ? '' : 'none';
+                if (show) {
+                    el.classList.remove('spa-fadein');
+                    // Force reflow
+                    void el.offsetWidth;
+                    el.classList.add('spa-fadein');
+                }
+            });
+
+            // Update nav active states
+            document.querySelectorAll('.nav-links a[data-page], .logo[data-page]').forEach(a => {
+                const ap = a.dataset.page;
+                const isActive = (ap === page) || (ap === 'home' && (page === '' || page === 'home'));
+                a.classList.toggle('nav-active', isActive);
+            });
+
+            // Scroll to top on page change
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close mobile menu if open
+            const nl = document.getElementById('navLinks');
+            if (nl) nl.classList.remove('open');
+        }
+
+        window.addEventListener('hashchange', router);
+        // Run on load (but after DOM + other scripts)
+        window.addEventListener('DOMContentLoaded', router);
+        window.addEventListener('load', router);
+    })();
     </script>
 
 </body>
