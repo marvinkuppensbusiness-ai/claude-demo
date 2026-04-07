@@ -2628,25 +2628,26 @@
                 <span>Visa</span><span>Mastercard</span><span>PayPal</span>
                 <span>Apple Pay</span><span>Google Pay</span><span>Klarna</span>
             </div>
-            <p class="cart-ls-note">Secure checkout via LemonSqueezy</p>
+            <p class="cart-ls-note">Secure checkout via Stripe</p>
         </div>
     </div>
 
     <script>
         // ===== SHOP CART =====
-        // TODO: Replace each lsUrl with your actual LemonSqueezy product checkout URLs
-        // Format: https://YOUR-STORE.lemonsqueezy.com/buy/VARIANT-ID
+        // TODO: Replace each stripeUrl with your actual Stripe Payment Link URLs
+        // Format: https://buy.stripe.com/XXXXXXXXX
+        // Create links at: dashboard.stripe.com → Payment Links → + New
         const PRODUCTS = {
-            wallpaper: { name: 'UncleMarv World 4K',    price: 9.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/WALLPAPER_VARIANT_ID' },
-            luts:      { name: 'UncleMarv Film Grade',  price: 19.99, img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/LUTS_VARIANT_ID' },
-            presets:   { name: 'UncleMarv Filter Reset',price: 19.99, img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PRESETS_VARIANT_ID' },
-            guide:     { name: 'UncleMarv Hack Pack',   price: 7.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/GUIDE_VARIANT_ID' },
-            packing:   { name: 'UncleMarv Pack List',   price: 4.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PACKING_VARIANT_ID' },
-            airport:   { name: 'UncleMarv Gate Pass',   price: 2.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/AIRPORT_VARIANT_ID' },
-            budget:    { name: 'UncleMarv Capsule Kit', price: 3.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUDGET_VARIANT_ID' },
-            visa:      { name: 'UncleMarv Visa Check',  price: 5.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/VISA_VARIANT_ID' },
-            photoposes:{ name: 'UncleMarv Lens Guide',  price: 6.99,  img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/PHOTOPOSES_VARIANT_ID' },
-            bundle:    { name: 'UncleMarv Complete',    price: 34.99, img: '', lsUrl: 'https://unclemarv.lemonsqueezy.com/buy/BUNDLE_VARIANT_ID' }
+            wallpaper: { name: 'UncleMarv World 4K',    price: 9.99,  img: '', stripeUrl: 'https://buy.stripe.com/WALLPAPER_LINK' },
+            luts:      { name: 'UncleMarv Film Grade',  price: 19.99, img: '', stripeUrl: 'https://buy.stripe.com/LUTS_LINK' },
+            presets:   { name: 'UncleMarv Filter Reset',price: 19.99, img: '', stripeUrl: 'https://buy.stripe.com/PRESETS_LINK' },
+            guide:     { name: 'UncleMarv Hack Pack',   price: 7.99,  img: '', stripeUrl: 'https://buy.stripe.com/GUIDE_LINK' },
+            packing:   { name: 'UncleMarv Pack List',   price: 4.99,  img: '', stripeUrl: 'https://buy.stripe.com/PACKING_LINK' },
+            airport:   { name: 'UncleMarv Gate Pass',   price: 2.99,  img: '', stripeUrl: 'https://buy.stripe.com/AIRPORT_LINK' },
+            budget:    { name: 'UncleMarv Capsule Kit', price: 3.99,  img: '', stripeUrl: 'https://buy.stripe.com/BUDGET_LINK' },
+            visa:      { name: 'UncleMarv Visa Check',  price: 5.99,  img: '', stripeUrl: 'https://buy.stripe.com/VISA_LINK' },
+            photoposes:{ name: 'UncleMarv Lens Guide',  price: 6.99,  img: '', stripeUrl: 'https://buy.stripe.com/PHOTOPOSES_LINK' },
+            bundle:    { name: 'UncleMarv Complete',    price: 34.99, img: '', stripeUrl: 'https://buy.stripe.com/BUNDLE_LINK' }
         };
 
         let cart = {};
@@ -2726,14 +2727,45 @@
             if (!items.length) return;
             const total = items.reduce((s, [id, qty]) => s + PRODUCTS[id].price * qty, 0);
             trackEvent('Checkout', { items: items.map(([id]) => PRODUCTS[id].name).join(', '), value: total.toFixed(2) });
-            // Single product: direct LemonSqueezy checkout link
-            // Multiple products: go to your LemonSqueezy store overview
+
             if (items.length === 1) {
-                window.open(PRODUCTS[items[0][0]].lsUrl, '_blank');
+                // Single product → direct Stripe checkout
+                const url = PRODUCTS[items[0][0]].stripeUrl;
+                if (url && !url.includes('_LINK')) {
+                    window.open(url, '_blank');
+                } else {
+                    showStripeComingSoon();
+                }
             } else {
-                // For multi-item carts, redirect to store page
-                window.open('https://unclemarv.lemonsqueezy.com', '_blank');
+                // Multiple products → open each Stripe link in sequence
+                const hasRealLinks = items.every(([id]) => {
+                    const u = PRODUCTS[id].stripeUrl;
+                    return u && !u.includes('_LINK');
+                });
+                if (hasRealLinks) {
+                    items.forEach(([id]) => window.open(PRODUCTS[id].stripeUrl, '_blank'));
+                } else {
+                    showStripeComingSoon();
+                }
             }
+        }
+
+        function showStripeComingSoon() {
+            // Show a friendly modal until Stripe links are configured
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,10,10,0.88);z-index:20000;display:flex;align-items:center;justify-content:center;';
+            overlay.innerHTML = `
+                <div style="background:#1e1c18;border:1px solid #c9a96e33;border-radius:16px;padding:40px;max-width:400px;text-align:center;font-family:inherit;">
+                    <div style="font-size:2rem;margin-bottom:12px;">🚀</div>
+                    <h3 style="color:#c9a96e;margin:0 0 12px;font-size:1.2rem;">Shop launching soon!</h3>
+                    <p style="color:#7a7060;font-size:0.9rem;margin:0 0 24px;line-height:1.6;">
+                        Secure Stripe checkout is being set up.<br>
+                        Come back shortly or contact us directly.
+                    </p>
+                    <button onclick="this.closest('div[style]').remove()" style="background:#c9a96e;color:#0f0f0f;border:none;padding:10px 28px;border-radius:8px;cursor:pointer;font-weight:600;">Close</button>
+                </div>`;
+            document.body.appendChild(overlay);
+            overlay.addEventListener('click', e => { if(e.target===overlay) overlay.remove(); });
         }
         // ===== END SHOP CART =====
 
