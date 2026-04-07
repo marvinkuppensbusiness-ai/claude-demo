@@ -1,0 +1,48 @@
+{
+  "generated": {
+    "en": {
+      "travel-hacks-guide":      "https://gamma.app/generations/LN9YsV1OxogQzAu6AyFqE",
+      "packing-list-templates":  "https://gamma.app/generations/U5hZQASzKuwcFfWJfo8xY",
+      "airport-hacks-cheatsheet":"https://gamma.app/generations/wVI9NdLZZg6WVk7DZy0kx",
+      "packing-essentials":      "https://gamma.app/generations/lJzWq4GJ0YqeUlQuBijiA",
+      "photography-guide":       "https://gamma.app/generations/c8O2hDbJ0JdvG7kY8QYjr"
+    },
+    "de": {
+      "travel-hacks-guide":      "https://gamma.app/generations/Q6qe1L12SGtxkkB2yJRMb",
+      "packing-list-templates":  "https://gamma.app/generations/aS7Gs1vEnQ1vtC4ewZzfk",
+      "airport-hacks-cheatsheet":"https://gamma.app/generations/0CMlimEd5gVZJCCcgEnLh",
+      "packing-essentials":      "https://gamma.app/generations/Owop0YKifv4AfbfrQ0WdL",
+      "photography-guide":       "https://gamma.app/generations/UuNP39q7QY1x5FOENEtED"
+    },
+    "es": {
+      "travel-hacks-guide":      "https://gamma.app/generations/P2YzsiTPHRaaEztTm7bK3",
+      "packing-list-templates":  "https://gamma.app/generations/Q60K8WEoajGRa60t3wvGU",
+      "airport-hacks-cheatsheet":"https://gamma.app/generations/RtWVI6Iex1Hm8vgJ6odM0",
+      "packing-essentials":      "https://gamma.app/generations/xUKu845scsxdeezyuokaA",
+      "photography-guide":       "https://gamma.app/generations/3H2CuJGthXNWpwejkyiwU"
+    },
+    "fr": {
+      "airport-hacks-cheatsheet":"https://gamma.app/generations/HZbAt3jL7JntW36R21RrS"
+    },
+    "it": {}
+  },
+  "pending": {
+    "fr": [
+      "travel-hacks-guide",
+      "packing-list-templates",
+      "packing-essentials",
+      "photography-guide"
+    ],
+    "it": [
+      "travel-hacks-guide",
+      "packing-list-templates",
+      "airport-hacks-cheatsheet",
+      "packing-essentials",
+      "photography-guide"
+    ]
+  },
+  "theme": "aurum",
+  "status": "paused — Gamma credits exhausted",
+  "resume_url": "https://gamma.app/settings/billing",
+  "total": { "done": 16, "remaining": 9, "total": 25 }
+}
