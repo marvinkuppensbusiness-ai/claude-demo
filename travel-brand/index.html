@@ -89,7 +89,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -110,22 +110,25 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Helvetica Neue', sans-serif;
             color: var(--text);
             background: var(--bg);
             line-height: 1.6;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            letter-spacing: -0.01em;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            line-height: 1.1;
+        h1, h2, h3, h4 {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
             color: var(--white-pure);
         }
-        h1 { font-weight: 700; }
+        h1 { font-weight: 800; letter-spacing: -0.04em; }
+        h2 { font-weight: 700; }
+        h3 { font-weight: 600; letter-spacing: -0.025em; }
 
         a { text-decoration: none; color: inherit; }
 
@@ -177,10 +180,10 @@
         }
 
         .logo {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: none;
             color: var(--white);
         }
 
@@ -192,13 +195,13 @@
         }
 
         .nav-links a {
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #f0ece4;
-            padding: 8px 16px;
-            transition: all 0.35s ease;
+            letter-spacing: -0.01em;
+            text-transform: none;
+            color: rgba(240,236,228,0.82);
+            padding: 8px 14px;
+            transition: all 0.25s ease;
         }
 
         .nav-links a:hover {
@@ -312,9 +315,11 @@
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 700;
-            margin-bottom: 28px;
+            font-size: clamp(52px, 9vw, 108px);
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            line-height: 0.97;
+            margin-bottom: 32px;
         }
 
         .hero h1 em {
@@ -333,15 +338,16 @@
 
         .btn {
             display: inline-block;
-            padding: 18px 48px;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            padding: 16px 44px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: none;
             border: none;
+            border-radius: 980px;
             cursor: pointer;
-            transition: all 0.4s;
+            transition: all 0.3s;
         }
 
         .btn-primary {
@@ -402,16 +408,18 @@
         }
 
         .tag {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.2em;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .section-header h2 {
-            font-size: clamp(36px, 5vw, 56px);
+            font-size: clamp(40px, 5.5vw, 64px);
+            font-weight: 700;
+            letter-spacing: -0.035em;
         }
 
         /* ===== Products — Apple Style ===== */
@@ -1983,6 +1991,48 @@
             padding-top: 28px; border-top: 1px solid #1a1810;
         }
         .pricing-trust span { display: flex; align-items: center; gap: 5px; }
+        /* ── Product card images ── */
+        .pricing-card-img {
+            margin: -36px -28px 22px;
+            height: 170px;
+            border-radius: 22px 22px 0 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .pricing-card.pricing-featured .pricing-card-img {
+            margin-top: -44px;
+        }
+        .pricing-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.55) saturate(0.65);
+            display: block;
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+        .pricing-card:hover .pricing-card-img img {
+            transform: scale(1.04);
+            filter: brightness(0.65) saturate(0.75);
+        }
+        .pricing-card-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 65%;
+            background: linear-gradient(to bottom, transparent, #111009);
+            pointer-events: none;
+        }
+        .pricing-card.pricing-featured .pricing-card-img::after {
+            background: linear-gradient(to bottom, transparent, #16130c);
+        }
+        /* ── Digital badge ── */
+        .digital-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 0.68rem; color: #7a7060;
+            background: rgba(201,169,110,0.06);
+            border: 1px solid rgba(201,169,110,0.12);
+            border-radius: 20px; padding: 3px 10px;
+            letter-spacing: 0.01em;
+        }
         @media (max-width: 820px) {
             .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
             .pricing-card.pricing-featured { order: -1; }
@@ -2082,26 +2132,22 @@
 
                 <!-- CARD 1: Hack Pack — Entry -->
                 <div class="pricing-card">
-                    <div class="pricing-tier" data-en="Guide" data-de="Guide" data-es="Guía" data-fr="Guide">Guide</div>
-                    <div class="pricing-icon-box">
-                        <svg viewBox="0 0 28 28" fill="none">
-                            <polygon points="16,3 9,15 13,15 12,25 19,13 15,13" fill="rgba(201,169,110,0.15)" stroke="#c9a96e" stroke-width="1.5" stroke-linejoin="round"/>
-                            <line x1="5" y1="9" x2="8" y2="9" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
-                            <line x1="20" y1="19" x2="23" y2="19" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
-                        </svg>
+                    <div class="pricing-card-img">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&fit=crop" alt="Airport travel" loading="lazy">
                     </div>
+                    <div class="pricing-tier" data-en="Guide" data-de="Guide" data-es="Guía" data-fr="Guide">Guide</div>
                     <div class="pricing-name" data-en="UncleMarv Hack Pack" data-de="UncleMarv Hack Pack" data-es="UncleMarv Hack Pack" data-fr="UncleMarv Hack Pack">UncleMarv Hack Pack</div>
                     <p class="pricing-desc"
-                       data-en="50+ travel hacks tested in 23 countries. Save up to €2.000 per year — starting on your next booking."
-                       data-de="50+ Reise-Hacks aus 23 Ländern. Spare bis zu €2.000 pro Jahr — ab der nächsten Buchung."
-                       data-es="50+ trucos de viaje probados en 23 países. Ahorra hasta €2.000 al año."
-                       data-fr="50+ astuces de voyage testées dans 23 pays. Économisez jusqu'à 2.000€ par an.">
-                       50+ travel hacks tested in 23 countries. Save up to €2.000 per year — starting on your next booking.
+                       data-en="50+ travel hacks from 23 countries. Save money on every trip."
+                       data-de="50+ Reise-Hacks aus 23 Ländern. Spare bei jeder Reise."
+                       data-es="50+ trucos de viaje de 23 países. Ahorra en cada viaje."
+                       data-fr="50+ astuces voyage de 23 pays. Économisez à chaque voyage.">
+                       50+ travel hacks from 23 countries. Save money on every trip.
                     </p>
                     <ul class="pricing-perks">
                         <li data-en="Cheap flights formula" data-de="Günstig-Flug-Formel" data-es="Fórmula de vuelos baratos" data-fr="Formule vols pas chers">Cheap flights formula</li>
-                        <li data-en="Airport lounge access secrets" data-de="Lounge-Zugang Geheimnisse" data-es="Secretos de acceso a salas VIP" data-fr="Secrets d'accès aux salons">Airport lounge access secrets</li>
-                        <li data-en="Packing, money &amp; safety hacks" data-de="Packen, Geld &amp; Sicherheits-Hacks" data-es="Hacks de equipaje, dinero y seguridad" data-fr="Hacks bagages, argent et sécurité">Packing, money &amp; safety hacks</li>
+                        <li data-en="Airport lounge secrets" data-de="Lounge-Zugang Geheimnisse" data-es="Secretos salas VIP" data-fr="Secrets des salons">Airport lounge secrets</li>
+                        <li data-en="Packing, money &amp; safety" data-de="Packen, Geld &amp; Sicherheit" data-es="Equipaje, dinero y seguridad" data-fr="Bagages, argent et sécurité">Packing, money &amp; safety</li>
                     </ul>
                     <div class="pricing-price-area">
                         <div class="pricing-price">€19.99</div>
@@ -2114,27 +2160,22 @@
                 <div class="pricing-card pricing-featured">
                     <span class="pricing-featured-badge"
                           data-en="⭐ Best Value" data-de="⭐ Bestes Angebot" data-es="⭐ Mejor Valor" data-fr="⭐ Meilleur Rapport">⭐ Best Value</span>
-                    <div class="pricing-tier" data-en="Complete Pack" data-de="Komplettpaket" data-es="Pack Completo" data-fr="Pack Complet">Complete Pack</div>
-                    <div class="pricing-icon-box">
-                        <svg viewBox="0 0 28 28" fill="none">
-                            <rect x="4" y="10" width="20" height="14" rx="2" stroke="#c9a96e" stroke-width="1.5"/>
-                            <path d="M9 10V8a5 5 0 0110 0v2" stroke="#c9a96e" stroke-width="1.5"/>
-                            <line x1="4" y1="15" x2="24" y2="15" stroke="#c9a96e" stroke-width="1"/>
-                            <rect x="11" y="13" width="6" height="5" rx="1" stroke="#c9a96e" stroke-width="1" fill="rgba(201,169,110,0.1)"/>
-                        </svg>
+                    <div class="pricing-card-img">
+                        <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=600&q=80&fit=crop" alt="Travel adventure" loading="lazy">
                     </div>
+                    <div class="pricing-tier" data-en="Complete Pack" data-de="Komplettpaket" data-es="Pack Completo" data-fr="Pack Complet">Complete Pack</div>
                     <div class="pricing-name" data-en="UncleMarv Complete" data-de="UncleMarv Complete" data-es="UncleMarv Complete" data-fr="UncleMarv Complete">UncleMarv Complete</div>
                     <p class="pricing-desc"
-                       data-en="Every product. One price. Everything you need to travel smarter, look better, save more."
-                       data-de="Alle Produkte. Ein Preis. Alles was du brauchst um smarter zu reisen, besser auszusehen, mehr zu sparen."
-                       data-es="Todos los productos. Un precio. Todo lo que necesitas para viajar mejor, verte mejor, ahorrar más."
-                       data-fr="Tous les produits. Un prix. Tout ce qu'il vous faut pour voyager plus intelligemment.">
-                       Every product. One price. Everything you need to travel smarter, look better, save more.
+                       data-en="Every product. One price."
+                       data-de="Alle Produkte. Ein Preis."
+                       data-es="Todos los productos. Un precio."
+                       data-fr="Tous les produits. Un prix.">
+                       Every product. One price.
                     </p>
                     <div class="pricing-includes">
                         <div data-en="Hack Pack — €19.99" data-de="Hack Pack — €19.99" data-es="Hack Pack — €19.99" data-fr="Hack Pack — €19.99">Hack Pack — €19.99</div>
                         <div data-en="Filter Reset — €24.99" data-de="Filter Reset — €24.99" data-es="Filter Reset — €24.99" data-fr="Filter Reset — €24.99">Filter Reset — €24.99</div>
-                        <div data-en="All future updates included" data-de="Alle zukünftigen Updates inklusive" data-es="Todas las actualizaciones futuras incluidas" data-fr="Toutes les mises à jour futures incluses">All future updates included</div>
+                        <div data-en="All future updates" data-de="Alle zukünftigen Updates" data-es="Actualizaciones futuras" data-fr="Mises à jour futures">All future updates</div>
                     </div>
                     <div class="pricing-price-area">
                         <div class="pricing-original"
@@ -2149,30 +2190,22 @@
 
                 <!-- CARD 3: Filter Reset — Creator -->
                 <div class="pricing-card">
-                    <div class="pricing-tier" data-en="Creator" data-de="Creator" data-es="Creador" data-fr="Créateur">Creator</div>
-                    <div class="pricing-icon-box">
-                        <svg viewBox="0 0 28 28" fill="none">
-                            <circle cx="14" cy="14" r="8" stroke="#c9a96e" stroke-width="1.5"/>
-                            <circle cx="14" cy="14" r="4" stroke="#c9a96e" stroke-width="1" stroke-dasharray="2,1.5"/>
-                            <circle cx="14" cy="14" r="1.5" fill="#c9a96e"/>
-                            <line x1="14" y1="3" x2="14" y2="6" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="14" y1="22" x2="14" y2="25" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="3" y1="14" x2="6" y2="14" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="22" y1="14" x2="25" y2="14" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
+                    <div class="pricing-card-img">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80&fit=crop" alt="Photography camera" loading="lazy">
                     </div>
+                    <div class="pricing-tier" data-en="Creator" data-de="Creator" data-es="Creador" data-fr="Créateur">Creator</div>
                     <div class="pricing-name" data-en="UncleMarv Filter Reset" data-de="UncleMarv Filter Reset" data-es="UncleMarv Filter Reset" data-fr="UncleMarv Filter Reset">UncleMarv Filter Reset</div>
                     <p class="pricing-desc"
-                       data-en="30 Lightroom presets for travel photography. One click — instant cinematic look. Free app compatible."
-                       data-de="30 Lightroom-Presets für Reisefotografie. Ein Klick — sofortiger cinematischer Look."
-                       data-es="30 presets de Lightroom para fotografía de viaje. Un clic — look cinematográfico instantáneo."
-                       data-fr="30 presets Lightroom pour la photographie de voyage. Un clic — look cinématographique instantané.">
-                       30 Lightroom presets for travel photography. One click — instant cinematic look. Free app compatible.
+                       data-en="8 film-grade Lightroom presets. One tap — instant cinematic look."
+                       data-de="8 Filmklassen Lightroom-Presets. Ein Klick — sofortiger cinematischer Look."
+                       data-es="8 presets Lightroom de clase cinematográfica. Un toque — look instantáneo."
+                       data-fr="8 presets Lightroom cinématographiques. Un tap — look instantané.">
+                       8 film-grade Lightroom presets. One tap — instant cinematic look.
                     </p>
                     <ul class="pricing-perks">
-                        <li data-en="Mobile &amp; desktop compatible" data-de="Mobil &amp; Desktop kompatibel" data-es="Compatible móvil y escritorio" data-fr="Compatible mobile et bureau">Mobile &amp; desktop compatible</li>
-                        <li data-en="Warm, cinematic tones" data-de="Warme, cinematische Töne" data-es="Tonos cálidos y cinematográficos" data-fr="Tons chauds et cinématographiques">Warm, cinematic tones</li>
-                        <li data-en="Free Lightroom app ready" data-de="Kostenlose Lightroom App kompatibel" data-es="Lista para la app gratuita de Lightroom" data-fr="Prêt pour l'app Lightroom gratuite">Free Lightroom app ready</li>
+                        <li data-en="Lightroom Mobile ready (.xmp)" data-de="Lightroom Mobile kompatibel (.xmp)" data-es="Compatible Lightroom Mobile (.xmp)" data-fr="Compatible Lightroom Mobile (.xmp)">Lightroom Mobile ready (.xmp)</li>
+                        <li data-en="Dark Moody, Golden Hour &amp; more" data-de="Dark Moody, Golden Hour &amp; mehr" data-es="Dark Moody, Hora Dorada y más" data-fr="Dark Moody, Heure Dorée &amp; plus">Dark Moody, Golden Hour &amp; more</li>
+                        <li data-en="PDF fine-tuning guide included" data-de="PDF-Anleitung inklusive" data-es="Guía PDF de ajuste incluida" data-fr="Guide PDF d'ajustement inclus">PDF fine-tuning guide included</li>
                     </ul>
                     <div class="pricing-price-area">
                         <div class="pricing-price">€24.99</div>
@@ -2185,11 +2218,13 @@
 
             <!-- Trust row -->
             <div class="pricing-trust reveal">
-                <span>🔒 <span data-en="Instant download" data-de="Sofort-Download" data-es="Descarga inmediata" data-fr="Téléchargement immédiat">Instant download</span></span>
+                <span>⚡ <span data-en="Instant download" data-de="Sofort-Download" data-es="Descarga inmediata" data-fr="Téléchargement immédiat">Instant download</span></span>
                 <span>·</span>
-                <span>↩ <span data-en="30-day money back" data-de="30 Tage Rückgabe" data-es="30 días de reembolso" data-fr="30 jours satisfait ou remboursé">30-day money back</span></span>
+                <span>🔒 <span data-en="Secure checkout" data-de="Sicherer Checkout" data-es="Pago seguro" data-fr="Paiement sécurisé">Secure checkout</span></span>
                 <span>·</span>
-                <span>🌍 <span data-en="6 languages included" data-de="6 Sprachen inklusive" data-es="6 idiomas incluidos" data-fr="6 langues incluses">6 languages included</span></span>
+                <span>📱 <span data-en="Mobile compatible" data-de="Mobil kompatibel" data-es="Compatible móvil" data-fr="Compatible mobile">Mobile compatible</span></span>
+                <span>·</span>
+                <span><span class="digital-badge" data-en="Digital · No refunds" data-de="Digital · Kein Rückgaberecht" data-es="Digital · Sin devoluciones" data-fr="Numérique · Sans remboursement">Digital · No refunds</span></span>
             </div>
 
             <!-- Hidden product grid (old 9 cards kept for cart compatibility) -->
@@ -3457,8 +3492,8 @@
     (function() {
         // Map hash → array of element selectors to SHOW (everything else is hidden)
         const ROUTES = {
-            '':           ['#page-home', '#shop'],
-            'home':       ['#page-home', '#shop'],
+            '':           ['#page-home', '#shop', '#roadmap'],
+            'home':       ['#page-home', '#shop', '#roadmap'],
             'collection': ['#shop'],
             'vip':        ['#vip'],
             'vision':     ['#about', '#roadmap'],
