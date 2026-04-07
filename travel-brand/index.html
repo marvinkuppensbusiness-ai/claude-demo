@@ -2255,6 +2255,187 @@
             .rm-bento-card.rm-wide { grid-row: auto; grid-column: auto; }
         }
 
+        /* ── Roadmap mystery card style ──────────────────── */
+        .rm-bento-title.rm-mystery {
+            font-style: italic;
+            color: rgba(240,236,228,0.35);
+            font-weight: 400;
+        }
+
+        /* ── Roadmap wish CTA ─────────────────────────────── */
+        .rm-wish-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+        .rm-wish-hint {
+            font-size: 0.82rem;
+            color: rgba(240,236,228,0.3);
+            letter-spacing: 0.01em;
+            font-weight: 300;
+        }
+        .rm-wish-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: 1px solid rgba(201,169,110,0.22);
+            border-radius: 100px;
+            padding: 9px 22px;
+            color: rgba(201,169,110,0.75);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: border-color 0.25s, color 0.25s, background 0.25s;
+            font-family: inherit;
+        }
+        .rm-wish-btn:hover {
+            border-color: rgba(201,169,110,0.55);
+            color: #c9a96e;
+            background: rgba(201,169,110,0.04);
+        }
+
+        /* ── Wish / Feature Request Section ──────────────── */
+        .wish-section {
+            background: #0c0c0a;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .wish-header {
+            max-width: 680px;
+            margin: 0 auto 56px;
+        }
+        .wish-eyebrow {
+            display: block;
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.6);
+            margin-bottom: 16px;
+        }
+        .wish-headline {
+            font-size: clamp(38px, 5.5vw, 72px);
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            color: #f0ece4;
+            line-height: 0.95;
+            margin-bottom: 20px;
+        }
+        .wish-headline em {
+            font-style: normal;
+            background: linear-gradient(135deg, #c9a96e, #f0d89a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .wish-sub {
+            font-size: 0.88rem;
+            color: rgba(240,236,228,0.32);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        .wish-form {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .wish-field {
+            margin-bottom: 16px;
+        }
+        .wish-label {
+            display: block;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(240,236,228,0.3);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .wish-input,
+        .wish-textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            padding: 14px 18px;
+            color: #f0ece4;
+            font-size: 0.9rem;
+            font-family: inherit;
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.25s, background 0.25s;
+            resize: none;
+            letter-spacing: 0.01em;
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+        .wish-input:focus,
+        .wish-textarea:focus {
+            border-color: rgba(201,169,110,0.35);
+            background: rgba(255,255,255,0.05);
+        }
+        .wish-input::placeholder,
+        .wish-textarea::placeholder {
+            color: rgba(240,236,228,0.2);
+        }
+        .wish-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            padding: 16px 28px;
+            margin-top: 8px;
+            background: linear-gradient(135deg, #c9a96e 0%, #e8c887 50%, #c9a96e 100%);
+            background-size: 200% 100%;
+            border: none;
+            border-radius: 14px;
+            color: #0c0c0a;
+            font-size: 0.88rem;
+            font-weight: 700;
+            font-family: inherit;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background-position 0.4s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 8px 32px rgba(201,169,110,0.25);
+        }
+        .wish-submit:hover {
+            background-position: 100% 0;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 40px rgba(201,169,110,0.35);
+        }
+        .wish-privacy {
+            text-align: center;
+            font-size: 0.65rem;
+            color: rgba(240,236,228,0.2);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 14px;
+        }
+        .wish-success {
+            display: none;
+            text-align: center;
+            padding: 28px;
+            border: 1px solid rgba(201,169,110,0.18);
+            border-radius: 18px;
+            background: rgba(201,169,110,0.04);
+            margin-top: 20px;
+        }
+        .wish-success.show { display: block; }
+        .wish-success-icon {
+            font-size: 1.6rem;
+            color: #c9a96e;
+            margin-bottom: 10px;
+        }
+        .wish-success p {
+            font-size: 0.95rem;
+            color: rgba(240,236,228,0.6);
+            font-weight: 300;
+        }
+
         /* ── Register Modal ──────────────────────────────── */
         .reg-overlay {
             position:fixed; inset:0; background:rgba(10,10,10,0.88); z-index:10000;
@@ -3053,17 +3234,21 @@
             <div class="vip-formula reveal">
                 <div class="vip-formula-pill">
                     <div class="vip-formula-num">1€</div>
-                    <div class="vip-formula-lbl">Spent</div>
+                    <div class="vip-formula-lbl"
+                         data-en="Spent" data-de="Ausgegeben" data-fr="Dépensé" data-es="Gastado">Spent</div>
                 </div>
                 <div class="vip-formula-arrow">→</div>
                 <div class="vip-formula-pill">
                     <div class="vip-formula-num">5</div>
-                    <div class="vip-formula-lbl">Points</div>
+                    <div class="vip-formula-lbl"
+                         data-en="Points" data-de="Punkte" data-fr="Points" data-es="Puntos">Points</div>
                 </div>
                 <div class="vip-formula-arrow">→</div>
                 <div class="vip-formula-pill">
-                    <div class="vip-formula-num" style="font-size:1.1rem; line-height:1.15">Up to<br>25%</div>
-                    <div class="vip-formula-lbl">Lifetime off</div>
+                    <div class="vip-formula-num" style="font-size:1.1rem; line-height:1.15"
+                         data-en="Up to<br>25%" data-de="Bis zu<br>25%" data-fr="Jusqu'à<br>25%" data-es="Hasta<br>25%">Up to<br>25%</div>
+                    <div class="vip-formula-lbl"
+                         data-en="Lifetime off" data-de="Lebenslang Rabatt" data-fr="Réduction vie" data-es="Dto. vitalicio">Lifetime off</div>
                 </div>
             </div>
 
@@ -3092,17 +3277,35 @@
 
     <section class="about" id="about">
         <div class="container">
-            <div class="vision-eyebrow reveal">My Vision</div>
+            <div class="vision-eyebrow reveal"
+                 data-en="My Vision" data-de="Meine Vision" data-fr="Ma Vision" data-es="Mi Visión">My Vision</div>
             <div class="vision-layout reveal">
                 <!-- LEFT: headline + pull quote + body -->
                 <div class="vision-left">
-                    <h2 class="vision-headline">Built on<br>the <em>road.</em></h2>
+                    <h2 class="vision-headline"
+                        data-en="Built on<br>the <em>road.</em>"
+                        data-de="Gebaut auf<br>der <em>Straße.</em>"
+                        data-fr="Construit sur<br>la <em>route.</em>"
+                        data-es="Construido en<br>el <em>camino.</em>">Built on<br>the <em>road.</em></h2>
                     <div class="vision-pull-quote">
-                        <p class="vision-pq-text">&ldquo;You&rsquo;re not buying a wallpaper.<br>You&rsquo;re investing in a perspective.&rdquo;</p>
+                        <p class="vision-pq-text"
+                           data-en="&ldquo;You&rsquo;re not buying a wallpaper.<br>You&rsquo;re investing in a perspective.&rdquo;"
+                           data-de="&ldquo;Du kaufst kein Wallpaper.<br>Du investierst in eine Perspektive.&rdquo;"
+                           data-fr="&ldquo;Vous n&rsquo;achetez pas un fond d&rsquo;&eacute;cran.<br>Vous investissez dans une perspective.&rdquo;"
+                           data-es="&ldquo;No compras un fondo de pantalla.<br>Inviertes en una perspectiva.&rdquo;">&ldquo;You&rsquo;re not buying a wallpaper.<br>You&rsquo;re investing in a perspective.&rdquo;</p>
                     </div>
-                    <p class="v-p">I&rsquo;ve been to 23 countries. Airport terminals at 3am, missed flights, hidden beaches that don&rsquo;t exist on any map. Every moment taught me something &mdash; most of it the hard way.</p>
-                    <p class="v-p" style="margin-top:18px;">Everything I sell exists because I made it on the road. Real places, real light &mdash; not stock photos, not filters applied in an office. A percentage of every sale goes directly to local projects in the countries I&rsquo;ve traveled through. No middleman. No corporate charity theatre.</p>
-                    <a href="#roadmap" class="btn-roadmap" style="margin-top:36px; display:inline-flex;">
+                    <p class="v-p"
+                       data-en="I&rsquo;ve been to 23 countries. Airport terminals at 3am, missed flights, hidden beaches that don&rsquo;t exist on any map. Every moment taught me something &mdash; most of it the hard way."
+                       data-de="Ich war in 23 Ländern. Flughafen-Terminals um 3 Uhr morgens, verpasste Flüge, versteckte Strände die auf keiner Karte existieren. Jeder Moment hat mich etwas gelehrt &mdash; das meiste auf die harte Tour."
+                       data-fr="J&rsquo;ai visit&eacute; 23 pays. Des terminaux d&rsquo;a&eacute;roport &agrave; 3h du matin, des vols manqu&eacute;s, des plages cach&eacute;es qui n&rsquo;existent sur aucune carte. Chaque moment m&rsquo;a appris quelque chose &mdash; la plupart &agrave; la dure."
+                       data-es="He estado en 23 pa&iacute;ses. Terminales de aeropuerto a las 3am, vuelos perdidos, playas ocultas que no existen en ning&uacute;n mapa. Cada momento me ense&ntilde;&oacute; algo &mdash; la mayor parte por las malas.">I&rsquo;ve been to 23 countries. Airport terminals at 3am, missed flights, hidden beaches that don&rsquo;t exist on any map. Every moment taught me something &mdash; most of it the hard way.</p>
+                    <p class="v-p" style="margin-top:18px;"
+                       data-en="Everything I sell exists because I made it on the road. Real places, real light &mdash; not stock photos, not filters applied in an office. A percentage of every sale goes directly to local projects in the countries I&rsquo;ve traveled through. No middleman. No corporate charity theatre."
+                       data-de="Alles was ich verkaufe existiert weil ich es auf der Straße gemacht habe. Echte Orte, echtes Licht &mdash; keine Stockfotos, keine Filter aus dem Büro. Ein Teil jedes Verkaufs geht direkt an lokale Projekte in den Ländern, die ich bereist habe. Kein Mittelsmann. Kein Corporate-Charity-Theater."
+                       data-fr="Tout ce que je vends existe parce que je l&rsquo;ai cr&eacute;&eacute; sur la route. De vrais endroits, une vraie lumi&egrave;re &mdash; pas de photos de stock, pas de filtres appliqu&eacute;s dans un bureau. Un pourcentage de chaque vente va directement &agrave; des projets locaux dans les pays que j&rsquo;ai travers&eacute;s."
+                       data-es="Todo lo que vendo existe porque lo cre&eacute; en la carretera. Lugares reales, luz real &mdash; no fotos de stock, no filtros aplicados en una oficina. Un porcentaje de cada venta va directamente a proyectos locales en los pa&iacute;ses que he recorrido.">Everything I sell exists because I made it on the road. Real places, real light &mdash; not stock photos, not filters applied in an office. A percentage of every sale goes directly to local projects in the countries I&rsquo;ve traveled through. No middleman. No corporate charity theatre.</p>
+                    <a href="#roadmap" class="btn-roadmap" style="margin-top:36px; display:inline-flex;"
+                       data-en="See the Roadmap" data-de="Zur Roadmap" data-fr="Voir la Feuille de Route" data-es="Ver el Roadmap">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         See the Roadmap
                     </a>
@@ -3112,24 +3315,32 @@
                     <div class="v-grid">
                         <div class="v-stat">
                             <div class="v-stat-num">23+</div>
-                            <div class="v-stat-label">Countries<br>traveled</div>
+                            <div class="v-stat-label"
+                                 data-en="Countries<br>traveled" data-de="Bereiste<br>Länder" data-fr="Pays<br>visit&eacute;s" data-es="Pa&iacute;ses<br>visitados">Countries<br>traveled</div>
                         </div>
                         <div class="v-stat">
                             <div class="v-stat-num">10k+</div>
-                            <div class="v-stat-label">Downloads<br>worldwide</div>
+                            <div class="v-stat-label"
+                                 data-en="Downloads<br>worldwide" data-de="Downloads<br>weltweit" data-fr="T&eacute;l&eacute;chargements<br>mondiaux" data-es="Descargas<br>mundiales">Downloads<br>worldwide</div>
                         </div>
                         <div class="v-stat">
                             <div class="v-stat-num">200+</div>
-                            <div class="v-stat-label">Digital<br>products</div>
+                            <div class="v-stat-label"
+                                 data-en="Digital<br>products" data-de="Digitale<br>Produkte" data-fr="Produits<br>num&eacute;riques" data-es="Productos<br>digitales">Digital<br>products</div>
                         </div>
                         <div class="v-stat">
                             <div class="v-stat-num">4.9</div>
-                            <div class="v-stat-label">Average<br>rating</div>
+                            <div class="v-stat-label"
+                                 data-en="Average<br>rating" data-de="Ø<br>Bewertung" data-fr="Note<br>moyenne" data-es="Valoraci&oacute;n<br>media">Average<br>rating</div>
                         </div>
                     </div>
                     <div class="vision-mission-card">
                         <div class="vision-mission-icon">✦</div>
-                        <p class="vision-mission-text">10% of every sale goes to local community projects in the countries I travel through.</p>
+                        <p class="vision-mission-text"
+                           data-en="10% of every sale goes to local community projects in the countries I travel through."
+                           data-de="10% jedes Verkaufs fließt in lokale Community-Projekte in den Ländern, die ich bereise."
+                           data-fr="10% de chaque vente va &agrave; des projets communautaires locaux dans les pays que je traverse."
+                           data-es="El 10% de cada venta va a proyectos comunitarios locales en los pa&iacute;ses que recorro.">10% of every sale goes to local community projects in the countries I travel through.</p>
                     </div>
                 </div>
             </div>
@@ -3139,126 +3350,268 @@
     <section class="section roadmap" id="roadmap">
         <div class="container">
             <div class="rm-header reveal">
-                <span class="rm-eyebrow">What&rsquo;s Next</span>
-                <h2 class="rm-headline">The<br><em>roadmap.</em></h2>
-                <p class="rm-sub">Six phases. One vision. All in motion.</p>
+                <span class="rm-eyebrow"
+                      data-en="What&rsquo;s Next" data-de="Was kommt" data-fr="Ce qui arrive" data-es="Lo que viene">What&rsquo;s Next</span>
+                <h2 class="rm-headline"
+                    data-en="The<br><em>roadmap.</em>"
+                    data-de="Die<br><em>Roadmap.</em>"
+                    data-fr="La<br><em>feuille de route.</em>"
+                    data-es="El<br><em>roadmap.</em>">The<br><em>roadmap.</em></h2>
+                <p class="rm-sub"
+                   data-en="Six phases. One vision. All in motion."
+                   data-de="Sechs Phasen. Eine Vision. Alles in Bewegung."
+                   data-fr="Six phases. Une vision. Tout en mouvement."
+                   data-es="Seis fases. Una visi&oacute;n. Todo en movimiento.">Six phases. One vision. All in motion.</p>
             </div>
 
             <!-- Bento grid -->
             <div class="roadmap-bento reveal">
 
-                <!-- Phase 1 — featured, spans 2 rows -->
+                <!-- Phase 1 — featured, live, spans 2 rows -->
                 <div class="rm-bento-card rm-live rm-span2">
                     <div class="rm-phase-watermark">01</div>
                     <div class="rm-bento-inner">
                         <div class="rm-live-dot-wrap">
                             <span class="rm-live-dot"></span>
-                            <span class="rm-live-label">Live Now</span>
+                            <span class="rm-live-label"
+                                  data-en="Live Now" data-de="Jetzt Live" data-fr="En Ligne" data-es="En Directo">Live Now</span>
                         </div>
-                        <h3 class="rm-bento-title">Community Chat</h3>
-                        <p class="rm-bento-desc">Reisende teilen Spots, Tipps &amp; Reviews. Finde deinen nächsten Hidden Gem durch echte Empfehlungen.</p>
+                        <h3 class="rm-bento-title"
+                            data-en="Community Chat"
+                            data-de="Community Chat"
+                            data-fr="Chat Communautaire"
+                            data-es="Chat Comunitario">Community Chat</h3>
+                        <p class="rm-bento-desc"
+                           data-en="Travelers share spots, tips &amp; real reviews. Find your next hidden gem through genuine recommendations."
+                           data-de="Reisende teilen Spots, Tipps &amp; echte Reviews. Finde deinen nächsten Hidden Gem durch authentische Empfehlungen."
+                           data-fr="Les voyageurs partagent des spots, des conseils et de vraies avis. Trouvez votre prochaine p&eacute;pite gr&acirc;ce &agrave; de vraies recommandations."
+                           data-es="Los viajeros comparten lugares, consejos y rese&ntilde;as reales. Encuentra tu pr&oacute;xima joya oculta con recomendaciones aut&eacute;nticas.">Travelers share spots, tips &amp; real reviews. Find your next hidden gem through genuine recommendations.</p>
                         <div class="rm-bento-tags">
-                            <span class="rm-tag">Community</span>
-                            <span class="rm-tag">Real Reviews</span>
-                            <span class="rm-tag">Hidden Gems</span>
+                            <span class="rm-tag" data-en="Community" data-de="Community" data-fr="Communaut&eacute;" data-es="Comunidad">Community</span>
+                            <span class="rm-tag" data-en="Real Reviews" data-de="Echte Reviews" data-fr="Vrais Avis" data-es="Rese&ntilde;as Reales">Real Reviews</span>
+                            <span class="rm-tag" data-en="Hidden Gems" data-de="Hidden Gems" data-fr="Tr&eacute;sors Cach&eacute;s" data-es="Joyas Ocultas">Hidden Gems</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Phase 2 -->
+                <!-- Phase 2 — mystery -->
                 <div class="rm-bento-card rm-building">
                     <div class="rm-phase-watermark">02</div>
                     <div class="rm-bento-inner">
-                        <span class="rm-status-pill rm-pill-building">In Progress</span>
-                        <h3 class="rm-bento-title">Interactive Maps</h3>
-                        <p class="rm-bento-desc">Kuratierte Routen &amp; Hidden Gems — filtert nach Stil, Budget &amp; Season.</p>
+                        <span class="rm-status-pill rm-pill-building"
+                              data-en="In Progress" data-de="In Arbeit" data-fr="En cours" data-es="En Proceso">In Progress</span>
+                        <h3 class="rm-bento-title rm-mystery"
+                            data-en="Something&rsquo;s brewing&hellip;"
+                            data-de="Etwas ist in Arbeit&hellip;"
+                            data-fr="Quelque chose se pr&eacute;pare&hellip;"
+                            data-es="Algo se est&aacute; cocinando&hellip;">Something&rsquo;s brewing&hellip;</h3>
+                        <p class="rm-bento-desc"
+                           data-en="Currently being built. Stay tuned."
+                           data-de="Wird gerade gebaut. Bleib dran."
+                           data-fr="En cours de construction. Restez &agrave; l&rsquo;&eacute;coute."
+                           data-es="Actualmente en construcci&oacute;n. Est&aacute;te atento.">Currently being built. Stay tuned.</p>
                     </div>
                 </div>
 
-                <!-- Phase 3 -->
+                <!-- Phase 3 — mystery -->
                 <div class="rm-bento-card rm-building">
                     <div class="rm-phase-watermark">03</div>
                     <div class="rm-bento-inner">
-                        <span class="rm-status-pill rm-pill-building">In Progress</span>
-                        <h3 class="rm-bento-title">Gear Vault</h3>
-                        <p class="rm-bento-desc">Ehrliche Gear-Reviews &amp; Equipment-Empfehlungen — von echten Reisenden getestet.</p>
+                        <span class="rm-status-pill rm-pill-building"
+                              data-en="In Progress" data-de="In Arbeit" data-fr="En cours" data-es="En Proceso">In Progress</span>
+                        <h3 class="rm-bento-title rm-mystery"
+                            data-en="Not ready to reveal."
+                            data-de="Noch nicht bereit zur Enthüllung."
+                            data-fr="Pas encore pr&ecirc;t &agrave; d&eacute;voiler."
+                            data-es="A&uacute;n no listo para revelar.">Not ready to reveal.</h3>
+                        <p class="rm-bento-desc"
+                           data-en="We&rsquo;re working on it. Good things take time."
+                           data-de="Wir arbeiten daran. Gute Dinge brauchen Zeit."
+                           data-fr="Nous y travaillons. Les bonnes choses prennent du temps."
+                           data-es="Estamos trabajando en ello. Las cosas buenas llevan tiempo.">We&rsquo;re working on it. Good things take time.</p>
                     </div>
                 </div>
 
-                <!-- Phase 4 -->
+                <!-- Phase 4 — mystery -->
                 <div class="rm-bento-card rm-planned">
                     <div class="rm-phase-watermark">04</div>
                     <div class="rm-bento-inner">
-                        <span class="rm-status-pill rm-pill-planned">Q3 2025</span>
-                        <h3 class="rm-bento-title">Live Q&amp;A</h3>
-                        <p class="rm-bento-desc">Monatliche Live-Sessions — Members only. Direkte Fragen, echte Antworten.</p>
+                        <span class="rm-status-pill rm-pill-planned">Q3 2026</span>
+                        <h3 class="rm-bento-title rm-mystery"
+                            data-en="Coming Soon."
+                            data-de="Demnächst."
+                            data-fr="Bient&ocirc;t disponible."
+                            data-es="Pr&oacute;ximamente.">Coming Soon.</h3>
+                        <p class="rm-bento-desc"
+                           data-en="Details will be revealed closer to launch."
+                           data-de="Details werden kurz vor dem Launch bekannt gegeben."
+                           data-fr="Les d&eacute;tails seront r&eacute;v&eacute;l&eacute;s plus pr&egrave;s du lancement."
+                           data-es="Los detalles se revelar&aacute;n m&aacute;s cerca del lanzamiento.">Details will be revealed closer to launch.</p>
                     </div>
                 </div>
 
-                <!-- Phase 5 -->
+                <!-- Phase 5 — mystery -->
                 <div class="rm-bento-card rm-planned">
                     <div class="rm-phase-watermark">05</div>
                     <div class="rm-bento-inner">
-                        <span class="rm-status-pill rm-pill-planned">Q4 2025</span>
-                        <h3 class="rm-bento-title">Member Content</h3>
-                        <p class="rm-bento-desc">Behind-the-Scenes, Raw Footage &amp; exklusive Drops — nur für Community-Members.</p>
+                        <span class="rm-status-pill rm-pill-planned">Q4 2026</span>
+                        <h3 class="rm-bento-title rm-mystery"
+                            data-en="Coming Soon."
+                            data-de="Demnächst."
+                            data-fr="Bient&ocirc;t disponible."
+                            data-es="Pr&oacute;ximamente.">Coming Soon.</h3>
+                        <p class="rm-bento-desc"
+                           data-en="Something big is in the works. Sign up to be first."
+                           data-de="Etwas Großes ist in Arbeit. Melde dich an um als Erster dabei zu sein."
+                           data-fr="Quelque chose d&rsquo;important est en pr&eacute;paration. Inscrivez-vous pour &ecirc;tre le premier."
+                           data-es="Algo grande est&aacute; en marcha. Suscr&iacute;bete para ser el primero.">Something big is in the works. Sign up to be first.</p>
                     </div>
                 </div>
 
-                <!-- Phase 6 — wide, single accent -->
+                <!-- Phase 6 — mystery, wide -->
                 <div class="rm-bento-card rm-future rm-wide">
                     <div class="rm-phase-watermark">06</div>
                     <div class="rm-bento-inner">
-                        <span class="rm-status-pill rm-pill-future">2026</span>
-                        <h3 class="rm-bento-title">Local Discounts</h3>
-                        <p class="rm-bento-desc">Exklusive Deals mit lokalen Partnern weltweit &mdash; echte Rabatte an echten Orten, die du sowieso besuchst.</p>
+                        <span class="rm-status-pill rm-pill-future">2027</span>
+                        <h3 class="rm-bento-title rm-mystery"
+                            data-en="The final chapter."
+                            data-de="Das letzte Kapitel."
+                            data-fr="Le dernier chapitre."
+                            data-es="El cap&iacute;tulo final.">The final chapter.</h3>
+                        <p class="rm-bento-desc"
+                           data-en="The most ambitious phase yet. We&rsquo;re not saying anything else &mdash; except that you&rsquo;ll want to be here for it."
+                           data-de="Die ambitionierteste Phase bisher. Wir sagen nichts weiter &mdash; außer dass du dabei sein willst."
+                           data-fr="La phase la plus ambitieuse &agrave; ce jour. Nous ne disons rien d&rsquo;autre &mdash; sauf que vous voudrez y &ecirc;tre."
+                           data-es="La fase m&aacute;s ambiciosa hasta ahora. No decimos nada m&aacute;s &mdash; excepto que querr&aacute;s estar aqu&iacute; para esto.">The most ambitious phase yet. We&rsquo;re not saying anything else &mdash; except that you&rsquo;ll want to be here for it.</p>
                     </div>
                 </div>
 
             </div>
+
+            <!-- Wish CTA -->
+            <div class="rm-wish-cta reveal">
+                <p class="rm-wish-hint"
+                   data-en="Have an idea for what should come next?"
+                   data-de="Hast du eine Idee was als Nächstes kommen soll?"
+                   data-fr="Vous avez une id&eacute;e pour la suite ?"
+                   data-es="&iquest;Tienes una idea de qu&eacute; deber&iacute;a venir a continuaci&oacute;n?">Have an idea for what should come next?</p>
+                <button class="rm-wish-btn" onclick="document.getElementById('wishSection').scrollIntoView({behavior:'smooth'})">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    <span data-en="Share your wish" data-de="Wunsch teilen" data-fr="Partager votre souhait" data-es="Comparte tu deseo">Share your wish</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Wish / Feature Request Section ===== -->
+    <section class="section wish-section" id="wishSection">
+        <div class="container">
+            <div class="wish-header reveal">
+                <span class="wish-eyebrow"
+                      data-en="Shape What&rsquo;s Next" data-de="Gestalte was kommt" data-fr="Fa&ccedil;onnez la suite" data-es="Forma lo que viene">Shape What&rsquo;s Next</span>
+                <h2 class="wish-headline"
+                    data-en="What would make<br>your <em>next trip?</em>"
+                    data-de="Was würde deine<br><em>nächste Reise</em> ausmachen?"
+                    data-fr="Qu&rsquo;est-ce qui rendrait<br>votre <em>prochain voyage?</em>"
+                    data-es="&iquest;Qu&eacute; marcar&iacute;a<br>tu <em>pr&oacute;ximo viaje?</em>">What would make<br>your <em>next trip?</em></h2>
+                <p class="wish-sub"
+                   data-en="I read every message. If your idea fits the vision, it might just become Phase 7."
+                   data-de="Ich lese jede Nachricht. Wenn deine Idee zur Vision passt, wird sie vielleicht Phase 7."
+                   data-fr="Je lis chaque message. Si votre id&eacute;e correspond &agrave; la vision, elle pourrait devenir la Phase 7."
+                   data-es="Leo cada mensaje. Si tu idea encaja con la visi&oacute;n, podr&iacute;a convertirse en la Fase 7.">I read every message. If your idea fits the vision, it might just become Phase 7.</p>
+            </div>
+            <form class="wish-form reveal" id="wishForm" onsubmit="handleWish(event)">
+                <div class="wish-field">
+                    <label class="wish-label"
+                           data-en="Your email" data-de="Deine E-Mail" data-fr="Votre e-mail" data-es="Tu correo">Your email</label>
+                    <input type="email" class="wish-input" id="wishEmail" required
+                           data-en="you@example.com" data-de="du@beispiel.de" data-fr="vous@exemple.fr" data-es="tu@ejemplo.es"
+                           placeholder="you@example.com">
+                </div>
+                <div class="wish-field">
+                    <label class="wish-label"
+                           data-en="What&rsquo;s your wish?" data-de="Was ist dein Wunsch?" data-fr="Quel est votre souhait ?" data-es="&iquest;Cu&aacute;l es tu deseo?">What&rsquo;s your wish?</label>
+                    <textarea class="wish-textarea" id="wishText" rows="4" required
+                              data-en="A tool, a guide, a community feature — anything that would genuinely change how you travel…"
+                              data-de="Ein Tool, ein Guide, ein Community-Feature — alles was wirklich verändert wie du reist…"
+                              data-fr="Un outil, un guide, une fonctionnalit&eacute; communautaire — tout ce qui changerait vraiment votre fa&ccedil;on de voyager…"
+                              data-es="Una herramienta, una gu&iacute;a, una caracter&iacute;stica comunitaria — cualquier cosa que cambie de verdad c&oacute;mo viajas…"
+                              placeholder="A tool, a guide, a community feature — anything that would genuinely change how you travel…"></textarea>
+                </div>
+                <button type="submit" class="wish-submit">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+                    <span data-en="Send my wish" data-de="Wunsch absenden" data-fr="Envoyer mon souhait" data-es="Enviar mi deseo">Send my wish</span>
+                </button>
+                <p class="wish-privacy"
+                   data-en="Your email stays private. No spam, ever."
+                   data-de="Deine E-Mail bleibt privat. Kein Spam, versprochen."
+                   data-fr="Votre e-mail reste priv&eacute;. Aucun spam, jamais."
+                   data-es="Tu correo es privado. Sin spam, nunca.">Your email stays private. No spam, ever.</p>
+                <div class="wish-success" id="wishSuccess">
+                    <div class="wish-success-icon">✦</div>
+                    <p data-en="Received. I&rsquo;ll read it personally." data-de="Erhalten. Ich lese es persönlich." data-fr="Re&ccedil;u. Je le lirai personnellement." data-es="Recibido. Lo leer&eacute; personalmente.">Received. I&rsquo;ll read it personally.</p>
+                </div>
+            </form>
         </div>
     </section>
 
     <section class="section voices-section" id="reviews">
         <div class="container">
             <div class="voices-header reveal">
-                <span class="voices-eyebrow">Voices</span>
-                <h2 class="voices-headline">What they say.</h2>
+                <span class="voices-eyebrow"
+                      data-en="Voices" data-de="Stimmen" data-fr="Voix" data-es="Voces">Voices</span>
+                <h2 class="voices-headline"
+                    data-en="What they say." data-de="Was sie sagen." data-fr="Ce qu&rsquo;ils disent." data-es="Lo que dicen.">What they say.</h2>
             </div>
             <div class="voices-grid reveal">
                 <!-- Featured card (spans 2 rows) -->
                 <div class="review featured">
                     <div class="review-stars">&starf;&starf;&starf;&starf;&starf;</div>
-                    <p>&ldquo;The LUTs completely transformed my travel footage. My videos now look like they&rsquo;re straight out of a cinematic documentary. Worth every cent &mdash; and then some.&rdquo;</p>
+                    <p data-en="&ldquo;The LUTs completely transformed my travel footage. My videos now look like they&rsquo;re straight out of a cinematic documentary. Worth every cent &mdash; and then some.&rdquo;"
+                       data-de="&ldquo;Die LUTs haben mein Reisematerial komplett verwandelt. Meine Videos sehen jetzt aus wie aus einem Kinofilm. Jeden Cent wert &mdash; und mehr.&rdquo;"
+                       data-fr="&ldquo;Les LUTs ont compl&egrave;tement transform&eacute; mes prises de vue de voyage. Mes vid&eacute;os ressemblent maintenant &agrave; un documentaire cin&eacute;matographique. Chaque centime en vaut la peine.&rdquo;"
+                       data-es="&ldquo;Los LUTs transformaron completamente mis grabaciones de viaje. Mis v&iacute;deos ahora parecen sacados de un documental cinematogr&aacute;fico. Vale cada c&eacute;ntimo &mdash; y m&aacute;s.&rdquo;">&ldquo;The LUTs completely transformed my travel footage. My videos now look like they&rsquo;re straight out of a cinematic documentary. Worth every cent &mdash; and then some.&rdquo;</p>
                     <div class="review-author">
                         <div class="review-author-avatar">L</div>
                         <div>
                             <div class="review-author-name">Lisa M.</div>
-                            <div class="review-author-role">Travel Creator &mdash; 80k followers</div>
+                            <div class="review-author-role"
+                                 data-en="Travel Creator &mdash; 80k followers"
+                                 data-de="Travel Creator &mdash; 80k Follower"
+                                 data-fr="Cr&eacute;atrice Voyage &mdash; 80k abonn&eacute;s"
+                                 data-es="Creadora de Viajes &mdash; 80k seguidores">Travel Creator &mdash; 80k followers</div>
                         </div>
                     </div>
                 </div>
                 <!-- Small card 1 -->
                 <div class="review">
                     <div class="review-stars">&starf;&starf;&starf;&starf;&starf;</div>
-                    <p>&ldquo;Finally wallpapers that don&rsquo;t look like stock photos. Every image tells a real story.&rdquo;</p>
+                    <p data-en="&ldquo;Finally wallpapers that don&rsquo;t look like stock photos. Every image tells a real story.&rdquo;"
+                       data-de="&ldquo;Endlich Wallpapers die nicht wie Stockfotos aussehen. Jedes Bild erzählt eine echte Geschichte.&rdquo;"
+                       data-fr="&ldquo;Enfin des fonds d&rsquo;&eacute;cran qui ne ressemblent pas &agrave; des photos de stock. Chaque image raconte une vraie histoire.&rdquo;"
+                       data-es="&ldquo;Por fin fondos de pantalla que no parecen fotos de stock. Cada imagen cuenta una historia real.&rdquo;">&ldquo;Finally wallpapers that don&rsquo;t look like stock photos. Every image tells a real story.&rdquo;</p>
                     <div class="review-author">
                         <div class="review-author-avatar">T</div>
                         <div>
                             <div class="review-author-name">Tom K.</div>
-                            <div class="review-author-role">Designer</div>
+                            <div class="review-author-role"
+                                 data-en="Designer" data-de="Designer" data-fr="Designer" data-es="Dise&ntilde;ador">Designer</div>
                         </div>
                     </div>
                 </div>
                 <!-- Small card 2 -->
                 <div class="review">
                     <div class="review-stars">&starf;&starf;&starf;&starf;&starf;</div>
-                    <p>&ldquo;The Travel Hacks Guide alone saved me over &euro;500 on my Southeast Asia trip. Insane value.&rdquo;</p>
+                    <p data-en="&ldquo;The Travel Hacks Guide alone saved me over &euro;500 on my Southeast Asia trip. Insane value.&rdquo;"
+                       data-de="&ldquo;Der Travel Hacks Guide allein hat mir über €500 auf meiner Südostasien-Reise gespart. Unglaubliches Preis-Leistungs-Verhältnis.&rdquo;"
+                       data-fr="&ldquo;Le Guide de Voyages &agrave; lui seul m&rsquo;a fait &eacute;conomiser plus de 500&euro; lors de mon voyage en Asie du Sud-Est. Une valeur insens&eacute;e.&rdquo;"
+                       data-es="&ldquo;La Gu&iacute;a de Travel Hacks por s&iacute; sola me ahorr&oacute; m&aacute;s de 500&euro; en mi viaje por el Sudeste Asi&aacute;tico. Un valor incre&iacute;ble.&rdquo;">&ldquo;The Travel Hacks Guide alone saved me over &euro;500 on my Southeast Asia trip. Insane value.&rdquo;</p>
                     <div class="review-author">
                         <div class="review-author-avatar">S</div>
                         <div>
                             <div class="review-author-name">Sarah W.</div>
-                            <div class="review-author-role">Digital Nomad</div>
+                            <div class="review-author-role"
+                                 data-en="Digital Nomad" data-de="Digital Nomad" data-fr="Nomade Digital" data-es="N&oacute;mada Digital">Digital Nomad</div>
                         </div>
                     </div>
                 </div>
@@ -3269,119 +3622,182 @@
     <section class="section" id="faq">
         <div class="container">
             <div class="section-header reveal">
-                <p class="tag">FAQ</p>
+                <p class="tag" data-en="FAQ" data-de="FAQ" data-fr="FAQ" data-es="FAQ">FAQ</p>
                 <div class="line"></div>
-                <h2>Frequently Asked</h2>
+                <h2 data-en="Frequently Asked" data-de="Häufige Fragen" data-fr="Questions Fr&eacute;quentes" data-es="Preguntas Frecuentes">Frequently Asked</h2>
             </div>
             <div class="faq-list">
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Welche Dateiformate sind in den Produkten enthalten?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="What file formats are included in the products?"
+                            data-de="Welche Dateiformate sind in den Produkten enthalten?"
+                            data-fr="Quels formats de fichiers sont inclus dans les produits ?"
+                            data-es="¿Qué formatos de archivo incluyen los productos?">What file formats are included in the products?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            <strong style="color:var(--white);font-weight:500;">Wallpaper Pack:</strong> JPEG & PNG, 4K bis 8K Auflösung.<br>
-                            <strong style="color:var(--white);font-weight:500;">Cinematic LUTs:</strong> .cube-Dateien, kompatibel mit DaVinci Resolve, Premiere Pro, Final Cut Pro und weiteren.<br>
-                            <strong style="color:var(--white);font-weight:500;">Lightroom Presets:</strong> .xmp-Dateien für Lightroom Classic & Lightroom Mobile (via DNG-Import).<br>
-                            <strong style="color:var(--white);font-weight:500;">Travel Hacks Guide:</strong> PDF, optimiert für Mobil und Desktop.
+                        <div class="faq-a-inner"
+                             data-en="<strong style='color:var(--white);font-weight:500;'>Wallpaper Pack:</strong> JPEG &amp; PNG, 4K to 8K resolution.<br><strong style='color:var(--white);font-weight:500;'>Cinematic LUTs:</strong> .cube files, compatible with DaVinci Resolve, Premiere Pro, Final Cut Pro and more.<br><strong style='color:var(--white);font-weight:500;'>Lightroom Presets:</strong> .xmp files for Lightroom Classic &amp; Lightroom Mobile (via DNG import).<br><strong style='color:var(--white);font-weight:500;'>Travel Hacks Guide:</strong> PDF, optimised for mobile and desktop."
+                             data-de="<strong style='color:var(--white);font-weight:500;'>Wallpaper Pack:</strong> JPEG &amp; PNG, 4K bis 8K Auflösung.<br><strong style='color:var(--white);font-weight:500;'>Cinematic LUTs:</strong> .cube-Dateien, kompatibel mit DaVinci Resolve, Premiere Pro, Final Cut Pro und weiteren.<br><strong style='color:var(--white);font-weight:500;'>Lightroom Presets:</strong> .xmp-Dateien für Lightroom Classic &amp; Lightroom Mobile (via DNG-Import).<br><strong style='color:var(--white);font-weight:500;'>Travel Hacks Guide:</strong> PDF, optimiert für Mobil und Desktop."
+                             data-fr="<strong style='color:var(--white);font-weight:500;'>Wallpaper Pack:</strong> JPEG &amp; PNG, résolution 4K à 8K.<br><strong style='color:var(--white);font-weight:500;'>LUTs Cinématiques:</strong> fichiers .cube, compatibles avec DaVinci Resolve, Premiere Pro, Final Cut Pro et plus.<br><strong style='color:var(--white);font-weight:500;'>Presets Lightroom:</strong> fichiers .xmp pour Lightroom Classic &amp; Mobile (via import DNG).<br><strong style='color:var(--white);font-weight:500;'>Guide Travel Hacks:</strong> PDF, optimisé mobile et bureau."
+                             data-es="<strong style='color:var(--white);font-weight:500;'>Wallpaper Pack:</strong> JPEG &amp; PNG, resolución 4K a 8K.<br><strong style='color:var(--white);font-weight:500;'>LUTs Cinematográficos:</strong> archivos .cube, compatibles con DaVinci Resolve, Premiere Pro, Final Cut Pro y más.<br><strong style='color:var(--white);font-weight:500;'>Presets Lightroom:</strong> archivos .xmp para Lightroom Classic &amp; Mobile (vía importación DNG).<br><strong style='color:var(--white);font-weight:500;'>Guía Travel Hacks:</strong> PDF, optimizado para móvil y escritorio.">
+                            <strong style="color:var(--white);font-weight:500;">Wallpaper Pack:</strong> JPEG &amp; PNG, 4K to 8K resolution.<br>
+                            <strong style="color:var(--white);font-weight:500;">Cinematic LUTs:</strong> .cube files, compatible with DaVinci Resolve, Premiere Pro, Final Cut Pro and more.<br>
+                            <strong style="color:var(--white);font-weight:500;">Lightroom Presets:</strong> .xmp files for Lightroom Classic &amp; Mobile (via DNG import).<br>
+                            <strong style="color:var(--white);font-weight:500;">Travel Hacks Guide:</strong> PDF, optimised for mobile and desktop.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Funktionieren die LUTs in DaVinci Resolve, Premiere Pro und Final Cut?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="Do the LUTs work in DaVinci Resolve, Premiere Pro and Final Cut?"
+                            data-de="Funktionieren die LUTs in DaVinci Resolve, Premiere Pro und Final Cut?"
+                            data-fr="Les LUTs fonctionnent-ils dans DaVinci Resolve, Premiere Pro et Final Cut ?"
+                            data-es="¿Funcionan los LUTs en DaVinci Resolve, Premiere Pro y Final Cut?">Do the LUTs work in DaVinci Resolve, Premiere Pro and Final Cut?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Ja — alle LUTs liegen im universellen <strong style="color:var(--white);font-weight:400;">.cube-Format</strong> vor und sind kompatibel mit DaVinci Resolve (ab Version 16), Adobe Premiere Pro, Final Cut Pro X, After Effects und Capcut. Eine Installationsanleitung für jede App ist im ZIP-Archiv enthalten.
+                        <div class="faq-a-inner"
+                             data-en="Yes — all LUTs are in the universal <strong style='color:var(--white);font-weight:400;'>.cube format</strong> and compatible with DaVinci Resolve (v16+), Adobe Premiere Pro, Final Cut Pro X, After Effects and Capcut. An install guide for every app is included in the ZIP."
+                             data-de="Ja — alle LUTs liegen im universellen <strong style='color:var(--white);font-weight:400;'>.cube-Format</strong> vor und sind kompatibel mit DaVinci Resolve (ab Version 16), Adobe Premiere Pro, Final Cut Pro X, After Effects und Capcut. Eine Installationsanleitung ist im ZIP-Archiv enthalten."
+                             data-fr="Oui — tous les LUTs sont au format universel <strong style='color:var(--white);font-weight:400;'>.cube</strong> et compatibles avec DaVinci Resolve (v16+), Adobe Premiere Pro, Final Cut Pro X, After Effects et Capcut. Un guide d'installation est inclus dans le ZIP."
+                             data-es="Sí — todos los LUTs están en formato universal <strong style='color:var(--white);font-weight:400;'>.cube</strong> y son compatibles con DaVinci Resolve (v16+), Adobe Premiere Pro, Final Cut Pro X, After Effects y Capcut. Se incluye una guía de instalación en el ZIP.">
+                            Yes — all LUTs are in the universal <strong style="color:var(--white);font-weight:400;">.cube format</strong> and compatible with DaVinci Resolve (v16+), Adobe Premiere Pro, Final Cut Pro X, After Effects and Capcut. An install guide is included in the ZIP.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Wie installiere ich die Lightroom Presets auf dem Handy?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="How do I install the Lightroom Presets on mobile?"
+                            data-de="Wie installiere ich die Lightroom Presets auf dem Handy?"
+                            data-fr="Comment installer les Presets Lightroom sur mobile ?"
+                            data-es="¿Cómo instalo los Presets de Lightroom en el móvil?">How do I install the Lightroom Presets on mobile?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Für Lightroom Mobile importierst du die mitgelieferten <strong style="color:var(--white);font-weight:400;">DNG-Dateien</strong> in deine Galerie, öffnest sie in der App, drückst auf die drei Punkte → "Einstellungen kopieren" — und wendest sie auf beliebige Fotos an. Funktioniert mit der kostenlosen Version von Lightroom Mobile.
+                        <div class="faq-a-inner"
+                             data-en="For Lightroom Mobile, import the included <strong style='color:var(--white);font-weight:400;'>DNG files</strong> into your gallery, open them in the app, tap the three dots → 'Copy Settings' — then apply to any photo. Works with the free version of Lightroom Mobile."
+                             data-de="Für Lightroom Mobile importierst du die mitgelieferten <strong style='color:var(--white);font-weight:400;'>DNG-Dateien</strong> in deine Galerie, öffnest sie in der App, drückst auf die drei Punkte → 'Einstellungen kopieren' — und wendest sie auf beliebige Fotos an. Funktioniert mit der kostenlosen Version."
+                             data-fr="Pour Lightroom Mobile, importez les <strong style='color:var(--white);font-weight:400;'>fichiers DNG</strong> inclus dans votre galerie, ouvrez-les dans l'app, appuyez sur les trois points → 'Copier les réglages' — puis appliquez à n'importe quelle photo. Fonctionne avec la version gratuite."
+                             data-es="Para Lightroom Mobile, importa los <strong style='color:var(--white);font-weight:400;'>archivos DNG</strong> incluidos en tu galería, ábrelos en la app, toca los tres puntos → 'Copiar ajustes' — y aplícalos a cualquier foto. Funciona con la versión gratuita.">
+                            For Lightroom Mobile, import the included <strong style="color:var(--white);font-weight:400;">DNG files</strong> into your gallery, open them in the app, tap the three dots → 'Copy Settings' — then apply to any photo. Works with the free version.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Für welche Kameras und Handys sind die Presets geeignet?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="Which cameras and phones work with the presets?"
+                            data-de="Für welche Kameras und Handys sind die Presets geeignet?"
+                            data-fr="Quels appareils photo et téléphones fonctionnent avec les presets ?"
+                            data-es="¿Con qué cámaras y móviles funcionan los presets?">Which cameras and phones work with the presets?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Die Presets funktionieren mit <strong style="color:var(--white);font-weight:400;">allen Kameras und Smartphones</strong> — DSLR, Mirrorless (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone und Android. Für beste Ergebnisse empfehle ich RAW-Aufnahmen. JPEG funktioniert auch, aber RAW gibt dir mehr Spielraum.
+                        <div class="faq-a-inner"
+                             data-en="The presets work with <strong style='color:var(--white);font-weight:400;'>all cameras and smartphones</strong> — DSLR, Mirrorless (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone and Android. For best results I recommend RAW. JPEG works too, but RAW gives you more headroom."
+                             data-de="Die Presets funktionieren mit <strong style='color:var(--white);font-weight:400;'>allen Kameras und Smartphones</strong> — DSLR, Mirrorless (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone und Android. Für beste Ergebnisse empfehle ich RAW. JPEG funktioniert auch, aber RAW gibt mehr Spielraum."
+                             data-fr="Les presets fonctionnent avec <strong style='color:var(--white);font-weight:400;'>tous les appareils photo et smartphones</strong> — DSLR, sans miroir (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone et Android. Pour de meilleurs résultats, je recommande le RAW."
+                             data-es="Los presets funcionan con <strong style='color:var(--white);font-weight:400;'>todas las cámaras y smartphones</strong> — DSLR, sin espejo (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone y Android. Para mejores resultados recomiendo RAW.">
+                            The presets work with <strong style="color:var(--white);font-weight:400;">all cameras and smartphones</strong> — DSLR, Mirrorless (Sony, Canon, Nikon, Fujifilm), GoPro, iPhone and Android. For best results I recommend RAW. JPEG works too, but RAW gives you more headroom.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Kann ich eine Rückerstattung bekommen?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="Can I get a refund?"
+                            data-de="Kann ich eine Rückerstattung bekommen?"
+                            data-fr="Puis-je obtenir un remboursement ?"
+                            data-es="¿Puedo obtener un reembolso?">Can I get a refund?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Da es sich um digitale Produkte handelt, gilt grundsätzlich kein Rückgaberecht nach dem Download. Wenn eine Datei jedoch <strong style="color:var(--white);font-weight:400;">defekt oder nicht wie beschrieben</strong> ist, schreib innerhalb von 14 Tagen an <a href="mailto:marvinkuppens.business@gmail.com">marvinkuppens.business@gmail.com</a> — ich löse das unbürokratisch. Vollständige Details findest du in den <a href="agb.html">AGB</a>.
+                        <div class="faq-a-inner"
+                             data-en="As digital products, refunds don't apply after download. However, if a file is <strong style='color:var(--white);font-weight:400;'>defective or not as described</strong>, email <a href='mailto:marvinkuppens.business@gmail.com'>marvinkuppens.business@gmail.com</a> within 14 days — I'll sort it out. Full details in the <a href='agb.html'>Terms &amp; Conditions</a>."
+                             data-de="Da es sich um digitale Produkte handelt, gilt nach dem Download kein Rückgaberecht. Wenn eine Datei jedoch <strong style='color:var(--white);font-weight:400;'>defekt oder nicht wie beschrieben</strong> ist, schreib innerhalb von 14 Tagen an <a href='mailto:marvinkuppens.business@gmail.com'>marvinkuppens.business@gmail.com</a> — ich löse das. Details in den <a href='agb.html'>AGB</a>."
+                             data-fr="En tant que produits numériques, les remboursements ne s'appliquent pas après téléchargement. Cependant, si un fichier est <strong style='color:var(--white);font-weight:400;'>défectueux ou non conforme</strong>, envoyez un email dans les 14 jours — je règlerai ça."
+                             data-es="Como productos digitales, los reembolsos no aplican tras la descarga. Sin embargo, si un archivo está <strong style='color:var(--white);font-weight:400;'>defectuoso o no es como se describe</strong>, escribe en 14 días — lo resuelvo sin problemas.">
+                            As digital products, refunds don't apply after download. However, if a file is <strong style="color:var(--white);font-weight:400;">defective or not as described</strong>, email <a href="mailto:marvinkuppens.business@gmail.com">marvinkuppens.business@gmail.com</a> within 14 days — I'll sort it out.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Wie erhalte ich meine Dateien nach dem Kauf?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="How do I receive my files after purchase?"
+                            data-de="Wie erhalte ich meine Dateien nach dem Kauf?"
+                            data-fr="Comment recevoir mes fichiers après l'achat ?"
+                            data-es="¿Cómo recibo mis archivos tras la compra?">How do I receive my files after purchase?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Sofort nach dem Kauf erhältst du eine <strong style="color:var(--white);font-weight:400;">E-Mail von LemonSqueezy</strong> mit einem persönlichen Download-Link. Der Link ist 24 Stunden gültig und kann 5-mal genutzt werden. Kein Account nötig, kein Warten.
+                        <div class="faq-a-inner"
+                             data-en="Immediately after purchase you'll receive an <strong style='color:var(--white);font-weight:400;'>email from LemonSqueezy</strong> with a personal download link. The link is valid for 24 hours and can be used 5 times. No account needed, no waiting."
+                             data-de="Sofort nach dem Kauf erhältst du eine <strong style='color:var(--white);font-weight:400;'>E-Mail von LemonSqueezy</strong> mit einem persönlichen Download-Link. Der Link ist 24 Stunden gültig und kann 5-mal genutzt werden. Kein Account nötig, kein Warten."
+                             data-fr="Immédiatement après l'achat, vous recevrez un <strong style='color:var(--white);font-weight:400;'>email de LemonSqueezy</strong> avec un lien de téléchargement personnel. Le lien est valable 24h et peut être utilisé 5 fois. Aucun compte requis."
+                             data-es="Inmediatamente después de la compra recibirás un <strong style='color:var(--white);font-weight:400;'>email de LemonSqueezy</strong> con un enlace de descarga personal. El enlace es válido 24h y se puede usar 5 veces. Sin cuenta necesaria.">
+                            Immediately after purchase you'll receive an <strong style="color:var(--white);font-weight:400;">email from LemonSqueezy</strong> with a personal download link. The link is valid for 24 hours and can be used 5 times. No account needed.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Darf ich die Produkte kommerziell nutzen?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="Can I use the products commercially?"
+                            data-de="Darf ich die Produkte kommerziell nutzen?"
+                            data-fr="Puis-je utiliser les produits commercialement ?"
+                            data-es="¿Puedo usar los productos comercialmente?">Can I use the products commercially?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Ja — alle Produkte dürfen für <strong style="color:var(--white);font-weight:400;">persönliche und kommerzielle Projekte</strong> genutzt werden (Social Media, Kundenprojekte, YouTube etc.). Nicht erlaubt ist der Weiterverkauf der Originaldateien als eigenständiges Produkt. Details in den <a href="agb.html">AGB §6</a>.
+                        <div class="faq-a-inner"
+                             data-en="Yes — all products may be used for <strong style='color:var(--white);font-weight:400;'>personal and commercial projects</strong> (social media, client work, YouTube etc.). Reselling the original files as a standalone product is not permitted. Details in <a href='agb.html'>T&amp;C §6</a>."
+                             data-de="Ja — alle Produkte dürfen für <strong style='color:var(--white);font-weight:400;'>persönliche und kommerzielle Projekte</strong> genutzt werden (Social Media, Kundenprojekte, YouTube etc.). Der Weiterverkauf der Originaldateien ist nicht erlaubt. Details in den <a href='agb.html'>AGB §6</a>."
+                             data-fr="Oui — tous les produits peuvent être utilisés pour des <strong style='color:var(--white);font-weight:400;'>projets personnels et commerciaux</strong> (réseaux sociaux, travaux clients, YouTube etc.). La revente des fichiers originaux n'est pas autorisée."
+                             data-es="Sí — todos los productos pueden usarse para <strong style='color:var(--white);font-weight:400;'>proyectos personales y comerciales</strong> (redes sociales, proyectos de clientes, YouTube etc.). La reventa de los archivos originales no está permitida.">
+                            Yes — all products may be used for <strong style="color:var(--white);font-weight:400;">personal and commercial projects</strong> (social media, client work, YouTube etc.). Reselling the original files is not permitted.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Welche Zahlungsmethoden werden akzeptiert?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="What payment methods are accepted?"
+                            data-de="Welche Zahlungsmethoden werden akzeptiert?"
+                            data-fr="Quels moyens de paiement sont acceptés ?"
+                            data-es="¿Qué métodos de pago se aceptan?">What payment methods are accepted?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Alle gängigen Methoden über LemonSqueezy: <strong style="color:var(--white);font-weight:400;">Kreditkarte (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay und Klarna</strong>. Die Zahlung ist verschlüsselt und sicher. LemonSqueezy übernimmt als Merchant of Record auch die korrekte Umsatzsteuer für dein Land.
+                        <div class="faq-a-inner"
+                             data-en="All major methods via LemonSqueezy: <strong style='color:var(--white);font-weight:400;'>Credit card (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay and Klarna</strong>. Payment is encrypted and secure. LemonSqueezy handles VAT for your country as Merchant of Record."
+                             data-de="Alle gängigen Methoden über LemonSqueezy: <strong style='color:var(--white);font-weight:400;'>Kreditkarte (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay und Klarna</strong>. Die Zahlung ist verschlüsselt und sicher. LemonSqueezy übernimmt die korrekte Umsatzsteuer für dein Land."
+                             data-fr="Toutes les méthodes principales via LemonSqueezy : <strong style='color:var(--white);font-weight:400;'>Carte de crédit (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay et Klarna</strong>. Le paiement est crypté et sécurisé."
+                             data-es="Todos los métodos principales mediante LemonSqueezy: <strong style='color:var(--white);font-weight:400;'>Tarjeta de crédito (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay y Klarna</strong>. El pago es cifrado y seguro.">
+                            All major methods via LemonSqueezy: <strong style="color:var(--white);font-weight:400;">Credit card (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay and Klarna</strong>. LemonSqueezy handles VAT as Merchant of Record.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-q" onclick="toggleFaq(this)">
-                        Wie finde ich wirklich günstige Flüge — kurze Version?
+                    <button class="faq-q" onclick="toggleFaq(this)"
+                            data-en="How do I find really cheap flights — short version?"
+                            data-de="Wie finde ich wirklich günstige Flüge — kurze Version?"
+                            data-fr="Comment trouver des vols vraiment pas chers — version courte ?"
+                            data-es="¿Cómo encuentro vuelos realmente baratos — versión corta?">How do I find really cheap flights — short version?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-a">
-                        <div class="faq-a-inner">
-                            Drei Dinge die sofort helfen: <strong style="color:var(--white);font-weight:400;">1)</strong> Immer im Inkognito-Fenster suchen (Preise steigen bei wiederholten Suchen). <strong style="color:var(--white);font-weight:400;">2)</strong> Dienstag/Mittwoch sind die günstigsten Buchungstage. <strong style="color:var(--white);font-weight:400;">3)</strong> Google Flights "Preiskalender" zeigt dir das günstigste Datum im Monat auf einen Blick. Den kompletten Guide mit 50+ Tricks gibts im <strong style="color:var(--white);font-weight:400;">Travel Hacks Guide (€7.99)</strong>.
+                        <div class="faq-a-inner"
+                             data-en="Three things that help immediately: <strong style='color:var(--white);font-weight:400;'>1)</strong> Always search in incognito mode (prices rise with repeated searches). <strong style='color:var(--white);font-weight:400;'>2)</strong> Tuesday/Wednesday are the cheapest booking days. <strong style='color:var(--white);font-weight:400;'>3)</strong> Google Flights 'Price calendar' shows you the cheapest date at a glance. The full guide with 50+ tricks is in the <strong style='color:var(--white);font-weight:400;'>Travel Hacks Guide (€7.99)</strong>."
+                             data-de="Drei Dinge die sofort helfen: <strong style='color:var(--white);font-weight:400;'>1)</strong> Immer im Inkognito-Fenster suchen (Preise steigen bei wiederholten Suchen). <strong style='color:var(--white);font-weight:400;'>2)</strong> Dienstag/Mittwoch sind die günstigsten Buchungstage. <strong style='color:var(--white);font-weight:400;'>3)</strong> Google Flights 'Preiskalender' zeigt das günstigste Datum auf einen Blick. Den kompletten Guide gibts im <strong style='color:var(--white);font-weight:400;'>Travel Hacks Guide (€7.99)</strong>."
+                             data-fr="Trois choses qui aident immédiatement : <strong style='color:var(--white);font-weight:400;'>1)</strong> Toujours chercher en navigation privée. <strong style='color:var(--white);font-weight:400;'>2)</strong> Mardi/mercredi sont les jours les moins chers. <strong style='color:var(--white);font-weight:400;'>3)</strong> Le 'Calendrier des prix' Google Flights montre la date la moins chère d'un coup d'œil."
+                             data-es="Tres cosas que ayudan inmediatamente: <strong style='color:var(--white);font-weight:400;'>1)</strong> Busca siempre en modo incógnito. <strong style='color:var(--white);font-weight:400;'>2)</strong> Martes/miércoles son los días de reserva más baratos. <strong style='color:var(--white);font-weight:400;'>3)</strong> El 'Calendario de precios' de Google Flights muestra la fecha más barata de un vistazo.">
+                            Three things that help immediately: <strong style="color:var(--white);font-weight:400;">1)</strong> Always search in incognito mode. <strong style="color:var(--white);font-weight:400;">2)</strong> Tuesday/Wednesday are the cheapest booking days. <strong style="color:var(--white);font-weight:400;">3)</strong> Google Flights 'Price calendar' shows the cheapest date at a glance. Full guide: <strong style="color:var(--white);font-weight:400;">Travel Hacks Guide (€7.99)</strong>.
                         </div>
                     </div>
                 </div>
@@ -3833,6 +4249,26 @@
             setLang(lang || detectBrowserLang());
         })();
         // ===== END MULTI-LANGUAGE =====
+
+        // ===== WISH FORM =====
+        function handleWish(e) {
+            e.preventDefault();
+            const email = document.getElementById('wishEmail').value.trim();
+            const text  = document.getElementById('wishText').value.trim();
+            if (!email || !text) return;
+
+            // Build mailto link — opens email client with prefilled content
+            const subject = encodeURIComponent('UncleMarv Wish: ' + text.substring(0, 40));
+            const body    = encodeURIComponent('Email: ' + email + '\n\nWish:\n' + text);
+            window.location.href = 'mailto:marvinkuppens.business@gmail.com?subject=' + subject + '&body=' + body;
+
+            // Show success state
+            document.getElementById('wishForm').querySelectorAll('.wish-field, .wish-submit, .wish-privacy').forEach(el => {
+                el.style.opacity = '0'; el.style.pointerEvents = 'none';
+            });
+            const suc = document.getElementById('wishSuccess');
+            suc.classList.add('show');
+        }
 
         // Roadmap tooltips are CSS-only via .rm-waypoint:hover .rm-css-tip (no JS needed)
 
