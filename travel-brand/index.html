@@ -856,312 +856,366 @@
             color: var(--text-dim);
         }
 
-        /* ===== VIP Loyalty Widget ===== */
+        /* ===== VIP Loyalty — Apple Style ===== */
         .vip {
-            background: #0a0a0a;
-            border-top: 1px solid #1e1c18;
-            font-family: 'Inter', sans-serif;
+            background: #09090b;
+            border-top: 1px solid rgba(201,169,110,0.07);
             overflow: hidden;
+            position: relative;
+        }
+        .vip::before {
+            content: '';
+            position: absolute;
+            top: -200px; left: 50%;
+            transform: translateX(-50%);
+            width: 900px; height: 800px;
+            background: radial-gradient(ellipse at center, rgba(201,169,110,0.045) 0%, transparent 65%);
+            pointer-events: none;
         }
 
-        .vip-intro {
+        /* Hero headline */
+        .vip-hero {
             text-align: center;
-            max-width: 520px;
-            margin: 0 auto 48px;
+            margin-bottom: 72px;
+            position: relative;
+            z-index: 1;
         }
-
-        .vip-intro .tag { color: rgba(240,236,228,0.5); }
-
-        .vip-intro h2 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
+        .vip-hero h2 {
+            font-size: clamp(56px, 10vw, 112px);
+            font-weight: 800;
+            letter-spacing: -0.048em;
+            line-height: 0.9;
             color: #f0ece4;
-            font-size: clamp(36px, 5vw, 56px);
+            margin: 18px 0 28px;
         }
-
-        .vip-intro p {
+        .vip-hero h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #c9a96e 0%, #f0d89a 50%, #c9a96e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .vip-hero p {
+            font-size: 1rem;
             color: rgba(240,236,228,0.4);
-            font-size: 14px;
-            font-weight: 300;
+            max-width: 420px;
+            margin: 0 auto;
             line-height: 1.8;
-            margin-top: 16px;
         }
 
-        /* Progress box */
-        .vip-progress-box {
-            max-width: 480px;
-            margin: 0 auto 40px;
-            text-align: center;
+        /* Formula strip */
+        .vip-formula {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
         }
-
-        .vip-active-level {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        .vip-formula-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201,169,110,0.06);
+            border: 1px solid rgba(201,169,110,0.15);
+            border-radius: 100px;
+            padding: 12px 26px;
+        }
+        .vip-formula-num {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #c9a96e;
-            margin-bottom: 4px;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .vip-formula-lbl {
+            font-size: 0.6rem;
+            color: rgba(240,236,228,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+        .vip-formula-arrow {
+            font-size: 1.1rem;
+            color: rgba(201,169,110,0.25);
         }
 
-        .vip-active-pts {
-            font-size: 32px;
-            font-weight: 200;
+        /* Rank card */
+        .vip-rank-card {
+            max-width: 480px;
+            margin: 0 auto 72px;
+            background: rgba(255,255,255,0.018);
+            border: 1px solid rgba(201,169,110,0.13);
+            border-radius: 28px;
+            padding: 52px 44px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .vip-rank-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,110,0.45), transparent);
+        }
+        .vip-rank-eyebrow {
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.5);
+            margin-bottom: 14px;
+        }
+        .vip-active-level {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
             color: #f0ece4;
-            margin-bottom: 16px;
+            margin-bottom: 6px;
         }
-
-        .vip-active-pts span {
-            font-size: 14px;
-            font-weight: 300;
-            color: rgba(240,236,228,0.4);
+        .vip-active-pts {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 200;
+            color: #c9a96e;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            margin-bottom: 28px;
         }
-
+        .vip-active-pts span { font-size: 1rem; font-weight: 400; color: rgba(201,169,110,0.35); }
         .vip-bar-wrap {
             width: 100%;
-            height: 2px;
-            background: rgba(240,236,228,0.06);
-            border-radius: 1px;
+            height: 3px;
+            background: rgba(201,169,110,0.08);
+            border-radius: 100px;
             overflow: hidden;
             margin-bottom: 12px;
         }
-
         .vip-bar {
             height: 100%;
-            background: linear-gradient(90deg, #8a7040, #c9a96e);
-            border-radius: 1px;
-            transition: width 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+            background: linear-gradient(90deg, #7a6030, #c9a96e, #f0d89a);
+            border-radius: 100px;
+            transition: width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
         }
-
         .vip-next-text {
-            font-size: 12px;
-            color: rgba(240,236,228,0.4);
-            font-weight: 300;
+            font-size: 0.72rem;
+            color: rgba(240,236,228,0.3);
         }
+        .vip-next-text em { font-style: normal; color: #c9a96e; }
 
-        .vip-next-text em {
-            font-style: normal;
-            color: #c9a96e;
-        }
-
-        /* Carousel */
-        .vip-carousel-wrap {
-            position: relative;
-            margin-bottom: 36px;
-            -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
-            mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
-        }
-
-        .vip-carousel {
-            display: flex;
-            gap: 12px;
-            transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
-            will-change: transform;
-            padding: 20px 0;
-        }
-
-        .vip-card {
-            flex: 0 0 160px;
-            width: 160px;
-            padding: 20px 16px;
-            border: 0.5px solid #1e1c18;
-            border-radius: 12px;
+        /* Tiers grid headline */
+        .vip-tiers-headline {
             text-align: center;
-            transition: all 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
-            transform: scale(0.93);
-            opacity: 0.35;
-            cursor: pointer;
-            background: transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .vip-card.adjacent {
-            transform: scale(0.96);
-            opacity: 0.6;
-        }
-
-        .vip-card.active {
-            border-color: #c9a96e;
-            background: rgba(201,169,110,0.07);
-            transform: scale(1.08);
-            opacity: 1;
-            box-shadow: 0 0 20px rgba(201,169,110,0.22), 0 0 48px rgba(201,169,110,0.08);
-        }
-
-        .vip-card.grounding {
-            border-style: dashed;
-        }
-
-        /* All card content above avatar image */
-        .vip-card-name, .vip-card-discount,
-        .vip-card-perk, .vip-card-pts, .vip-card-hint {
+            font-size: 0.57rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(240,236,228,0.18);
+            margin-bottom: 22px;
             position: relative;
             z-index: 1;
         }
 
+        /* Tiers — grid instead of carousel */
+        .vip-carousel {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        .vip-card {
+            background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.045);
+            border-radius: 18px;
+            padding: 22px 12px 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+            position: relative;
+            overflow: hidden;
+            opacity: 0.42;
+        }
+        .vip-card:hover { opacity: 0.7; border-color: rgba(201,169,110,0.2); }
+        .vip-card.adjacent { opacity: 0.62; }
+        .vip-card.active {
+            background: rgba(201,169,110,0.08);
+            border-color: rgba(201,169,110,0.48);
+            opacity: 1;
+            box-shadow: 0 0 40px rgba(201,169,110,0.13), 0 8px 36px rgba(0,0,0,0.5);
+        }
+        .vip-card.active::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,110,0.6), transparent);
+        }
+        .vip-card.grounding { border-style: dashed; }
+
+        .vip-card-name, .vip-card-discount,
+        .vip-card-perk, .vip-card-pts, .vip-card-hint { position: relative; z-index: 1; }
+
+        .vip-card-badge-num {
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.38);
+            margin-bottom: 5px;
+        }
+        .vip-card.active .vip-card-badge-num { color: rgba(201,169,110,0.7); }
+
         .vip-card-name {
-            font-size: 13px;
-            font-weight: 400;
+            font-size: 0.7rem;
+            font-weight: 600;
             color: #f0ece4;
-            margin-top: 44%;
-            margin-bottom: 4px;
-            white-space: nowrap;
-        }
-
-        .vip-card-discount {
-            font-size: 11px;
-            color: rgba(240,236,228,0.3);
-            font-weight: 300;
             margin-bottom: 8px;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
-
-        .vip-card.active .vip-card-discount {
-            color: #c9a96e;
+        .vip-card-discount {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: rgba(201,169,110,0.28);
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 4px;
         }
-
+        .vip-card.active .vip-card-discount { color: #c9a96e; }
         .vip-card-perk {
-            font-size: 10px;
-            color: rgba(240,236,228,0.25);
-            font-weight: 300;
-            line-height: 1.5;
+            font-size: 0.55rem;
+            color: rgba(240,236,228,0.18);
+            line-height: 1.45;
+            margin-top: 8px;
         }
-
-        .vip-card.active .vip-card-perk {
-            color: rgba(240,236,228,0.5);
-        }
-
+        .vip-card.active .vip-card-perk { color: rgba(240,236,228,0.5); }
         .vip-card-pts {
-            font-size: 10px;
-            color: rgba(240,236,228,0.2);
-            font-weight: 300;
-            margin-top: 10px;
+            font-size: 0.55rem;
+            color: rgba(240,236,228,0.13);
+            margin-top: 8px;
         }
-
-        .vip-card.active .vip-card-pts {
-            color: rgba(201,169,110,0.6);
-        }
-
+        .vip-card.active .vip-card-pts { color: rgba(201,169,110,0.48); }
         .vip-card-hint {
-            font-size: 9px;
-            color: rgba(240,236,228,0.25);
-            font-weight: 300;
+            font-size: 0.5rem;
+            color: rgba(240,236,228,0.18);
             margin-top: 6px;
             font-style: italic;
             line-height: 1.4;
         }
-
         .vip-avatar-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 65%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 55%;
             object-fit: cover;
-            border-radius: 12px 12px 0 0;
-            opacity: 0.25;
-            z-index: 0;
+            border-radius: 18px 18px 0 0;
+            opacity: 0.16; z-index: 0;
             pointer-events: none;
-            transition: opacity 0.6s;
+            transition: opacity 0.5s;
         }
-        .vip-card.active .vip-avatar-bg { opacity: 0.4; }
-        .vip-card.adjacent .vip-avatar-bg { opacity: 0.3; }
+        .vip-card.active .vip-avatar-bg { opacity: 0.28; }
 
         /* Slider */
         .vip-slider-wrap {
-            max-width: 480px;
-            margin: 0 auto 12px;
+            max-width: 540px;
+            margin: 0 auto 48px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
-
         .vip-slider-label {
-            font-size: 12px;
-            color: rgba(240,236,228,0.4);
-            font-weight: 300;
-            margin-bottom: 12px;
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(240,236,228,0.22);
+            margin-bottom: 18px;
         }
-
         .vip-slider {
-            -webkit-appearance: none;
-            appearance: none;
+            -webkit-appearance: none; appearance: none;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #8a7040, #c9a96e);
-            border-radius: 1px;
+            height: 3px;
+            background: rgba(201,169,110,0.12);
+            border-radius: 100px;
             outline: none;
             cursor: pointer;
         }
-
         .vip-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 14px;
-            height: 14px;
+            -webkit-appearance: none; appearance: none;
+            width: 22px; height: 22px;
             border-radius: 50%;
             background: #c9a96e;
-            cursor: pointer;
+            cursor: grab;
             border: none;
+            box-shadow: 0 2px 12px rgba(201,169,110,0.55);
         }
-
         .vip-slider::-moz-range-thumb {
-            width: 14px;
-            height: 14px;
+            width: 22px; height: 22px;
             border-radius: 50%;
             background: #c9a96e;
-            cursor: pointer;
+            cursor: grab;
             border: none;
+            box-shadow: 0 2px 12px rgba(201,169,110,0.55);
         }
 
         .vip-note {
             text-align: center;
-            margin-top: 40px;
-            font-size: 11px;
-            color: rgba(240,236,228,0.25);
-            font-weight: 300;
-            line-height: 1.8;
+            margin-top: 44px;
+            font-size: 0.64rem;
+            color: rgba(240,236,228,0.17);
+            letter-spacing: 0.06em;
+            position: relative;
+            z-index: 1;
         }
 
         .vip-myrank-wrap {
             text-align: center;
-            margin-top: 32px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
         }
-
         .btn-myrank {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 32px;
+            padding: 14px 44px;
             background: transparent;
-            border: 0.5px solid rgba(201,169,110,0.5);
+            border: 1px solid rgba(201,169,110,0.42);
             color: #c9a96e;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.2em;
+            font-family: inherit;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.35s;
+            border-radius: 100px;
+            transition: all 0.3s ease;
         }
-
         .btn-myrank:hover:not(:disabled) {
             background: rgba(201,169,110,0.1);
             border-color: #c9a96e;
-            box-shadow: 0 0 16px rgba(201,169,110,0.15);
+            box-shadow: 0 0 28px rgba(201,169,110,0.22);
         }
-
-        .btn-myrank:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
+        .btn-myrank:disabled { opacity: 0.38; cursor: not-allowed; }
         .vip-myrank-hint {
-            font-size: 10px;
-            color: rgba(240,236,228,0.2);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 300;
+            font-size: 0.62rem;
+            color: rgba(240,236,228,0.18);
+            letter-spacing: 0.06em;
+        }
+
+        /* Compat: keep .vip-carousel-wrap and .vip-progress-box for JS refs */
+        .vip-carousel-wrap { position: relative; z-index: 1; }
+        .vip-progress-box { max-width: 480px; margin: 0 auto; text-align: center; }
+
+        @media (max-width: 820px) {
+            .vip-carousel { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; }
+            .vip-hero h2 { font-size: clamp(44px, 12vw, 80px); }
+        }
+        @media (max-width: 560px) {
+            .vip-carousel { grid-template-columns: repeat(2, 1fr); }
+            .vip-formula { flex-direction: column; gap: 8px; }
+            .vip-formula-arrow { transform: rotate(90deg); }
         }
 
         /* ===== Newsletter ===== */
@@ -1891,10 +1945,10 @@
         }
         .pricing-grid {
             display: grid;
-            grid-template-columns: 1fr 1.06fr 1fr;
+            grid-template-columns: 1fr 1.1fr 1fr;
             gap: 16px;
-            align-items: start;
-            max-width: 980px;
+            align-items: end;
+            max-width: 1000px;
             margin: 0 auto 36px;
         }
         .pricing-card {
@@ -1908,20 +1962,36 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
         .pricing-card:hover { transform: translateY(-4px); border-color: rgba(201,169,110,0.25); }
+        /* Featured card wrapper — keeps badge above the card image */
+        .pricing-featured-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .pricing-featured-badge {
+            display: inline-flex;
+            align-self: center;
+            margin-bottom: 14px;
+            background: linear-gradient(135deg, #c9a96e 0%, #e8c887 50%, #c9a96e 100%);
+            background-size: 200% 100%;
+            color: #0f0f0f;
+            font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
+            text-transform: uppercase; padding: 7px 26px; border-radius: 100px;
+            white-space: nowrap;
+            box-shadow: 0 4px 28px rgba(201,169,110,0.55);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 4px 28px rgba(201,169,110,0.55); }
+            50% { box-shadow: 0 4px 40px rgba(201,169,110,0.8), 0 0 60px rgba(201,169,110,0.2); }
+        }
         .pricing-card.pricing-featured {
-            background: #16130c;
-            border-color: rgba(201,169,110,0.55);
-            box-shadow: 0 0 60px rgba(201,169,110,0.07), 0 24px 64px rgba(0,0,0,0.5);
-            padding-top: 44px;
+            background: #15120b;
+            border-color: rgba(201,169,110,0.6);
+            box-shadow: 0 0 100px rgba(201,169,110,0.12), 0 40px 100px rgba(0,0,0,0.7);
+            padding-top: 36px;
         }
         .pricing-card.pricing-featured:hover { transform: translateY(-4px); }
-        .pricing-featured-badge {
-            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-            background: #c9a96e; color: #0f0f0f;
-            font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em;
-            text-transform: uppercase; padding: 4px 18px; border-radius: 20px;
-            white-space: nowrap;
-        }
         .pricing-tier {
             font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em;
             text-transform: uppercase; color: var(--dim); margin-bottom: 20px;
@@ -2000,7 +2070,7 @@
             position: relative;
         }
         .pricing-card.pricing-featured .pricing-card-img {
-            margin-top: -44px;
+            margin-top: -36px;
         }
         .pricing-card-img img {
             width: 100%; height: 100%;
@@ -2024,6 +2094,36 @@
         .pricing-card.pricing-featured .pricing-card-img::after {
             background: linear-gradient(to bottom, transparent, #16130c);
         }
+        /* ── VIP points rows on pricing cards ── */
+        .pricing-vip-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 9px 13px;
+            background: rgba(201,169,110,0.05);
+            border: 1px solid rgba(201,169,110,0.12);
+            border-radius: 10px;
+        }
+        .pricing-vip-icon { font-size: 0.7rem; color: rgba(201,169,110,0.55); flex-shrink: 0; }
+        .pricing-vip-pts-txt {
+            font-size: 0.7rem;
+            color: rgba(201,169,110,0.62);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        .pricing-vip-tier-tag {
+            margin-left: auto;
+            font-size: 0.57rem;
+            font-weight: 800;
+            color: #0f0f0f;
+            background: linear-gradient(135deg, #c9a96e, #e8c887);
+            padding: 3px 10px;
+            border-radius: 100px;
+            white-space: nowrap;
+            letter-spacing: 0.04em;
+            flex-shrink: 0;
+        }
         /* ── Digital badge ── */
         .digital-badge {
             display: inline-flex; align-items: center; gap: 5px;
@@ -2034,8 +2134,8 @@
             letter-spacing: 0.01em;
         }
         @media (max-width: 820px) {
-            .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-            .pricing-card.pricing-featured { order: -1; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+            .pricing-featured-wrap { order: -1; }
         }
 
         /* ===== SPA Router ===== */
@@ -2120,11 +2220,11 @@
                 <h2 data-en="Choose your starting point." data-de="Wähle deinen Einstieg." data-es="Elige tu punto de inicio." data-fr="Choisissez votre point de départ.">Choose your starting point.</h2>
             </div>
             <p class="shop-subtext reveal"
-               data-en="Start with one. Or get everything at once — and save 22%."
-               data-de="Fang mit einem an. Oder hol dir alles auf einmal — und spare 22%."
-               data-es="Empieza con uno. O llévate todo a la vez — y ahorra un 22%."
-               data-fr="Commencez par un. Ou prenez tout à la fois — et économisez 22%.">
-               Start with one. Or get everything at once — and save 22%.
+               data-en="Start with one. Or grab everything — save 22% and unlock Explorer II VIP status (7.5% lifetime discount)."
+               data-de="Fang mit einem an. Oder hol dir alles — spare 22% und schalte VIP Explorer II frei (7,5% dauerhafter Rabatt)."
+               data-es="Empieza con uno. O llévate todo — ahorra un 22% y desbloquea el estado VIP Explorer II (7,5% dto. vitalicio)."
+               data-fr="Commencez par un. Ou prenez tout — économisez 22% et débloquez le statut VIP Explorer II (7,5% de réduction à vie).">
+               Start with one. Or grab everything — save 22% and unlock Explorer II VIP status (7.5% lifetime discount).
             </p>
 
             <!-- 3-Card Pricing Grid -->
@@ -2152,40 +2252,52 @@
                     <div class="pricing-price-area">
                         <div class="pricing-price">€19.99</div>
                     </div>
+                    <div class="pricing-vip-row">
+                        <span class="pricing-vip-icon">✦</span>
+                        <span class="pricing-vip-pts-txt" data-en="≈ 100 VIP pts earned" data-de="≈ 100 VIP-Pkt. verdient" data-es="≈ 100 pts VIP ganados" data-fr="≈ 100 pts VIP gagnés">≈ 100 VIP pts earned</span>
+                    </div>
                     <button class="pricing-btn" data-product="guide" onclick="addToCart('guide')"
                             data-en="Get the Guide" data-de="Guide holen" data-es="Obtener la Guía" data-fr="Obtenir le Guide">Get the Guide</button>
                 </div>
 
-                <!-- CARD 2: Bundle — FEATURED -->
-                <div class="pricing-card pricing-featured">
+                <!-- CARD 2: Bundle — FEATURED (wrapper keeps badge above image) -->
+                <div class="pricing-featured-wrap">
                     <span class="pricing-featured-badge"
-                          data-en="⭐ Best Value" data-de="⭐ Bestes Angebot" data-es="⭐ Mejor Valor" data-fr="⭐ Meilleur Rapport">⭐ Best Value</span>
-                    <div class="pricing-card-img">
-                        <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=600&q=80&fit=crop" alt="Travel adventure" loading="lazy">
+                          data-en="⭐ Bestes Angebot" data-de="⭐ Bestes Angebot" data-es="⭐ Mejor Valor" data-fr="⭐ Meilleur Rapport">⭐ Bestes Angebot</span>
+                    <div class="pricing-card pricing-featured">
+                        <div class="pricing-card-img">
+                            <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=600&q=80&fit=crop" alt="Travel adventure" loading="lazy">
+                        </div>
+                        <div class="pricing-tier" data-en="Complete Pack" data-de="Komplettpaket" data-es="Pack Completo" data-fr="Pack Complet">Complete Pack</div>
+                        <div class="pricing-name" data-en="UncleMarv Complete" data-de="UncleMarv Complete" data-es="UncleMarv Complete" data-fr="UncleMarv Complete">UncleMarv Complete</div>
+                        <p class="pricing-desc"
+                           data-en="Every product. One price."
+                           data-de="Alle Produkte. Ein Preis."
+                           data-es="Todos los productos. Un precio."
+                           data-fr="Tous les produits. Un prix.">
+                           Every product. One price.
+                        </p>
+                        <div class="pricing-includes">
+                            <div data-en="Hack Pack — €19.99" data-de="Hack Pack — €19.99" data-es="Hack Pack — €19.99" data-fr="Hack Pack — €19.99">Hack Pack — €19.99</div>
+                            <div data-en="Filter Reset — €24.99" data-de="Filter Reset — €24.99" data-es="Filter Reset — €24.99" data-fr="Filter Reset — €24.99">Filter Reset — €24.99</div>
+                            <div data-en="All future updates" data-de="Alle zukünftigen Updates" data-es="Actualizaciones futuras" data-fr="Mises à jour futures">All future updates</div>
+                        </div>
+                        <div class="pricing-price-area">
+                            <div class="pricing-original"
+                                 data-en="€44.98 individually" data-de="€44.98 einzeln" data-es="€44.98 individualmente" data-fr="€44.98 individuellement">€44.98 individually</div>
+                            <div class="pricing-price">€34.99</div>
+                            <span class="pricing-save"
+                                  data-en="Save €10 · 22% off" data-de="Spare €10 · 22% Rabatt" data-es="Ahorra €10 · 22% dto." data-fr="Économise €10 · 22% de réduction">Save €10 · 22% off</span>
+                        </div>
+                        <!-- VIP pts highlight: 175 base + 50 bonus = 225 pts → Explorer II -->
+                        <div class="pricing-vip-row">
+                            <span class="pricing-vip-icon">✦</span>
+                            <span class="pricing-vip-pts-txt" data-en="175 base + 50 bonus = 225 VIP pts" data-de="175 Basis + 50 Bonus = 225 VIP-Pkt." data-es="175 base + 50 bono = 225 pts VIP" data-fr="175 base + 50 bonus = 225 pts VIP">175 base + 50 bonus = 225 VIP pts</span>
+                            <span class="pricing-vip-tier-tag">Explorer II · 7.5%</span>
+                        </div>
+                        <button class="pricing-btn pricing-btn-featured" data-product="bundle" onclick="addToCart('bundle')"
+                                data-en="Get Everything" data-de="Alles holen" data-es="Obtener Todo" data-fr="Tout Obtenir">Get Everything</button>
                     </div>
-                    <div class="pricing-tier" data-en="Complete Pack" data-de="Komplettpaket" data-es="Pack Completo" data-fr="Pack Complet">Complete Pack</div>
-                    <div class="pricing-name" data-en="UncleMarv Complete" data-de="UncleMarv Complete" data-es="UncleMarv Complete" data-fr="UncleMarv Complete">UncleMarv Complete</div>
-                    <p class="pricing-desc"
-                       data-en="Every product. One price."
-                       data-de="Alle Produkte. Ein Preis."
-                       data-es="Todos los productos. Un precio."
-                       data-fr="Tous les produits. Un prix.">
-                       Every product. One price.
-                    </p>
-                    <div class="pricing-includes">
-                        <div data-en="Hack Pack — €19.99" data-de="Hack Pack — €19.99" data-es="Hack Pack — €19.99" data-fr="Hack Pack — €19.99">Hack Pack — €19.99</div>
-                        <div data-en="Filter Reset — €24.99" data-de="Filter Reset — €24.99" data-es="Filter Reset — €24.99" data-fr="Filter Reset — €24.99">Filter Reset — €24.99</div>
-                        <div data-en="All future updates" data-de="Alle zukünftigen Updates" data-es="Actualizaciones futuras" data-fr="Mises à jour futures">All future updates</div>
-                    </div>
-                    <div class="pricing-price-area">
-                        <div class="pricing-original"
-                             data-en="€44.98 individually" data-de="€44.98 einzeln" data-es="€44.98 individualmente" data-fr="€44.98 individuellement">€44.98 individually</div>
-                        <div class="pricing-price">€34.99</div>
-                        <span class="pricing-save"
-                              data-en="Save €10 · 22% off" data-de="Spare €10 · 22% Rabatt" data-es="Ahorra €10 · 22% dto." data-fr="Économise €10 · 22% de réduction">Save €10 · 22% off</span>
-                    </div>
-                    <button class="pricing-btn pricing-btn-featured" data-product="bundle" onclick="addToCart('bundle')"
-                            data-en="Get Everything" data-de="Alles holen" data-es="Obtener Todo" data-fr="Tout Obtenir">Get Everything</button>
                 </div>
 
                 <!-- CARD 3: Filter Reset — Creator -->
@@ -2209,6 +2321,10 @@
                     </ul>
                     <div class="pricing-price-area">
                         <div class="pricing-price">€24.99</div>
+                    </div>
+                    <div class="pricing-vip-row">
+                        <span class="pricing-vip-icon">✦</span>
+                        <span class="pricing-vip-pts-txt" data-en="≈ 125 VIP pts earned" data-de="≈ 125 VIP-Pkt. verdient" data-es="≈ 125 pts VIP ganados" data-fr="≈ 125 pts VIP gagnés">≈ 125 VIP pts earned</span>
                     </div>
                     <button class="pricing-btn" data-product="presets" onclick="addToCart('presets')"
                             data-en="Get Presets" data-de="Presets holen" data-es="Obtener Presets" data-fr="Obtenir les Presets">Get Presets</button>
@@ -2529,39 +2645,80 @@
 
     <section class="vip section" id="vip">
         <div class="container">
-            <div class="vip-intro reveal">
-                <p class="tag" data-en="Loyalty Program" data-de="Treueprogramm" data-es="Programa de Lealtad">Loyalty Program</p>
+
+            <!-- Hero headline -->
+            <div class="vip-hero reveal">
+                <p class="tag" data-en="Loyalty Program" data-de="Treueprogramm" data-es="Programa de Lealtad" data-fr="Programme de Fidélité">Loyalty Program</p>
                 <div class="line"></div>
-                <h2 data-en="Rewards for loyalty." data-de="Belohnungen für Treue." data-es="Recompensas por lealtad.">Rewards for loyalty.</h2>
-                <p data-en="Earn points with every purchase and unlock exclusive perks — 10 tiers, updated automatically." data-de="Punkte sammeln mit jedem Kauf und exklusive Vorteile freischalten — 10 Stufen, automatisch aktualisiert." data-es="Gana puntos con cada compra y desbloquea beneficios exclusivos — 10 niveles, actualizados automáticamente.">Earn points with every purchase and unlock exclusive perks &mdash; 10 tiers, updated automatically.</p>
+                <h2>Every<br>euro<br><em>rewards.</em></h2>
+                <p data-en="Earn 5 points for every €1 you spend. Ten tiers. Real discounts. A lifetime advantage that compounds with every purchase."
+                   data-de="Verdiene 5 Punkte für jeden ausgegebenen €1. Zehn Stufen. Echte Rabatte. Ein dauerhafter Vorteil, der mit jedem Kauf wächst."
+                   data-es="Gana 5 puntos por cada €1 gastado. Diez niveles. Descuentos reales. Una ventaja vitalicia que crece con cada compra."
+                   data-fr="Gagnez 5 points pour chaque €1 dépensé. Dix niveaux. De vraies réductions. Un avantage à vie qui grandit à chaque achat.">
+                   Earn 5 points for every €1 you spend. Ten tiers. Real discounts. A lifetime advantage that compounds with every purchase.
+                </p>
             </div>
 
-            <div class="vip-progress-box reveal">
-                <div class="vip-active-level" id="vipActiveLevel">Groundling</div>
+            <!-- Formula strip: 1€ → 5 pts → up to 25% -->
+            <div class="vip-formula reveal">
+                <div class="vip-formula-pill">
+                    <div class="vip-formula-num">1€</div>
+                    <div class="vip-formula-lbl">Spent</div>
+                </div>
+                <div class="vip-formula-arrow">→</div>
+                <div class="vip-formula-pill">
+                    <div class="vip-formula-num">5</div>
+                    <div class="vip-formula-lbl">Points</div>
+                </div>
+                <div class="vip-formula-arrow">→</div>
+                <div class="vip-formula-pill">
+                    <div class="vip-formula-num" style="font-size:1.1rem; line-height:1.15">Up to<br>25%</div>
+                    <div class="vip-formula-lbl">Lifetime off</div>
+                </div>
+            </div>
 
-                <div class="vip-active-pts"><span id="vipPtsDisplay">0</span> <span>Pts</span></div>
+            <!-- Rank / progress card -->
+            <div class="vip-rank-card reveal">
+                <div class="vip-rank-eyebrow"
+                     data-en="Your Current Tier" data-de="Deine aktuelle Stufe" data-es="Tu nivel actual" data-fr="Votre niveau actuel">Your Current Tier</div>
+                <div class="vip-active-level" id="vipActiveLevel">Groundling</div>
+                <div class="vip-active-pts"><span id="vipPtsDisplay">0</span>&thinsp;<span>pts</span></div>
                 <div class="vip-bar-wrap"><div class="vip-bar" id="vipBar" style="width:0%"></div></div>
                 <div class="vip-next-text" id="vipNextText"></div>
             </div>
 
-            <div class="vip-carousel-wrap reveal">
-                <div class="vip-carousel" id="vipCarousel"></div>
-            </div>
+            <!-- All 10 tiers grid (JS fills #vipCarousel) -->
+            <p class="vip-tiers-headline reveal"
+               data-en="All 10 Tiers — use the slider below to simulate"
+               data-de="Alle 10 Stufen — Slider nutzen zum Simulieren"
+               data-es="Los 10 niveles — usa el deslizador para simular"
+               data-fr="Les 10 niveaux — utilisez le curseur pour simuler">
+               All 10 Tiers — use the slider below to simulate
+            </p>
+            <div class="vip-carousel reveal" id="vipCarousel"></div>
 
+            <!-- Simulator slider -->
             <div class="vip-slider-wrap reveal">
-                <div class="vip-slider-label">Simulate your points</div>
+                <div class="vip-slider-label"
+                     data-en="Simulate your points" data-de="Punkte simulieren" data-es="Simular tus puntos" data-fr="Simuler vos points">Simulate your points</div>
                 <input type="range" class="vip-slider" id="vipSlider" min="0" max="5200" value="0" step="10">
             </div>
 
+            <!-- My Rank CTA -->
             <div class="vip-myrank-wrap reveal">
                 <button class="btn-myrank" id="vipMyRankBtn" onclick="fetchMyRank()">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                    My Rank
+                    <span data-en="My Rank" data-de="Mein Rang" data-es="Mi Rango" data-fr="Mon Rang">My Rank</span>
                 </button>
-                <p class="vip-myrank-hint">Connect your account to see your live points</p>
+                <p class="vip-myrank-hint"
+                   data-en="Connect your account to see your live points"
+                   data-de="Konto verbinden um deine Punkte zu sehen"
+                   data-es="Conecta tu cuenta para ver tus puntos"
+                   data-fr="Connectez votre compte pour voir vos points en direct">Connect your account to see your live points</p>
             </div>
 
             <p class="vip-note reveal">5 points per &euro;1 &middot; Level updates automatically &middot; Notified by email</p>
+
         </div>
     </section>
 
@@ -3147,17 +3304,18 @@
             const bar = document.getElementById('vipBar');
             const nextText = document.getElementById('vipNextText');
 
-            // Build cards
+            // Build tier cards (grid layout)
             levels.forEach((lvl, i) => {
                 const card = document.createElement('div');
                 card.className = 'vip-card' + (lvl.grounding ? ' grounding' : '');
                 card.dataset.index = i;
                 const avatarFile = avatarMap[lvl.min] || 'groundling.png';
                 let html = '<img src="assets/vip-avatars/' + avatarFile + '" class="vip-avatar-bg" alt="' + lvl.name + '" loading="lazy">';
+                html += '<div class="vip-card-badge-num">' + lvl.badge + '</div>';
                 html += '<div class="vip-card-name">' + lvl.name + '</div>';
-                html += '<div class="vip-card-discount">' + (lvl.discount ? lvl.discount + '% off' : 'No discount') + '</div>';
+                html += '<div class="vip-card-discount">' + (lvl.discount ? lvl.discount + '%' : '—') + '</div>';
                 html += '<div class="vip-card-perk">' + lvl.perk + '</div>';
-                html += '<div class="vip-card-pts">' + lvl.min.toLocaleString('en') + ' Pts</div>';
+                html += '<div class="vip-card-pts">' + lvl.min.toLocaleString('en') + ' pts</div>';
                 if (lvl.hint) html += '<div class="vip-card-hint">' + lvl.hint + '</div>';
                 card.innerHTML = html;
                 carousel.appendChild(card);
@@ -3173,12 +3331,10 @@
             }
 
             function centerCard(idx) {
-                const card = cards[idx];
-                const wrapW = carousel.parentElement.offsetWidth;
-                const cardLeft = card.offsetLeft;
-                const cardW = card.offsetWidth;
-                const offset = -(cardLeft - (wrapW / 2) + (cardW / 2));
-                carousel.style.transform = 'translateX(' + offset + 'px)';
+                // Grid layout — no translateX needed; just ensure active card is visible
+                if (cards[idx]) {
+                    cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                }
             }
 
             function update() {
