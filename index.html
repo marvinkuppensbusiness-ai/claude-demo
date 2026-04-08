@@ -1295,11 +1295,12 @@
         }
         .vip-card.grounding { border-style: dashed; }
 
-        /* Full-bleed image — covers entire card */
-        .vip-avatar-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%; height: 100%;
+        /* SVG Icon centered in card */
+        .vip-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; height: 72px;
             object-fit: cover;
             object-position: center top;
             opacity: 0.2;
@@ -2837,9 +2838,7 @@
                     <div class="lang-dropdown" id="langDropdown">
                         <button class="lang-option" onclick="setLang('en')"><span>🇬🇧</span> English</button>
                         <button class="lang-option" onclick="setLang('de')"><span>🇩🇪</span> Deutsch</button>
-                        <button class="lang-option" onclick="setLang('fr')"><span>🇫🇷</span> Français</button>
-                        <button class="lang-option" onclick="setLang('es')"><span>🇪🇸</span> Español</button>
-                        <button class="lang-option" onclick="setLang('it')"><span>🇮🇹</span> Italiano</button>
+                        
                     </div>
                 </li>
                 <li>
@@ -3363,13 +3362,6 @@
                 <div class="vip-active-pts"><span id="vipPtsDisplay">0</span><span class="vip-pts-unit">pts</span></div>
                 <div class="vip-bar-wrap"><div class="vip-bar" id="vipBar" style="width:0%"></div></div>
                 <div class="vip-next-text" id="vipNextText"></div>
-            </div>
-
-            <!-- Gender Toggle -->
-            <div class="vip-gender-toggle reveal">
-                <span class="vip-gender-label">View as</span>
-                <button class="vip-gender-btn active" id="vipGenderMale" onclick="setVipGender('male')">♂ Male</button>
-                <button class="vip-gender-btn" id="vipGenderFemale" onclick="setVipGender('female')">♀ Female</button>
             </div>
 
             <!-- 6-tier grid (JS fills #vipCarousel) -->
@@ -4204,27 +4196,77 @@
 
         // VIP Loyalty Carousel
         (function() {
-            // Avatar images — male (current) & female (add files later to assets/vip-avatars/)
-            const avatarMaps = {
-                male: {
-                    0:    'groundling.png',
-                    75:   'explorer_1.png',
-                    300:  'adventurer_1.png',
-                    750:  'voyager_1.png',
-                    1500: 'first_class_1.png',
-                    3000: 'first_class_legendary.png'
-                },
-                female: {
-                    0:    'groundling_f.png',
-                    75:   'explorer_f.png',
-                    300:  'adventurer_f.png',
-                    750:  'voyager_f.png',
-                    1500: 'first_class_f.png',
-                    3000: 'legend_f.png'
-                }
+            // ── Tier SVG Icons (Apple-style) ─────────────────────────────────
+            const tierIcons = {
+                0: `<svg class="vip-tier-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+                  <circle cx="32" cy="32" r="22" stroke="rgba(201,169,110,0.28)" stroke-width="1.2"/>
+                  <circle cx="32" cy="32" r="14" stroke="rgba(201,169,110,0.18)" stroke-width="1"/>
+                  <circle cx="32" cy="32" r="4" fill="rgba(201,169,110,0.30)"/>
+                  <circle cx="32" cy="32" r="2" fill="rgba(201,169,110,0.55)"/>
+                </svg>`,
+                75: `<svg class="vip-tier-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+                  <circle cx="32" cy="32" r="22" stroke="rgba(201,169,110,0.35)" stroke-width="1.2"/>
+                  <circle cx="32" cy="32" r="2" fill="#c9a96e"/>
+                  <line x1="32" y1="10" x2="32" y2="17" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="32" y1="47" x2="32" y2="54" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="10" y1="32" x2="17" y2="32" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="47" y1="32" x2="54" y2="32" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                  <polygon points="32,13 29.5,30 32,28.5 34.5,30" fill="#c9a96e"/>
+                  <polygon points="32,51 34.5,34 32,35.5 29.5,34" fill="rgba(201,169,110,0.32)"/>
+                </svg>`,
+                300: `<svg class="vip-tier-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+                  <polyline points="6,50 26,20 38,36 50,22 60,50" stroke="rgba(201,169,110,0.28)" stroke-width="1.2" stroke-linejoin="round"/>
+                  <polyline points="14,50 26,20 38,36" stroke="#c9a96e" stroke-width="1.5" stroke-linejoin="round"/>
+                  <polyline points="22,29 26,20 30,29" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linejoin="round" fill="none"/>
+                  <circle cx="26" cy="20" r="1.8" fill="rgba(201,169,110,0.7)"/>
+                </svg>`,
+                750: `<svg class="vip-tier-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+                  <circle cx="32" cy="32" r="20" stroke="rgba(201,169,110,0.32)" stroke-width="1.2"/>
+                  <ellipse cx="32" cy="32" rx="20" ry="7" stroke="rgba(201,169,110,0.18)" stroke-width="1"/>
+                  <ellipse cx="32" cy="32" rx="7" ry="20" stroke="rgba(201,169,110,0.18)" stroke-width="1"/>
+                  <path d="M 14 42 Q 24 12 50 22" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" fill="none" stroke-dasharray="3 2"/>
+                  <circle cx="50" cy="22" r="2.5" fill="#c9a96e"/>
+                  <circle cx="14" cy="42" r="1.5" fill="rgba(201,169,110,0.5)"/>
+                </svg>`,
+                1500: `<svg class="vip-tier-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+                  <polygon points="32,9 52,26 44,54 20,54 12,26" stroke="#c9a96e" stroke-width="1.4" fill="rgba(201,169,110,0.07)" stroke-linejoin="round"/>
+                  <polyline points="12,26 32,20 52,26" stroke="rgba(201,169,110,0.45)" stroke-width="1"/>
+                  <line x1="32" y1="9" x2="32" y2="20" stroke="rgba(201,169,110,0.45)" stroke-width="1"/>
+                  <line x1="32" y1="20" x2="20" y2="54" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
+                  <line x1="32" y1="20" x2="44" y2="54" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
+                  <circle cx="26" cy="22" r="1.8" fill="rgba(255,255,255,0.55)"/>
+                  <circle cx="32" cy="9" r="2" fill="#c9a96e"/>
+                </svg>`,
+                3000: `<svg class="vip-legend-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+                  <!-- Outer pulsing ring -->
+                  <circle class="legend-ring" cx="32" cy="32" r="29" stroke="#c9a96e" stroke-width="0.6" opacity="0.25"/>
+                  <!-- Rotating rays -->
+                  <g class="legend-rays">
+                    <line x1="32" y1="3" x2="32" y2="10" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="32" y1="54" x2="32" y2="61" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="3" y1="32" x2="10" y2="32" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="54" y1="32" x2="61" y2="32" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="10.4" y1="10.4" x2="15.6" y2="15.6" stroke="rgba(201,169,110,0.55)" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="53.6" y1="10.4" x2="48.4" y2="15.6" stroke="rgba(201,169,110,0.55)" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="10.4" y1="53.6" x2="15.6" y2="48.4" stroke="rgba(201,169,110,0.55)" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="53.6" y1="53.6" x2="48.4" y2="48.4" stroke="rgba(201,169,110,0.55)" stroke-width="1" stroke-linecap="round"/>
+                  </g>
+                  <!-- Crown + float group -->
+                  <g class="legend-crown-g">
+                    <path d="M 17 43 L 13 26 L 22 35 L 32 17 L 42 35 L 51 26 L 47 43 Z"
+                          stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.10)" stroke-linejoin="round"/>
+                    <rect x="17" y="43" width="30" height="5" rx="2.5" fill="rgba(201,169,110,0.18)" stroke="#c9a96e" stroke-width="1"/>
+                    <circle cx="32" cy="23" r="3" fill="#c9a96e"/>
+                    <circle cx="20" cy="37" r="1.8" fill="rgba(201,169,110,0.65)"/>
+                    <circle cx="44" cy="37" r="1.8" fill="rgba(201,169,110,0.65)"/>
+                    <circle cx="26" cy="43" r="1.2" fill="rgba(201,169,110,0.4)"/>
+                    <circle cx="38" cy="43" r="1.2" fill="rgba(201,169,110,0.4)"/>
+                    <!-- Shine spark -->
+                    <line x1="32" y1="19" x2="32" y2="22" stroke="rgba(255,255,255,0.8)" stroke-width="0.8" stroke-linecap="round"/>
+                    <line x1="30.5" y1="20.5" x2="33.5" y2="20.5" stroke="rgba(255,255,255,0.8)" stroke-width="0.8" stroke-linecap="round"/>
+                  </g>
+                </svg>`
             };
-
-            let currentGender = 'male';
 
             const levels = [
                 { min: 0,    badge: '\u25CB', name: 'Groundling',   discount: null, perk: 'Every purchase earns 5 pts per €1', grounding: true },
@@ -4242,15 +4284,14 @@
             const bar = document.getElementById('vipBar');
             const nextText = document.getElementById('vipNextText');
 
-            function buildCards(gender) {
+            function buildCards() {
                 carousel.innerHTML = '';
-                const avatarMap = avatarMaps[gender];
                 levels.forEach((lvl, i) => {
                     const card = document.createElement('div');
                     card.className = 'vip-card' + (lvl.grounding ? ' grounding' : '');
                     card.dataset.index = i;
-                    const avatarFile = avatarMap[lvl.min] || (gender === 'female' ? 'groundling_f.png' : 'groundling.png');
-                    let h = '<img src="assets/vip-avatars/' + avatarFile + '" class="vip-avatar-bg" alt="' + lvl.name + '" loading="lazy">';
+                    const icon = tierIcons[lvl.min] || tierIcons[0];
+                    let h = '<div class="vip-icon">' + icon + '</div>';
                     h += '<div class="vip-card-inner">';
                     h += '<div class="vip-card-badge-num">' + lvl.badge + '</div>';
                     h += '<div class="vip-card-name">' + lvl.name + '</div>';
@@ -4264,7 +4305,7 @@
                 });
             }
 
-            buildCards('male');
+            buildCards();
             let cards = carousel.querySelectorAll('.vip-card');
 
             function getLevel(pts) {
@@ -4304,7 +4345,6 @@
                 }
 
                 // Card states
-                // Refresh cards in case of gender rebuild
                 const allCards = carousel.querySelectorAll('.vip-card');
                 allCards.forEach((card, i) => {
                     card.classList.remove('active', 'adjacent');
@@ -4318,26 +4358,16 @@
             slider.addEventListener('input', update);
             window.addEventListener('resize', () => { const pts = parseInt(slider.value); centerCard(getLevel(pts)); });
 
-            // Gender switch function (global so onclick= works)
-            window.setVipGender = function(gender) {
-                currentGender = gender;
-                document.getElementById('vipGenderMale').classList.toggle('active', gender === 'male');
-                document.getElementById('vipGenderFemale').classList.toggle('active', gender === 'female');
-                buildCards(gender);
-                cards = carousel.querySelectorAll('.vip-card');
-                update();
-            };
-
             update();
         })();
 
         // ===== MULTI-LANGUAGE =====
-        const LANG_FLAGS = { en: '🇬🇧', de: '🇩🇪', fr: '🇫🇷', es: '🇪🇸', it: '🇮🇹' };
-        const LANG_NAMES = { en: 'EN', de: 'DE', fr: 'FR', es: 'ES', it: 'IT' };
+        const LANG_FLAGS = { en: '🇬🇧', de: '🇩🇪' };
+        const LANG_NAMES = { en: 'EN', de: 'DE' };
 
         function detectBrowserLang() {
             const bl = (navigator.language || 'en').toLowerCase().substring(0, 2);
-            return ['en', 'de', 'fr', 'es'].includes(bl) ? bl : 'en';
+            return ['en', 'de'].includes(bl) ? bl : 'en';
         }
 
         function setLang(lang) {
