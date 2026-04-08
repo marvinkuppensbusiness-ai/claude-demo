@@ -4094,6 +4094,15 @@
     </div>
 
     <script>
+        // ── Scroll-Fix: so früh wie möglich setzen ─────────────────────────
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+        // pageshow feuert auch bei Bfcache-Restore (Back/Forward-Button, Safari)
+        window.addEventListener('pageshow', function(e) {
+            if (e.persisted) { window.scrollTo(0, 0); }
+        });
+        // ─────────────────────────────────────────────────────────────────────
+
         // ===== SHOP CART =====
         // TODO: Replace each stripeUrl with your actual Stripe Payment Link URLs
         // Format: https://buy.stripe.com/XXXXXXXXX
@@ -4769,16 +4778,15 @@
                 a.classList.toggle('nav-active', isActive);
             });
 
-            // Scroll to top on page change
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Scroll to top on page change (instant, kein Blur)
+            window.scrollTo({ top: 0, behavior: 'instant' });
 
             // Close mobile menu if open
             const nl = document.getElementById('navLinks');
             if (nl) nl.classList.remove('open');
         }
 
-        // Prevent browser from restoring scroll position
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        // scrollRestoration bereits ganz oben gesetzt (vor allem anderen)
 
 
         // ── SHOP STATUS ────────────────────────────────────────────────────
