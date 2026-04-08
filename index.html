@@ -2635,6 +2635,45 @@
             color: #0f0f0f; font-weight: 700;
         }
         .pricing-btn-featured:hover { background: #d9b97e; border-color: #d9b97e; color: #0f0f0f; }
+
+        /* Gender Toggle */
+        .vip-gender-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .vip-gender-btn {
+            background: transparent;
+            border: 0.5px solid #2a2820;
+            color: #5a5448;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .vip-gender-btn.active {
+            background: rgba(201,169,110,0.1);
+            border-color: #c9a96e;
+            color: #c9a96e;
+        }
+        .vip-gender-btn:hover:not(.active) {
+            border-color: #3a3830;
+            color: #8a8278;
+        }
+        .vip-gender-label {
+            font-size: 10px;
+            color: #5a5448;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-right: 4px;
+        }
+
         /* Coming Soon Button State */
         .pc-btn.coming-soon,
         .pricing-btn.coming-soon {
@@ -2913,7 +2952,7 @@
                         <div class="pricing-includes">
                             <div data-en="Hack Pack — 50+ money-saving travel hacks" data-it="Hack Pack — 50+ trucchi per risparmiare viaggiando" data-de="Hack Pack — 50+ Geld-spar-Hacks fürs Reisen" data-es="Hack Pack — 50+ trucos para ahorrar dinero viajando" data-fr="Hack Pack — 50+ astuces pour économiser en voyage">Hack Pack — 50+ money-saving travel hacks</div>
                             <div data-en="Filter Reset — 8 pro Lightroom presets" data-it="Filter Reset — 8 preset Lightroom professionali" data-de="Filter Reset — 8 professionelle Lightroom-Presets" data-es="Filter Reset — 8 presets Lightroom profesionales" data-fr="Filter Reset — 8 presets Lightroom pro">Filter Reset — 8 pro Lightroom presets</div>
-                            <div data-en="225 VIP pts → 7.5% off all future orders" data-it="225 pt VIP → 7,5% su tutti gli ordini futuri" data-de="225 VIP-Pkt. → 7,5% auf alle weiteren Bestellungen" data-es="225 pts VIP → 7,5% en todos los pedidos futuros" data-fr="225 pts VIP → 7,5% sur toutes les commandes futures">225 VIP pts → 7.5% off all future orders</div>
+                            <div data-en="75 VIP pts → sofort Explorer-Status + 5% Rabatt" data-it="75 pt VIP → Explorer immediato + 5% permanente" data-de="75 VIP-Pkt. → sofort Explorer + 5% dauerhaft" data-es="75 pts VIP → Explorer inmediato + 5% permanente" data-fr="75 pts VIP → Explorer immédiat + 5% permanent">75 VIP pts → sofort Explorer-Status + 5% Rabatt</div>
                         </div>
                         <div class="pricing-price-area">
                             <div class="pricing-original"
@@ -3286,11 +3325,11 @@
                     data-de="Jeder Euro<br>zahlt sich <em>aus.</em>"
                     data-fr="Chaque euro<br>revient <em>vers vous.</em>"
                     data-es="Cada euro<br><em>regresa.</em>">Every euro<br>comes <em>back.</em></h2>
-                <p data-en="5 points per €1 spent. At 100 pts your next purchase is 5% cheaper — forever. At 500 pts: 10%. The earlier you join, the more everything costs you less." data-it="5 punti per ogni €1 speso. A 100 pt il prossimo acquisto è il 5% più economico — per sempre. A 500 pt: 10%. Prima entri, più risparmi su tutto."
-                   data-de="5 Punkte pro ausgegebenem Euro. Ab 100 Punkten ist dein nächster Kauf dauerhaft 5% günstiger. Ab 500 Punkten: 10%. Je früher du einsteigst, desto mehr sparst du auf alles."
-                   data-es="5 puntos por cada €1 gastado. Con 100 pts tu próxima compra es un 5% más barata — para siempre. Con 500 pts: 10%. Cuanto antes te unas, más barato te sale todo."
-                   data-fr="5 points par euro dépensé. À 100 pts votre prochain achat est 5% moins cher — à vie. À 500 pts : 10%. Plus tôt vous rejoignez, moins tout vous coûte.">
-                   5 points per €1 spent. At 100 pts your next purchase is 5% cheaper — forever. At 500 pts: 10%. The earlier you join, the more everything costs you less.
+                <p data-en="5 points per €1 spent. The Complete Pack unlocks Explorer status instantly (75 pts). At 300 pts: 10% off forever. The earlier you join, the more everything costs you less." data-it="5 punti per ogni €1 speso. Il Complete Pack sblocca subito lo status Explorer (75 pt). A 300 pt: 10% di sconto permanente. Prima entri, più risparmi."
+                   data-de="5 Punkte pro ausgegebenem Euro. Das Complete Pack schaltet sofort den Explorer-Status frei (75 Pkt.). Ab 300 Punkten: 10% dauerhaft. Je früher du einsteigst, desto mehr sparst du."
+                   data-es="5 puntos por cada €1 gastado. El Complete Pack desbloquea Explorer al instante (75 pts). Con 300 pts: 10% descuento permanente. Cuanto antes te unas, más ahorras."
+                   data-fr="5 points par euro dépensé. Le Complete Pack débloque Explorer immédiatement (75 pts). À 300 pts : 10% de réduction permanente. Plus tôt vous rejoignez, moins tout coûte.">
+                   5 points per €1 spent. The Complete Pack unlocks Explorer status instantly (75 pts). At 300 pts: 10% off forever. The earlier you join, the more everything costs you less.
                 </p>
             </div>
 
@@ -3326,6 +3365,13 @@
                 <div class="vip-next-text" id="vipNextText"></div>
             </div>
 
+            <!-- Gender Toggle -->
+            <div class="vip-gender-toggle reveal">
+                <span class="vip-gender-label">View as</span>
+                <button class="vip-gender-btn active" id="vipGenderMale" onclick="setVipGender('male')">♂ Male</button>
+                <button class="vip-gender-btn" id="vipGenderFemale" onclick="setVipGender('female')">♀ Female</button>
+            </div>
+
             <!-- 6-tier grid (JS fills #vipCarousel) -->
             <div class="vip-carousel reveal" id="vipCarousel"></div>
 
@@ -3333,7 +3379,7 @@
             <div class="vip-slider-wrap reveal">
                 <div class="vip-slider-label"
                      data-en="Simulate your points" data-it="Simula i tuoi punti" data-de="Punkte simulieren" data-es="Simular tus puntos" data-fr="Simuler vos points">Simulate your points</div>
-                <input type="range" class="vip-slider" id="vipSlider" min="0" max="5200" value="0" step="10">
+                <input type="range" class="vip-slider" id="vipSlider" min="0" max="3100" value="0" step="5">
             </div>
 
         </div>
@@ -4158,23 +4204,35 @@
 
         // VIP Loyalty Carousel
         (function() {
-            // Avatar image mapping — files live in assets/vip-avatars/
-            const avatarMap = {
-                0:    'groundling.png',
-                100:  'explorer_1.png',
-                500:  'adventurer_1.png',
-                1200: 'voyager_1.png',
-                2500: 'first_class_1.png',
-                5000: 'first_class_legendary.png'
+            // Avatar images — male (current) & female (add files later to assets/vip-avatars/)
+            const avatarMaps = {
+                male: {
+                    0:    'groundling.png',
+                    75:   'explorer_1.png',
+                    300:  'adventurer_1.png',
+                    750:  'voyager_1.png',
+                    1500: 'first_class_1.png',
+                    3000: 'first_class_legendary.png'
+                },
+                female: {
+                    0:    'groundling_f.png',
+                    75:   'explorer_f.png',
+                    300:  'adventurer_f.png',
+                    750:  'voyager_f.png',
+                    1500: 'first_class_f.png',
+                    3000: 'legend_f.png'
+                }
             };
 
+            let currentGender = 'male';
+
             const levels = [
-                { min: 0,    badge: '\u25CB', name: 'Groundling',  discount: null, perk: 'Every purchase earns 5 pts per €1', grounding: true },
-                { min: 100,  badge: 'I',      name: 'Explorer',    discount: 5,   perk: '5% off every order — permanently' },
-                { min: 500,  badge: 'II',     name: 'Adventurer',  discount: 10,  perk: '10% off + first access to new drops' },
-                { min: 1200, badge: 'III',    name: 'Voyager',     discount: 15,  perk: '15% off + priority support + community' },
-                { min: 2500, badge: 'IV',     name: 'First Class', discount: 20,  perk: '20% off + custom presets on request' },
-                { min: 5000, badge: '\u2726', name: 'Legend \u2726', discount: 25, perk: '25% off forever \u00b7 name in credits' }
+                { min: 0,    badge: '\u25CB', name: 'Groundling',   discount: null, perk: 'Every purchase earns 5 pts per €1', grounding: true },
+                { min: 75,   badge: 'I',       name: 'Explorer',     discount: 5,    perk: '5% off every order — permanently' },
+                { min: 300,  badge: 'II',       name: 'Adventurer',   discount: 10,   perk: '10% off + first access to new drops' },
+                { min: 750,  badge: 'III',      name: 'Voyager',      discount: 15,   perk: '15% off + priority support + community' },
+                { min: 1500, badge: 'IV',       name: 'First Class',  discount: 20,   perk: '20% off + custom presets on request' },
+                { min: 3000, badge: '\u2726',  name: 'Legend \u2726', discount: 25, perk: '25% off forever \u00b7 name in credits' }
             ];
 
             const carousel = document.getElementById('vipCarousel');
@@ -4184,26 +4242,30 @@
             const bar = document.getElementById('vipBar');
             const nextText = document.getElementById('vipNextText');
 
-            // Build tier cards (6-column grid, full-bleed images)
-            levels.forEach((lvl, i) => {
-                const card = document.createElement('div');
-                card.className = 'vip-card' + (lvl.grounding ? ' grounding' : '');
-                card.dataset.index = i;
-                const avatarFile = avatarMap[lvl.min] || 'groundling.png';
-                // Image fills the full card; content sits in .vip-card-inner with gradient overlay
-                let html = '<img src="assets/vip-avatars/' + avatarFile + '" class="vip-avatar-bg" alt="' + lvl.name + '" loading="lazy">';
-                html += '<div class="vip-card-inner">';
-                html += '<div class="vip-card-badge-num">' + lvl.badge + '</div>';
-                html += '<div class="vip-card-name">' + lvl.name + '</div>';
-                html += '<div class="vip-card-discount">' + (lvl.discount ? lvl.discount + '%' : '—') + '</div>';
-                html += '<div class="vip-card-perk">' + lvl.perk + '</div>';
-                html += '<div class="vip-card-pts">' + lvl.min.toLocaleString('en') + ' pts</div>';
-                html += '</div>';
-                card.innerHTML = html;
-                carousel.appendChild(card);
-            });
+            function buildCards(gender) {
+                carousel.innerHTML = '';
+                const avatarMap = avatarMaps[gender];
+                levels.forEach((lvl, i) => {
+                    const card = document.createElement('div');
+                    card.className = 'vip-card' + (lvl.grounding ? ' grounding' : '');
+                    card.dataset.index = i;
+                    const avatarFile = avatarMap[lvl.min] || (gender === 'female' ? 'groundling_f.png' : 'groundling.png');
+                    let h = '<img src="assets/vip-avatars/' + avatarFile + '" class="vip-avatar-bg" alt="' + lvl.name + '" loading="lazy">';
+                    h += '<div class="vip-card-inner">';
+                    h += '<div class="vip-card-badge-num">' + lvl.badge + '</div>';
+                    h += '<div class="vip-card-name">' + lvl.name + '</div>';
+                    h += '<div class="vip-card-discount">' + (lvl.discount ? lvl.discount + '%' : '—') + '</div>';
+                    h += '<div class="vip-card-perk">' + lvl.perk + '</div>';
+                    h += '<div class="vip-card-pts">' + lvl.min.toLocaleString('en') + ' pts</div>';
+                    h += '</div>';
+                    card.innerHTML = h;
+                    card.addEventListener('click', () => { slider.value = lvl.min; update(); });
+                    carousel.appendChild(card);
+                });
+            }
 
-            const cards = carousel.querySelectorAll('.vip-card');
+            buildCards('male');
+            let cards = carousel.querySelectorAll('.vip-card');
 
             function getLevel(pts) {
                 for (let i = levels.length - 1; i >= 0; i--) {
@@ -4242,7 +4304,9 @@
                 }
 
                 // Card states
-                cards.forEach((card, i) => {
+                // Refresh cards in case of gender rebuild
+                const allCards = carousel.querySelectorAll('.vip-card');
+                allCards.forEach((card, i) => {
                     card.classList.remove('active', 'adjacent');
                     if (i === current) card.classList.add('active');
                     else if (Math.abs(i - current) === 1) card.classList.add('adjacent');
@@ -4254,13 +4318,15 @@
             slider.addEventListener('input', update);
             window.addEventListener('resize', () => { const pts = parseInt(slider.value); centerCard(getLevel(pts)); });
 
-            // Allow clicking cards to jump slider
-            cards.forEach((card, i) => {
-                card.addEventListener('click', () => {
-                    slider.value = levels[i].min;
-                    update();
-                });
-            });
+            // Gender switch function (global so onclick= works)
+            window.setVipGender = function(gender) {
+                currentGender = gender;
+                document.getElementById('vipGenderMale').classList.toggle('active', gender === 'male');
+                document.getElementById('vipGenderFemale').classList.toggle('active', gender === 'female');
+                buildCards(gender);
+                cards = carousel.querySelectorAll('.vip-card');
+                update();
+            };
 
             update();
         })();
