@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danke für deinen Kauf — TravelwithMarv</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --bg2: #141414;
+      --gold: #c9a96e;
+      --white: #f0ece4;
+      --mid: #8a8278;
+      --dim: #5a5448;
+      --border: #2a2820;
+      --green: #6ec97a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      margin-bottom: 64px;
+      display: block;
+      text-align: center;
+    }
+
+    .card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      max-width: 520px;
+      width: 100%;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .check-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(110,201,122,0.12);
+      border: 1.5px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+    }
+    .check-circle svg { color: var(--green); }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* Download buttons */
+    .downloads { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+
+    .dl-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border: 0.5px solid var(--gold);
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .dl-btn:hover { background: rgba(201,169,110,0.08); }
+    .dl-btn-left { display: flex; align-items: center; gap: 12px; }
+    .dl-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(201,169,110,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dl-meta { text-align: left; }
+    .dl-name { font-size: 13px; font-weight: 600; color: var(--white); }
+    .dl-size { font-size: 11px; color: var(--dim); margin-top: 2px; }
+    .dl-arrow { color: var(--gold); font-size: 16px; }
+
+    .notice {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.6;
+      border-top: 0.5px solid var(--border);
+      padding-top: 24px;
+      margin-top: 8px;
+    }
+    .notice strong { color: var(--mid); }
+
+    .back-link {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--dim);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* Loading state */
+    .loading { color: var(--mid); font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="logo">TravelwithMarv</a>
+
+  <div class="card" id="card">
+    <div class="check-circle">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <div class="tag">Kauf bestätigt</div>
+    <h1 id="headline">Danke für deinen Kauf!</h1>
+    <p class="subtitle" id="subtitle">Dein Download steht sofort bereit. Speicher die Datei an einem sicheren Ort — sie ist dein persönliches Referenz-Dokument für alle Reisen.</p>
+
+    <div class="downloads" id="downloads">
+      <p class="loading">Lade Downloads…</p>
+    </div>
+
+    <p class="notice">
+      <strong>Tipp:</strong> Speichere die PDF in deiner Cloud (iCloud, Google Drive) — dann hast du sie auf Reisen immer dabei, auch offline.
+    </p>
+  </div>
+
+  <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+
+  <script>
+    // Product definitions — match Stripe metadata product_id
+    const PRODUCTS = {
+      'travel-hacks-guide': {
+        headline: 'Dein Travel Hacks Guide ist bereit.',
+        subtitle: '75+ Reise-Hacks auf 15 Seiten — von günstigen Flügen bis zur EU-Entschädigung. Speicher ihn an einem Ort, wo du ihn vor deiner nächsten Reise findest.',
+        files: [
+          { name: 'Travel Hacks Guide', file: 'products/de/travel-hacks-guide.pdf', size: '72 KB · PDF' }
+        ]
+      },
+      'airport-hacks-cheatsheet': {
+        headline: 'Dein Airport Hacks Cheatsheet ist bereit.',
+        subtitle: '40+ Airport-Hacks, EU-Entschädigungsrecht und Lounge-Zugang — alles was du am Flughafen brauchst.',
+        files: [
+          { name: 'Airport Hacks Cheatsheet', file: 'products/de/airport-hacks-cheatsheet.pdf', size: '48 KB · PDF' }
+        ]
+      },
+      'packing-list-templates': {
+        headline: 'Deine Packing List Templates sind bereit.',
+        subtitle: 'One-Bag-System, Digital-Nomad-Setup und 6 Packlisten für jede Reiseart — nie wieder vergessen.',
+        files: [
+          { name: 'Packing List Templates', file: 'products/de/packing-list-templates.pdf', size: '39 KB · PDF' }
+        ]
+      },
+      'complete-pack': {
+        headline: 'Dein Complete Pack ist bereit — alle 3 Guides.',
+        subtitle: 'Drei Guides, ein Ort. Speicher alle Dateien in deiner Cloud für den nächsten Trip.',
+        files: [
+          { name: 'Travel Hacks Guide',       file: 'products/de/travel-hacks-guide.pdf',        size: '72 KB · PDF' },
+          { name: 'Airport Hacks Cheatsheet', file: 'products/de/airport-hacks-cheatsheet.pdf',  size: '48 KB · PDF' },
+          { name: 'Packing List Templates',   file: 'products/de/packing-list-templates.pdf',    size: '39 KB · PDF' }
+        ]
+      }
+    };
+
+    // Default (fallback wenn kein Produkt erkannt)
+    const DEFAULT = {
+      headline: 'Danke für deinen Kauf!',
+      subtitle: 'Deine Downloads sind bereit.',
+      files: [
+        { name: 'Travel Hacks Guide',       file: 'products/de/travel-hacks-guide.pdf',        size: '72 KB · PDF' },
+        { name: 'Airport Hacks Cheatsheet', file: 'products/de/airport-hacks-cheatsheet.pdf',  size: '48 KB · PDF' },
+        { name: 'Packing List Templates',   file: 'products/de/packing-list-templates.pdf',    size: '39 KB · PDF' }
+      ]
+    };
+
+    function render(product) {
+      document.getElementById('headline').textContent = product.headline;
+      document.getElementById('subtitle').textContent = product.subtitle;
+
+      const dlEl = document.getElementById('downloads');
+      dlEl.innerHTML = product.files.map(f => `
+        <a class="dl-btn" href="${f.file}" download>
+          <div class="dl-btn-left">
+            <div class="dl-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+            </div>
+            <div class="dl-meta">
+              <div class="dl-name">${f.name}</div>
+              <div class="dl-size">${f.size}</div>
+            </div>
+          </div>
+          <span class="dl-arrow">↓</span>
+        </a>
+      `).join('');
+    }
+
+    // Detect product from URL param ?product=xxx (set by Stripe redirect)
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('product');
+    const product = PRODUCTS[productId] || DEFAULT;
+    render(product);
+  </script>
+
+</body>
+</html>
