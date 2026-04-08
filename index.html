@@ -2635,6 +2635,43 @@
             color: #0f0f0f; font-weight: 700;
         }
         .pricing-btn-featured:hover { background: #d9b97e; border-color: #d9b97e; color: #0f0f0f; }
+        /* Coming Soon Button State */
+        .pc-btn.coming-soon,
+        .pricing-btn.coming-soon {
+            opacity: 1 !important;
+            cursor: not-allowed !important;
+            background: transparent !important;
+            border-color: #2a2820 !important;
+            color: #5a5448 !important;
+            pointer-events: none;
+            font-size: 11px !important;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .pc-btn.coming-soon::before,
+        .pricing-btn.coming-soon::before {
+            content: '⏳ ';
+        }
+        .bundle-add-btn.coming-soon {
+            opacity: 0.35 !important;
+            cursor: not-allowed !important;
+            pointer-events: none;
+        }
+        .shop-coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201,169,110,0.08);
+            border: 0.5px solid rgba(201,169,110,0.3);
+            color: #c9a96e;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            margin-bottom: 24px;
+        }
+
         .pricing-trust {
             display: flex; gap: 8px 20px; justify-content: center; align-items: center;
             flex-wrap: wrap; color: var(--dim); font-size: 0.75rem;
@@ -4564,11 +4601,51 @@
         // Prevent browser from restoring scroll position
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
+
+        // ── SHOP STATUS ────────────────────────────────────────────────────
+        // Setze auf true wenn Shop live geht
+        const SHOP_LIVE = false;
+
+        if (!SHOP_LIVE) {
+            document.addEventListener('DOMContentLoaded', () => {
+                // Alle Kauf-Buttons deaktivieren
+                document.querySelectorAll('.pc-btn, .pricing-btn, .bundle-add-btn').forEach(btn => {
+                    btn.classList.add('coming-soon');
+                    btn.disabled = true;
+                    if (btn.classList.contains('pc-btn') || btn.classList.contains('pricing-btn')) {
+                        btn.textContent = 'Coming Soon';
+                        btn.removeAttribute('onclick');
+                    }
+                });
+                // Checkout Button sperren
+                const cb = document.getElementById('checkoutBtn');
+                if (cb) { cb.disabled = true; }
+            });
+        }
+
         window.addEventListener('hashchange', router);
         // Run on load (but after DOM + other scripts)
         window.addEventListener('DOMContentLoaded', () => { window.scrollTo(0, 0); router(); });
         window.addEventListener('load', () => { window.scrollTo(0, 0); router(); });
     })();
+    </script>
+
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:99999; background:#141414; border-top:0.5px solid #2a2820; padding:16px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+        <p style="font-family:'Inter',sans-serif; font-size:12px; color:#8a8278; margin:0; line-height:1.6; flex:1; min-width:200px;">
+            Diese Website verwendet ausschließlich technisch notwendige Cookies (Spracheinstellung, Warenkorb). Es werden keine Tracking- oder Werbe-Cookies eingesetzt.
+            <a href="datenschutz.html" style="color:#c9a96e; text-decoration:none;">Datenschutz</a>
+        </p>
+        <button onclick="document.getElementById('cookieBanner').style.display='none'; localStorage.setItem('cookieConsent','1');"
+            style="font-family:'Inter',sans-serif; background:#c9a96e; color:#0f0f0f; border:none; padding:10px 24px; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; white-space:nowrap; flex-shrink:0;">
+            Verstanden
+        </button>
+    </div>
+    <script>
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').style.display = 'flex';
+        }
     </script>
 
 </body>
