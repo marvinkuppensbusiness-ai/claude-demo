@@ -4561,10 +4561,13 @@
             if (nl) nl.classList.remove('open');
         }
 
+        // Prevent browser from restoring scroll position
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
         window.addEventListener('hashchange', router);
         // Run on load (but after DOM + other scripts)
-        window.addEventListener('DOMContentLoaded', router);
-        window.addEventListener('load', router);
+        window.addEventListener('DOMContentLoaded', () => { window.scrollTo(0, 0); router(); });
+        window.addEventListener('load', () => { window.scrollTo(0, 0); router(); });
     })();
     </script>
 
