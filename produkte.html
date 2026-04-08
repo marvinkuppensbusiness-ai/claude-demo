@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkte – TravelwithMarv</title>
+    <meta name="description" content="Alle digitalen Produkte von TravelwithMarv — Travel Hacks Guide, Cinematic LUTs, Lightroom Presets & mehr. Aus 23 Ländern für Reisende gemacht.">
+    <link rel="canonical" href="https://travelwithmarv.de/produkte.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+    <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg:        #0f0f0f;
+        --bg-alt:    #141414;
+        --bg-card:   #111111;
+        --border:    rgba(255,255,255,0.055);
+        --border-gold: rgba(201,169,110,0.35);
+        --gold:      #c9a96e;
+        --gold-light:#f0d080;
+        --white:     #f0ece4;
+        --muted:     #7a7268;
+        --dim:       #4a4840;
+        --space-xs:  8px;
+        --space-sm:  16px;
+        --space-md:  24px;
+        --space-lg:  32px;
+        --space-xl:  48px;
+        --space-2xl: 64px;
+        --space-3xl: 96px;
+        --r:         18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--white);
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+        position: sticky; top: 0; z-index: 100;
+        background: rgba(15,15,15,0.88);
+        backdrop-filter: blur(20px) saturate(1.4);
+        -webkit-backdrop-filter: blur(20px) saturate(1.4);
+        border-bottom: 0.5px solid var(--border);
+        padding: 0 var(--space-md);
+        display: flex; align-items: center;
+        justify-content: space-between;
+        height: 56px;
+    }
+    .nav-logo {
+        font-size: 13px; font-weight: 600;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--white); text-decoration: none;
+    }
+    .nav-back {
+        font-size: 11px; font-weight: 500;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--muted); text-decoration: none;
+        display: flex; align-items: center; gap: 6px;
+        transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── HERO ── */
+    .hero {
+        padding: var(--space-3xl) var(--space-md) var(--space-2xl);
+        max-width: 1100px; margin: 0 auto;
+    }
+    .hero-tag {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+        text-transform: uppercase; color: var(--gold);
+        margin-bottom: var(--space-lg);
+    }
+    .hero-tag::before {
+        content: '';
+        display: inline-block;
+        width: 24px; height: 1px;
+        background: var(--gold); opacity: 0.5;
+    }
+    .hero h1 {
+        font-size: clamp(52px, 9vw, 96px);
+        font-weight: 800;
+        line-height: 1.0;
+        letter-spacing: -0.04em;
+        color: var(--white);
+        margin-bottom: var(--space-lg);
+    }
+    .hero h1 em {
+        font-style: italic;
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 60%, var(--gold) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero-sub {
+        font-size: 16px; font-weight: 400;
+        color: var(--muted); line-height: 1.6;
+        max-width: 480px;
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-wrap {
+        max-width: 1100px; margin: 0 auto;
+        padding: 0 var(--space-md) var(--space-xl);
+        display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .filter-btn {
+        background: transparent;
+        border: 0.5px solid var(--border);
+        color: var(--muted);
+        padding: 8px 18px;
+        border-radius: 99px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 500;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--border-gold); color: var(--white); }
+    .filter-btn.active {
+        background: rgba(201,169,110,0.12);
+        border-color: var(--gold);
+        color: var(--gold);
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+        max-width: 1100px; margin: 0 auto;
+        padding: 0 var(--space-md) var(--space-lg);
+        display: flex; align-items: baseline; gap: var(--space-md);
+    }
+    .section-label {
+        font-size: 10px; font-weight: 700;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--gold);
+    }
+    .section-line {
+        flex: 1; height: 0.5px;
+        background: linear-gradient(to right, var(--border-gold), transparent);
+    }
+
+    /* ── PRODUCT GRID ── */
+    .grid-wrap {
+        max-width: 1100px; margin: 0 auto;
+        padding: 0 var(--space-md) var(--space-3xl);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+    }
+    @media (max-width: 900px) { .grid-wrap { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .grid-wrap { grid-template-columns: 1fr; gap: var(--space-sm); } }
+
+    /* ── PRODUCT CARD ── */
+    .p-card {
+        background: var(--bg-card);
+        border: 0.5px solid var(--border);
+        border-radius: var(--r);
+        overflow: hidden;
+        display: flex; flex-direction: column;
+        transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94),
+                    border-color 0.3s, box-shadow 0.3s;
+        position: relative;
+        cursor: default;
+    }
+    .p-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-gold);
+        box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 24px rgba(201,169,110,0.08);
+    }
+    .p-card.available { cursor: pointer; }
+
+    /* Top shimmer line on hover */
+    .p-card::before {
+        content: '';
+        position: absolute; top: 0; left: 0; right: 0;
+        height: 1px; z-index: 3;
+        background: linear-gradient(90deg, transparent, rgba(201,169,110,0.5), transparent);
+        opacity: 0; transition: opacity 0.3s;
+    }
+    .p-card:hover::before { opacity: 1; }
+
+    /* ── CARD VISUAL (top area) ── */
+    .p-visual {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #161510;
+        display: flex; align-items: center; justify-content: center;
+        position: relative; overflow: hidden;
+        flex-shrink: 0;
+    }
+    .p-visual-icon {
+        width: 56px; height: 56px;
+        opacity: 0.55;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+    .p-card:hover .p-visual-icon { opacity: 0.85; transform: scale(1.06); }
+
+    /* Visual gradient overlay */
+    .p-visual::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, transparent 50%, rgba(17,17,17,0.95) 100%);
+        pointer-events: none;
+    }
+
+    /* ── BADGE ── */
+    .p-badge {
+        position: absolute; top: 12px; left: 12px; z-index: 4;
+        font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+        text-transform: uppercase; padding: 4px 10px;
+        border-radius: 99px;
+    }
+    .badge-live   { background: rgba(201,169,110,0.15); color: var(--gold); border: 0.5px solid rgba(201,169,110,0.4); }
+    .badge-free   { background: rgba(100,200,120,0.15); color: #7de8a0; border: 0.5px solid rgba(100,200,120,0.4); }
+    .badge-soon   { background: rgba(255,255,255,0.06); color: var(--muted); border: 0.5px solid var(--border); }
+    .badge-best   { background: rgba(201,169,110,0.2); color: var(--gold-light); border: 0.5px solid rgba(240,208,128,0.5); }
+    .badge-new    { background: rgba(100,160,255,0.15); color: #90c0ff; border: 0.5px solid rgba(100,160,255,0.4); }
+
+    /* ── CARD BODY ── */
+    .p-body { padding: var(--space-md); flex: 1; display: flex; flex-direction: column; }
+    .p-cat  {
+        font-size: 9px; font-weight: 600; letter-spacing: 0.18em;
+        text-transform: uppercase; color: var(--dim);
+        margin-bottom: 8px;
+    }
+    .p-name {
+        font-size: 17px; font-weight: 700;
+        color: var(--white); letter-spacing: -0.02em;
+        line-height: 1.2; margin-bottom: 10px;
+    }
+    .p-desc {
+        font-size: 13px; font-weight: 400;
+        color: var(--muted); line-height: 1.6;
+        flex: 1; margin-bottom: var(--space-md);
+    }
+    .p-tags {
+        display: flex; gap: 6px; flex-wrap: wrap;
+        margin-bottom: var(--space-md);
+    }
+    .p-tag {
+        font-size: 9px; font-weight: 500; letter-spacing: 0.1em;
+        text-transform: uppercase; padding: 3px 9px;
+        border-radius: 99px;
+        background: rgba(255,255,255,0.04);
+        border: 0.5px solid var(--border);
+        color: var(--dim);
+    }
+
+    /* ── CARD FOOTER ── */
+    .p-foot {
+        display: flex; align-items: center;
+        justify-content: space-between; gap: 12px;
+        padding-top: var(--space-sm);
+        border-top: 0.5px solid var(--border);
+    }
+    .p-price {
+        font-size: 22px; font-weight: 700;
+        letter-spacing: -0.03em; color: var(--white);
+    }
+    .p-price.free { color: #7de8a0; }
+    .p-price.soon { color: var(--dim); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; }
+
+    .p-btn {
+        background: var(--gold);
+        color: #0f0f0f;
+        border: none; border-radius: 99px;
+        padding: 10px 20px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.15s;
+        text-decoration: none; display: inline-block;
+        white-space: nowrap;
+    }
+    .p-btn:hover { background: var(--gold-light); transform: scale(1.04); }
+    .p-btn:active { transform: scale(0.98); }
+
+    .p-btn-notify {
+        background: transparent;
+        border: 0.5px solid var(--border);
+        color: var(--muted); border-radius: 99px;
+        padding: 10px 20px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 500;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+    .p-btn-notify:hover { border-color: var(--border-gold); color: var(--white); }
+
+    .p-btn-free {
+        background: rgba(100,200,120,0.15);
+        color: #7de8a0;
+        border: 0.5px solid rgba(100,200,120,0.4);
+        border-radius: 99px; padding: 10px 20px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        cursor: pointer; text-decoration: none; display: inline-block;
+        transition: all 0.2s; white-space: nowrap;
+    }
+    .p-btn-free:hover { background: rgba(100,200,120,0.25); }
+
+    /* ── COMING SOON dim overlay ── */
+    .p-card.soon .p-visual-icon { opacity: 0.28; }
+    .p-card.soon .p-name { color: rgba(240,236,228,0.6); }
+    .p-card.soon .p-desc { color: rgba(122,114,104,0.7); }
+
+    /* ── FREE CARD special ── */
+    .p-card.free-card {
+        border-color: rgba(100,200,120,0.2);
+        background: linear-gradient(145deg, #0d1410 0%, #111111 100%);
+    }
+    .p-card.free-card:hover {
+        border-color: rgba(100,200,120,0.45);
+        box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 28px rgba(100,200,120,0.07);
+    }
+    .p-card.free-card::before {
+        background: linear-gradient(90deg, transparent, rgba(125,232,160,0.4), transparent);
+    }
+
+    /* ── NOTIFY MODAL ── */
+    .notify-overlay {
+        position: fixed; inset: 0; z-index: 9999;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: blur(8px);
+        display: flex; align-items: center; justify-content: center;
+        padding: var(--space-md);
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.25s;
+    }
+    .notify-overlay.open { opacity: 1; pointer-events: all; }
+    .notify-modal {
+        background: #161614;
+        border: 0.5px solid var(--border-gold);
+        border-radius: 20px;
+        padding: var(--space-xl) var(--space-lg);
+        max-width: 400px; width: 100%;
+        transform: translateY(16px);
+        transition: transform 0.25s;
+        text-align: center;
+        position: relative;
+    }
+    .notify-overlay.open .notify-modal { transform: translateY(0); }
+    .notify-close {
+        position: absolute; top: 16px; right: 16px;
+        background: none; border: none; color: var(--muted);
+        font-size: 18px; cursor: pointer; line-height: 1;
+        transition: color 0.2s;
+    }
+    .notify-close:hover { color: var(--white); }
+    .notify-icon { font-size: 32px; margin-bottom: 16px; }
+    .notify-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .notify-sub { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: var(--space-lg); }
+    .notify-input {
+        width: 100%; background: rgba(255,255,255,0.05);
+        border: 0.5px solid var(--border);
+        border-radius: 10px; padding: 14px 16px;
+        font-family: 'Inter', sans-serif; font-size: 14px;
+        color: var(--white); outline: none;
+        margin-bottom: 12px;
+        transition: border-color 0.2s;
+    }
+    .notify-input::placeholder { color: var(--dim); }
+    .notify-input:focus { border-color: var(--border-gold); }
+    .notify-send {
+        width: 100%; background: var(--gold); color: #0f0f0f;
+        border: none; border-radius: 10px; padding: 14px;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+        cursor: pointer; transition: background 0.2s;
+    }
+    .notify-send:hover { background: var(--gold-light); }
+    .notify-privacy { font-size: 10px; color: var(--dim); margin-top: 10px; }
+
+    /* ── FOOTER ── */
+    footer {
+        border-top: 0.5px solid var(--border);
+        padding: var(--space-xl) var(--space-md);
+        text-align: center;
+    }
+    .footer-logo { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .footer-links { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; list-style: none; }
+    .footer-links a { font-size: 11px; color: var(--dim); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 11px; color: var(--dim); margin-top: 16px; letter-spacing: 0.08em; }
+
+    /* ── SHOP_LIVE flag ── */
+    .p-card.live-disabled .p-btn {
+        background: rgba(255,255,255,0.07);
+        color: var(--muted); cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    /* ── Mobile tweaks ── */
+    @media (max-width: 580px) {
+        .hero { padding: 64px var(--space-md) var(--space-xl); }
+        .hero h1 { font-size: 44px; }
+        .p-body { padding: var(--space-sm); }
+        .p-name { font-size: 15px; }
+        nav { padding: 0 var(--space-sm); }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+    <a href="index.html" class="nav-logo">TravelwithMarv</a>
+    <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Zurück
+    </a>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-tag">Digital Products</div>
+    <h1>Tools für<br>echte <em>Reisende.</em></h1>
+    <p class="hero-sub">Aus 23 Ländern destilliert — für jeden der günstiger reist, besser fotografiert und mehr rausholt.</p>
+</div>
+
+<!-- ── FILTER ── -->
+<div class="filter-wrap">
+    <button class="filter-btn active" onclick="filterCards('all', this)">Alle</button>
+    <button class="filter-btn" onclick="filterCards('guide', this)">Guides</button>
+    <button class="filter-btn" onclick="filterCards('visual', this)">Visuals</button>
+    <button class="filter-btn" onclick="filterCards('free', this)">Gratis</button>
+</div>
+
+<!-- ── AVAILABLE NOW ── -->
+<div class="section-head">
+    <span class="section-label">Jetzt verfügbar</span>
+    <div class="section-line"></div>
+</div>
+
+<div class="grid-wrap" id="gridAvailable"></div>
+
+<!-- ── COMING SOON ── -->
+<div class="section-head" style="margin-top: 16px;">
+    <span class="section-label">Coming Soon</span>
+    <div class="section-line"></div>
+</div>
+
+<div class="grid-wrap" id="gridSoon"></div>
+
+<!-- ── NOTIFY MODAL ── -->
+<div class="notify-overlay" id="notifyOverlay" onclick="if(event.target===this)closeNotify()">
+    <div class="notify-modal">
+        <button class="notify-close" onclick="closeNotify()">&times;</button>
+        <div class="notify-icon">🔔</div>
+        <div class="notify-title" id="notifyTitle">Benachrichtigung</div>
+        <div class="notify-sub" id="notifySub">Trag dich ein — du wirst als Erstes informiert wenn das Produkt live geht.</div>
+        <input class="notify-input" id="notifyEmail" type="email" placeholder="deine@email.com">
+        <button class="notify-send" onclick="sendNotify()">Notify me</button>
+        <div class="notify-privacy">Kein Spam. Abmeldung jederzeit. <a href="datenschutz.html" style="color:var(--muted)">Datenschutz</a>.</div>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-logo">TravelwithMarv</div>
+    <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://www.instagram.com/ichheissemarrvin/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@ichheissemarrvin" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="agb.html">AGB</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 TravelwithMarv — Marvin Kuppens</div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   🛠  PRODUKTE KONFIGURATION
+   Hier kannst du Produkte hinzufügen oder bearbeiten —
+   auch direkt vom Handy über GitHub (Edit-Button in der Datei).
+   ═══════════════════════════════════════════════════════════════ */
+
+// ── Auf true setzen wenn Shop live geht ──
+const SHOP_LIVE = false;
+
+// ── Verfügbare Produkte ────────────────────────────────────────
+const AVAILABLE = [
+    {
+        id:        'guide',
+        name:      'Travel Hacks Guide',
+        cat:       'Reiseguide · PDF',
+        desc:      '50+ Insider-Hacks die sich selbst bezahlen — günstige Flüge, EU-Fluggastrechte, kostenloser Lounge-Zugang & mehr.',
+        price:     '€9.99',
+        badge:     'BESTSELLER',
+        badgeType: 'badge-best',
+        tags:      ['PDF', 'Sofort-Download', 'guide'],
+        stripeUrl: 'https://buy.stripe.com/test_7sYcN673ygpY3oU6CC2Fa00',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="14" y="10" width="36" height="44" rx="4" stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.06)"/>
+            <line x1="22" y1="22" x2="42" y2="22" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="22" y1="30" x2="42" y2="30" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="22" y1="38" x2="36" y2="38" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="1.5" fill="#c9a96e"/>
+            <circle cx="22" cy="30" r="1.5" fill="rgba(201,169,110,0.5)"/>
+            <circle cx="22" cy="38" r="1.5" fill="rgba(201,169,110,0.5)"/>
+        </svg>`
+    },
+    {
+        id:        'airport',
+        name:      'Airport Hacks',
+        cat:       'Cheatsheet · PDF',
+        desc:      'Der ultimative Airport-Survival-Guide — schneller durch Security, kostenlose Upgrades, Lounge-Tricks.',
+        price:     '€4.99',
+        badge:     'NEU',
+        badgeType: 'badge-new',
+        tags:      ['PDF', 'Sofort-Download', 'guide'],
+        stripeUrl: 'https://buy.stripe.com/test_eVq3cw5ZuflU8Je8KK2Fa01',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <path d="M8 36 L24 20 L32 24 L44 14 L52 18 L40 30 L44 38 L36 42 Z" stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.08)" stroke-linejoin="round"/>
+            <circle cx="44" cy="14" r="3" fill="#c9a96e"/>
+            <line x1="10" y1="50" x2="54" y2="50" stroke="rgba(201,169,110,0.25)" stroke-width="1" stroke-linecap="round"/>
+        </svg>`
+    },
+    {
+        id:        'packing',
+        name:      'Packing List Templates',
+        cat:       'Templates · PDF',
+        desc:      'Smarte Packlisten-Vorlagen für jeden Trip-Typ — Rucksack, Business, Strand, Winter. Nie wieder was vergessen.',
+        price:     '€4.99',
+        badge:     'NEU',
+        badgeType: 'badge-new',
+        tags:      ['PDF', 'Sofort-Download', 'guide'],
+        stripeUrl: 'https://buy.stripe.com/test_cNi9AUgef7Tsf7C1ii2Fa02',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="18" y="8" width="28" height="6" rx="3" stroke="#c9a96e" stroke-width="1.2" fill="rgba(201,169,110,0.08)"/>
+            <rect x="12" y="14" width="40" height="40" rx="5" stroke="#c9a96e" stroke-width="1.5" fill="rgba(201,169,110,0.05)"/>
+            <line x1="22" y1="28" x2="38" y2="28" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="22" y1="36" x2="34" y2="36" stroke="rgba(201,169,110,0.35)" stroke-width="1" stroke-linecap="round"/>
+            <polyline points="20,26 22,28 26,24" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="20,34 22,36 26,32" stroke="rgba(201,169,110,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+    }
+];
+
+// ── Coming Soon + Free ─────────────────────────────────────────
+const COMING = [
+    {
+        id:        'free',
+        name:      'Free Starter Guide',
+        cat:       'Gratis · PDF',
+        desc:      '10 Reise-Hacks die sofort funktionieren — kein Kauf nötig. Dein Einstieg in smarteres Reisen.',
+        badge:     'GRATIS',
+        badgeType: 'badge-free',
+        tags:      ['PDF', 'Kostenlos', 'free', 'guide'],
+        type:      'free',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="20" stroke="#7de8a0" stroke-width="1.5" fill="rgba(125,232,160,0.06)"/>
+            <polyline points="23,32 29,38 41,26" stroke="#7de8a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+    },
+    {
+        id:        'luts',
+        name:      'Cinematic LUTs',
+        cat:       'Color Grading · .cube',
+        desc:      'Film-inspirierte Farbwelten für DaVinci Resolve, Premiere Pro & Final Cut. Deine Clips, Netflix-Niveau.',
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['LUT', '.cube', 'video', 'visual'],
+        type:      'soon',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="10" y="20" width="44" height="28" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
+            <circle cx="24" cy="34" r="7" stroke="rgba(201,169,110,0.4)" stroke-width="1" fill="rgba(201,169,110,0.06)"/>
+            <circle cx="40" cy="34" r="7" stroke="rgba(201,169,110,0.3)" stroke-width="1" fill="rgba(201,169,110,0.04)"/>
+            <path d="M 30 28 Q 32 34 30 40" stroke="rgba(201,169,110,0.3)" stroke-width="1" fill="none"/>
+        </svg>`
+    },
+    {
+        id:        'presets',
+        name:      'Lightroom Presets',
+        cat:       'Foto-Editing · .xmp',
+        desc:      'Travel-Presets für Lightroom Classic & Mobile. Kompatibel mit allen Kameras und Smartphones.',
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['.xmp', 'Lightroom', 'foto', 'visual'],
+        type:      'soon',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="16" width="40" height="32" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
+            <circle cx="32" cy="32" r="9" stroke="rgba(201,169,110,0.35)" stroke-width="1" fill="none"/>
+            <circle cx="32" cy="32" r="3" fill="rgba(201,169,110,0.4)"/>
+            <line x1="32" y1="16" x2="32" y2="22" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <line x1="32" y1="42" x2="32" y2="48" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <line x1="12" y1="32" x2="22" y2="32" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <line x1="42" y1="32" x2="52" y2="32" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        </svg>`
+    },
+    {
+        id:        'wallpaper',
+        name:      'Wallpaper Pack 4K',
+        cat:       'Desktop & Mobile · JPEG/PNG',
+        desc:      '50+ kuratierte 4K–8K Shots aus 23 Ländern. Für Desktop, MacBook und Smartphone.',
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['4K', '8K', 'JPEG', 'visual'],
+        type:      'soon',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="8" y="14" width="48" height="32" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
+            <circle cx="22" cy="26" r="5" stroke="rgba(201,169,110,0.35)" stroke-width="1" fill="rgba(201,169,110,0.07)"/>
+            <polyline points="8,36 20,26 30,34 40,24 56,36" stroke="rgba(201,169,110,0.35)" stroke-width="1" stroke-linejoin="round" fill="none"/>
+            <rect x="24" y="46" width="16" height="3" rx="1.5" fill="rgba(201,169,110,0.15)"/>
+        </svg>`
+    },
+    {
+        id:        'maps',
+        name:      'City Map Posters',
+        cat:       'Druckbar · PDF/SVG',
+        desc:      'Minimalistische Stadtkarten zum Drucken — jede Stadt als Kunstwerk. A3/A2, rahmbereit.',
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['Print', 'SVG', 'visual'],
+        type:      'soon',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,12 52,22 52,52 32,42 12,52 12,22" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)" stroke-linejoin="round"/>
+            <line x1="32" y1="12" x2="32" y2="42" stroke="rgba(201,169,110,0.25)" stroke-width="0.8"/>
+            <line x1="12" y1="22" x2="52" y2="22" stroke="rgba(201,169,110,0.25)" stroke-width="0.8"/>
+            <circle cx="32" cy="30" r="2.5" fill="rgba(201,169,110,0.6)"/>
+        </svg>`
+    }
+];
+
+/* ─── BUILD CARDS ──────────────────────────────────────────── */
+function buildAvailable() {
+    const grid = document.getElementById('gridAvailable');
+    grid.innerHTML = '';
+    AVAILABLE.forEach(p => {
+        const disabled = !SHOP_LIVE;
+        const card = document.createElement('div');
+        card.className = 'p-card available' + (disabled ? ' live-disabled' : '');
+        card.dataset.tags = p.tags.join(',');
+        card.innerHTML = `
+            <div class="p-visual">
+                <span class="p-badge ${p.badgeType}">${p.badge}</span>
+                ${p.icon}
+            </div>
+            <div class="p-body">
+                <div class="p-cat">${p.cat}</div>
+                <div class="p-name">${p.name}</div>
+                <div class="p-desc">${p.desc}</div>
+                <div class="p-tags">${p.tags.filter(t=>!['guide','visual','free'].includes(t)).map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
+                <div class="p-foot">
+                    <span class="p-price">${p.price}</span>
+                    ${disabled
+                        ? `<button class="p-btn" disabled>Coming Soon</button>`
+                        : `<a class="p-btn" href="${p.stripeUrl}" target="_blank" rel="noopener">Kaufen</a>`
+                    }
+                </div>
+            </div>`;
+        grid.appendChild(card);
+    });
+}
+
+function buildSoon() {
+    const grid = document.getElementById('gridSoon');
+    grid.innerHTML = '';
+    COMING.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'p-card' + (p.type === 'soon' ? ' soon' : ' free-card available');
+        card.dataset.tags = p.tags.join(',');
+        card.innerHTML = `
+            <div class="p-visual">
+                <span class="p-badge ${p.badgeType}">${p.badge}</span>
+                ${p.icon}
+            </div>
+            <div class="p-body">
+                <div class="p-cat">${p.cat}</div>
+                <div class="p-name">${p.name}</div>
+                <div class="p-desc">${p.desc}</div>
+                <div class="p-tags">${p.tags.filter(t=>!['guide','visual','free'].includes(t)).map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
+                <div class="p-foot">
+                    ${p.type === 'free'
+                        ? `<span class="p-price free">Kostenlos</span>
+                           <button class="p-btn-free" onclick="notifyFree()">Freischalten</button>`
+                        : `<span class="p-price soon">Bald verfügbar</span>
+                           <button class="p-btn-notify" onclick="openNotify('${p.name}')">Notify me</button>`
+                    }
+                </div>
+            </div>`;
+        grid.appendChild(card);
+    });
+}
+
+buildAvailable();
+buildSoon();
+
+/* ─── FILTER ──────────────────────────────────────────────── */
+function filterCards(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.p-card').forEach(card => {
+        if (type === 'all') { card.style.display = ''; return; }
+        const tags = card.dataset.tags || '';
+        card.style.display = tags.includes(type) ? '' : 'none';
+    });
+}
+
+/* ─── NOTIFY MODAL ───────────────────────────────────────── */
+let notifyProduct = '';
+function openNotify(name) {
+    notifyProduct = name;
+    document.getElementById('notifyTitle').textContent = name;
+    document.getElementById('notifySub').textContent =
+        'Trag deine E-Mail ein — du wirst als Erstes informiert wenn ' + name + ' live geht.';
+    document.getElementById('notifyEmail').value = '';
+    document.getElementById('notifyOverlay').classList.add('open');
+}
+function notifyFree() {
+    openNotify('Free Starter Guide');
+    document.getElementById('notifySub').textContent =
+        'Trag deine E-Mail ein — wir schicken dir den kostenlosen Guide sobald er fertig ist.';
+}
+function closeNotify() {
+    document.getElementById('notifyOverlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNotify(); });
+
+function sendNotify() {
+    const email = document.getElementById('notifyEmail').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('notifyEmail').style.borderColor = '#e74c3c';
+        setTimeout(() => document.getElementById('notifyEmail').style.borderColor = '', 1200);
+        return;
+    }
+    // Mailto fallback (wird durch Brevo/Formspree ersetzt wenn konfiguriert)
+    const sub  = encodeURIComponent('Notify: ' + notifyProduct);
+    const body = encodeURIComponent('Produkt: ' + notifyProduct + '\nEmail: ' + email);
+    window.open('mailto:marvinkuppens.business@gmail.com?subject=' + sub + '&body=' + body);
+    document.getElementById('notifyOverlay').innerHTML = `
+        <div class="notify-modal" style="text-align:center; padding:48px 32px;">
+            <div style="font-size:36px; margin-bottom:16px;">✓</div>
+            <div style="font-size:16px; font-weight:700; margin-bottom:8px;">Eingetragen.</div>
+            <div style="font-size:13px; color:var(--muted);">Du wirst benachrichtigt sobald ${notifyProduct} live ist.</div>
+        </div>`;
+    setTimeout(closeNotify, 2500);
+}
+</script>
+</body>
+</html>
