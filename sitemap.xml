@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Startseite -->
+  <url>
+    <loc>https://travelwithmarv.de/</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://travelwithmarv.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelwithmarv.de/"/>
+  </url>
+
+  <!-- Impressum -->
+  <url>
+    <loc>https://travelwithmarv.de/impressum.html</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Datenschutz -->
+  <url>
+    <loc>https://travelwithmarv.de/datenschutz.html</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- AGB -->
+  <url>
+    <loc>https://travelwithmarv.de/agb.html</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>
