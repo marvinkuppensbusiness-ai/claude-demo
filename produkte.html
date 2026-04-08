@@ -46,31 +46,86 @@
     }
 
     /* ── NAV ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     nav {
         position: sticky; top: 0; z-index: 100;
         background: rgba(15,15,15,0.88);
         backdrop-filter: blur(20px) saturate(1.4);
         -webkit-backdrop-filter: blur(20px) saturate(1.4);
         border-bottom: 0.5px solid var(--border);
-        padding: 0 var(--space-md);
-        display: flex; align-items: center;
-        justify-content: space-between;
-        height: 56px;
+        padding: 16px 0;
     }
-    .nav-logo {
-        font-size: 13px; font-weight: 600;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--white); text-decoration: none;
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+        font-size: 16px; font-weight: 700;
+        letter-spacing: -0.02em; color: var(--white);
+        text-decoration: none;
     }
-    .nav-back {
-        font-size: 11px; font-weight: 500;
-        letter-spacing: 0.12em; text-transform: uppercase;
-        color: var(--muted); text-decoration: none;
-        display: flex; align-items: center; gap: 6px;
+    .nav-links {
+        display: flex; gap: 8px; align-items: center; list-style: none;
+    }
+    .nav-links a {
+        font-size: 13px; font-weight: 400; letter-spacing: -0.01em;
+        color: var(--muted); padding: 8px 14px; transition: color 0.25s;
+        text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .nav-cta a {
+        color: #0f0f0f; background: var(--white);
+        padding: 8px 20px; font-weight: 500; border-radius: 4px;
+    }
+    .nav-links .nav-cta a:hover { background: var(--gold); color: #0f0f0f; }
+    .nav-toggle {
+        display: none; background: none; border: none;
+        cursor: pointer; padding: 8px;
+    }
+    .nav-toggle span {
+        display: block; width: 24px; height: 1px;
+        background: var(--white); margin: 5px 0; transition: all 0.25s;
+    }
+    .lang-switcher { position: relative; display: flex; align-items: center; }
+    .lang-btn {
+        background: none; border: none; cursor: pointer;
+        display: flex; align-items: center; gap: 5px;
+        color: var(--muted); font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+        text-transform: uppercase; padding: 8px 10px;
         transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--white); }
-    .nav-back svg { width: 14px; height: 14px; }
+    .lang-btn:hover { color: var(--white); }
+    .lang-dropdown {
+        display: none; position: absolute; top: 110%; right: 0;
+        background: #1a1a18; border: 0.5px solid var(--border);
+        border-radius: 8px; padding: 6px; min-width: 130px; z-index: 200;
+    }
+    .lang-dropdown.open { display: block; }
+    .lang-option {
+        display: flex; align-items: center; gap: 8px;
+        width: 100%; background: none; border: none; cursor: pointer;
+        color: var(--muted); font-family: 'Inter', sans-serif;
+        font-size: 12px; padding: 8px 10px; border-radius: 6px;
+        text-align: left; transition: all 0.15s;
+    }
+    .lang-option:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+    .cart-icon-btn {
+        background: none; border: none; cursor: pointer; padding: 8px 10px;
+        display: flex; align-items: center; gap: 6px;
+        color: var(--muted); font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
+        text-transform: uppercase; transition: color 0.3s;
+    }
+    .cart-icon-btn:hover { color: var(--white); }
+    @media (max-width: 860px) {
+        .nav-links { display: none; }
+        .nav-links.open {
+            display: flex; flex-direction: column; position: absolute;
+            top: 56px; left: 0; right: 0;
+            background: rgba(15,15,15,0.97);
+            border-bottom: 0.5px solid var(--border);
+            padding: 16px 24px 24px;
+        }
+        .nav-toggle { display: block; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -419,12 +474,38 @@
 <body>
 
 <!-- ── NAV ── -->
-<nav>
-    <a href="index.html" class="nav-logo">TravelwithMarv</a>
-    <a href="index.html" class="nav-back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        Zurück
-    </a>
+<nav id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">TravelwithMarv</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="produkte.html" style="color:var(--gold)">Produkte</a></li>
+            <li><a href="index.html#collection">Kollektion</a></li>
+            <li><a href="index.html#vip">VIP</a></li>
+            <li><a href="index.html#vision">Meine Vision</a></li>
+            <li><a href="index.html#voices">Stimmen</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li class="nav-cta"><a href="index.html#newsletter">Newsletter</a></li>
+            <li class="lang-switcher" id="langSwitcher">
+                <button class="lang-btn" id="langBtn" onclick="toggleLangDropdown()" aria-label="Sprache">
+                    <span id="langFlag">🇩🇪</span>
+                    <span id="langCode">DE</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option" onclick="setLang('de')"><span>🇩🇪</span> Deutsch</button>
+                    <button class="lang-option" onclick="setLang('en')"><span>🇬🇧</span> English</button>
+                </div>
+            </li>
+            <li>
+                <button class="cart-icon-btn" onclick="window.location='index.html'" aria-label="Warenkorb">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    CART
+                </button>
+            </li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -503,6 +584,7 @@ const AVAILABLE = [
         cat:       'Reiseguide · PDF',
         desc:      'Das System, mit dem ich bei 5 Flügen über 600 € spare — und trotzdem mehr Länder sehe als die meisten in einem ganzen Jahr.',
         price:     '€9.99',
+        pts:       50,
         badge:     'BESTSELLER',
         badgeType: 'badge-best',
         tags:      ['PDF', 'Sofort-Download', 'guide'],
@@ -523,6 +605,7 @@ const AVAILABLE = [
         cat:       'Cheatsheet · PDF',
         desc:      'Alles, was ich auf Dutzenden Flügen durch Fehler gelernt habe — damit du es beim ersten Mal richtig machst.',
         price:     '€4.99',
+        pts:       25,
         badge:     'NEU',
         badgeType: 'badge-new',
         tags:      ['PDF', 'Sofort-Download', 'guide'],
@@ -539,6 +622,7 @@ const AVAILABLE = [
         cat:       'Templates · PDF',
         desc:      'Nur mit Handgepäck durch 5 Länder. Kein Aufgabegepäck, keine Extrakosten, kein Stress. Diese Listen machen es möglich.',
         price:     '€4.99',
+        pts:       25,
         badge:     'NEU',
         badgeType: 'badge-new',
         tags:      ['PDF', 'Sofort-Download', 'guide'],
@@ -554,6 +638,67 @@ const AVAILABLE = [
     }
 ];
 
+// ── Visuals (Coming Soon, aber im gleichen Grid wie Guides) ────
+AVAILABLE.push(
+    {
+        id:        'luts',
+        name:      'Cinematic LUTs',
+        cat:       'Visuals · LUT',
+        desc:      'Film-inspirierte Farbwelten für DaVinci Resolve, Premiere Pro & Final Cut. Deine Clips, Netflix-Niveau.',
+        price:     '€19.99',
+        pts:       100,
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['LUT', '.cube', 'video', 'visual'],
+        stripeUrl: '',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="10" y="20" width="44" height="28" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
+            <circle cx="24" cy="34" r="7" stroke="rgba(201,169,110,0.4)" stroke-width="1" fill="rgba(201,169,110,0.06)"/>
+            <circle cx="40" cy="34" r="7" stroke="rgba(201,169,110,0.3)" stroke-width="1" fill="rgba(201,169,110,0.04)"/>
+            <path d="M 30 28 Q 32 34 30 40" stroke="rgba(201,169,110,0.3)" stroke-width="1" fill="none"/>
+        </svg>`
+    },
+    {
+        id:        'presets',
+        name:      'Lightroom Presets',
+        cat:       'Visuals · Preset',
+        desc:      'Travel-Presets für Lightroom Classic & Mobile. Kompatibel mit allen Kameras und Smartphones.',
+        price:     '€24.99',
+        pts:       125,
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['.xmp', 'Lightroom', 'foto', 'visual'],
+        stripeUrl: '',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="16" width="40" height="32" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
+            <circle cx="32" cy="32" r="9" stroke="rgba(201,169,110,0.35)" stroke-width="1" fill="none"/>
+            <circle cx="32" cy="32" r="3" fill="rgba(201,169,110,0.4)"/>
+            <line x1="32" y1="16" x2="32" y2="22" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <line x1="32" y1="42" x2="32" y2="48" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <line x1="12" y1="32" x2="22" y2="32" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            <line x1="42" y1="32" x2="52" y2="32" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+        </svg>`
+    },
+    {
+        id:        'wallpaper',
+        name:      'Wallpaper Pack 4K',
+        cat:       'Visuals · JPEG/PNG',
+        desc:      '50+ kuratierte 4K–8K Shots aus 23 Ländern. Für Desktop, MacBook und Smartphone.',
+        price:     '€9.99',
+        pts:       50,
+        badge:     'COMING SOON',
+        badgeType: 'badge-soon',
+        tags:      ['4K', '8K', 'JPEG', 'visual'],
+        stripeUrl: '',
+        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="8" y="14" width="48" height="32" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
+            <circle cx="22" cy="26" r="5" stroke="rgba(201,169,110,0.35)" stroke-width="1" fill="rgba(201,169,110,0.07)"/>
+            <polyline points="8,36 20,26 30,34 40,24 56,36" stroke="rgba(201,169,110,0.35)" stroke-width="1" stroke-linejoin="round" fill="none"/>
+            <rect x="24" y="46" width="16" height="3" rx="1.5" fill="rgba(201,169,110,0.15)"/>
+        </svg>`
+    }
+);
+
 // ── Coming Soon + Free ─────────────────────────────────────────
 const COMING = [
     {
@@ -568,57 +713,6 @@ const COMING = [
         icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
             <circle cx="32" cy="32" r="20" stroke="#7de8a0" stroke-width="1.5" fill="rgba(125,232,160,0.06)"/>
             <polyline points="23,32 29,38 41,26" stroke="#7de8a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`
-    },
-    {
-        id:        'luts',
-        name:      'Cinematic LUTs',
-        cat:       'Color Grading · .cube',
-        desc:      'Film-inspirierte Farbwelten für DaVinci Resolve, Premiere Pro & Final Cut. Deine Clips, Netflix-Niveau.',
-        badge:     'COMING SOON',
-        badgeType: 'badge-soon',
-        tags:      ['LUT', '.cube', 'video', 'visual'],
-        type:      'soon',
-        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
-            <rect x="10" y="20" width="44" height="28" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
-            <circle cx="24" cy="34" r="7" stroke="rgba(201,169,110,0.4)" stroke-width="1" fill="rgba(201,169,110,0.06)"/>
-            <circle cx="40" cy="34" r="7" stroke="rgba(201,169,110,0.3)" stroke-width="1" fill="rgba(201,169,110,0.04)"/>
-            <path d="M 30 28 Q 32 34 30 40" stroke="rgba(201,169,110,0.3)" stroke-width="1" fill="none"/>
-        </svg>`
-    },
-    {
-        id:        'presets',
-        name:      'Lightroom Presets',
-        cat:       'Foto-Editing · .xmp',
-        desc:      'Travel-Presets für Lightroom Classic & Mobile. Kompatibel mit allen Kameras und Smartphones.',
-        badge:     'COMING SOON',
-        badgeType: 'badge-soon',
-        tags:      ['.xmp', 'Lightroom', 'foto', 'visual'],
-        type:      'soon',
-        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
-            <rect x="12" y="16" width="40" height="32" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
-            <circle cx="32" cy="32" r="9" stroke="rgba(201,169,110,0.35)" stroke-width="1" fill="none"/>
-            <circle cx="32" cy="32" r="3" fill="rgba(201,169,110,0.4)"/>
-            <line x1="32" y1="16" x2="32" y2="22" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-            <line x1="32" y1="42" x2="32" y2="48" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-            <line x1="12" y1="32" x2="22" y2="32" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-            <line x1="42" y1="32" x2="52" y2="32" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-        </svg>`
-    },
-    {
-        id:        'wallpaper',
-        name:      'Wallpaper Pack 4K',
-        cat:       'Desktop & Mobile · JPEG/PNG',
-        desc:      '50+ kuratierte 4K–8K Shots aus 23 Ländern. Für Desktop, MacBook und Smartphone.',
-        badge:     'COMING SOON',
-        badgeType: 'badge-soon',
-        tags:      ['4K', '8K', 'JPEG', 'visual'],
-        type:      'soon',
-        icon: `<svg class="p-visual-icon" viewBox="0 0 64 64" fill="none">
-            <rect x="8" y="14" width="48" height="32" rx="4" stroke="rgba(201,169,110,0.4)" stroke-width="1.2" fill="rgba(201,169,110,0.04)"/>
-            <circle cx="22" cy="26" r="5" stroke="rgba(201,169,110,0.35)" stroke-width="1" fill="rgba(201,169,110,0.07)"/>
-            <polyline points="8,36 20,26 30,34 40,24 56,36" stroke="rgba(201,169,110,0.35)" stroke-width="1" stroke-linejoin="round" fill="none"/>
-            <rect x="24" y="46" width="16" height="3" rx="1.5" fill="rgba(201,169,110,0.15)"/>
         </svg>`
     },
     {
@@ -644,9 +738,10 @@ function buildAvailable() {
     const grid = document.getElementById('gridAvailable');
     grid.innerHTML = '';
     AVAILABLE.forEach(p => {
-        const disabled = !SHOP_LIVE;
+        const isSoon = !p.stripeUrl;
+        const disabled = !SHOP_LIVE || isSoon;
         const card = document.createElement('div');
-        card.className = 'p-card available' + (disabled ? ' live-disabled' : '');
+        card.className = 'p-card available' + (disabled ? ' live-disabled' : '') + (isSoon ? ' soon' : '');
         card.dataset.tags = p.tags.join(',');
         card.innerHTML = `
             <div class="p-visual">
@@ -658,11 +753,14 @@ function buildAvailable() {
                 <div class="p-name">${p.name}</div>
                 <div class="p-desc">${p.desc}</div>
                 <div class="p-tags">${p.tags.filter(t=>!['guide','visual','free'].includes(t)).map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
+                ${p.pts ? `<div style="font-size:10px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;opacity:0.85;">✦ ${p.pts} VIP-Punkte</div>` : ''}
                 <div class="p-foot">
-                    <span class="p-price">${p.price}</span>
-                    ${disabled
-                        ? `<button class="p-btn" disabled>Coming Soon</button>`
-                        : `<a class="p-btn" href="${p.stripeUrl}" target="_blank" rel="noopener">Kaufen</a>`
+                    <span class="p-price ${isSoon ? 'soon' : ''}">${isSoon ? 'Bald verfügbar' : p.price}</span>
+                    ${isSoon
+                        ? `<button class="p-btn-notify" onclick="openNotify('${p.name}')">Notify me</button>`
+                        : disabled
+                            ? `<button class="p-btn" disabled>Coming Soon</button>`
+                            : `<a class="p-btn" href="${p.stripeUrl}" target="_blank" rel="noopener">Kaufen</a>`
                     }
                 </div>
             </div>`;
@@ -732,7 +830,21 @@ function notifyFree() {
 function closeNotify() {
     document.getElementById('notifyOverlay').classList.remove('open');
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNotify(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeNotify(); document.getElementById('langDropdown').classList.remove('open'); } });
+
+/* ─── NAV JS ─────────────────────────────────────────────── */
+function toggleLangDropdown() {
+    document.getElementById('langDropdown').classList.toggle('open');
+}
+function setLang(lang) {
+    document.getElementById('langFlag').textContent = lang === 'de' ? '🇩🇪' : '🇬🇧';
+    document.getElementById('langCode').textContent = lang.toUpperCase();
+    document.getElementById('langDropdown').classList.remove('open');
+}
+document.addEventListener('click', e => {
+    if (!document.getElementById('langSwitcher').contains(e.target))
+        document.getElementById('langDropdown').classList.remove('open');
+});
 
 function sendNotify() {
     const email = document.getElementById('notifyEmail').value.trim();
