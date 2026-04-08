@@ -2938,7 +2938,7 @@
                        data-en="Voices" data-it="Voci" data-de="Stimmen" data-fr="Avis" data-es="Voces">Voices</a></li>
                 <li><a href="#faq" data-page="faq">FAQ</a></li>
                 <li class="nav-cta"><a href="#" onclick="openRegModal(event)"
-                                       data-en="Join" data-it="Unisciti" data-de="Mitmachen" data-fr="Rejoindre" data-es="Unirse">Join</a></li>
+                                       data-en="Newsletter" data-de="Newsletter">Newsletter</a></li>
                 <li class="lang-switcher" id="langSwitcher">
                     <button class="lang-btn" id="langBtn" onclick="toggleLangDropdown()" aria-label="Language">
                         <span class="lang-flag" id="langFlag">🇬🇧</span>
@@ -3019,9 +3019,9 @@
                     <div class="pricing-name" data-en="TravelwithMarv Hack Pack" data-it="TravelwithMarv Hack Pack" data-de="TravelwithMarv Hack Pack" data-es="TravelwithMarv Hack Pack" data-fr="TravelwithMarv Hack Pack">TravelwithMarv Hack Pack</div>
                     <p class="pricing-desc"
                        data-en="€9.99 in. Up to €300 back on your next trip. 50+ hacks that pay for themselves — flight savings, EU compensation rights, free lounge access." data-it="€9,99 investiti. Fino a €300 recuperati nel prossimo viaggio. 50+ hack che si ripagano da soli — risparmio voli, diritti EU261, accesso gratuito alle lounge."
-                       data-de="19,99&euro; rein. Bis zu 300&euro; beim nächsten Trip raus. 50+ Hacks die sich selbst finanzieren — günstige Flüge, EU-Entschädigungsrechte, kostenloser Lounge-Zugang."
-                       data-es="19,99&euro; dentro. Hasta 300&euro; de vuelta en tu próximo viaje. 50+ hacks que se pagan solos — vuelos baratos, derechos de compensación UE, acceso gratuito a salas VIP."
-                       data-fr="19,99&euro; investis. Jusqu'à 300&euro; récupérés lors de votre prochain voyage. 50+ astuces qui s'auto-financent — vols pas chers, droits EU261, accès lounge gratuit.">
+                       data-de="9,99&euro; rein. Bis zu 300&euro; beim nächsten Trip raus. 50+ Hacks die sich selbst finanzieren — günstige Flüge, EU-Entschädigungsrechte, kostenloser Lounge-Zugang."
+                       data-es="9,99&euro; dentro. Hasta 300&euro; de vuelta en tu próximo viaje. 50+ hacks que se pagan solos — vuelos baratos, derechos de compensación UE, acceso gratuito a salas VIP."
+                       data-fr="9,99&euro; investis. Jusqu'à 300&euro; récupérés lors de votre prochain voyage. 50+ astuces qui s'auto-financent — vols pas chers, droits EU261, accès lounge gratuit.">
                        €9.99 in. Up to €300 back on your next trip. 50+ hacks that pay for themselves — flight savings, EU compensation rights, free lounge access.
                     </p>
                     <ul class="pricing-perks">
@@ -4230,26 +4230,9 @@
         }
         // ===== END SHOP CART =====
 
-        // ===== VIP MY RANK =====
+        // ===== VIP MY RANK (Backend-Placeholder — aktivieren wenn Auth live ist) =====
         function fetchMyRank() {
-            const btn = document.getElementById('vipMyRankBtn');
-            const originalHTML = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Loading...';
-
-            // ── API PLACEHOLDER ──────────────────────────────────────────────
-            // Replace the setTimeout below with a real fetch once backend is live:
-            //
-            // fetch('/api/user/rank', { headers: { Authorization: 'Bearer ' + getUserToken() } })
-            //   .then(r => r.json())
-            //   .then(data => {
-            //       const slider = document.getElementById('vipSlider');
-            //       slider.value = data.points;
-            //       slider.dispatchEvent(new Event('input'));
-            //   })
-            //   .catch(() => showRankError())
-            //   .finally(() => resetBtn());
-            // ─────────────────────────────────────────────────────────────────
+            // Stub — wird aktiviert wenn Backend verbunden ist
 
             setTimeout(() => {
                 btn.innerHTML = originalHTML;
@@ -4622,56 +4605,54 @@
         // ===== END HERO PARALLAX =====
     </script>
 
-    <!-- ── Registration Modal ──────────────────────── -->
+    <!-- ── Newsletter Modal ──────────────────────── -->
     <div class="reg-overlay" id="regOverlay" onclick="closeRegOnBackdrop(event)">
         <div class="reg-modal" id="regModal">
             <button class="reg-close" onclick="closeRegModal()" aria-label="Close">&times;</button>
             <div class="reg-modal-header">
                 <div class="reg-modal-logo">UNCLE MARV  ✦  TRAVEL BRAND</div>
-                <div class="reg-modal-title">Join the Community</div>
-                <div class="reg-modal-sub">Create your free account — no credit card required</div>
+                <div class="reg-modal-title" id="nlTitle">Stay in the loop.</div>
+                <div class="reg-modal-sub" id="nlSub">Neue Drops, Insider-Tipps &amp; Reise-Content. Kein Spam — 2&times; im Monat.</div>
             </div>
-            <div class="reg-row">
+
+            <!-- Success state -->
+            <div id="regSuccess" style="display:none; text-align:center; padding:40px 0 32px;">
+                <div style="font-size:32px; color:#c9a96e; margin-bottom:14px;">✓</div>
+                <div style="font-size:15px; font-weight:600; color:#f0ece4; letter-spacing:-0.01em; margin-bottom:8px;">Du bist dabei.</div>
+                <div style="font-size:11px; color:#7a7268; line-height:1.6;">Check deine Inbox — wir melden uns bald.</div>
+            </div>
+
+            <!-- Form -->
+            <div id="regFormWrap">
                 <div class="reg-field">
-                    <label class="reg-label">First Name</label>
+                    <label class="reg-label">Vorname</label>
                     <input class="reg-input" id="regFirst" type="text" placeholder="Marvin" autocomplete="given-name">
                 </div>
                 <div class="reg-field">
-                    <label class="reg-label">Last Name</label>
-                    <input class="reg-input" id="regLast" type="text" placeholder="Kuppens" autocomplete="family-name">
+                    <label class="reg-label">E-Mail-Adresse</label>
+                    <input class="reg-input" id="regEmail" type="email" placeholder="marvin@example.com" autocomplete="email">
                 </div>
-            </div>
-            <div class="reg-field" id="regUserField">
-                <label class="reg-label">Username</label>
-                <input class="reg-input" id="regUser" type="text" placeholder="@uncle.marv" autocomplete="username" oninput="checkUsername(this.value)">
-                <span class="reg-check-icon" id="regUserIcon">✓</span>
-                <div class="reg-suggestions" id="regSuggestions"></div>
-            </div>
-            <div class="reg-field">
-                <label class="reg-label">Email Address</label>
-                <input class="reg-input" id="regEmail" type="email" placeholder="marvin@example.com" autocomplete="email">
-            </div>
-            <div class="reg-field">
-                <label class="reg-label">I am</label>
-                <div class="reg-gender">
-                    <button type="button" class="reg-gender-btn" id="genderM" onclick="setGender('m')">♂ Male</button>
-                    <button type="button" class="reg-gender-btn" id="genderF" onclick="setGender('f')">♀ Female</button>
-                    <button type="button" class="reg-gender-btn" id="genderO" onclick="setGender('o')">◇ Other</button>
+                <div class="reg-divider"></div>
+                <button class="reg-submit" id="regSubmitBtn" onclick="submitNewsletter()">Anmelden</button>
+                <div class="reg-footer-text">
+                    Kein Spam. Abmeldung jederzeit. <a href="datenschutz.html">Datenschutz</a>.
                 </div>
-            </div>
-            <div class="reg-divider"></div>
-            <button class="reg-submit" onclick="submitReg()">Create Account</button>
-            <div class="reg-footer-text">
-                By joining you agree to our <a href="agb.html">Terms</a> &amp; <a href="datenschutz.html">Privacy Policy</a>.
             </div>
         </div>
     </div>
 
     <script>
-    /* ── Registration Modal JS ─────────────────────── */
-    const TAKEN_NAMES = ['unclemarv','marvin','traveler','nomad','wanderer','explorer',
-        'backpacker','traveller','adventure','marv','marvink','travelmarv'];
-    let selectedGender = null;
+    /* ── Newsletter Modal JS ─────────────────────────────────────────
+       Schritt 1 (sofort funktionsfähig): E-Mail öffnet sich mit
+                  vorausgefüllten Daten → du siehst jeden Signup.
+       Schritt 2 (optional): Formspree-Konto anlegen (formspree.io),
+                  neue Form erstellen, ID unten eintragen.
+                  Dann läuft alles vollautomatisch ohne Mailöffnen.
+    ─────────────────────────────────────────────────────────────── */
+    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // ← hier z.B. 'xbjvkpqr' eintragen
+    const NL_ENDPOINT  = FORMSPREE_ID !== 'YOUR_FORMSPREE_ID'
+        ? 'https://formspree.io/f/' + FORMSPREE_ID
+        : null;
 
     function openRegModal(e) {
         if (e) e.preventDefault();
@@ -4688,70 +4669,58 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeRegModal(); });
 
-    function setGender(g) {
-        selectedGender = g;
-        ['M','F','O'].forEach(x => document.getElementById('gender'+x).classList.remove('active'));
-        document.getElementById('gender'+g.toUpperCase()).classList.add('active');
+    function submitNewsletter() {
+        const first = document.getElementById('regFirst').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const btn   = document.getElementById('regSubmitBtn');
+
+        // Validation
+        if (!first) { document.getElementById('regFirst').focus(); shakeBtnRed(btn); return; }
+        const emailOk = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!emailOk) { document.getElementById('regEmail').focus(); shakeBtnRed(btn); return; }
+
+        btn.disabled  = true;
+        btn.textContent = '...';
+
+        if (NL_ENDPOINT) {
+            // Formspree API (kein Redirect, kein Backend nötig)
+            fetch(NL_ENDPOINT, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body:    JSON.stringify({ name: first, email: email, _subject: 'Newsletter: ' + first })
+            })
+            .then(r => r.json())
+            .then(d => {
+                if (d.ok || d.next) { showNLSuccess(); }
+                else { throw new Error(); }
+            })
+            .catch(() => {
+                btn.disabled = false;
+                btn.textContent = 'Anmelden';
+                nlMailtoFallback(first, email);
+            });
+        } else {
+            // Fallback: öffnet E-Mail-Client (Schritt 1)
+            nlMailtoFallback(first, email);
+            showNLSuccess();
+        }
     }
 
-    let usernameTimer;
-    function checkUsername(val) {
-        clearTimeout(usernameTimer);
-        const field = document.getElementById('regUserField');
-        const icon  = document.getElementById('regUserIcon');
-        const sugs  = document.getElementById('regSuggestions');
-        field.classList.remove('valid','invalid');
-        icon.textContent = '⟳';
-        icon.style.display = 'block';
-        if (!val || val.length < 3) {
-            icon.style.display = 'none';
-            sugs.innerHTML = '';
-            return;
-        }
-        usernameTimer = setTimeout(() => {
-            const clean = val.toLowerCase().replace(/[^a-z0-9._]/g,'');
-            const taken = TAKEN_NAMES.includes(clean);
-            if (taken) {
-                field.classList.add('invalid');
-                icon.textContent = '✕';
-                const variants = [
-                    clean + '_travel',
-                    clean + Math.floor(Math.random()*90+10),
-                    'the_' + clean,
-                    clean + '_official'
-                ];
-                sugs.innerHTML = variants.map(v =>
-                    `<span class="reg-sug-chip" onclick="useSuggestion('${v}')">${v}</span>`
-                ).join('');
-            } else {
-                field.classList.add('valid');
-                icon.textContent = '✓';
-                sugs.innerHTML = '';
-            }
-        }, 600);
+    function nlMailtoFallback(first, email) {
+        const sub  = encodeURIComponent('Newsletter Signup: ' + first);
+        const body = encodeURIComponent('Name: ' + first + '\nEmail: ' + email);
+        window.open('mailto:marvinkuppens.business@gmail.com?subject=' + sub + '&body=' + body);
     }
-    function useSuggestion(name) {
-        const input = document.getElementById('regUser');
-        input.value = name;
-        checkUsername(name);
+
+    function showNLSuccess() {
+        document.getElementById('regFormWrap').style.display = 'none';
+        document.getElementById('regSuccess').style.display  = 'block';
+        setTimeout(closeRegModal, 3000);
     }
-    function submitReg() {
-        const first = document.getElementById('regFirst').value.trim();
-        const last  = document.getElementById('regLast').value.trim();
-        const user  = document.getElementById('regUser').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        if (!first || !last || !user || !email) {
-            alert('Please fill in all fields.'); return;
-        }
-        if (document.getElementById('regUserField').classList.contains('invalid')) {
-            alert('That username is taken — please choose another.'); return;
-        }
-        if (!email.includes('@')) {
-            alert('Please enter a valid email address.'); return;
-        }
-        // TODO: Connect to backend / Supabase / Firebase
-        closeRegModal();
-        alert(`Welcome, ${first}! 🎉\n\nYour account @${user} has been created.\nCheck ${email} for your confirmation.`);
+
+    function shakeBtnRed(btn) {
+        btn.style.borderColor = '#e74c3c';
+        setTimeout(() => { btn.style.borderColor = ''; }, 1200);
     }
     </script>
 
