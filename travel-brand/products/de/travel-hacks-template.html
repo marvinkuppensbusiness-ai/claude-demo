@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page {
+  size: A4;
+  margin: 0;
+}
+
+:root {
+  --bg: #0f0f0f;
+  --bg-alt: #141414;
+  --bg-card: #1a1a1a;
+  --white: #f0ece4;
+  --text: #f0ece4;
+  --text-dim: #5a5448;
+  --text-mid: #7a7268;
+  --accent: #c9a96e;
+  --accent-soft: rgba(201, 169, 110, 0.15);
+  --border: #1e1c18;
+  --border-light: rgba(201, 169, 110, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === PAGE === */
+.page {
+  width: 210mm;
+  height: 297mm;
+  padding: 45mm 40mm 35mm 40mm;
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+.page:last-child {
+  page-break-after: avoid;
+}
+
+/* === HEADER === */
+.page-header {
+  position: absolute;
+  top: 18mm;
+  left: 40mm;
+  right: 40mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header .brand {
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--text-mid);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.page-header .page-num {
+  font-size: 7pt;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+/* === COVER === */
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 30mm;
+  height: 297mm;
+}
+
+.cover .series-tag {
+  font-size: 8pt;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.cover .line {
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.3;
+  margin: 0 auto 40px;
+}
+
+.cover h1 {
+  font-size: 38pt;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+
+.cover .subtitle {
+  font-size: 10.5pt;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 380px;
+  margin: 0 auto 50px;
+}
+
+.cover .stats {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.cover .stat {
+  text-align: center;
+}
+
+.cover .stat-num {
+  font-size: 22pt;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  letter-spacing: -0.03em;
+}
+
+.cover .stat-label {
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cover .stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  align-self: center;
+}
+
+.cover .author {
+  font-size: 9pt;
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+}
+
+.cover .contact {
+  font-size: 7.5pt;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+/* === INTRO === */
+.intro-title {
+  font-size: 28pt;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+
+.intro-body {
+  font-size: 10pt;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+/* === QUOTE === */
+.quote-block {
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 20px 24px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.quote-block p {
+  font-size: 11pt;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* === TOC === */
+.toc-label {
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.toc-line {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 20px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.toc-num {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 24px;
+}
+
+.toc-title {
+  font-size: 11pt;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: -0.015em;
+}
+
+/* === CHAPTER === */
+.chapter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 13pt;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.chapter-title {
+  font-size: 28pt;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.chapter-subtitle {
+  font-size: 11pt;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+
+.chapter-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 28px;
+}
+
+.chapter-intro {
+  font-size: 9.5pt;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* === HACK === */
+.hack {
+  margin-bottom: 22px;
+}
+
+.hack-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.hack-num {
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--text-dim);
+  min-width: 28px;
+}
+
+.hack-tag {
+  display: inline-block;
+  font-size: 6.5pt;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 3px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.hack-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.025em;
+  margin-bottom: 5px;
+}
+
+.hack-body {
+  font-size: 9pt;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* === CARDS (3-Items) === */
+.cards-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 14px;
+}
+
+.card-icon {
+  font-size: 18pt;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.card-desc {
+  font-size: 8pt;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* === CHECKLIST === */
+.checklist-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.check-label {
+  font-size: 9pt;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* === CLOSING === */
+.closing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.closing h2 {
+  font-size: 34pt;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  margin-bottom: 10px;
+}
+
+.closing .close-sub {
+  font-size: 12pt;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-bottom: 50px;
+}
+
+.closing .cta-label {
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.closing .contact-email {
+  font-size: 11pt;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.closing .contact-social {
+  font-size: 9pt;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-bottom: 40px;
+}
+
+.product-cards {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 50px;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.product-card span {
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.footer {
+  font-size: 7pt;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+.footer-abs {
+  position: absolute;
+  bottom: 18mm;
+  left: 40mm;
+  right: 40mm;
+  text-align: center;
+  font-size: 7pt;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page" style="padding:0;">
+  <div class="cover">
+    <div class="series-tag">Uncle Marv &mdash; Travel Guide Series</div>
+    <div class="line"></div>
+    <h1>Travel Hacks<br>die wirklich<br>funktionieren.</h1>
+    <p class="subtitle">Und wie ich mit einer halben Couch, einem Klappstuhl und einer Prise Scham den Flughafen Weeze überlebt habe.</p>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">35+</span>
+        <span class="stat-label">Hacks</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Länder</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Couch zu viel</span>
+      </div>
+    </div>
+    <p class="author">Von Marvin Kuppens</p>
+    <p class="contact">marvinkuppens.business@gmail.com &middot; @ichheissemarrvin</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: EINLEITUNG ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">2 / 12</span>
+  </div>
+
+  <h2 class="intro-title">Meine Geschichte.</h2>
+
+  <p class="intro-body">Ich bin Marvin. Ich fotografiere, filme, reise — und gelegentlich versuche ich, eine aufblasbare Couch mit in den Flieger zu schmuggeln. Über 23 Länder, verpasste Anschlüsse, Strände auf keiner Karte und jede Menge 3-Uhr-Nächte im Flughafen-Terminal. Jede dieser Erfahrungen hat mich etwas gelehrt.</p>
+
+  <div class="quote-block">
+    <p>&bdquo;Das Beste, was mir je passiert ist? Zu lernen, mit einem Rucksack auszukommen. Das Zweitbeste? Nicht nochmal eine Couch mitzunehmen.&ldquo;</p>
+  </div>
+
+  <p class="intro-body">Diese Sammlung ist das Ergebnis echter Reisen — kein Bürowissen, keine kopierten Listen. Hier findest du Hacks, die ich selbst getestet habe. Manche sind offensichtlich, manche unerwartet. Alle machen einen Unterschied.</p>
+
+  <div style="margin-top: 32px;">
+    <p class="toc-label">Was dich erwartet</p>
+    <div class="toc-line"></div>
+
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Frühe Flüge &amp; smarte Buchung</span></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Handgepäck: Freiheit im Rucksack</span></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">Die 3-Gegenstände-Regel</span></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">Die Jacken-Strategie — legaler Schmuggel</span></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">Der richtige Rucksack</span></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Packen wie ein Profi</span></div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Outdoor &amp; Wandern</span></div>
+    <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Gadgets die wirklich helfen</span></div>
+  </div>
+
+  <p class="footer-abs">&copy; UncleMarv &mdash; marvinkuppens.business@gmail.com</p>
+</div>
+
+<!-- ==================== PAGE 3: KAPITEL 01 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">3 / 12</span>
+  </div>
+
+  <div class="chapter-badge">01</div>
+  <h2 class="chapter-title">Frühe Flüge.</h2>
+  <p class="chapter-subtitle">Ja, 5 Uhr morgens. Nein, du wirst es nicht bereuen.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#01</span>
+      <span class="hack-tag">GameChanger</span>
+    </div>
+    <p class="hack-title">Früh fliegen = weniger Stress.</p>
+    <p class="hack-body">Flüge vor 8 Uhr haben deutlich weniger Passagiere, kürzere Schlangen und — wenn du mit dem Auto fährst — fast keinen Verkehr auf dem Weg. An jedem Wochentag. Die Müdigkeit vergeht. Der Stress nicht.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#02</span>
+      <span class="hack-tag">Zeitersparnis</span>
+    </div>
+    <p class="hack-title">Sicherheitskontrolle am Morgen.</p>
+    <p class="hack-body">Weniger Passagiere = weniger Wartezeit. Das bedeutet nicht, dass du fünf Minuten vor Boarding ankommen sollst — aber du wirst dich entspannter fühlen, wenn die Schlange drei Personen lang ist statt dreißig.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#03</span>
+      <span class="hack-tag">Sparer</span>
+    </div>
+    <p class="hack-title">Skyscanner: Ziel auf 'Beliebig'.</p>
+    <p class="hack-body">Flughafen eingeben (z.B. Köln, Düsseldorf, Dortmund), Zielort auf 'Überall', Datum auf 'Flexibel'. Dann nach Ländern filtern, die dich interessieren. So siehst du sofort welcher Monat am günstigsten ist.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#04</span>
+      <span class="hack-tag">Pflicht</span>
+    </div>
+    <p class="hack-title">Immer Reisepass mitnehmen.</p>
+    <p class="hack-body">Auch innerhalb der EU, auch für 'nur drei Tage'. Der Reisepass hilft bei Ausweiskontrollen, Hotelbuchungen und — wenn du irgendwo ein Visum brauchst — rettet er buchstäblich deinen Trip.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: KAPITEL 02 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">4 / 12</span>
+  </div>
+
+  <div class="chapter-badge">02</div>
+  <h2 class="chapter-title">Handgepäck.</h2>
+  <p class="chapter-subtitle">Aufgabegepäck kostet Geld, Zeit und deine Nerven.</p>
+  <div class="chapter-divider"></div>
+
+  <p class="chapter-intro">Wenn du einmal checkst, dass Aufgabegepäck bei Kurzflügen fast genauso viel kostet wie das Ticket selbst — und dass du am Zielort sowieso die Hälfte nie anziehst — ist der Schritt zu 'nur Handgepäck' keine Opferbereitschaft. Es ist Befreiung.</p>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#05</span>
+      <span class="hack-tag">Sparer</span>
+    </div>
+    <p class="hack-title">Nur Handgepäck = direkt zur Sicherheit.</p>
+    <p class="hack-body">Kein Check-in, kein Schlangestehen am Schalter, kein Warten am Band. Du landest und bist sofort draußen. Das spart im Schnitt 30–60 Minuten pro Trip — und 30–60 Euro obendrauf.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#06</span>
+      <span class="hack-tag">Achtung</span>
+    </div>
+    <p class="hack-title">Maße kennen und einhalten.</p>
+    <p class="hack-body">Jede Airline hat andere Maße für Handgepäck. Ryanair ist bekanntermaßen gnadenlos, Wizz Air misst am Gate. Kaufe einen Rucksack der exakt passt und miss ihn vorher nach.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#07</span>
+      <span class="hack-tag">Airport-Tipp</span>
+    </div>
+    <p class="hack-title">Agadir Flughafen: Ernst genommen.</p>
+    <p class="hack-body">Der Flughafen Agadir misst beim Rückflug buchstäblich jeden Millimeter. Steht ein Rad leicht über, wird es teuer. Das war 2024 so und wird sich wahrscheinlich nicht geändert haben. Du wurdest gewarnt.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#08</span>
+      <span class="hack-tag">Echte Geschichte</span>
+    </div>
+    <p class="hack-title">Weeze: Die strikteste Kontrolle Deutschlands?</p>
+    <p class="hack-body">Düsseldorf-Weeze kontrolliert schon in der Eingangshalle ob dein Gepäck passt. Alles muss in die Vorrichtung passen — kein Zentimeter darf herausschauen. Ich bin dort mit einer Couch und einem Klappstuhl angekommen. Ich bereue nichts. Außer der Couch. Und dem Klappstuhl.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: KAPITEL 03 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">5 / 12</span>
+  </div>
+
+  <div class="chapter-badge">03</div>
+  <h2 class="chapter-title">Die 3-Gegenstände-Regel.</h2>
+  <p class="chapter-subtitle">Handy. Reisepass. Portemonnaie. Fertig.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="cards-row">
+    <div class="card">
+      <div class="card-title">Handy</div>
+      <p class="card-desc">Navigation, Ticket, Unterkunft — alles drauf</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Reisepass</div>
+      <p class="card-desc">Identität, Visum, Hotelbuchung — nicht ohne</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Portemonnaie</div>
+      <p class="card-desc">Karte, Bargeld, SIM-Kapazität — immer dabei</p>
+    </div>
+  </div>
+
+  <p class="intro-body" style="font-size: 9.5pt;">Ich habe mir angewöhnt: bevor ich das Haus verlasse, fühle ich kurz nach — Handy, Reisepass, Portemonnaie. Sind diese drei Dinge dabei und ich bin angezogen, ist alles andere erst mal kein Problem. Grundsätzlich bekommst du alles Vergessene am Zielort: T-Shirts, Socken, Shampoo, Zahnbürste. Einen Reisepass nicht.</p>
+
+  <div class="quote-block">
+    <p>&bdquo;Handy, Reisepass, Portemonnaie. Wenn ich diese drei Dinge habe und angezogen bin — dann bin ich bereit.&ldquo;</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#09</span>
+      <span class="hack-tag">Wichtig</span>
+    </div>
+    <p class="hack-title">Visum &amp; Einreisebestätigung: Sonderfall.</p>
+    <p class="hack-body">Wer in Länder reist, die ein Visum oder eine digitale Einreisegenehmigung (z.B. ETIAS, ETA) erfordern, muss diese Dokumente zusätzlich parat haben. Das wird von der Regel nicht abgedeckt — das ist Hausaufgabe.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 6: KAPITEL 04 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">6 / 12</span>
+  </div>
+
+  <div class="chapter-badge">04</div>
+  <h2 class="chapter-title">Die Jacken-Strategie.</h2>
+  <p class="chapter-subtitle">Legaler Schmuggel seit 2019.</p>
+  <div class="chapter-divider"></div>
+
+  <p class="chapter-intro">Eine Jacke mit vielen Taschen ist kein Kleidungsstück. Es ist ein Tragevehikel. Seiten-, Hand-, Innentaschen — all das sind deine offiziellen Gepäckdepots für alles, was deinen Rucksack zu voll aussehen lässt. Beim Boarding: Jacke über den Arm. Kein Mitarbeiter schaut nach.</p>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#10</span>
+      <span class="hack-tag">GameChanger</span>
+    </div>
+    <p class="hack-title">Jacke mit vielen Taschen wählen.</p>
+    <p class="hack-body">Seiten-, Hand-, Brust- und Innentaschen. Alles was in einen Zip-Beutel kommt (Flüssigkeiten, Ladekabel, Power Bank, Reisepass), kommt in die Jacke. Der Rucksack sieht dadurch deutlich weniger überfüllt aus.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#11</span>
+      <span class="hack-tag">Bewährt</span>
+    </div>
+    <p class="hack-title">Boarding: Jacke über den Arm.</p>
+    <p class="hack-body">Kurz vor dem Gate legst du die Jacke einfach über deinen Arm. Das ist keine Täuschung — du trägst die Jacke, sie ist Kleidung. So wird sie nicht als Gepäck gezählt. Ich hatte damit bisher keine einzige Diskussion.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#12</span>
+      <span class="hack-tag">Optik-Hack</span>
+    </div>
+    <p class="hack-title">Vorderes Rucksackfach: nie überfüllen.</p>
+    <p class="hack-body">Das vordere Fach ist das erste, das auffällt wenn der Rucksack aussieht als würde er gleich platzen. Alles was ins vordere Fach käme: ab in die Jacke.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#13</span>
+      <span class="hack-tag">Fortgeschritten</span>
+    </div>
+    <p class="hack-title">Zweite Jacke = doppeltes Volumen.</p>
+    <p class="hack-body">Wer zwei Jacken mitnimmt (Sommer + Übergangs) trägt beim Boarding einfach beide — eine an, eine über dem Arm. Funktioniert. Wird nicht angesprochen. Keine weiteren Kommentare.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 7: KAPITEL 05 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">7 / 12</span>
+  </div>
+
+  <div class="chapter-badge">05</div>
+  <h2 class="chapter-title">Der Rucksack.</h2>
+  <p class="chapter-subtitle">Nicht irgendein Rucksack. Der richtige.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#14</span>
+      <span class="hack-tag">Top-Investition</span>
+    </div>
+    <p class="hack-title">Komprimierbarer Rucksack kaufen.</p>
+    <p class="hack-body">Ein Rucksack, der sich von 25L auf 15L zusammenziehen lässt, ist Gold wert. Am Gate: klein. Tagsüber beim Erkunden: groß. Decathlon hat gute Optionen für 40–80 Euro.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#15</span>
+      <span class="hack-tag">Decathlon</span>
+    </div>
+    <p class="hack-title">Mini-Rucksack als Zweit-Lösung.</p>
+    <p class="hack-body">Decathlon verkauft faltbare Rucksäcke in 5L, 10L und 15L — klein wie ein Tennisball, wenn zusammengefaltet. Passt in jede Jacken-Tasche oder in einen kleinen Rucksack-Schlitz. Für Tagesausflüge am Zielort unersetzlich.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#16</span>
+      <span class="hack-tag">Volumen-Trick</span>
+    </div>
+    <p class="hack-title">Schwere Schuhe: anziehen, nicht einpacken.</p>
+    <p class="hack-body">Wanderschuhe, Winterboots, alles was Platz wegnimmt: beim Fliegen anziehen. Die leichteren Schuhe kommen in den Rucksack und du baust drumherum. Spart viel Volumen.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#17</span>
+      <span class="hack-tag">Tetris-Prinzip</span>
+    </div>
+    <p class="hack-title">Socken &amp; Unterwäsche in alle Ecken.</p>
+    <p class="hack-body">Socken rollen und in Schuhe stopfen. Unterwäsche in jede freie Ecke im Rucksack. Das ist keine Kunst, aber fast jeder verschwendet diese Hohlräume mit Luft.</p>
+  </div>
+
+  <div class="quote-block" style="margin-top: 16px;">
+    <p>&bdquo;Gib Geld aus für einen guten Reiserucksack. Einmal die richtige Investition, kein jährliches Neudenken.&ldquo;</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 8: KAPITEL 06 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">8 / 12</span>
+  </div>
+
+  <div class="chapter-badge">06</div>
+  <h2 class="chapter-title">Packen.</h2>
+  <p class="chapter-subtitle">Weniger ist mehr. Aber Mütze ist Pflicht.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#18</span>
+      <span class="hack-tag">Erstes Mal</span>
+    </div>
+    <p class="hack-title">Erst mal Wochenendtrip machen.</p>
+    <p class="hack-body">Bevor du für 3 Wochen packst: mach einen Wochenendtrip mit Handgepäck. Du wirst überrascht sein, wie wenig du wirklich brauchst. Das ist der schnellste Weg, deinen 'Ich brauche das alles'-Instinkt neu zu kalibrieren.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#19</span>
+      <span class="hack-tag">Minimalismus</span>
+    </div>
+    <p class="hack-title">Ein Basic-Outfit reicht meistens.</p>
+    <p class="hack-body">Jeans + T-Shirt ist die universelle Lösung. Oder dein Lieblingsoutfit — das, in dem du dich am wohlsten fühlst. Das nimmst du und einen Wechsel. Mehr braucht es für 3–4 Tage selten.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#20</span>
+      <span class="hack-tag">Unterschätzt</span>
+    </div>
+    <p class="hack-title">Mütze immer einpacken.</p>
+    <p class="hack-body">Frühling, Herbst — egal. Eine Mütze wiegt nichts, nimmt kaum Platz weg und rettet dich wenn es doch kälter wird als erwartet. Eine Cap geht auch, lässt sich sogar am Rucksack befestigen. Ich bevorzuge die Mütze. Du weißt jetzt warum.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#21</span>
+      <span class="hack-tag">Sparer</span>
+    </div>
+    <p class="hack-title">Shampoo &amp; Kosmetik am Zielort kaufen.</p>
+    <p class="hack-body">Außer du brauchst spezifische Produkte: alles Kosmetische kannst du vor Ort kaufen. Das spart Flüssigkeitsregeln-Stress, Gewicht und Volumen. Ein kleines Mitbringsel für die Heimreise.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#22</span>
+      <span class="hack-tag">Outdoor-Pflicht</span>
+    </div>
+    <p class="hack-title">Thermounterwäsche nicht vergessen.</p>
+    <p class="hack-body">Klein, leicht, faltbar — und wenn du sie brauchst, gibt es nichts Besseres. Ob Herbstwanderung oder frische Hotelnacht: ein Set Thermounterwäsche nimmt kaum Platz weg und ist immer die richtige Entscheidung.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 9: KAPITEL 07 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">9 / 12</span>
+  </div>
+
+  <div class="chapter-badge">07</div>
+  <h2 class="chapter-title">Outdoor &amp; Wandern.</h2>
+  <p class="chapter-subtitle">Zehennägel schneiden. Ich meine es ernst.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#23</span>
+      <span class="hack-tag">Volumen-Trick</span>
+    </div>
+    <p class="hack-title">Wanderschuhe anziehen — nicht einpacken.</p>
+    <p class="hack-body">Wanderschuhe nehmen im Rucksack unverhältnismäßig viel Platz weg. Beim Flug anziehen, dann sind sie aus dem Weg. Dazu: ein kleines Paar Hausschuhe oder Sneakers für die Unterkunft.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#24</span>
+      <span class="hack-tag">Unterschätzt</span>
+    </div>
+    <p class="hack-title">Zehennägel VOR der Wanderung schneiden.</p>
+    <p class="hack-body">Klingt banal. Ist es nicht. Bei langen Touren in engen Wanderschuhen kann ein zu langer Zehennagel innerhalb von 10 km zur Qual werden. Das wurde mir persönlich zum Verhängnis. Lern aus meinen Fehlern.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#25</span>
+      <span class="hack-tag">Decathlon</span>
+    </div>
+    <p class="hack-title">Gaskocher von Decathlon (30–40 Euro).</p>
+    <p class="hack-body">Klein, leicht, günstig. Der kleine Aufsatz-Gaskocher reicht für Tee, Suppe, Instantnudeln. Dazu: ein etwas größerer Becher dient gleichzeitig als Kochgefäß und als Staubox für Kleinteile.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#26</span>
+      <span class="hack-tag">Outdoor-Upgrade</span>
+    </div>
+    <p class="hack-title">Hängematte + Moskitonetz statt Zelt.</p>
+    <p class="hack-body">Wenn die Umgebung und das Wetter es erlauben: eine Hängematte mit integriertem Moskitonetz ist leichter, günstiger und ehrlich gesagt auch komfortabler als viele Zelte. Vor allem für Unruhschläfer mit Mückenallergie: absolutes Muss.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#27</span>
+      <span class="hack-tag">Gear-Tipp</span>
+    </div>
+    <p class="hack-title">Einmannzelt ohne Metallstäbe.</p>
+    <p class="hack-body">Es gibt Zelte, die nur einen Ast oder einen Wanderstock brauchen um aufgestellt zu werden. Kein Metallgestänge, das in den Rucksack gestopft werden muss. Das Zelt spannt sich über den Stock in der Mitte. Kleiner, leichter, schneller aufgebaut.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 10: KAPITEL 08 ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">10 / 12</span>
+  </div>
+
+  <div class="chapter-badge">08</div>
+  <h2 class="chapter-title">Gadgets.</h2>
+  <p class="chapter-subtitle">Keine Gimmicks. Nur das was wirklich hilft.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#28</span>
+      <span class="hack-tag">#1 Gadget</span>
+    </div>
+    <p class="hack-title">Paracord — das universellste Gadget.</p>
+    <p class="hack-body">Über 5 Länder in 2 Wochen war das Paracord von Anfang bis Ende dabei. Wäscheleine im Hotelzimmer. Gepäck komprimieren. Zelt spannen. Rucksack sichern. Du brauchst vielleicht 5–10 Meter und einen Karabiner. Das Ding kostet 5 Euro und ist unbezahlbar.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#29</span>
+      <span class="hack-tag">Outdoor-Basic</span>
+    </div>
+    <p class="hack-title">Stirnlampe (Kopflampe).</p>
+    <p class="hack-body">Nicht glamourös, aber praktisch. Beim Zelten, beim Suchen im dunklen Rucksack, beim spätnächtlichen Navigieren ohne Hände zu blockieren. Amazon oder jeder Outdoor-Shop. Klein, günstig.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#30</span>
+      <span class="hack-tag">Zero-Battery</span>
+    </div>
+    <p class="hack-title">Kurbellampe (ohne Batterien).</p>
+    <p class="hack-body">Eine kleine Taschenlampe, die man aufkurbeln kann — kein Akku, keine Batterien, kein 'leer wenn man sie braucht'. Gibt es für 5–8 Euro und funktioniert immer wenn alles andere schläft.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#31</span>
+      <span class="hack-tag">Pflicht</span>
+    </div>
+    <p class="hack-title">Power Bank — keine Diskussion.</p>
+    <p class="hack-body">Dein Handy ist dein Ticket, deine Navigation, dein Notruf. Ohne Akku bist du aufgeschmissen. Eine 10.000 mAh Power Bank reicht für 2–3 Ladungen, wiegt wenig und gehört in jeden Rucksack.</p>
+  </div>
+
+  <div class="hack">
+    <div class="hack-header">
+      <span class="hack-num">#32</span>
+      <span class="hack-tag">Creator-Tipp</span>
+    </div>
+    <p class="hack-title">Drohne einplanen: separat und unauffällig.</p>
+    <p class="hack-body">Wer eine Drohne mitnimmt: eine separate Tasche dafür einplanen, am Gate nicht auffallen. Die Drohne + Akkus allein machen schon Gepäck sichtbar. Ich spreche aus Erfahrung. Weeze. Scham. Du weißt.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 11: CHECKLISTE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">11 / 12</span>
+  </div>
+
+  <h2 class="chapter-title">Checkliste.</h2>
+  <p class="chapter-subtitle">Alles auf einen Blick — vor dem nächsten Trip.</p>
+  <div class="chapter-divider"></div>
+
+  <div class="checklist-grid">
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Früher Flug gebucht?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Power Bank eingepackt?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Nur Handgepäck?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Paracord dabei?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Handyakku 100%?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Jacke mit Taschen?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Reisepass dabei?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Rucksack-Maße ok?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Portemonnaie dabei?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Mini-Rucksack dabei?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Mütze eingepackt?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Visum / ETA gültig?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Thermounterwäsche?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Stirnlampe / Kurbellampe?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Zehennägel geschnitten?</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Skyscanner gecheckt?</span></div>
+  </div>
+
+  <div style="text-align: center; margin-top: 24px;">
+    <div style="width: 48px; height: 1px; background: var(--accent); opacity: 0.3; margin: 0 auto 20px;"></div>
+    <p style="font-size: 14pt; font-weight: 700; color: var(--white); letter-spacing: -0.03em;">Handy. Reisepass. Portemonnaie.</p>
+    <p style="font-size: 11pt; font-weight: 300; color: var(--text-dim); margin-top: 6px;">Der Rest findet sich.</p>
+  </div>
+</div>
+
+<!-- ==================== PAGE 12: ABSCHLUSS ==================== -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">Uncle Marv</span>
+    <span class="page-num">12 / 12</span>
+  </div>
+
+  <div class="closing">
+    <h2>Gute Reise.</h2>
+    <p class="close-sub">Und bitte kein Klappstuhl mehr.</p>
+
+    <div style="width: 48px; height: 1px; background: var(--accent); opacity: 0.3; margin: 0 auto 36px;"></div>
+
+    <p class="cta-label">Mehr Hacks, Presets &amp; VIP-Vorteile</p>
+    <p class="contact-email">marvinkuppens.business@gmail.com</p>
+    <p class="contact-social">@ichheissemarrvin &middot; YouTube: Ichheissemarrvin</p>
+
+    <div class="product-cards">
+      <div class="product-card"><span>Travel Hacks PDF</span></div>
+      <div class="product-card"><span>Cinematic Presets</span></div>
+      <div class="product-card"><span>VIP Programm</span></div>
+    </div>
+
+    <p class="footer">&copy; 2026 UncleMarv — Alle Rechte vorbehalten.</p>
+  </div>
+</div>
+
+</body>
+</html>
